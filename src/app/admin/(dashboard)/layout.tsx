@@ -12,6 +12,7 @@ import {
   LogOut,
   Package,
   Settings,
+  Sliders,
   Sparkles,
 } from "lucide-react";
 import { cx } from "@/lib/format";
@@ -23,6 +24,7 @@ const navItems = [
   { label: "Inventory", href: "/admin/inventory", icon: Boxes },
   { label: "Orders", href: "/admin/orders", icon: ClipboardList },
   { label: "Custom Requests", href: "/admin/custom-requests", icon: Sparkles },
+  { label: "Studio Options", href: "/admin/studio-options", icon: Sliders },
   { label: "Settings", href: "/admin/settings", icon: Settings },
 ];
 

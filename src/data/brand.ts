@@ -101,7 +101,7 @@ export const defaultContent: SiteContent = {
 export const navigation = {
   primary: [
     { label: "Shop", href: "/shop" },
-    { label: "Custom Orders", href: "/custom" },
+    { label: "Bespoke Studio", href: "/custom" },
     { label: "Our Story", href: "/about" },
     { label: "Leather Guide", href: "/leather-guide" },
     { label: "Contact", href: "/contact" },

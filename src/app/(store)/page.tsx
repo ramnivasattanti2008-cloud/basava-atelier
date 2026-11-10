@@ -43,38 +43,38 @@ export default function HomePage() {
                 ಕೈಯಿಂದ ಮಾಡಿದ · हस्तनिर्मित
               </span>
               <span className="h-1 w-1 rounded-full bg-brass/60" />
-              <span className="eyebrow text-saddle-deep">Bengaluru Bespoke Atelier</span>
+              <span className="eyebrow text-saddle-deep">Bespoke Bengaluru Atelier</span>
             </div>
             <h1 className="display-xl mt-3 rise [--i:1]">
-              Made to last.<br />
-              <span className="italic font-normal">Made to be yours.</span>
+              Handmade Leather Bags.<br />
+              <span className="italic font-normal">Made to Last a Lifetime.</span>
             </h1>
-            <p className="lede mt-6 max-w-xl rise [--i:2]">
-              {content.hero.support}
+            <p className="lede mt-5 max-w-xl text-charcoal/85 rise [--i:2]">
+              No faux leather. No plastic shortcuts. Just real, hand-stitched hides crafted one by one in Bengaluru. Pick a ready piece or personalise it with your initials in 24K gold foil.
             </p>
 
-            <div className="mt-10 flex flex-wrap items-center gap-4 rise [--i:3]">
-              <Link href="/shop" className="btn btn-solid">
-                {content.hero.primaryCta}
+            <div className="mt-8 flex flex-wrap items-center gap-4 rise [--i:3]">
+              <Link href="/shop" className="btn btn-solid shadow-md hover:shadow-lg transition-all">
+                Shop 40 Ready Bags
                 <ArrowRight size={15} strokeWidth={1.5} />
               </Link>
-              <Link href="/custom" className="btn btn-outline">
-                {content.hero.secondaryCta}
+              <Link href="/custom" className="btn btn-outline hover:border-espresso transition-all">
+                Order Custom Bag
               </Link>
             </div>
 
-            <div className="mt-12 flex flex-wrap items-center gap-8 border-t border-espresso/12 pt-6 text-xs text-charcoal/75 rise [--i:4]">
+            <div className="mt-10 flex flex-wrap items-center gap-6 sm:gap-8 border-t border-espresso/12 pt-5 text-xs text-charcoal/80 rise [--i:4]">
               <div className="flex items-center gap-2">
-                <Check size={14} className="text-saddle-deep" />
-                <span>40 hand-finished pieces</span>
+                <Check size={14} className="text-saddle-deep font-bold" />
+                <span>40 Ready Pieces (₹1,000–₹6,000)</span>
               </div>
               <div className="flex items-center gap-2">
-                <Check size={14} className="text-saddle-deep" />
-                <span>Bespoke customisation</span>
+                <Check size={14} className="text-saddle-deep font-bold" />
+                <span>Custom 24K Gold Initials</span>
               </div>
               <div className="flex items-center gap-2">
-                <Check size={14} className="text-saddle-deep" />
-                <span>Direct maker consultation</span>
+                <Check size={14} className="text-saddle-deep font-bold" />
+                <span>Direct WhatsApp with Maker</span>
               </div>
             </div>
           </div>
@@ -128,6 +128,34 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ROYAL ARTISAN MARQUEE TICKER */}
+      <div className="relative overflow-hidden border-b border-espresso/15 bg-[#170e08] text-[#e8cb85] py-3.5 select-none shadow-inner">
+        <div className="marquee-track flex gap-8 text-[0.72rem] font-semibold tracking-[0.2em] uppercase">
+          {[
+            "✦ 100% Genuine Leather Hides",
+            "✦ Handcrafted in Bengaluru",
+            "✦ Zero Plastic or PU",
+            "✦ Solid Cast Brass Hardware",
+            "✦ Complimentary Royal Gift Packaging",
+            "✦ 24K Gold Foil Monograms",
+            "✦ Direct WhatsApp with Maker",
+            "✦ 40 Signature Designs",
+            "✦ 100% Genuine Leather Hides",
+            "✦ Handcrafted in Bengaluru",
+            "✦ Zero Plastic or PU",
+            "✦ Solid Cast Brass Hardware",
+            "✦ Complimentary Royal Gift Packaging",
+            "✦ 24K Gold Foil Monograms",
+            "✦ Direct WhatsApp with Maker",
+            "✦ 40 Signature Designs",
+          ].map((item, idx) => (
+            <span key={idx} className="flex items-center gap-2 whitespace-nowrap text-[#f4e2b8]">
+              {item}
+            </span>
+          ))}
+        </div>
+      </div>
+
       {/* Heritage Lotus Transition */}
       <HeritageFlourish variant="lotus" className="py-2" />
 
@@ -136,10 +164,13 @@ export default function HomePage() {
         <div className="shell">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 pb-12">
             <div>
-              <p className="eyebrow">The Collection</p>
-              <h2 className="display-lg mt-3">Seven Essential Shapes</h2>
+              <p className="eyebrow text-saddle-deep">Find Your Daily Bag</p>
+              <h2 className="display-lg mt-2">Seven Everyday Shapes</h2>
+              <p className="text-xs sm:text-sm text-charcoal/75 mt-2 max-w-xl">
+                From spacious work totes to hands-free weekend crossbodies — pick the silhouette that fits your day.
+              </p>
             </div>
-            <Link href="/shop" className="link-line text-xs font-semibold uppercase tracking-widest text-espresso inline-flex items-center gap-1.5 self-start md:self-auto">
+            <Link href="/shop" className="btn btn-outline btn-sm self-start md:self-auto inline-flex items-center gap-2">
               View all 40 pieces <ArrowRight size={14} />
             </Link>
           </div>
@@ -149,7 +180,7 @@ export default function HomePage() {
               <Link
                 key={cat.slug}
                 href={`/collections/${cat.slug}`}
-                className="group relative flex flex-col justify-between border border-espresso/15 bg-ivory p-6 transition-all duration-300 hover:border-espresso hover:shadow-md"
+                className="group relative flex flex-col justify-between border border-espresso/15 bg-ivory p-6 transition-all duration-300 hover:border-espresso hover:shadow-lg hover:-translate-y-1"
               >
                 <div>
                   <div className="flex items-center justify-between text-xs text-walnut/70">
@@ -177,18 +208,18 @@ export default function HomePage() {
             {/* Custom Studio Promo Tile */}
             <Link
               href="/custom"
-              className="group relative flex flex-col justify-between border border-saddle-deep/40 bg-linen/70 p-6 transition-all duration-300 hover:border-espresso hover:shadow-md"
+              className="group relative flex flex-col justify-between border-2 border-dashed border-[#c5a059] bg-[#fbf6ee] p-6 transition-all duration-300 hover:border-espresso hover:shadow-lg hover:-translate-y-1"
             >
               <div>
-                <div className="flex items-center justify-between text-xs text-saddle-deep">
-                  <span className="font-mono text-[0.6875rem]">BESPOKE</span>
-                  <Sparkles size={14} />
+                <div className="flex items-center justify-between text-xs text-[#96722d]">
+                  <span className="font-mono text-[0.6875rem] font-bold">BESPOKE</span>
+                  <Sparkles size={16} />
                 </div>
                 <h3 className="font-display text-2xl text-espresso mt-4 group-hover:underline group-hover:underline-offset-4">
                   Custom Orders
                 </h3>
-                <p className="mt-2 text-xs text-charcoal/70 leading-relaxed">
-                  Have a specific silhouette or monogram in mind? We build to your exact dimensions.
+                <p className="mt-2 text-xs text-charcoal/80 leading-relaxed">
+                  Need a specific size, unique hide colour, or custom monogram? We hand-make it to your exact brief.
                 </p>
               </div>
               <div className="mt-6 pt-4 border-t border-espresso/10 flex items-center justify-between text-xs font-semibold uppercase tracking-wider text-espresso">
@@ -207,12 +238,11 @@ export default function HomePage() {
       <section className="py-20 sm:py-28 border-b border-espresso/15">
         <div className="shell">
           <SectionHeading
-            eyebrow="Curated Pieces"
-            title="Signature Leathercraft"
+            eyebrow="Signature Leathercraft"
+            title="Handcrafted Everyday Favorites"
             className="mb-14"
           >
-            Handcrafted with genuine hides, durable stitching, and brass-tone hardware.
-            Each piece is prepared individually.
+            Cut from 100% genuine hides that soften, shine, and look even better with every year of use.
           </SectionHeading>
 
           <div className="grid grid-cols-2 gap-x-4 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 sm:gap-x-6 sm:gap-y-12">
@@ -226,7 +256,7 @@ export default function HomePage() {
           </div>
 
           <div className="mt-16 text-center">
-            <Link href="/shop" className="btn btn-outline">
+            <Link href="/shop" className="btn btn-outline hover:border-espresso transition-all">
               Browse Complete Catalogue (40 Pieces)
             </Link>
           </div>
@@ -237,57 +267,58 @@ export default function HomePage() {
       <section className="on-dark bg-espresso text-ivory py-20 sm:py-28 border-b border-sand/20">
         <div className="shell grid grid-cols-1 lg:grid-cols-12 items-center gap-14">
           <div className="lg:col-span-6">
-            <p className="eyebrow text-sand">Bespoke Workshop</p>
-            <h2 className="display-lg mt-4 text-ivory">
-              {content.customBand.headline}
+            <p className="eyebrow text-sand">Custom Orders & Gifts</p>
+            <h2 className="display-lg mt-3 text-ivory">
+              Want Something Made Just For You?
             </h2>
-            <p className="lede mt-6 text-ivory/80">
-              {content.customBand.body}
+            <p className="lede mt-4 text-ivory/80 text-sm sm:text-base leading-relaxed">
+              If you need a specific laptop size, a particular leather colour, or your initials stamped in 24K gold foil, our Bengaluru artisan builds it from scratch.
             </p>
 
             <div className="mt-8 space-y-4">
               <div className="flex items-start gap-3.5">
-                <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-sand/40 text-sand text-xs font-semibold">
+                <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-sand/40 text-sand text-xs font-bold">
                   1
                 </div>
                 <div>
-                  <h4 className="text-sm font-semibold uppercase tracking-wider text-ivory">Bring Your Vision</h4>
-                  <p className="text-xs text-ivory/70 mt-0.5">Send a sketch, dimension requirements, or reference photos.</p>
+                  <h4 className="text-sm font-semibold uppercase tracking-wider text-ivory">Choose Your Style</h4>
+                  <p className="text-xs text-ivory/70 mt-0.5">Pick any shape from our collection or send us a reference photo.</p>
                 </div>
               </div>
               <div className="flex items-start gap-3.5">
-                <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-sand/40 text-sand text-xs font-semibold">
+                <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-sand/40 text-sand text-xs font-bold">
                   2
                 </div>
                 <div>
-                  <h4 className="text-sm font-semibold uppercase tracking-wider text-ivory">Leather & Monogram</h4>
-                  <p className="text-xs text-ivory/70 mt-0.5">Choose grain, colour palette, and debossed or gold foil initials.</p>
+                  <h4 className="text-sm font-semibold uppercase tracking-wider text-ivory">Add Your Monogram</h4>
+                  <p className="text-xs text-ivory/70 mt-0.5">Choose your leather colour and stamp your name in 24K gold foil or blind deboss.</p>
                 </div>
               </div>
               <div className="flex items-start gap-3.5">
-                <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-sand/40 text-sand text-xs font-semibold">
+                <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-sand/40 text-sand text-xs font-bold">
                   3
                 </div>
                 <div>
-                  <h4 className="text-sm font-semibold uppercase tracking-wider text-ivory">Handmade & Delivered</h4>
-                  <p className="text-xs text-ivory/70 mt-0.5">Crafted stitch by stitch in our workshop with direct updates.</p>
+                  <h4 className="text-sm font-semibold uppercase tracking-wider text-ivory">Handmade & Shipped to You</h4>
+                  <p className="text-xs text-ivory/70 mt-0.5">Cut and saddle-stitched by hand, packed in a royal box, and delivered to your doorstep.</p>
                 </div>
               </div>
             </div>
 
-            <div className="mt-10 flex flex-wrap gap-4">
-              <Link href="/custom" className="btn btn-light">
-                Launch Custom Studio
+            <div className="mt-8 flex flex-wrap gap-4">
+              <Link href="/custom" className="btn btn-light shadow-md hover:shadow-lg transition-all flex items-center gap-2">
+                <Sparkles size={14} className="text-sand" />
+                Launch AI Bespoke Studio
                 <ArrowRight size={14} />
               </Link>
               <a
                 href={whatsappLink(settings.whatsappNumber, "Hello, I'd like to discuss a custom leather project.")}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn btn-outline-light inline-flex items-center gap-2"
+                className="btn btn-outline-light inline-flex items-center gap-2 hover:bg-ivory/10 transition-all"
               >
                 <MessageCircle size={15} />
-                WhatsApp Maker
+                WhatsApp the Maker
               </a>
             </div>
           </div>
@@ -311,19 +342,19 @@ export default function HomePage() {
             <div className="flex items-center gap-4">
               <HeritageSeal size={80} rotating={false} className="shrink-0" />
               <div>
-                <p className="eyebrow text-brass">Our Philosophy</p>
+                <p className="eyebrow text-brass">Real Leather Matters</p>
                 <h2 className="display-lg text-espresso mt-1">
-                  Crafted One Stitch<br />
-                  <span className="italic font-normal">at a Time.</span>
+                  Why We Make Bags<br />
+                  <span className="italic font-normal">the Old-Fashioned Way.</span>
                 </h2>
               </div>
             </div>
             <div className="prose-kd text-charcoal/85 text-sm sm:text-base leading-relaxed space-y-4">
               <p>
-                At <strong>{settings.makerName}</strong>, leather is not mass-produced in factories; it is cut, edge-finished, and assembled by hand. From generous totes engineered for daily use to compact wristlets made from textured hides, each design balances functional utility with understated heritage.
+                Most modern bags are made from synthetic polyurethane (PU) plastic. They look nice for a month, then start peeling and end up in the trash within a year.
               </p>
               <p>
-                Our collection features pieces curated under {settings.retailName}, complemented by our dedicated bespoke studio where individual bags, sleeves, and accessories are tailored to your personal measurements.
+                At <strong>{settings.makerName}</strong>, we use 100% natural leather tanned with organic South Indian plant barks. It is cut by hand, edge-burnished with Nilgiris beeswax, and assembled with heavy-duty bonded thread. Real leather breathes, softens, and gains a gorgeous dark glow (patina) the more you carry it.
               </p>
             </div>
 
@@ -346,39 +377,39 @@ export default function HomePage() {
           </div>
 
           <div className="lg:col-span-6 grid grid-cols-2 gap-4">
-            <div className="border border-espresso/15 bg-ivory p-6 flex flex-col justify-between">
+            <div className="border border-espresso/15 bg-ivory p-6 flex flex-col justify-between hover:border-espresso/40 transition-all hover:-translate-y-1 hover:shadow-md">
               <ShieldCheck size={28} className="text-saddle-deep" strokeWidth={1.5} />
               <div className="mt-8">
-                <h4 className="font-display text-xl text-espresso">Full & Top Grain</h4>
+                <h4 className="font-display text-xl text-espresso">100% Real Hides</h4>
                 <p className="mt-2 text-xs text-charcoal/70 leading-relaxed">
-                  Real hides selected for texture, tensile strength, and natural patina that enriches over years.
+                  Genuine animal leather that never cracks or flakes like synthetic plastic.
                 </p>
               </div>
             </div>
-            <div className="border border-espresso/15 bg-ivory p-6 flex flex-col justify-between">
+            <div className="border border-espresso/15 bg-ivory p-6 flex flex-col justify-between hover:border-espresso/40 transition-all hover:-translate-y-1 hover:shadow-md">
               <Layers size={28} className="text-saddle-deep" strokeWidth={1.5} />
               <div className="mt-8">
-                <h4 className="font-display text-xl text-espresso">Reinforced Seams</h4>
+                <h4 className="font-display text-xl text-espresso">Double-Stitched</h4>
                 <p className="mt-2 text-xs text-charcoal/70 leading-relaxed">
-                  Heavy-duty bonded threads, reinforced stress points, and hand-finished edges.
+                  Reinforced corners and heavy-duty bonded threads that survive heavy books and laptops.
                 </p>
               </div>
             </div>
-            <div className="border border-espresso/15 bg-ivory p-6 flex flex-col justify-between">
+            <div className="border border-espresso/15 bg-ivory p-6 flex flex-col justify-between hover:border-espresso/40 transition-all hover:-translate-y-1 hover:shadow-md">
               <Compass size={28} className="text-saddle-deep" strokeWidth={1.5} />
               <div className="mt-8">
-                <h4 className="font-display text-xl text-espresso">Bengaluru Roots</h4>
+                <h4 className="font-display text-xl text-espresso">Bengaluru Studio</h4>
                 <p className="mt-2 text-xs text-charcoal/70 leading-relaxed">
-                  Handmade locally with direct communication from initial enquiry to final dispatch.
+                  Handcrafted locally with direct updates from our workshop to your phone.
                 </p>
               </div>
             </div>
-            <div className="border border-espresso/15 bg-ivory p-6 flex flex-col justify-between">
+            <div className="border border-espresso/15 bg-ivory p-6 flex flex-col justify-between hover:border-espresso/40 transition-all hover:-translate-y-1 hover:shadow-md">
               <Sparkles size={28} className="text-saddle-deep" strokeWidth={1.5} />
               <div className="mt-8">
-                <h4 className="font-display text-xl text-espresso">Custom Monograms</h4>
+                <h4 className="font-display text-xl text-espresso">24K Gold Initials</h4>
                 <p className="mt-2 text-xs text-charcoal/70 leading-relaxed">
-                  Personalised initials, strap adjustments, and custom hardware finishes on request.
+                  Personalise with custom initials, auspicious symbols (ॐ, श्री), or blind debossing.
                 </p>
               </div>
             </div>
@@ -398,46 +429,58 @@ export default function HomePage() {
       <section className="py-20 border-b border-espresso/15">
         <div className="shell">
           <div className="mx-auto max-w-2xl text-center">
-            <p className="eyebrow">Demystifying Leather</p>
-            <h2 className="display-md mt-3">An Honest Guide to Leather Grades</h2>
-            <p className="lede mt-4">
-              We believe in complete transparency about materials. Here is what the different grades mean for durability and care.
+            <p className="eyebrow text-saddle-deep">Clear & Honest</p>
+            <h2 className="display-md mt-2">Leather Grades in Plain English</h2>
+            <p className="text-sm text-charcoal/80 mt-3 leading-relaxed">
+              We never hide behind confusing marketing buzzwords. Here is what each leather grade actually means for you.
             </p>
           </div>
 
-          <div className="mt-14 grid grid-cols-1 md:grid-cols-4 gap-6">
-            <div className="border border-espresso/15 bg-paper p-6 flex flex-col">
-              <span className="font-mono text-xs text-saddle-deep">GRADE 01</span>
-              <h3 className="font-display text-xl text-espresso mt-2">Full-Grain Leather</h3>
-              <p className="mt-3 text-xs text-charcoal/75 leading-relaxed">
-                The outermost layer with complete original grain. Never sanded or buffed. Extremely durable and develops a prized patina over time.
-              </p>
+          <div className="mt-12 grid grid-cols-1 md:grid-cols-4 gap-6">
+            <div className="border border-espresso/15 bg-paper p-6 flex flex-col justify-between hover:border-espresso/40 transition-all hover:-translate-y-1 hover:shadow-md">
+              <div>
+                <span className="font-mono text-xs text-saddle-deep font-bold">GRADE 01</span>
+                <h3 className="font-display text-xl text-espresso mt-2">Full-Grain</h3>
+                <p className="mt-3 text-xs text-charcoal/80 leading-relaxed">
+                  The toughest and longest-lasting leather in the world. Keeps its natural grain, absorbs natural oils, and develops a rich patina over decades.
+                </p>
+              </div>
+              <span className="mt-4 pt-3 border-t border-espresso/10 text-[0.6875rem] font-semibold text-saddle-deep">Heirloom Quality</span>
             </div>
-            <div className="border border-espresso/15 bg-paper p-6 flex flex-col">
-              <span className="font-mono text-xs text-saddle-deep">GRADE 02</span>
-              <h3 className="font-display text-xl text-espresso mt-2">Top-Grain Leather</h3>
-              <p className="mt-3 text-xs text-charcoal/75 leading-relaxed">
-                Slightly buffed to smooth imperfections, coated with a protective finish. Uniform, supple, and more stain-resistant.
-              </p>
+            <div className="border border-espresso/15 bg-paper p-6 flex flex-col justify-between hover:border-espresso/40 transition-all hover:-translate-y-1 hover:shadow-md">
+              <div>
+                <span className="font-mono text-xs text-saddle-deep font-bold">GRADE 02</span>
+                <h3 className="font-display text-xl text-espresso mt-2">Top-Grain</h3>
+                <p className="mt-3 text-xs text-charcoal/80 leading-relaxed">
+                  Lightly smoothed to remove surface marks. Supple, lightweight, and very soft to touch — perfect for structured daily totes and handbags.
+                </p>
+              </div>
+              <span className="mt-4 pt-3 border-t border-espresso/10 text-[0.6875rem] font-semibold text-saddle-deep">Smooth & Flexible</span>
             </div>
-            <div className="border border-espresso/15 bg-paper p-6 flex flex-col">
-              <span className="font-mono text-xs text-saddle-deep">GRADE 03</span>
-              <h3 className="font-display text-xl text-espresso mt-2">Genuine Leather</h3>
-              <p className="mt-3 text-xs text-charcoal/75 leading-relaxed">
-                Split layers of natural animal hide embossed with grain pattern. Real leather that offers authentic feel and accessible everyday value.
-              </p>
+            <div className="border border-espresso/15 bg-paper p-6 flex flex-col justify-between hover:border-espresso/40 transition-all hover:-translate-y-1 hover:shadow-md">
+              <div>
+                <span className="font-mono text-xs text-saddle-deep font-bold">GRADE 03</span>
+                <h3 className="font-display text-xl text-espresso mt-2">Genuine Leather</h3>
+                <p className="mt-3 text-xs text-charcoal/80 leading-relaxed">
+                  100% natural animal hide with an embossed textured finish. Real leather character and durability at an everyday accessible price.
+                </p>
+              </div>
+              <span className="mt-4 pt-3 border-t border-espresso/10 text-[0.6875rem] font-semibold text-saddle-deep">100% Natural Hide</span>
             </div>
-            <div className="border border-espresso/15 bg-paper p-6 flex flex-col">
-              <span className="font-mono text-xs text-saddle-deep">CARE</span>
-              <h3 className="font-display text-xl text-espresso mt-2">Longevity Tips</h3>
-              <p className="mt-3 text-xs text-charcoal/75 leading-relaxed">
-                Wipe gently with a dry, clean cloth. Keep away from extreme heat and prolonged direct rain. Store in breathable cotton dust bags.
-              </p>
+            <div className="border border-espresso/15 bg-paper p-6 flex flex-col justify-between hover:border-espresso/40 transition-all hover:-translate-y-1 hover:shadow-md">
+              <div>
+                <span className="font-mono text-xs text-saddle-deep font-bold">CARE TIP</span>
+                <h3 className="font-display text-xl text-espresso mt-2">Never Use Plastic</h3>
+                <p className="mt-3 text-xs text-charcoal/80 leading-relaxed">
+                  Real leather breathes. Always store your bag in the complimentary breathable cotton dust bag provided with your order, away from damp corners.
+                </p>
+              </div>
+              <span className="mt-4 pt-3 border-t border-espresso/10 text-[0.6875rem] font-semibold text-saddle-deep">Lifelong Care</span>
             </div>
           </div>
 
           <div className="mt-10 text-center">
-            <Link href="/leather-guide" className="btn btn-outline btn-sm">
+            <Link href="/leather-guide" className="btn btn-outline btn-sm hover:border-espresso transition-all">
               Read the Full Leather Guide
             </Link>
           </div>
@@ -445,26 +488,26 @@ export default function HomePage() {
       </section>
 
       {/* 8. CONTACT / CONSULTATION BANNER */}
-      <section className="py-20 bg-linen/50">
+      <section className="py-16 sm:py-20 bg-linen/60 border-t border-espresso/10">
         <div className="shell flex flex-col md:flex-row items-center justify-between gap-8">
           <div className="max-w-xl">
-            <p className="eyebrow">Personal Consultation</p>
-            <h2 className="display-sm mt-2">{content.contactBand.headline}</h2>
-            <p className="text-sm text-charcoal/80 mt-3 leading-relaxed">
-              {content.contactBand.body}
+            <p className="eyebrow text-saddle-deep">Direct Artisan Support</p>
+            <h2 className="display-sm mt-2">Have a Question? Talk Directly to the Maker</h2>
+            <p className="text-sm text-charcoal/80 mt-2 leading-relaxed">
+              Not sure which size fits your laptop? Want a custom strap length or a personalised gift? Send a quick message on WhatsApp — our Bengaluru maker answers you directly.
             </p>
           </div>
-          <div className="flex flex-wrap items-center gap-4">
+          <div className="flex flex-wrap items-center gap-4 shrink-0">
             <a
-              href={whatsappLink(settings.whatsappNumber, whatsappMessages.general(settings.makerName))}
+              href={whatsappLink(settings.whatsappNumber, "Hello! I am viewing your leather collection and have a question.")}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn btn-solid flex items-center gap-2"
+              className="btn btn-solid flex items-center gap-2 shadow-md hover:shadow-lg transition-all"
             >
               <MessageCircle size={16} />
               Chat on WhatsApp
             </a>
-            <Link href="/contact" className="btn btn-outline">
+            <Link href="/contact" className="btn btn-outline hover:border-espresso transition-all">
               Send an Email
             </Link>
           </div>

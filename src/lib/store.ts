@@ -24,6 +24,12 @@ import type {
   SiteContent,
   SiteSettings,
 } from "./types";
+import type {
+  BespokeQuotationRequest,
+  StudioAdminOptions,
+} from "./studio-types";
+import { defaultStudioOptions, seedBespokeRequests } from "@/data/studio-defaults";
+import { QuotationService } from "@/services/quotationService";
 
 /**
  * The demo's "backend".
@@ -45,6 +51,8 @@ interface DemoData {
   cart: CartLine[];
   orders: Order[];
   enquiries: CustomEnquiry[];
+  bespokeRequests: BespokeQuotationRequest[];
+  studioOptions: StudioAdminOptions;
   messages: ContactMessage[];
   content: SiteContent;
   settings: SiteSettings;
@@ -84,6 +92,11 @@ interface DemoActions {
   updateOrderStatus: (id: string, status: OrderStatus) => void;
   submitEnquiry: (input: EnquiryInput) => CustomEnquiry;
   updateEnquiry: (id: string, patch: Partial<Pick<CustomEnquiry, "status" | "internalNote">>) => void;
+  submitBespokeRequest: (
+    req: Omit<BespokeQuotationRequest, "id" | "createdAt" | "referenceCode">
+  ) => BespokeQuotationRequest;
+  updateBespokeRequest: (id: string, patch: Partial<BespokeQuotationRequest>) => void;
+  updateStudioOptions: (patch: Partial<StudioAdminOptions>) => void;
   submitMessage: (input: Omit<ContactMessage, "id" | "createdAt" | "read">) => ContactMessage;
   setMessageRead: (id: string, read: boolean) => void;
   saveProduct: (product: Product) => void;
@@ -107,6 +120,8 @@ function initialData(): DemoData {
     cart: [],
     orders: [],
     enquiries: [],
+    bespokeRequests: seedBespokeRequests,
+    studioOptions: defaultStudioOptions,
     messages: [],
     content: defaultContent,
     settings: defaultSettings,
@@ -171,6 +186,7 @@ export const useDemoStore = create<DemoState>()(
           seeded: true,
           orders: buildSampleOrders(products, now),
           enquiries: buildSampleEnquiries(products, now),
+          bespokeRequests: seedBespokeRequests,
         });
       },
 
@@ -325,6 +341,59 @@ export const useDemoStore = create<DemoState>()(
         });
       },
 
+      submitBespokeRequest: (input) => {
+        const { bespokeRequests = [], activity } = get();
+        const referenceCode = QuotationService.generateReferenceCode();
+        const id = `KD-REQ-${Date.now().toString(36).toUpperCase()}`;
+
+        const request: BespokeQuotationRequest = {
+          ...input,
+          id,
+          referenceCode,
+          createdAt: new Date().toISOString(),
+          status: "NEW",
+          adminNotes: "",
+          quotedPriceINR: null,
+          quotedTimelineDays: null,
+        };
+
+        set({
+          bespokeRequests: [request, ...bespokeRequests],
+          activity: withLog(
+            activity,
+            `Bespoke AI Studio request ${referenceCode} submitted by ${request.customer.name} (${request.currentConfig.designName}).`
+          ),
+        });
+
+        return request;
+      },
+
+      updateBespokeRequest: (id, patch) => {
+        const { bespokeRequests = [], activity } = get();
+        const current = bespokeRequests.find((r) => r.id === id);
+        if (!current) return;
+
+        const updated = bespokeRequests.map((r) => (r.id === id ? { ...r, ...patch } : r));
+        const statusNote = patch.status && patch.status !== current.status
+          ? `Bespoke request ${current.referenceCode} moved to ${patch.status}.`
+          : patch.quotedPriceINR !== undefined
+          ? `Quotation of ₹${patch.quotedPriceINR} set for ${current.referenceCode}.`
+          : `Bespoke request ${current.referenceCode} updated.`;
+
+        set({
+          bespokeRequests: updated,
+          activity: withLog(activity, statusNote),
+        });
+      },
+
+      updateStudioOptions: (patch) => {
+        const { studioOptions, activity } = get();
+        set({
+          studioOptions: { ...studioOptions, ...patch },
+          activity: withLog(activity, "Studio customization catalog options updated by admin."),
+        });
+      },
+
       submitMessage: (input) => {
         const { messages, activity } = get();
         const message: ContactMessage = {
@@ -430,6 +499,8 @@ export const useDemoStore = create<DemoState>()(
         cart: state.cart,
         orders: state.orders,
         enquiries: state.enquiries,
+        bespokeRequests: state.bespokeRequests,
+        studioOptions: state.studioOptions,
         messages: state.messages,
         content: state.content,
         settings: state.settings,

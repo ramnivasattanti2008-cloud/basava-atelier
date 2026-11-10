@@ -10,6 +10,7 @@ import { useDemoStore } from "@/lib/store";
 import { useToast } from "@/lib/toast";
 import { whatsappLink, whatsappMessages } from "@/lib/whatsapp";
 import { EngravingPreview } from "@/components/custom/EngravingPreview";
+import { StudioLayout } from "@/components/studio/StudioLayout";
 
 const productTypes = [
   { id: "tote", name: "Tote or Carryall", desc: "Everyday carry with spacious compartments and reinforced handles." },
@@ -49,6 +50,7 @@ function CustomStudioContent() {
 
   const [step, setStep] = useState(1);
   const [submittedId, setSubmittedId] = useState<string | null>(null);
+  const [mode, setMode] = useState<"ai-studio" | "classic">("ai-studio");
 
   // Form State
   const [productType, setProductType] = useState(refProduct ? "tote" : "tote");
@@ -177,8 +179,42 @@ function CustomStudioContent() {
     );
   }
 
+  if (mode === "ai-studio") {
+    return (
+      <div className="w-full">
+        <StudioLayout
+          initialReferenceProduct={refProduct || null}
+          onSwitchToClassicWizard={() => setMode("classic")}
+        />
+      </div>
+    );
+  }
+
   return (
     <div className="shell py-10 sm:py-16 max-w-4xl">
+      {/* AI Studio Switcher Banner */}
+      <div className="mb-8 p-4 sm:p-5 border border-espresso/20 bg-linen/70 rounded-xs flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-2xs">
+        <div>
+          <div className="flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-emerald-600 animate-pulse" />
+            <p className="font-display text-lg text-espresso font-semibold">
+              The Bespoke Designer (AI Studio)
+            </p>
+          </div>
+          <p className="text-xs text-charcoal/80 mt-1 max-w-xl">
+            Prefer a conversational experience? Talk to our AI leather architect, test live 3D elevation concept plates, and refine leather swatches with instant rendering.
+          </p>
+        </div>
+        <button
+          type="button"
+          onClick={() => setMode("ai-studio")}
+          className="btn btn-solid btn-sm shrink-0 flex items-center gap-1.5 cursor-pointer shadow-xs"
+        >
+          <Sparkles size={13} className="text-sand" />
+          <span>Launch AI Studio</span>
+        </button>
+      </div>
+
       {/* Studio Header */}
       <div className="border-b border-espresso/15 pb-8 text-center sm:text-left">
         <span className="eyebrow">Bespoke Workshop</span>

@@ -484,6 +484,24 @@
   animation: kd-float-slow 6s ease-in-out infinite;
 }
 
+@keyframes kd-marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: kd-marquee 35s linear infinite;
+}
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
 /* Hero entrance — CSS only so the headline never waits on JavaScript. */
 @keyframes kd-rise {
   from {

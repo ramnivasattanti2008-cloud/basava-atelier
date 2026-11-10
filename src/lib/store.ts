@@ -265,7 +265,7 @@ export const useDemoStore = create<DemoState>()(
         const subtotal = items.reduce((sum, item) => sum + item.unitPriceINR * item.quantity, 0);
         const at = new Date().toISOString();
         const order: Order = {
-          id: `KD-${orderSeq}`,
+          id: `BV-${orderSeq}`,
           createdAt: at,
           status: "placed",
           customer,
@@ -298,6 +298,15 @@ export const useDemoStore = create<DemoState>()(
           products: nextProducts,
           activity: withLog(activity, `Demo order ${order.id} placed (${items.length} item${items.length > 1 ? "s" : ""}).`),
         });
+
+        if (typeof window !== "undefined") {
+          fetch("/api/orders", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(order),
+          }).catch(() => {});
+        }
+
         return order;
       },
 
@@ -344,7 +353,7 @@ export const useDemoStore = create<DemoState>()(
       submitBespokeRequest: (input) => {
         const { bespokeRequests = [], activity } = get();
         const referenceCode = QuotationService.generateReferenceCode();
-        const id = `KD-REQ-${Date.now().toString(36).toUpperCase()}`;
+        const id = `BV-REQ-${Date.now().toString(36).toUpperCase()}`;
 
         const request: BespokeQuotationRequest = {
           ...input,
@@ -364,6 +373,14 @@ export const useDemoStore = create<DemoState>()(
             `Bespoke AI Studio request ${referenceCode} submitted by ${request.customer.name} (${request.currentConfig.designName}).`
           ),
         });
+
+        if (typeof window !== "undefined") {
+          fetch("/api/bespoke-requests", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(request),
+          }).catch(() => {});
+        }
 
         return request;
       },
@@ -403,6 +420,13 @@ export const useDemoStore = create<DemoState>()(
           read: false,
         };
         set({ messages: [message, ...messages], activity: withLog(activity, `Contact message received (${input.topic}).`) });
+        if (typeof window !== "undefined") {
+          fetch("/api/contact", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(message),
+          }).catch(() => {});
+        }
         return message;
       },
 

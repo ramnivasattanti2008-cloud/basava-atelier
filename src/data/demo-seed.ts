@@ -57,7 +57,7 @@ export function buildSampleOrders(products: Product[], now: number): Order[] {
     const subtotal = items.reduce((sum, item) => sum + item.unitPriceINR * item.quantity, 0);
     const reached = statusPath.slice(0, statusPath.indexOf(plan.status) + 1);
     return {
-      id: `KD-${10001 + index}`,
+      id: `BV-${10001 + index}`,
       createdAt: new Date(createdAt).toISOString(),
       status: plan.status,
       customer: { name: person.name, email: person.email, phone: person.phone },

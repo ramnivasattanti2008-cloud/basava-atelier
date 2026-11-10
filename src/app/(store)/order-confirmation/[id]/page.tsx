@@ -2,7 +2,7 @@ import { Suspense, use } from "react";
 import OrderConfirmationView from "./OrderConfirmationView";
 
 export async function generateStaticParams() {
-  return [{ id: "KD-10001" }, { id: "KD-10002" }];
+  return [{ id: "BV-10001" }, { id: "BV-10002" }];
 }
 
 function Content({ params }: { params: Promise<{ id: string }> }) {

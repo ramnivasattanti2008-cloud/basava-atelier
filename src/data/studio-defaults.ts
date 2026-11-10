@@ -126,8 +126,8 @@ export const sampleDesignVersions: DesignVersion[] = [
 
 export const seedBespokeRequests: BespokeQuotationRequest[] = [
   {
-    id: "KD-REQ-901",
-    referenceCode: "KD-AI-2026-0814",
+    id: "BV-REQ-901",
+    referenceCode: "BV-AT-2026-0814",
     createdAt: "2026-11-09T14:30:00Z",
     status: "QUOTATION_PREPARATION",
     customer: {
@@ -180,8 +180,8 @@ export const seedBespokeRequests: BespokeQuotationRequest[] = [
     adminNotes: "Full-grain hide available in workshop. Hardware in stock. Ready to schedule cutting.",
   },
   {
-    id: "KD-REQ-902",
-    referenceCode: "KD-AI-2026-0829",
+    id: "BV-REQ-902",
+    referenceCode: "BV-AT-2026-0829",
     createdAt: "2026-11-10T09:15:00Z",
     status: "NEW",
     customer: {

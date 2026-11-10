@@ -94,7 +94,7 @@ export default function AdminStudioOptionsPage() {
 
   const handleProviderChange = (provider: StudioAdminOptions["imageProvider"]) => {
     updateStudioOptions({ imageProvider: provider });
-    showToast(`AI Concept generation provider set to ${provider.toUpperCase()}.`);
+    showToast(`Atelier concept generation engine set to ${provider.toUpperCase()}.`);
   };
 
   const handleTogglePublicRequests = () => {

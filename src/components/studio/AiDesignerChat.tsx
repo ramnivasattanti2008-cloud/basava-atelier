@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useEffect, useState } from "react";
-import { ArrowUp, ImagePlus, Loader2, Sparkles, User, X } from "lucide-react";
+import { ArrowUp, Compass, ImagePlus, Loader2, User, X } from "lucide-react";
 import { cx } from "@/lib/format";
 import type { DesignMessage, BespokeDesignConfig } from "@/lib/studio-types";
 import { BasavaMark } from "@/components/brand/BasavaLogo";
@@ -79,7 +79,7 @@ export function AiDesignerChat({
         </div>
 
         <span className="text-[0.625rem] bg-sand/40 border border-espresso/10 text-espresso font-semibold uppercase tracking-wider px-2 py-0.5 rounded-xs">
-          Artisan AI
+          Master Atelier
         </span>
       </div>
 
@@ -128,7 +128,7 @@ export function AiDesignerChat({
                       onClick={() => onApplyAction(action)}
                       className="text-[0.6875rem] font-semibold bg-linen hover:bg-sand/40 border border-espresso/20 text-espresso px-2.5 py-1 rounded-xs transition-colors cursor-pointer text-left flex items-center gap-1.5"
                     >
-                      <Sparkles size={11} className="text-brass shrink-0" />
+                      <Compass size={11} className="text-brass shrink-0" />
                       <span>{action.label}</span>
                     </button>
                   ))}

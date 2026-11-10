@@ -3,8 +3,8 @@
 import Link from "next/link";
 import {
   Check,
+  Compass,
   MessageCircle,
-  Sparkles,
 } from "lucide-react";
 import { HeritageSeal } from "@/components/heritage/HeritageSeal";
 import { HeritageFlourish } from "@/components/heritage/HeritageFlourish";
@@ -132,18 +132,18 @@ export default function CraftsmanshipPage() {
         <PackagingExperience />
       </div>
 
-      {/* Direct WhatsApp & AI Studio Callout */}
+      {/* Direct WhatsApp & Bespoke Studio Callout */}
       <div className="border border-espresso/20 bg-linen/60 p-8 sm:p-12 rounded-xs flex flex-col md:flex-row items-center justify-between gap-8">
         <div className="max-w-xl">
           <span className="eyebrow text-saddle-deep">Bespoke Commissions</span>
           <h2 className="display-sm text-espresso mt-1">Ready to Create an Original Piece?</h2>
           <p className="text-sm text-charcoal/80 mt-2 leading-relaxed">
-            Talk to our AI Bespoke Designer to customize your leather hide, proportions, and monogram, or message our master craftsman on WhatsApp.
+            Consult with our Bespoke Atelier Designer to customize your leather hide, proportions, and monogram, or message our master craftsman on WhatsApp.
           </p>
         </div>
         <div className="flex flex-wrap items-center gap-4 shrink-0">
           <Link href="/custom" className="btn btn-solid flex items-center gap-2 shadow-md">
-            <Sparkles size={14} className="text-sand" />
+            <Compass size={14} className="text-sand" />
             <span>Launch Bespoke Studio</span>
           </Link>
           <a

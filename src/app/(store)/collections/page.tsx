@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight, Compass } from "lucide-react";
 import { useStorefrontCategories, useStorefrontProducts } from "@/lib/hooks";
 import { ProductImage } from "@/components/ui/ProductImage";
 
@@ -70,7 +70,7 @@ export default function CollectionsDirectoryPage() {
         })}
       </div>
 
-      {/* AI Studio Callout Banner */}
+      {/* Bespoke Studio Callout Banner */}
       <div className="mt-16 border border-espresso/20 bg-linen/70 p-8 sm:p-12 rounded-xs flex flex-col md:flex-row items-center justify-between gap-8 shadow-xs">
         <div className="max-w-xl">
           <div className="flex items-center gap-2 mb-2">
@@ -79,14 +79,14 @@ export default function CollectionsDirectoryPage() {
           </div>
           <h2 className="display-sm text-espresso">Looking for a Tailored Proportion?</h2>
           <p className="text-sm text-charcoal/80 mt-2 leading-relaxed">
-            Our AI Bespoke Studio allows you to customize handle drops, laptop compartment dimensions, and select from 8 royal Karnataka leather shades.
+            Our Bespoke Atelier Studio allows you to customize handle drops, laptop compartment dimensions, and select from 8 royal Karnataka leather shades.
           </p>
         </div>
         <Link
           href="/custom"
           className="btn btn-solid shrink-0 flex items-center gap-2 shadow-md cursor-pointer"
         >
-          <Sparkles size={15} className="text-sand" />
+          <Compass size={15} className="text-sand" />
           <span>Launch Bespoke Studio</span>
         </Link>
       </div>

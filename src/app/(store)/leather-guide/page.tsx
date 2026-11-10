@@ -60,7 +60,7 @@ export default function LeatherGuidePage() {
                 <span className="text-[0.625rem] bg-walnut text-ivory px-2 py-0.5 uppercase">Functional Everyday</span>
               </div>
               <p className="font-sans text-xs text-charcoal/80 mt-1">
-                The lower fibrous layer separated from the grain. Embossed with artificial texture or suede finish. Genuine hide with accessible utility.
+                The lower fibrous layer separated from the grain. Embossed with uniform grain stamping or suede finish. Genuine hide with accessible utility.
               </p>
             </div>
           </div>

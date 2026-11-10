@@ -136,7 +136,7 @@ export function StudioLayout({
       url: "",
       provider: "studio-engine",
       generatedAt: new Date().toISOString(),
-      disclaimer: "AI-GENERATED DESIGN CONCEPT — NOT A PHOTOGRAPH OF A FINISHED PRODUCT.",
+      disclaimer: "BESPOKE DESIGN SPECIFICATION · HANDCRAFTED IN BENGALURU.",
     },
     angle: {
       id: "init-angle",
@@ -145,7 +145,7 @@ export function StudioLayout({
       url: "",
       provider: "studio-engine",
       generatedAt: new Date().toISOString(),
-      disclaimer: "AI-GENERATED DESIGN CONCEPT — NOT A PHOTOGRAPH OF A FINISHED PRODUCT.",
+      disclaimer: "BESPOKE DESIGN SPECIFICATION · HANDCRAFTED IN BENGALURU.",
     },
     interior: {
       id: "init-interior",
@@ -154,7 +154,7 @@ export function StudioLayout({
       url: "",
       provider: "studio-engine",
       generatedAt: new Date().toISOString(),
-      disclaimer: "AI-GENERATED DESIGN CONCEPT — NOT A PHOTOGRAPH OF A FINISHED PRODUCT.",
+      disclaimer: "BESPOKE DESIGN SPECIFICATION · HANDCRAFTED IN BENGALURU.",
     },
     detail: {
       id: "init-detail",
@@ -163,7 +163,7 @@ export function StudioLayout({
       url: "",
       provider: "studio-engine",
       generatedAt: new Date().toISOString(),
-      disclaimer: "AI-GENERATED DESIGN CONCEPT — NOT A PHOTOGRAPH OF A FINISHED PRODUCT.",
+      disclaimer: "BESPOKE DESIGN SPECIFICATION · HANDCRAFTED IN BENGALURU.",
     },
   });
 
@@ -277,7 +277,7 @@ export function StudioLayout({
     [triggerConceptRegeneration]
   );
 
-  // Handler: User sends message or uploads image in AI Chat (Left Pane)
+  // Handler: User sends message or uploads image in Atelier Chat (Left Pane)
   const handleSendMessage = async (text: string, referenceImage?: string) => {
     const userMsgId = `usr-${Date.now()}`;
     const userMessage: DesignMessage = {
@@ -335,7 +335,7 @@ export function StudioLayout({
       } else {
         // Normal conversation turn
         try {
-          const res = await fetch("/api/ai/chat", {
+          const res = await fetch("/api/studio/chat", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
@@ -372,7 +372,7 @@ export function StudioLayout({
           if (turnResult.patch?.bagType || turnResult.patch?.colourName) {
             merged.designName = DesignConfigurationService.generateAutoTitle(merged);
           }
-          triggerConceptRegeneration(merged, `AI consultation refinement: ${text}`);
+          triggerConceptRegeneration(merged, `Consultation refinement: ${text}`);
           return merged;
         });
       }
@@ -538,7 +538,7 @@ export function StudioLayout({
       {/* 3-Pane Desktop Layout & Tabbed Mobile Layout */}
       <main className="flex-1 p-2 sm:p-4 overflow-hidden min-h-0">
         <div className="h-[calc(100vh-140px)] min-h-[580px] max-h-[920px] grid grid-cols-1 lg:grid-cols-12 gap-3 sm:gap-4">
-          {/* Pane 1: Conversational AI Designer (Left: 3.5 cols on desktop) */}
+          {/* Pane 1: The Bespoke Designer (Left: 3.5 cols on desktop) */}
           <div
             className={cx(
               "h-full lg:col-span-4 xl:col-span-3.5 flex flex-col min-h-0",

@@ -20,7 +20,7 @@ const manrope = Manrope({
 
 export const metadata: Metadata = {
   title: {
-    default: "BASAVA — Handcrafted Leather & AI Bespoke Studio",
+    default: "BASAVA — Handcrafted Luxury Leather & Bespoke Atelier",
     template: "%s | BASAVA",
   },
   description:

@@ -5,13 +5,13 @@ import Link from "next/link";
 import {
   ArrowRight,
   Clock,
+  Compass,
   ExternalLink,
   Layers,
   MapPin,
   MessageCircle,
   Package,
   ShieldCheck,
-  Sparkles,
   User,
 } from "lucide-react";
 import { cx, formatINR, formatDate, orderStatusLabel } from "@/lib/format";
@@ -34,7 +34,7 @@ export default function CustomerAccountPage() {
           <span className="eyebrow text-saddle-deep">Customer Portal</span>
           <h1 className="display-lg text-espresso mt-1">My Atelier Account</h1>
           <p className="text-xs text-charcoal/70 mt-1">
-            Track handcrafted commissions, review bespoke AI design concepts, and manage delivery addresses.
+            Track handcrafted commissions, review bespoke atelier design concepts, and manage delivery addresses.
           </p>
         </div>
 
@@ -42,7 +42,7 @@ export default function CustomerAccountPage() {
           href="/custom"
           className="btn btn-solid btn-sm self-start sm:self-auto flex items-center gap-1.5 shadow-xs"
         >
-          <Sparkles size={13} className="text-sand" />
+          <Compass size={13} className="text-sand" />
           <span>New Bespoke Design</span>
         </Link>
       </div>
@@ -73,7 +73,7 @@ export default function CustomerAccountPage() {
               : "border-transparent text-charcoal/60 hover:text-espresso"
           )}
         >
-          <Sparkles size={14} className="text-saddle-deep" />
+          <Compass size={14} className="text-saddle-deep" />
           <span>Bespoke Commissions ({bespokeRequests.length})</span>
         </button>
 
@@ -153,10 +153,10 @@ export default function CustomerAccountPage() {
         <div className="mt-8 space-y-4">
           {bespokeRequests.length === 0 ? (
             <div className="border border-espresso/15 bg-paper p-12 text-center rounded-xs space-y-4">
-              <Sparkles size={36} className="mx-auto text-saddle-deep" />
+              <Compass size={36} className="mx-auto text-saddle-deep" />
               <h2 className="font-display text-xl text-espresso">No Bespoke Commissions Yet</h2>
               <p className="text-xs text-charcoal/70 max-w-sm mx-auto">
-                Step into the AI Bespoke Studio to customize handle drops, laptop sleeves, and select from 8 Karnataka leather dyes.
+                Step into the Bespoke Atelier Studio to customize handle drops, laptop sleeves, and select from 8 Karnataka leather dyes.
               </p>
               <Link href="/custom" className="btn btn-solid btn-sm">
                 Launch Bespoke Studio

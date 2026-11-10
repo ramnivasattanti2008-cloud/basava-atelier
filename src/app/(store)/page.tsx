@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { ArrowRight, ArrowUpRight, Check, Compass, Layers, MessageCircle, ShieldCheck, Sparkles } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Award, Check, Compass, Layers, MessageCircle, PenTool, ShieldCheck } from "lucide-react";
 import type { Product } from "@/lib/types";
 import { formatINR } from "@/lib/format";
 import { useStorefrontCategories, useStorefrontProducts } from "@/lib/hooks";
@@ -122,7 +122,7 @@ export default function HomePage() {
 
               {/* Decorative floating badge */}
               <div className="absolute -bottom-4 -left-4 hidden sm:flex items-center gap-3 bg-espresso text-ivory px-4 py-2.5 shadow-lg border border-sand/30">
-                <Sparkles size={15} className="text-sand" />
+                <Award size={15} className="text-sand" />
                 <span className="text-[0.72rem] font-medium tracking-wider uppercase">Handcrafted Leather</span>
               </div>
             </div>
@@ -215,7 +215,7 @@ export default function HomePage() {
               <div>
                 <div className="flex items-center justify-between text-xs text-[#96722d]">
                   <span className="font-mono text-[0.6875rem] font-bold">BESPOKE</span>
-                  <Sparkles size={16} />
+                  <Compass size={16} />
                 </div>
                 <h3 className="font-display text-2xl text-espresso mt-4 group-hover:underline group-hover:underline-offset-4">
                   Custom Orders
@@ -309,8 +309,8 @@ export default function HomePage() {
 
             <div className="mt-8 flex flex-wrap gap-4">
               <Link href="/custom" className="btn btn-light shadow-md hover:shadow-lg transition-all flex items-center gap-2">
-                <Sparkles size={14} className="text-sand" />
-                Launch AI Bespoke Studio
+                <Compass size={14} className="text-sand" />
+                Launch Bespoke Atelier Studio
                 <ArrowRight size={14} />
               </Link>
               <a
@@ -407,7 +407,7 @@ export default function HomePage() {
               </div>
             </div>
             <div className="border border-espresso/15 bg-ivory p-6 flex flex-col justify-between hover:border-espresso/40 transition-all hover:-translate-y-1 hover:shadow-md">
-              <Sparkles size={28} className="text-saddle-deep" strokeWidth={1.5} />
+              <PenTool size={28} className="text-saddle-deep" strokeWidth={1.5} />
               <div className="mt-8">
                 <h4 className="font-display text-xl text-espresso">24K Gold Initials</h4>
                 <p className="mt-2 text-xs text-charcoal/70 leading-relaxed">

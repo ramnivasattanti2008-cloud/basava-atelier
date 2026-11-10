@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import {
   Check,
   ChevronRight,
+  Compass,
   Eye,
   History,
   Layers,
@@ -11,7 +12,6 @@ import {
   Phone,
   Send,
   ShieldCheck,
-  Sparkles,
   User,
   X,
   ExternalLink,
@@ -64,7 +64,7 @@ export default function AdminCustomRequestsPage() {
   const settings = useDemoStore((s) => s.settings);
   const showToast = useToast((s) => s.show);
 
-  // Tab: "bespoke" (AI Studio) vs "classic" (5-Step Brief)
+  // Tab: "bespoke" (Bespoke Atelier) vs "classic" (5-Step Brief)
   const [activeTab, setActiveTab] = useState<"bespoke" | "classic">("bespoke");
 
   // Filters
@@ -168,7 +168,7 @@ export default function AdminCustomRequestsPage() {
             Custom Commissions Queue
           </h1>
           <p className="text-xs text-charcoal/70 mt-1">
-            Review conversational AI studio designs, prepare artisan quotes, and manage classic bespoke briefs.
+            Review bespoke atelier studio designs, prepare artisan quotes, and manage classic bespoke briefs.
           </p>
         </div>
       </div>
@@ -184,8 +184,8 @@ export default function AdminCustomRequestsPage() {
               : "text-charcoal/70 hover:text-espresso hover:bg-paper"
           }`}
         >
-          <Sparkles size={14} className={activeTab === "bespoke" ? "text-sand" : "text-saddle-deep"} />
-          <span>AI Bespoke Studio ({bespokeRequests.length})</span>
+          <Compass size={14} className={activeTab === "bespoke" ? "text-sand" : "text-saddle-deep"} />
+          <span>Bespoke Studio Commissions ({bespokeRequests.length})</span>
         </button>
 
         <button
@@ -201,7 +201,7 @@ export default function AdminCustomRequestsPage() {
         </button>
       </div>
 
-      {/* TAB 1: AI BESPOKE REQUESTS */}
+      {/* TAB 1: BESPOKE REQUESTS */}
       {activeTab === "bespoke" && (
         <div className="space-y-6">
           {/* Status Filter Chips */}
@@ -253,7 +253,7 @@ export default function AdminCustomRequestsPage() {
                   {filteredBespoke.length === 0 ? (
                     <tr>
                       <td colSpan={8} className="py-8 text-center text-charcoal/60 italic">
-                        No bespoke AI requests matching this filter.
+                        No bespoke commissions matching this filter.
                       </td>
                     </tr>
                   ) : (
@@ -476,7 +476,7 @@ export default function AdminCustomRequestsPage() {
         </div>
       )}
 
-      {/* DRAWER 1: AI BESPOKE REQUEST INSPECTION & QUOTATION */}
+      {/* DRAWER 1: BESPOKE REQUEST INSPECTION & QUOTATION */}
       <Overlay
         open={Boolean(selectedBespoke)}
         onClose={() => setSelectedBespoke(null)}
@@ -489,7 +489,7 @@ export default function AdminCustomRequestsPage() {
             {/* Header */}
             <div className="flex items-center justify-between border-b border-espresso/15 pb-4">
               <div>
-                <span className="eyebrow text-saddle-deep">AI Bespoke Commission</span>
+                <span className="eyebrow text-saddle-deep">Bespoke Atelier Commission</span>
                 <h2 className="font-display text-2xl text-espresso mt-0.5">
                   {selectedBespoke.referenceCode}
                 </h2>
@@ -509,7 +509,7 @@ export default function AdminCustomRequestsPage() {
             {/* Concept Plate Stage */}
             <div className="space-y-2">
               <div className="flex items-center justify-between">
-                <span className="field-label">AI Concept Visual Plates</span>
+                <span className="field-label">Atelier Elevation Concept Plates</span>
                 <span className="font-mono text-[0.625rem] text-charcoal/60">
                   {selectedBespoke.versions.length} versions generated
                 </span>
@@ -545,7 +545,7 @@ export default function AdminCustomRequestsPage() {
                   <span className="text-charcoal/50 text-xs">Concept visual in archive.</span>
                 )}
                 <span className="absolute bottom-1 right-2 text-[0.55rem] font-mono text-espresso/80 bg-ivory/80 px-1.5 py-0.5 rounded-xs">
-                  AI-GENERATED CONCEPT
+                  ATELIER ELEVATION CONCEPT
                 </span>
               </div>
             </div>

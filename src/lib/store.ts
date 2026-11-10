@@ -370,7 +370,7 @@ export const useDemoStore = create<DemoState>()(
           bespokeRequests: [request, ...bespokeRequests],
           activity: withLog(
             activity,
-            `Bespoke AI Studio request ${referenceCode} submitted by ${request.customer.name} (${request.currentConfig.designName}).`
+            `Bespoke Atelier request ${referenceCode} submitted by ${request.customer.name} (${request.currentConfig.designName}).`
           ),
         });
 

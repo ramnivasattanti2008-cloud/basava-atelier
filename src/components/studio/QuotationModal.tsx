@@ -118,7 +118,7 @@ export function QuotationModal({
               <a
                 href={whatsappLink(
                   settings.whatsappNumber,
-                  `Hello ${settings.makerName}, I have submitted bespoke design brief #${submittedRequest.referenceCode} (${config.designName}) on your AI Studio. I would like to discuss the quote and timeline.`
+                  `Hello ${settings.makerName}, I have submitted bespoke design brief #${submittedRequest.referenceCode} (${config.designName}) on your Bespoke Atelier Studio. I would like to discuss the quote and timeline.`
                 )}
                 target="_blank"
                 rel="noopener noreferrer"

@@ -3,7 +3,7 @@
 import { Suspense, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
-import { ArrowLeft, ArrowRight, Check, CheckCircle2, MessageCircle, Sparkles, Upload, X } from "lucide-react";
+import { ArrowLeft, ArrowRight, Check, CheckCircle2, Compass, MessageCircle, Upload, X } from "lucide-react";
 import { cx } from "@/lib/format";
 import { isEmail, isFilled, isIndianPhone } from "@/lib/validation";
 import { useDemoStore } from "@/lib/store";
@@ -50,7 +50,7 @@ function CustomStudioContent() {
 
   const [step, setStep] = useState(1);
   const [submittedId, setSubmittedId] = useState<string | null>(null);
-  const [mode, setMode] = useState<"ai-studio" | "classic">("ai-studio");
+  const [mode, setMode] = useState<"bespoke-studio" | "classic">("bespoke-studio");
 
   // Form State
   const [productType, setProductType] = useState(refProduct ? "tote" : "tote");
@@ -179,7 +179,7 @@ function CustomStudioContent() {
     );
   }
 
-  if (mode === "ai-studio") {
+  if (mode === "bespoke-studio") {
     return (
       <div className="w-full">
         <StudioLayout
@@ -192,26 +192,26 @@ function CustomStudioContent() {
 
   return (
     <div className="shell py-10 sm:py-16 max-w-4xl">
-      {/* AI Studio Switcher Banner */}
+      {/* Bespoke Studio Switcher Banner */}
       <div className="mb-8 p-4 sm:p-5 border border-espresso/20 bg-linen/70 rounded-xs flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-2xs">
         <div>
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-emerald-600 animate-pulse" />
             <p className="font-display text-lg text-espresso font-semibold">
-              The Bespoke Designer (AI Studio)
+              The Bespoke Designer Studio
             </p>
           </div>
           <p className="text-xs text-charcoal/80 mt-1 max-w-xl">
-            Prefer a conversational experience? Talk to our AI leather architect, test live 3D elevation concept plates, and refine leather swatches with instant rendering.
+            Prefer an interactive consultation? Speak directly with our master leather architect, inspect real-time 3D elevation concept plates, and refine leather swatches with instant rendering.
           </p>
         </div>
         <button
           type="button"
-          onClick={() => setMode("ai-studio")}
+          onClick={() => setMode("bespoke-studio")}
           className="btn btn-solid btn-sm shrink-0 flex items-center gap-1.5 cursor-pointer shadow-xs"
         >
-          <Sparkles size={13} className="text-sand" />
-          <span>Launch AI Studio</span>
+          <Compass size={13} className="text-sand" />
+          <span>Launch Bespoke Studio</span>
         </button>
       </div>
 
@@ -728,7 +728,7 @@ function CustomStudioContent() {
                 type="submit"
                 className="btn btn-solid"
               >
-                Submit Bespoke Brief <Sparkles size={14} />
+                Submit Bespoke Brief <ArrowRight size={14} />
               </button>
             </div>
           </form>

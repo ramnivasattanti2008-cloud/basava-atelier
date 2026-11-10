@@ -1,5 +1,5 @@
 /**
- * Studio & AI Bespoke Bag Designer Domain Types
+ * Studio & Bespoke Bag Designer Domain Types
  * Kris Designs — Bespoke Bengaluru Leathercraft Atelier
  */
 

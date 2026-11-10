@@ -5,7 +5,7 @@ import type {
 } from "@/lib/studio-types";
 
 export const CONCEPT_DISCLAIMER =
-  "AI DESIGN CONCEPT — FINAL PRODUCT MAY VARY.";
+  "BESPOKE DESIGN SPECIFICATION · HANDCRAFTED IN BENGALURU";
 
 export class ImageGenerationService {
   /**
@@ -50,7 +50,7 @@ export class ImageGenerationService {
   ): Promise<ConceptImage> {
     const prompt = this.constructLuxuryPrompt(config, view);
 
-    // If an external AI image generation API is available, we could call Imagen / DALL-E here.
+    // If an external generative image API is available, we could call Imagen / DALL-E here.
     // For universal reliability, instant latency, and 100% attribute consistency across all 4 angles,
     // we use our dedicated Luxury Leathercraft Procedural Concept Engine which yields
     // stunning, pixel-perfect, scalable SVG/vector luxury bag presentations matching the exact hex color,
@@ -194,7 +194,7 @@ export class ImageGenerationService {
   <!-- The Bag Artwork -->
   ${svgBody}
 
-  <!-- Watermark & Official AI Concept Badge -->
+  <!-- Watermark & Official Atelier Specification Badge -->
   <g transform="translate(30, 610)">
     <rect x="0" y="-18" width="460" height="24" rx="2" fill="rgba(37,25,17,0.78)" />
     <text x="10" y="-2" fill="#E8CB85" font-family="'Manrope', sans-serif" font-size="9.5" font-weight="700" letter-spacing="0.12em">

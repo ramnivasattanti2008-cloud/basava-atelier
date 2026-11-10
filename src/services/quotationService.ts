@@ -24,12 +24,12 @@ export const LIFECYCLE_STATUS_LABELS: Record<CustomRequestLifecycleStatus, { lab
 export class QuotationService {
   /**
    * Generates a unique, prestigious bespoke reference code.
-   * e.g., KD-AI-2026-4821
+   * e.g., BV-AT-2026-4821
    */
   static generateReferenceCode(): string {
     const year = new Date().getFullYear();
     const rand = Math.floor(1000 + Math.random() * 9000);
-    return `BV-AI-${year}-${rand}`;
+    return `BV-AT-${year}-${rand}`;
   }
 
   /**
@@ -81,7 +81,7 @@ export class QuotationService {
   ): string {
     const lines = [
       `Hello ${makerName},`,
-      `I have customized a bespoke leather bag on your AI Studio.`,
+      `I have customized a bespoke leather bag in your Bespoke Atelier Studio.`,
       `Reference ID: ${request.referenceCode}`,
       `Piece: ${request.currentConfig.designName}`,
       `Leather: ${request.currentConfig.colourName} (${request.currentConfig.material})`,

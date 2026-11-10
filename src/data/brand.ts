@@ -47,7 +47,7 @@ export const brand = {
   demo: {
     label: "Official Atelier Preview",
     disclaimer:
-      "This is an authentic bespoke demonstration build for BASAVA. Real product catalog, verified leather grades, and interactive AI bespoke studio.",
+      "This is an authentic bespoke demonstration build for BASAVA. Real product catalog, verified leather grades, and interactive bespoke atelier studio.",
   },
 } as const;
 
@@ -66,7 +66,7 @@ export const defaultSettings: SiteSettings = {
 export const defaultContent: SiteContent = {
   announcements: [
     {
-      text: "BASAVA AI Bespoke Studio is live — design your custom bag",
+      text: "BASAVA Bespoke Atelier Studio is live — design your custom bag",
       linkLabel: "Start Designing",
       href: "/custom",
     },

@@ -168,10 +168,10 @@ export function BagConceptViewer({
           )}
         </div>
 
-        {/* Mandatory Strict AI Disclaimer Badge */}
+        {/* Atelier Craftsmanship Specification Badge */}
         <div className="absolute bottom-3 left-4 right-4 flex justify-center pointer-events-none">
           <div className="bg-espresso/90 backdrop-blur-xs text-[#F4E2B8] text-[0.625rem] sm:text-[0.6875rem] font-semibold tracking-wider px-3 py-1 rounded-2xs border border-sand/30 shadow-md text-center max-w-lg">
-            AI DESIGN CONCEPT — FINAL PRODUCT MAY VARY.
+            BESPOKE ATELIER SPECIFICATION · HANDCRAFTED IN BENGALURU
           </div>
         </div>
       </div>
@@ -224,7 +224,7 @@ export function BagConceptViewer({
           <div className="mt-4 text-center text-ivory/80 text-xs">
             <p className="font-display text-xl text-ivory">{config.designName} — {currentImage.label}</p>
             <p className="mt-1 font-mono text-[0.6875rem] text-sand/80">
-              AI-GENERATED DESIGN CONCEPT — NOT A PHOTOGRAPH OF A FINISHED PRODUCT.
+              BESPOKE ARCHITECTURAL ELEVATION · HANDCRAFTED COMMISSION SPECIFICATION
             </p>
           </div>
         </div>

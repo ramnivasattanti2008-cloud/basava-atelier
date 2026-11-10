@@ -542,7 +542,7 @@ export function CustomisationInspector({
         <a
           href={whatsappLink(
             settings.whatsappNumber,
-            `Hello ${settings.makerName}, I am customizing ${config.designName} on your AI studio and would like to consult with the artisan.`
+            `Hello ${settings.makerName}, I am customizing ${config.designName} in your Bespoke Atelier Studio and would like to consult with the artisan.`
           )}
           target="_blank"
           rel="noopener noreferrer"

@@ -48,7 +48,7 @@ export default function AdminLoginPage() {
           <span className="eyebrow text-saddle-deep">Atelier Administration</span>
           <h1 className="font-display text-2xl sm:text-3xl text-espresso">Management Portal</h1>
           <p className="text-xs text-charcoal/70">
-            Enter the studio passcode to manage product inventory, bespoke AI requests, and atelier options.
+            Enter the studio passcode to manage product inventory, bespoke commissions, and atelier options.
           </p>
         </div>
 

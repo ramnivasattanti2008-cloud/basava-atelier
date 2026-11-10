@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { Download, Eye, History, Layers, Maximize2, RefreshCw, Sparkles, X } from "lucide-react";
+import { Download, Eye, History, Layers, Maximize2, RefreshCw, Sparkles, X, Compass } from "lucide-react";
+import { motion, AnimatePresence } from "motion/react";
 import { cx } from "@/lib/format";
 import type { BespokeDesignConfig, ConceptImage, ConceptViewType, DesignVersion } from "@/lib/studio-types";
 
@@ -103,11 +104,33 @@ export function BagConceptViewer({
             </div>
           ) : currentImage?.url ? (
             <div className="relative w-full h-full flex items-center justify-center">
-              <img
-                src={currentImage.url}
-                alt={`${config.designName} — ${activeView} view`}
-                className="max-h-full max-w-full object-contain filter drop-shadow-md select-none transition-transform duration-500"
-              />
+              {/* Subtle Atelier CAD Crosshair Guidelines */}
+              <div className="absolute inset-x-8 top-1/2 h-[1px] bg-brass/10 pointer-events-none" />
+              <div className="absolute inset-y-8 left-1/2 w-[1px] bg-brass/10 pointer-events-none" />
+
+              {/* Dynamic Animated View Stage */}
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={`${activeView}-${activeVersionNumber}`}
+                  initial={{ opacity: 0, scale: 0.96 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 1.03 }}
+                  transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                  className="relative w-full h-full flex items-center justify-center"
+                >
+                  <img
+                    src={currentImage.url}
+                    alt={`${config.designName} — ${activeView} view`}
+                    className="max-h-full max-w-full object-contain filter drop-shadow-xl select-none transition-transform duration-500 hover:scale-105"
+                  />
+                </motion.div>
+              </AnimatePresence>
+
+              {/* Dimensions Spec Tag on Corner */}
+              <div className="absolute top-2 left-2 flex items-center gap-1.5 px-2.5 py-1 bg-ivory/80 backdrop-blur-xs border border-espresso/15 rounded-xs text-[0.625rem] font-mono text-walnut">
+                <Compass size={11} className="text-brass" />
+                <span>{config.dimensions.width}&quot;W × {config.dimensions.height}&quot;H × {config.dimensions.depth}&quot;D</span>
+              </div>
 
               {/* Floating Controls Overlay */}
               <div className="absolute top-2 right-2 flex items-center gap-2">

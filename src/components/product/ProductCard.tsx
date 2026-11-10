@@ -46,7 +46,7 @@ export function ProductCard({ product, onQuickView, className, eager = false }: 
   return (
     <div
       className={cx(
-        "group relative flex flex-col transition-all duration-500 hover:-translate-y-1",
+        "group relative flex flex-col transition-all duration-500 ease-out hover:-translate-y-1.5",
         className
       )}
       onMouseEnter={() => setHovered(true)}
@@ -55,14 +55,14 @@ export function ProductCard({ product, onQuickView, className, eager = false }: 
       {/* Photograph Container with Heritage Framing */}
       <Link
         href={`/products/${product.slug}`}
-        className="photo-tile relative block aspect-square w-full overflow-hidden bg-linen border border-espresso/10 transition-all duration-500 group-hover:border-[#c5a059]/60 group-hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-espresso focus:ring-offset-2"
+        className="photo-tile relative block aspect-square w-full overflow-hidden bg-linen border border-espresso/10 transition-all duration-500 group-hover:border-[#caa359] group-hover:shadow-[0_20px_35px_-12px_rgba(48,37,30,0.2)] focus:outline-none focus:ring-2 focus:ring-espresso focus:ring-offset-2"
         aria-label={`View details for ${product.name}`}
       >
         {/* Subtle Decorative Golden Corner Accents on Hover */}
-        <div className="absolute top-2 left-2 h-2.5 w-2.5 border-t border-l border-[#c5a059] opacity-0 transition-opacity duration-300 group-hover:opacity-100 z-10" />
-        <div className="absolute top-2 right-2 h-2.5 w-2.5 border-t border-r border-[#c5a059] opacity-0 transition-opacity duration-300 group-hover:opacity-100 z-10" />
-        <div className="absolute bottom-2 left-2 h-2.5 w-2.5 border-b border-l border-[#c5a059] opacity-0 transition-opacity duration-300 group-hover:opacity-100 z-10" />
-        <div className="absolute bottom-2 right-2 h-2.5 w-2.5 border-b border-r border-[#c5a059] opacity-0 transition-opacity duration-300 group-hover:opacity-100 z-10" />
+        <div className="absolute top-2 left-2 h-2.5 w-2.5 border-t border-l border-[#caa359] opacity-0 transition-opacity duration-300 group-hover:opacity-100 z-10" />
+        <div className="absolute top-2 right-2 h-2.5 w-2.5 border-t border-r border-[#caa359] opacity-0 transition-opacity duration-300 group-hover:opacity-100 z-10" />
+        <div className="absolute bottom-2 left-2 h-2.5 w-2.5 border-b border-l border-[#caa359] opacity-0 transition-opacity duration-300 group-hover:opacity-100 z-10" />
+        <div className="absolute bottom-2 right-2 h-2.5 w-2.5 border-b border-r border-[#caa359] opacity-0 transition-opacity duration-300 group-hover:opacity-100 z-10" />
 
         {/* Primary Image */}
         <div

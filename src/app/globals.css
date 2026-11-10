@@ -68,6 +68,24 @@
     color: var(--color-charcoal);
     -webkit-text-size-adjust: 100%;
     scroll-padding-top: calc(var(--header-h) + 1.5rem);
+    scroll-behavior: smooth;
+  }
+
+  /* Custom Luxury Heritage Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #f1e9da;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #a88959;
+    border-radius: 4px;
+    border: 2px solid #f1e9da;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #76543b;
   }
 
   body {
@@ -453,6 +471,74 @@
   .arch-frame {
     border-top-left-radius: 9999px;
     border-top-right-radius: 9999px;
+  }
+
+  /* Authentic Indian Jharokha Cusped Temple Arch */
+  .jharokha-arch {
+    border-top-left-radius: 3rem;
+    border-top-right-radius: 3rem;
+    position: relative;
+  }
+  @media (min-width: 48rem) {
+    .jharokha-arch {
+      border-top-left-radius: 5rem;
+      border-top-right-radius: 5rem;
+    }
+  }
+
+  /* Solid Brass Saddlery Rivet Accents */
+  .brass-rivet {
+    position: relative;
+  }
+  .brass-rivet::before,
+  .brass-rivet::after {
+    content: "";
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, #fff1d0 0%, #caa359 55%, #6e5734 100%);
+    box-shadow: 0 1px 3px rgba(37, 25, 17, 0.45), inset 0 0.5px 0.5px rgba(255, 255, 255, 0.9);
+    z-index: 10;
+  }
+  .brass-rivet::before {
+    top: 6px;
+    left: 6px;
+  }
+  .brass-rivet::after {
+    top: 6px;
+    right: 6px;
+  }
+
+  /* Silky Smooth Luxury Elevation Physics */
+  .luxury-card-hover {
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease;
+  }
+  .luxury-card-hover:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 35px -12px rgba(48, 37, 30, 0.16), 0 0 15px rgba(168, 137, 89, 0.18);
+    border-color: rgba(168, 137, 89, 0.55);
+  }
+
+  /* Mysore Silk Matte Card */
+  .silk-card {
+    background: linear-gradient(145deg, #faf6f0 0%, #f4ede1 100%);
+    border: 1px solid rgba(168, 137, 89, 0.25);
+    box-shadow: 0 4px 20px rgba(48, 37, 30, 0.05);
+  }
+
+  /* Ambient Brass Aura */
+  .glow-brass {
+    box-shadow: 0 0 25px rgba(168, 137, 89, 0.25);
+  }
+
+  /* Dynamic Gold Foil Embossing Effect */
+  .embossed-gold {
+    color: #caa359;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6), 0 -1px 0 rgba(0, 0, 0, 0.5);
+    background: linear-gradient(135deg, #bf953f 0%, #fcf6ba 25%, #b38728 50%, #fbf5b7 75%, #aa771c 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 }
 

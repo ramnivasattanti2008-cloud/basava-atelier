@@ -17,6 +17,9 @@ import { EngravingPreview } from "@/components/custom/EngravingPreview";
 import { HeritageSeal } from "@/components/heritage/HeritageSeal";
 import { HeritageFlourish } from "@/components/heritage/HeritageFlourish";
 import { PackagingExperience } from "@/components/heritage/PackagingExperience";
+import { PatinaInteractiveSimulator } from "@/components/heritage/PatinaInteractiveSimulator";
+import { IndianArtisanalMap } from "@/components/heritage/IndianArtisanalMap";
+import { WaxSealInteractive } from "@/components/heritage/WaxSealInteractive";
 
 const KANNADA_NUMERALS = ["೦೧", "೦೨", "೦೩", "೦೪", "೦೫", "೦೬", "೦೭"];
 
@@ -417,72 +420,82 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* 5B. INDIAN ARTISANAL PROVENANCE MAP */}
+      <IndianArtisanalMap />
+
       {/* 6. UNBOXING RITUAL */}
       <section className="py-16 sm:py-24 border-b border-espresso/15 bg-linen/30">
         <div className="shell">
           <HeritageFlourish variant="lotus" className="mb-8" />
           <PackagingExperience />
+          <div className="mt-12 flex flex-col items-center justify-center">
+            <WaxSealInteractive size={110} />
+          </div>
         </div>
       </section>
 
-      {/* 7. LEATHER EDUCATION HIGHLIGHT */}
+      {/* 7. LEATHER EDUCATION HIGHLIGHT & PATINA SIMULATOR */}
       <section className="py-20 border-b border-espresso/15">
-        <div className="shell">
-          <div className="mx-auto max-w-2xl text-center">
-            <p className="eyebrow text-saddle-deep">Clear & Honest</p>
-            <h2 className="display-md mt-2">Leather Grades in Plain English</h2>
-            <p className="text-sm text-charcoal/80 mt-3 leading-relaxed">
-              We never hide behind confusing marketing buzzwords. Here is what each leather grade actually means for you.
-            </p>
-          </div>
+        <div className="shell space-y-16">
+          <PatinaInteractiveSimulator />
 
-          <div className="mt-12 grid grid-cols-1 md:grid-cols-4 gap-6">
-            <div className="border border-espresso/15 bg-paper p-6 flex flex-col justify-between hover:border-espresso/40 transition-all hover:-translate-y-1 hover:shadow-md">
-              <div>
-                <span className="font-mono text-xs text-saddle-deep font-bold">GRADE 01</span>
-                <h3 className="font-display text-xl text-espresso mt-2">Full-Grain</h3>
-                <p className="mt-3 text-xs text-charcoal/80 leading-relaxed">
-                  The toughest and longest-lasting leather in the world. Keeps its natural grain, absorbs natural oils, and develops a rich patina over decades.
-                </p>
-              </div>
-              <span className="mt-4 pt-3 border-t border-espresso/10 text-[0.6875rem] font-semibold text-saddle-deep">Heirloom Quality</span>
+          <div>
+            <div className="mx-auto max-w-2xl text-center">
+              <p className="eyebrow text-saddle-deep">Clear & Honest</p>
+              <h2 className="display-md mt-2">Leather Grades in Plain English</h2>
+              <p className="text-sm text-charcoal/80 mt-3 leading-relaxed">
+                We never hide behind confusing marketing buzzwords. Here is what each leather grade actually means for you.
+              </p>
             </div>
-            <div className="border border-espresso/15 bg-paper p-6 flex flex-col justify-between hover:border-espresso/40 transition-all hover:-translate-y-1 hover:shadow-md">
-              <div>
-                <span className="font-mono text-xs text-saddle-deep font-bold">GRADE 02</span>
-                <h3 className="font-display text-xl text-espresso mt-2">Top-Grain</h3>
-                <p className="mt-3 text-xs text-charcoal/80 leading-relaxed">
-                  Lightly smoothed to remove surface marks. Supple, lightweight, and very soft to touch — perfect for structured daily totes and handbags.
-                </p>
-              </div>
-              <span className="mt-4 pt-3 border-t border-espresso/10 text-[0.6875rem] font-semibold text-saddle-deep">Smooth & Flexible</span>
-            </div>
-            <div className="border border-espresso/15 bg-paper p-6 flex flex-col justify-between hover:border-espresso/40 transition-all hover:-translate-y-1 hover:shadow-md">
-              <div>
-                <span className="font-mono text-xs text-saddle-deep font-bold">GRADE 03</span>
-                <h3 className="font-display text-xl text-espresso mt-2">Genuine Leather</h3>
-                <p className="mt-3 text-xs text-charcoal/80 leading-relaxed">
-                  100% natural animal hide with an embossed textured finish. Real leather character and durability at an everyday accessible price.
-                </p>
-              </div>
-              <span className="mt-4 pt-3 border-t border-espresso/10 text-[0.6875rem] font-semibold text-saddle-deep">100% Natural Hide</span>
-            </div>
-            <div className="border border-espresso/15 bg-paper p-6 flex flex-col justify-between hover:border-espresso/40 transition-all hover:-translate-y-1 hover:shadow-md">
-              <div>
-                <span className="font-mono text-xs text-saddle-deep font-bold">CARE TIP</span>
-                <h3 className="font-display text-xl text-espresso mt-2">Never Use Plastic</h3>
-                <p className="mt-3 text-xs text-charcoal/80 leading-relaxed">
-                  Real leather breathes. Always store your bag in the complimentary breathable cotton dust bag provided with your order, away from damp corners.
-                </p>
-              </div>
-              <span className="mt-4 pt-3 border-t border-espresso/10 text-[0.6875rem] font-semibold text-saddle-deep">Lifelong Care</span>
-            </div>
-          </div>
 
-          <div className="mt-10 text-center">
-            <Link href="/leather-guide" className="btn btn-outline btn-sm hover:border-espresso transition-all">
-              Read the Full Leather Guide
-            </Link>
+            <div className="mt-12 grid grid-cols-1 md:grid-cols-4 gap-6">
+              <div className="border border-espresso/15 bg-paper p-6 flex flex-col justify-between hover:border-espresso/40 transition-all hover:-translate-y-1 hover:shadow-md">
+                <div>
+                  <span className="font-mono text-xs text-saddle-deep font-bold">GRADE 01</span>
+                  <h3 className="font-display text-xl text-espresso mt-2">Full-Grain</h3>
+                  <p className="mt-3 text-xs text-charcoal/80 leading-relaxed">
+                    The toughest and longest-lasting leather in the world. Keeps its natural grain, absorbs natural oils, and develops a rich patina over decades.
+                  </p>
+                </div>
+                <span className="mt-4 pt-3 border-t border-espresso/10 text-[0.6875rem] font-semibold text-saddle-deep">Heirloom Quality</span>
+              </div>
+              <div className="border border-espresso/15 bg-paper p-6 flex flex-col justify-between hover:border-espresso/40 transition-all hover:-translate-y-1 hover:shadow-md">
+                <div>
+                  <span className="font-mono text-xs text-saddle-deep font-bold">GRADE 02</span>
+                  <h3 className="font-display text-xl text-espresso mt-2">Top-Grain</h3>
+                  <p className="mt-3 text-xs text-charcoal/80 leading-relaxed">
+                    Lightly smoothed to remove surface marks. Supple, lightweight, and very soft to touch — perfect for structured daily totes and handbags.
+                  </p>
+                </div>
+                <span className="mt-4 pt-3 border-t border-espresso/10 text-[0.6875rem] font-semibold text-saddle-deep">Smooth & Flexible</span>
+              </div>
+              <div className="border border-espresso/15 bg-paper p-6 flex flex-col justify-between hover:border-espresso/40 transition-all hover:-translate-y-1 hover:shadow-md">
+                <div>
+                  <span className="font-mono text-xs text-saddle-deep font-bold">GRADE 03</span>
+                  <h3 className="font-display text-xl text-espresso mt-2">Genuine Leather</h3>
+                  <p className="mt-3 text-xs text-charcoal/80 leading-relaxed">
+                    100% natural animal hide with an embossed textured finish. Real leather character and durability at an everyday accessible price.
+                  </p>
+                </div>
+                <span className="mt-4 pt-3 border-t border-espresso/10 text-[0.6875rem] font-semibold text-saddle-deep">100% Natural Hide</span>
+              </div>
+              <div className="border border-espresso/15 bg-paper p-6 flex flex-col justify-between hover:border-espresso/40 transition-all hover:-translate-y-1 hover:shadow-md">
+                <div>
+                  <span className="font-mono text-xs text-saddle-deep font-bold">CARE TIP</span>
+                  <h3 className="font-display text-xl text-espresso mt-2">Never Use Plastic</h3>
+                  <p className="mt-3 text-xs text-charcoal/80 leading-relaxed">
+                    Real leather breathes. Always store your bag in the complimentary breathable cotton dust bag provided with your order, away from damp corners.
+                  </p>
+                </div>
+                <span className="mt-4 pt-3 border-t border-espresso/10 text-[0.6875rem] font-semibold text-saddle-deep">Lifelong Care</span>
+              </div>
+            </div>
+
+            <div className="mt-10 text-center">
+              <Link href="/leather-guide" className="btn btn-outline btn-sm hover:border-espresso transition-all">
+                Read the Full Leather Guide
+              </Link>
+            </div>
           </div>
         </div>
       </section>

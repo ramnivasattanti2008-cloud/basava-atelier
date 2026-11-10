@@ -99,7 +99,7 @@ export const defaultBespokeDesign: BespokeDesignConfig = {
   },
   personalisation: {
     enabled: true,
-    text: "KD",
+    text: "BV",
     method: "gold-foil",
     placement: "bottom-center",
   },
@@ -224,3 +224,4 @@ export const seedBespokeRequests: BespokeQuotationRequest[] = [
     adminNotes: "Awaiting maker review for matte black hardware inventory.",
   },
 ];
+

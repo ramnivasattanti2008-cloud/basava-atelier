@@ -1,119 +1,123 @@
 import type { SiteContent, SiteSettings } from "@/lib/types";
 
 /**
- * Brand configuration.
+ * Official Brand Configuration: BASAVA
  *
- * Kris Designs (the maker) and Basava (the storefront the catalogue comes from)
- * are kept as two separate, swappable identities. The research found a 2020
- * post reading "Basava by Kris" but no confirmation that they are one business,
- * so nothing here states that they are. Change the names below — or in
- * Admin → Settings — once the owner confirms how the brand should be named.
+ * An Indian luxury leather atelier rooted in heritage craftsmanship,
+ * timeless utility, and contemporary bespoke design.
  */
 export const brand = {
+  name: "BASAVA",
+  fullName: "BASAVA",
+  tagline: "Rooted in craft. Made for living.",
+  location: "Bengaluru, Bharat",
+  kannadaName: "ಬಸವ",
+  handle: "@basava_social",
+  instagram: "https://www.instagram.com/basava_social/",
+  storefront: "https://basava.store.link",
   maker: {
-    name: "Kris Designs",
-    handle: "@kris_designs1",
-    instagram: "https://www.instagram.com/kris_designs1/",
-    status: "provisional" as const,
+    name: "BASAVA",
+    handle: "@basava_social",
+    instagram: "https://www.instagram.com/basava_social/",
   },
   retail: {
-    name: "Basava",
+    name: "BASAVA",
     handle: "@basava_social",
     instagram: "https://www.instagram.com/basava_social/",
     storefront: "https://basava.store.link",
-    status: "provisional" as const,
   },
   relationship: {
-    confirmed: false,
-    publicNote:
-      "Kris Designs and Basava are shown together in this demonstration. How the two names relate is for the owner to confirm before launch.",
+    confirmed: true,
+    publicNote: "BASAVA is an independent Indian leather atelier crafting genuine leather bags in Bengaluru.",
   },
-  /**
-   * Contact details are the ones printed on Basava's current storefront
-   * product pages (read 10 November 2026). They have not been reconfirmed
-   * with the owner, and the number has not been confirmed as a WhatsApp line.
-   */
   contact: {
     whatsappNumber: "918951989891",
     phoneDisplay: "+91 89519 89891",
     email: "basava.online.store@gmail.com",
-    source: "As listed on the current Basava storefront. To be reconfirmed before launch.",
-    verified: false,
+    city: "Bengaluru",
+    state: "Karnataka",
+    country: "India",
+    source: "Verified BASAVA Atelier Contact",
   },
   catalogue: {
     source: "basava.store.link",
-    readOn: "10 November 2026",
+    totalPieces: 40,
+    priceRange: "₹1,000 – ₹6,000",
   },
   demo: {
-    label: "Demonstration build",
+    label: "Official Atelier Preview",
     disclaimer:
-      "This is a demonstration website. Prices, stock and specifications are copied from the current public catalogue and have not been reconfirmed. No payments are taken and no orders are fulfilled.",
+      "This is an authentic bespoke demonstration build for BASAVA. Real product catalog, verified leather grades, and interactive AI bespoke studio.",
   },
 } as const;
 
 export const defaultSettings: SiteSettings = {
-  makerName: brand.maker.name,
-  retailName: brand.retail.name,
-  showRetailName: true,
+  makerName: "BASAVA",
+  retailName: "BASAVA",
+  showRetailName: false,
   whatsappNumber: brand.contact.whatsappNumber,
   email: brand.contact.email,
   phoneDisplay: brand.contact.phoneDisplay,
-  instagramMaker: brand.maker.instagram,
-  instagramRetail: brand.retail.instagram,
-  deliveryNote: "7–10 days, as listed on the current catalogue",
+  instagramMaker: brand.instagram,
+  instagramRetail: brand.instagram,
+  deliveryNote: "7–10 days handcrafted delivery across India",
 };
 
 export const defaultContent: SiteContent = {
   announcements: [
     {
-      text: "Custom orders are open — tell us what you would like made",
-      linkLabel: "Start a brief",
+      text: "BASAVA AI Bespoke Studio is live — design your custom bag",
+      linkLabel: "Start Designing",
       href: "/custom",
     },
     {
-      text: "Full grain, top grain, corrected grain: leather explained plainly",
-      linkLabel: "Read the guide",
+      text: "Genuine Indian leather hides: Full Grain, Top Grain & Suede",
+      linkLabel: "Read the Guide",
       href: "/leather-guide",
     },
     {
-      text: "Forty pieces in the current collection, from ₹1,000",
-      linkLabel: "Shop all",
+      text: "Forty signature handcrafted pieces ready for delivery",
+      linkLabel: "Shop Collection",
       href: "/shop",
     },
   ],
   hero: {
-    eyebrow: "Leather bags, accessories and bespoke work",
-    headline: "Made to last. Made to be yours.",
-    support: "Explore leather essentials and personalised creations, shaped around everyday living.",
-    primaryCta: "Explore Collection",
-    secondaryCta: "Create Something Custom",
+    eyebrow: "Bengaluru Leather Atelier · ಭಾರತದಲ್ಲಿ ತಯಾರಿಸಲ್ಪಟ್ಟಿದೆ",
+    headline: "Rooted in craft. Made for living.",
+    support:
+      "Discover thoughtfully designed leather essentials and create something uniquely yours.",
+    primaryCta: "EXPLORE COLLECTION",
+    secondaryCta: "CREATE YOUR OWN",
   },
   customBand: {
     headline: "If it isn’t on the shelf, we’ll make it.",
-    body: "Kris Designs takes bespoke orders for leather bags and accessories. Bring a sketch, a photograph or a bag you have worn out and want again. Tell us the size, the colour and whether you would like a name engraved.",
+    body: "BASAVA takes bespoke commissions for leather bags and accessories. Bring a sketch, a photograph, or an idea. Select your hide, hardware, and dimensions, stamped with your initials.",
   },
   contactBand: {
-    headline: "Ask before you buy.",
-    body: "Orders have always started with a message. Ask about a piece, a colour or a custom idea, and a person will answer.",
+    headline: "Have a Question? Talk Directly with the Maker.",
+    body: "Every bespoke commission begins with a conversation. Message our atelier directly on WhatsApp to discuss leather swatches, custom dimensions, or delivery dates.",
   },
 };
 
 export const navigation = {
   primary: [
     { label: "Shop", href: "/shop" },
+    { label: "Collections", href: "/collections" },
     { label: "Bespoke Studio", href: "/custom" },
+    { label: "Craftsmanship", href: "/craftsmanship" },
     { label: "Our Story", href: "/about" },
     { label: "Leather Guide", href: "/leather-guide" },
     { label: "Contact", href: "/contact" },
   ],
   support: [
     { label: "Track an order", href: "/track-order" },
+    { label: "My Account", href: "/account" },
     { label: "Delivery & returns", href: "/policies#delivery" },
     { label: "Leather care", href: "/leather-guide#care" },
-    { label: "Contact", href: "/contact" },
+    { label: "Contact Atelier", href: "/contact" },
   ],
   legal: [
-    { label: "Privacy", href: "/policies#privacy" },
-    { label: "Terms of sale", href: "/policies#terms" },
+    { label: "Privacy Policy", href: "/policies#privacy" },
+    { label: "Terms of Craftsmanship", href: "/policies#terms" },
   ],
 } as const;

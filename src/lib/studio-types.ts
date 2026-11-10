@@ -204,3 +204,4 @@ export interface StudioAdminOptions {
   imageProvider: "auto" | "gemini" | "openai" | "studio-engine";
   allowPublicRequests: boolean;
 }
+

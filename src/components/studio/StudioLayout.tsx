@@ -80,8 +80,8 @@ export function StudioLayout({
       id: "msg-welcome",
       sender: "assistant",
       text: initialReferenceProduct
-        ? `Namaste and welcome to Kris Design Studio. I see you are drawn to our "${initialReferenceProduct}". I can help you tailor its dimensions, select an heirloom leather hide, choose brass or gold hardware, and add a personalized hot-stamped monogram. How would you like to begin?`
-        : "Namaste and welcome to Kris Design Studio. I am your personal Bespoke Leather Designer. Whether you are looking for an heirloom laptop briefcase, a structured everyday tote, or an original creation from a sketch, tell me what you have in mind or upload a photo to begin.",
+        ? `Namaste and welcome to BASAVA Bespoke Studio. I see you are drawn to our "${initialReferenceProduct}". I can help you tailor its dimensions, select an heirloom leather hide, choose brass or gold hardware, and add a personalized hot-stamped monogram. How would you like to begin?`
+        : "Namaste and welcome to BASAVA Bespoke Studio. I am your personal Bespoke Leather Designer. Whether you are looking for an heirloom laptop briefcase, a structured everyday tote, or an original creation from a sketch, tell me what you have in mind or upload a photo to begin.",
       timestamp: new Date().toISOString(),
       suggestedActions: [
         {
@@ -451,7 +451,7 @@ export function StudioLayout({
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-2">
             <span className="w-2.5 h-2.5 rounded-full bg-saddle-deep animate-pulse" />
-            <span className="eyebrow tracking-widest text-espresso font-bold">Kris Design Studio</span>
+            <span className="eyebrow tracking-widest text-espresso font-bold">BASAVA Bespoke Studio</span>
           </div>
           <span className="hidden sm:inline text-xs text-charcoal/40">|</span>
           <p className="hidden sm:block text-xs text-charcoal/75">

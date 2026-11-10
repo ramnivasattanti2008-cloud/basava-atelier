@@ -5,7 +5,7 @@ import type {
 } from "@/lib/studio-types";
 
 export const CONCEPT_DISCLAIMER =
-  "AI-GENERATED DESIGN CONCEPT — NOT A PHOTOGRAPH OF A FINISHED PRODUCT.";
+  "AI DESIGN CONCEPT — FINAL PRODUCT MAY VARY.";
 
 export class ImageGenerationService {
   /**
@@ -122,7 +122,7 @@ export class ImageGenerationService {
     const hwColor = config.hardware === "gold" ? "#E5C168" : config.hardware === "silver" ? "#C0C5CE" : config.hardware === "matte-black" ? "#2B2B2B" : "#C5A059";
     const initials = config.personalisation.enabled && config.personalisation.text.trim()
       ? config.personalisation.text.trim().toUpperCase()
-      : "KD";
+      : "BV";
 
     let svgBody = "";
 
@@ -316,7 +316,7 @@ export class ImageGenerationService {
           <circle cx="-8" cy="72" r="16" fill="url(#metalGrad)" stroke="#5A3F18" stroke-width="1" filter="drop-shadow(0 3px 5px rgba(0,0,0,0.35))" />
           <circle cx="-8" cy="72" r="13" fill="none" stroke="#7A5826" stroke-width="0.8" stroke-dasharray="2 2" />
           <text x="-8" y="76" font-family="'Cormorant Garamond', serif" font-size="10" font-weight="700" fill="#2E1C0A" text-anchor="middle">
-            KD
+            BV
           </text>
         </g>
 
@@ -495,3 +495,4 @@ export class ImageGenerationService {
     `;
   }
 }
+

@@ -7,6 +7,8 @@ import { useStorefrontCategories } from "@/lib/hooks";
 import { useDemoStore } from "@/lib/store";
 import { whatsappLink, whatsappMessages } from "@/lib/whatsapp";
 
+import { BasavaLogo } from "@/components/brand/BasavaLogo";
+
 const linkClass = "link-grow text-[0.92rem] text-ivory/80 transition-colors hover:text-ivory";
 
 export function Footer() {
@@ -14,16 +16,22 @@ export function Footer() {
   const settings = useDemoStore((s) => s.settings);
 
   return (
-    <footer className="on-dark bg-espresso text-ivory">
+    <footer className="on-dark bg-espresso text-ivory border-t border-saddle/20">
       <div className="shell pb-10 pt-20 md:pt-28">
         <div className="grid gap-x-10 gap-y-14 lg:grid-cols-12">
           <div className="lg:col-span-5">
-            <p className="font-display text-[clamp(2.4rem,5vw,4.2rem)] font-normal uppercase leading-[0.95] tracking-[0.14em] text-ivory">
-              {settings.makerName}
-            </p>
-            <p className="mt-6 max-w-sm text-[0.95rem] leading-relaxed text-ivory/75">
-              Leather bags and accessories, and bespoke pieces made to order.
-              {settings.showRetailName && <> Catalogue from {settings.retailName}.</>}
+            <Link href="/" aria-label="BASAVA Home">
+              <BasavaLogo
+                symbolSize={40}
+                showWordmark={true}
+                showSubtitle={true}
+                invert={true}
+                orientation="horizontal"
+                className="mb-4"
+              />
+            </Link>
+            <p className="mt-4 max-w-sm text-[0.95rem] leading-relaxed text-ivory/75">
+              Rooted in craft. Made for living. Thoughtfully designed genuine leather essentials and bespoke pieces handcrafted one by one in Bengaluru.
             </p>
             <ul className="mt-8 flex flex-wrap gap-x-7 gap-y-3 text-[0.8rem] font-medium uppercase tracking-[0.16em]">
               <li>

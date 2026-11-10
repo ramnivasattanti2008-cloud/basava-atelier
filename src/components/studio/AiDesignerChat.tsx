@@ -4,6 +4,7 @@ import { useRef, useEffect, useState } from "react";
 import { ArrowUp, ImagePlus, Loader2, Sparkles, User, X } from "lucide-react";
 import { cx } from "@/lib/format";
 import type { DesignMessage, BespokeDesignConfig } from "@/lib/studio-types";
+import { BasavaMark } from "@/components/brand/BasavaLogo";
 
 interface AiDesignerChatProps {
   messages: DesignMessage[];
@@ -66,14 +67,14 @@ export function AiDesignerChat({
       <div className="px-4 py-3.5 border-b border-espresso/15 bg-linen/70 flex items-center justify-between shrink-0">
         <div className="flex items-center gap-2.5">
           <div className="relative">
-            <div className="w-8 h-8 rounded-full bg-espresso text-[#f3e5c8] flex items-center justify-center font-display text-sm font-bold shadow-xs">
-              KD
+            <div className="w-8 h-8 rounded-full bg-espresso text-[#f3e5c8] flex items-center justify-center p-1 shadow-xs border border-brass/30">
+              <BasavaMark size={18} invert={true} />
             </div>
             <span className="absolute bottom-0 right-0 w-2 h-2 rounded-full bg-emerald-500 ring-2 ring-linen" />
           </div>
           <div>
             <h3 className="font-display text-base text-espresso leading-none">The Bespoke Designer</h3>
-            <p className="text-[0.6875rem] text-walnut/75 mt-0.5 font-medium">Kris Design Studio · Bengaluru</p>
+            <p className="text-[0.6875rem] text-walnut/75 mt-0.5 font-medium">BASAVA Studio · Bengaluru</p>
           </div>
         </div>
 
@@ -210,3 +211,4 @@ export function AiDesignerChat({
     </div>
   );
 }
+

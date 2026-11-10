@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import { cx } from "@/lib/format";
 import { useDemoStore } from "@/lib/store";
+import { BasavaLogo } from "@/components/brand/BasavaLogo";
 
 const navItems = [
   { label: "Overview", href: "/admin", icon: LayoutDashboard },
@@ -71,11 +72,16 @@ export default function AdminDashboardLayout({ children }: { children: React.Rea
         <div>
           {/* Brand header */}
           <div className="p-6 border-b border-espresso/12">
-            <span className="eyebrow text-saddle-deep">Studio Admin</span>
-            <h2 className="font-display text-xl text-espresso mt-1">{settings.makerName}</h2>
+            <BasavaLogo
+              symbolSize={28}
+              showWordmark={true}
+              showSubtitle={true}
+              orientation="horizontal"
+              className="justify-start mb-2"
+            />
             <div className="mt-2 flex items-center gap-1.5">
               <span className="h-2 w-2 rounded-full bg-emerald-600" />
-              <span className="text-[0.6875rem] text-walnut/80">Local Demo Store Active</span>
+              <span className="text-[0.6875rem] text-walnut/80">Atelier Admin Live</span>
             </div>
           </div>
 

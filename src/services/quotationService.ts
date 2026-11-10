@@ -29,7 +29,7 @@ export class QuotationService {
   static generateReferenceCode(): string {
     const year = new Date().getFullYear();
     const rand = Math.floor(1000 + Math.random() * 9000);
-    return `KD-AI-${year}-${rand}`;
+    return `BV-AI-${year}-${rand}`;
   }
 
   /**
@@ -77,7 +77,7 @@ export class QuotationService {
    */
   static generateWhatsAppMessage(
     request: BespokeQuotationRequest,
-    makerName: string = "Kris Designs"
+    makerName: string = "BASAVA"
   ): string {
     const lines = [
       `Hello ${makerName},`,
@@ -95,3 +95,4 @@ export class QuotationService {
     return lines.join("\n");
   }
 }
+

@@ -17,7 +17,7 @@ export default function AboutPage() {
             <span className="h-1 w-1 rounded-full bg-brass/60" />
             <span className="eyebrow text-saddle-deep">Our Heritage</span>
           </div>
-          <h1 className="display-lg mt-1">The Kris Designs Story</h1>
+          <h1 className="display-lg mt-1">The BASAVA Story</h1>
           <p className="lede mt-3 max-w-2xl">
             Bespoke leather bags, honest materials, and an enduring commitment to craft made stitch by stitch in Bengaluru.
           </p>
@@ -34,7 +34,7 @@ export default function AboutPage() {
         <section className="space-y-4">
           <h2 className="font-display text-3xl text-espresso">The Maker & The Craft</h2>
           <p>
-            <strong>Kris Designs</strong> began with a single conviction: leather goods should be personal, durable, and free from superficial embellishment. In an era of disposable fashion, we wanted to return to the tactile intimacy of natural hides, saddle stitching, and hand-burnished edges.
+            <strong>BASAVA</strong> began with a single conviction: leather goods should be personal, durable, and free from superficial embellishment. In an era of disposable fashion, we wanted to return to the tactile intimacy of natural hides, saddle stitching, and hand-burnished edges.
           </p>
           <p>
             From our Bengaluru workshop, we create bespoke pieces tailored directly to customer ideas. Whether it is an everyday tote proportioned to carry a specific sketchbook or a monogrammed travel sling designed for comfort on the road, our process starts with a conversation and ends with a piece made to last a lifetime.
@@ -97,15 +97,12 @@ export default function AboutPage() {
         <HeritageFlourish variant="divider" />
 
         <section className="space-y-4">
-          <h2 className="font-display text-3xl text-espresso">The Basava Catalogue</h2>
+          <h2 className="font-display text-3xl text-espresso">The 40-Piece Signature Collection</h2>
           <p>
-            Our online storefront presents forty curated designs drawn from the <em>{brand.retail.name}</em> collection. This range encompasses functional totes, structured crossbodies, compact clutches, and minimalist wristlets.
+            Our online storefront presents forty curated designs drawn from the authentic BASAVA catalogue. This range encompasses functional everyday totes, architectural crossbodies, compact clutches, and minimalist wristlets.
           </p>
-          <div className="border-l-2 border-saddle-deep bg-linen/40 p-4 text-xs text-charcoal/80 italic">
-            "{brand.relationship.publicNote}"
-          </div>
           <p>
-            Each catalogue item reflects the dimensions, colours, and materials documented on the original release, photographed in studio clarity. As an independent artisan workshop, we honor these designs while offering full bespoke customization for customers seeking specific tweaks.
+            Each catalogue item reflects the dimensions, colours, and materials documented on the original release, photographed in natural studio clarity. As an independent artisan workshop, we honor these designs while offering full bespoke customization for customers seeking specific tweaks.
           </p>
         </section>
 

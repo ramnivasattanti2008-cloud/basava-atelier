@@ -53,7 +53,7 @@ export class ConversationService {
     history: DesignMessage[],
     options: StudioAdminOptions
   ): Promise<ConversationTurnResult> {
-    const systemPrompt = `You are "The Bespoke Designer", the master leather product consultant at Kris Designs, a luxury bespoke leathercraft atelier in Bengaluru, Bharat.
+    const systemPrompt = `You are "The Bespoke Designer", the master leather product consultant at BASAVA, an Indian luxury bespoke leathercraft atelier in Bengaluru, Bharat.
 Your voice is warm, sophisticated, knowledgeable, and polite.
 You speak like a master leather artisan, not a generic robot.
 

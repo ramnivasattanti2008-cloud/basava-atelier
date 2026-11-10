@@ -43,7 +43,7 @@ export function EngravingPreview({
   interactive = true,
   className,
 }: EngravingPreviewProps) {
-  const [internalInitials, setInternalInitials] = useState("K.D");
+  const [internalInitials, setInternalInitials] = useState("B.V");
   const [finish, setFinish] = useState<FinishStyle>("gold");
   const [tone, setTone] = useState<LeatherTone>("tan");
 
@@ -116,7 +116,7 @@ export function EngravingPreview({
             )}
 
             <p className="mt-2 text-[0.55rem] uppercase tracking-[0.3em] font-semibold text-[#d9c4a7]/75">
-              KRIS DESIGNS · BENGALURU
+              BASAVA · BENGALURU
             </p>
           </div>
         </div>

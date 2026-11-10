@@ -12,20 +12,19 @@ import { useDemoStore } from "@/lib/store";
 import { whatsappLink, whatsappMessages } from "@/lib/whatsapp";
 import { Overlay } from "@/components/ui/Overlay";
 import { ProductImage } from "@/components/ui/ProductImage";
+import { BasavaLogo } from "@/components/brand/BasavaLogo";
 
 type Panel = "shop" | "menu" | "search";
 
 export function Wordmark({ className }: { className?: string }) {
-  const name = useDemoStore((s) => s.settings.makerName);
   return (
-    <div className="flex flex-col items-center select-none">
-      <span className={cx("font-display font-medium uppercase leading-none tracking-[0.3em] text-espresso", className)}>
-        {name}
-      </span>
-      <span className="text-[0.52rem] font-medium tracking-[0.22em] text-saddle-deep/90 uppercase mt-1">
-        ಬೆಂಗಳೂರು · BENGALURU
-      </span>
-    </div>
+    <BasavaLogo
+      symbolSize={30}
+      showWordmark={true}
+      showSubtitle={true}
+      orientation="vertical"
+      className={className}
+    />
   );
 }
 

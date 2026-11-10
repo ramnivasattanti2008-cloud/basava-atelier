@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, Lock, ShieldCheck } from "lucide-react";
+import { BasavaLogo } from "@/components/brand/BasavaLogo";
 
 export default function AdminLoginPage() {
   const router = useRouter();
@@ -40,14 +41,14 @@ export default function AdminLoginPage() {
   return (
     <div className="min-h-screen bg-paper flex flex-col justify-center items-center px-4 py-12">
       <div className="w-full max-w-md border border-espresso/15 bg-ivory p-8 sm:p-10 rounded-xs shadow-md space-y-6">
-        <div className="text-center space-y-2">
-          <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-linen border border-espresso/20 text-espresso">
-            <Lock size={20} className="text-saddle-deep" />
+        <div className="text-center space-y-3">
+          <div className="flex justify-center mb-1">
+            <BasavaLogo symbolSize={38} showWordmark={true} showSubtitle={true} orientation="vertical" />
           </div>
-          <span className="eyebrow">Studio Management</span>
-          <h1 className="font-display text-2xl sm:text-3xl text-espresso">Admin Portal</h1>
+          <span className="eyebrow text-saddle-deep">Atelier Administration</span>
+          <h1 className="font-display text-2xl sm:text-3xl text-espresso">Management Portal</h1>
           <p className="text-xs text-charcoal/70">
-            Enter the studio passcode to access catalogue editing, order logs, and custom briefs.
+            Enter the studio passcode to manage product inventory, bespoke AI requests, and atelier options.
           </p>
         </div>
 

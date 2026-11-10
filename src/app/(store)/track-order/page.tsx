@@ -44,7 +44,7 @@ function TrackOrderContent() {
         <span className="eyebrow">Shipment Lookup</span>
         <h1 className="display-lg mt-3">Track Your Order</h1>
         <p className="lede mt-3">
-          Enter your order reference code (e.g. <strong>KD-10001</strong>) to view real-time packaging and dispatch updates.
+          Enter your order reference code (e.g. <strong>BV-10001</strong> or <strong>KD-10001</strong>) to view real-time packaging and dispatch updates.
         </p>
       </div>
 
@@ -54,7 +54,7 @@ function TrackOrderContent() {
           type="text"
           value={orderId}
           onChange={(e) => setOrderId(e.target.value)}
-          placeholder="Enter Order ID (e.g. KD-10001)"
+          placeholder="Enter Order ID (e.g. BV-10001)"
           className="field-input uppercase"
           required
         />

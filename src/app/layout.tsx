@@ -19,8 +19,16 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: "Kris Designs — Leather Bags & Bespoke Work",
-  description: "Bespoke leather bags and accessories, hand-crafted in Bengaluru. Catalogue from Basava.",
+  title: {
+    default: "BASAVA — Handcrafted Leather & AI Bespoke Studio",
+    template: "%s | BASAVA",
+  },
+  description:
+    "Rooted in craft. Made for living. Discover thoughtfully designed genuine leather essentials and create something uniquely yours with BASAVA.",
+  icons: {
+    icon: "/images/basava-favicon.png",
+    apple: "/images/basava-logo.png",
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

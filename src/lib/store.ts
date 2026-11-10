@@ -41,7 +41,7 @@ import { QuotationService } from "@/services/quotationService";
  * step in moving from demo to production.
  */
 
-export const STORAGE_KEY = "kris-designs-demo";
+export const STORAGE_KEY = "basava-leather-atelier-demo";
 
 interface DemoData {
   seedVersion: string;

@@ -1,6 +1,7 @@
 "use client";
 
 import { cx } from "@/lib/format";
+import { BasavaMark } from "@/components/brand/BasavaLogo";
 
 interface HeritageSealProps {
   size?: number;
@@ -13,7 +14,7 @@ export function HeritageSeal({ size = 110, className, rotating = true }: Heritag
     <div
       className={cx("relative inline-flex items-center justify-center select-none", className)}
       style={{ width: size, height: size }}
-      title="Kris Designs — Handcrafted in Bengaluru, Bharat"
+      title="BASAVA — Handcrafted in Bengaluru, Bharat"
     >
       {/* Outer ambient brass glow */}
       <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-[#96722d]/20 to-[#ffd875]/20 blur-sm pointer-events-none" />
@@ -64,7 +65,7 @@ export function HeritageSeal({ size = 110, className, rotating = true }: Heritag
           className="uppercase font-semibold"
         >
           <textPath href="#heritageSealPath" startOffset="0%">
-            KRIS DESIGNS · BENGALURU · BHARAT · हस्तनिर्मित · EST. 2020 ·
+            BASAVA · BENGALURU · BHARAT · ಕೈಯಿಂದ ಮಾಡಿದ · LEATHER ATELIER ·
           </textPath>
         </text>
 
@@ -80,11 +81,9 @@ export function HeritageSeal({ size = 110, className, rotating = true }: Heritag
       </svg>
 
       {/* Static Inner Medallion Crest */}
-      <div className="absolute inset-[27%] rounded-full bg-gradient-to-b from-[#2e1d13] to-[#160d08] border border-[#c5a059]/60 shadow-inner flex flex-col items-center justify-center text-center">
-        <span className="font-display text-[#f3e5c8] font-bold text-base sm:text-lg leading-none tracking-widest drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">
-          KD
-        </span>
-        <span className="text-[0.45rem] tracking-[0.2em] uppercase font-semibold text-[#c5a059] mt-0.5">
+      <div className="absolute inset-[27%] rounded-full bg-gradient-to-b from-[#2e1d13] to-[#160d08] border border-[#c5a059]/60 shadow-inner flex flex-col items-center justify-center text-center p-2">
+        <BasavaMark size={Math.round(size * 0.22)} invert={true} />
+        <span className="text-[0.42rem] tracking-[0.22em] uppercase font-semibold text-[#c5a059] mt-0.5">
           ATELIER
         </span>
       </div>

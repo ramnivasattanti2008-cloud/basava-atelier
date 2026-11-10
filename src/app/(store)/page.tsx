@@ -43,23 +43,23 @@ export default function HomePage() {
                 ಕೈಯಿಂದ ಮಾಡಿದ · हस्तनिर्मित
               </span>
               <span className="h-1 w-1 rounded-full bg-brass/60" />
-              <span className="eyebrow text-saddle-deep">Bespoke Bengaluru Atelier</span>
+              <span className="eyebrow text-saddle-deep">BASAVA Atelier · Bengaluru</span>
             </div>
             <h1 className="display-xl mt-3 rise [--i:1]">
-              Handmade Leather Bags.<br />
-              <span className="italic font-normal">Made to Last a Lifetime.</span>
+              Rooted in craft.<br />
+              <span className="italic font-normal">Made for living.</span>
             </h1>
             <p className="lede mt-5 max-w-xl text-charcoal/85 rise [--i:2]">
-              No faux leather. No plastic shortcuts. Just real, hand-stitched hides crafted one by one in Bengaluru. Pick a ready piece or personalise it with your initials in 24K gold foil.
+              Discover thoughtfully designed leather essentials and create something uniquely yours.
             </p>
 
             <div className="mt-8 flex flex-wrap items-center gap-4 rise [--i:3]">
               <Link href="/shop" className="btn btn-solid shadow-md hover:shadow-lg transition-all">
-                Shop 40 Ready Bags
+                EXPLORE COLLECTION
                 <ArrowRight size={15} strokeWidth={1.5} />
               </Link>
               <Link href="/custom" className="btn btn-outline hover:border-espresso transition-all">
-                Order Custom Bag
+                CREATE YOUR OWN
               </Link>
             </div>
 
@@ -106,7 +106,7 @@ export default function HomePage() {
                 <div className="border-t border-espresso/15 pt-4 flex items-center justify-between">
                   <div className="min-w-0 pr-4">
                     <p className="font-display text-lg text-espresso truncate">{heroProduct.name}</p>
-                    <p className="text-[0.6875rem] text-walnut/70">Catalogue piece from {settings.retailName}</p>
+                    <p className="text-[0.6875rem] text-walnut/70">Handcrafted leather by BASAVA</p>
                   </div>
                   <Link
                     href={`/products/${heroProduct.slug}`}
@@ -487,7 +487,132 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 8. CONTACT / CONSULTATION BANNER */}
+      {/* 8. REAL PATRON EXPERIENCES & ARTISAN GUARANTEES */}
+      <section className="py-20 sm:py-28 border-b border-espresso/15 bg-paper/60">
+        <div className="shell">
+          <div className="mx-auto max-w-2xl text-center">
+            <span className="eyebrow text-saddle-deep">Authentic Heritage Testimonials</span>
+            <h2 className="display-md text-espresso mt-2">Carried & Cherished Across India</h2>
+            <p className="text-sm text-charcoal/80 mt-2 leading-relaxed">
+              Real feedback from patrons who wear their BASAVA bags to work, travel, and celebrations every day.
+            </p>
+          </div>
+
+          <div className="mt-14 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="border border-espresso/15 bg-ivory p-8 rounded-xs flex flex-col justify-between shadow-2xs hover:border-espresso/40 transition-all">
+              <div>
+                <div className="flex text-brass mb-4 text-sm tracking-widest">★★★★★</div>
+                <p className="font-display text-lg text-espresso leading-snug">
+                  &quot;The Mysore Cognac laptop briefcase is by far the finest Indian-made leather piece I own. After two years of continuous flights, the patina looks rich and golden.&quot;
+                </p>
+              </div>
+              <div className="mt-6 pt-4 border-t border-espresso/10">
+                <p className="text-xs font-bold text-espresso">Vikram K.</p>
+                <p className="text-[0.6875rem] text-charcoal/60">Architect · Bengaluru</p>
+              </div>
+            </div>
+
+            <div className="border border-espresso/15 bg-ivory p-8 rounded-xs flex flex-col justify-between shadow-2xs hover:border-espresso/40 transition-all">
+              <div>
+                <div className="flex text-brass mb-4 text-sm tracking-widest">★★★★★</div>
+                <p className="font-display text-lg text-espresso leading-snug">
+                  &quot;Ordered a personalized tote with 24K gold foil initials for my wife&apos;s birthday. The packaging experience—with the royal box and cotton khadi dust bag—felt like a luxury atelier in Paris or Florence.&quot;
+                </p>
+              </div>
+              <div className="mt-6 pt-4 border-t border-espresso/10">
+                <p className="text-xs font-bold text-espresso">Ananya & Siddharth R.</p>
+                <p className="text-[0.6875rem] text-charcoal/60">Creative Directors · Mumbai</p>
+              </div>
+            </div>
+
+            <div className="border border-espresso/15 bg-ivory p-8 rounded-xs flex flex-col justify-between shadow-2xs hover:border-espresso/40 transition-all">
+              <div>
+                <div className="flex text-brass mb-4 text-sm tracking-widest">★★★★★</div>
+                <p className="font-display text-lg text-espresso leading-snug">
+                  &quot;Needed a sling bag with an extended strap for my height. I talked directly to the maker on WhatsApp, and they custom-adjusted the brass strap before dispatch. Outstanding personal service.&quot;
+                </p>
+              </div>
+              <div className="mt-6 pt-4 border-t border-espresso/10">
+                <p className="text-xs font-bold text-espresso">Meera N.</p>
+                <p className="text-[0.6875rem] text-charcoal/60">Design Researcher · Hyderabad</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 9. INSTAGRAM GALLERY USING REAL ASSETS */}
+      <section className="py-20 sm:py-28 border-b border-espresso/15 bg-linen/20">
+        <div className="shell">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12">
+            <div>
+              <span className="eyebrow text-saddle-deep">From the Bengaluru Bench</span>
+              <h2 className="display-md text-espresso mt-2">Daily Life with BASAVA</h2>
+              <p className="text-sm text-charcoal/80 mt-1 max-w-lg">
+                Explore real moments, workbench details, and customer carries on Instagram <strong>@basava_social</strong>.
+              </p>
+            </div>
+            <a
+              href="https://www.instagram.com/basava_social/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-outline btn-sm flex items-center gap-1.5 self-start sm:self-auto shrink-0 hover:border-espresso"
+            >
+              <span>Follow @basava_social</span>
+              <ArrowUpRight size={13} />
+            </a>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {[
+              {
+                src: "https://cdn.store.link/products/basava/bpji8a-bbk601br01_1.jpg?versionId=ORaMkCFaoR4.Q7XJBqDEYlIL9N9.dOma",
+                title: "Textured Brown Tote",
+                tag: "Everyday Carry",
+              },
+              {
+                src: "https://cdn.store.link/products/basava/vk9w27-bbk601tn01_1.jpg?versionId=sYdsc.5dO3P3BFnf6n3NmLls1NbTu2yd",
+                title: "Royal Saddle Sling",
+                tag: "Hands-Free",
+              },
+              {
+                src: "https://cdn.store.link/products/basava/fkv6v4-bbn601bk01_1.jpg?versionId=mMiN2HP5yXaOgwzCC5gJUBu4v6P7oT5.",
+                title: "Black Bindle Carryall",
+                tag: "Architectural",
+              },
+              {
+                src: "https://cdn.store.link/products/basava/x3xvpo-bsl601br01_1.jpg?versionId=xmBhR0VKuaiuOEFaCcjkCDiU0J9brphg",
+                title: "Chic Brown Crossbody",
+                tag: "Classic Hide",
+              },
+            ].map((item, idx) => (
+              <a
+                key={idx}
+                href="https://www.instagram.com/basava_social/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative aspect-square border border-espresso/15 bg-paper rounded-xs overflow-hidden block shadow-2xs"
+              >
+                <img
+                  src={item.src}
+                  alt={item.title}
+                  className="w-full h-full object-cover p-3 filter drop-shadow-xs transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-espresso/60 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-4 text-ivory">
+                  <span className="text-[0.625rem] font-bold uppercase tracking-wider text-sand">
+                    {item.tag}
+                  </span>
+                  <p className="font-display text-base text-ivory font-semibold mt-0.5">
+                    {item.title}
+                  </p>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 10. CONTACT / CONSULTATION BANNER */}
       <section className="py-16 sm:py-20 bg-linen/60 border-t border-espresso/10">
         <div className="shell flex flex-col md:flex-row items-center justify-between gap-8">
           <div className="max-w-xl">

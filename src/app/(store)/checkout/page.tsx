@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { ArrowLeft, Check, CreditCard, Lock, ShieldCheck, ShoppingBag, Smartphone } from "lucide-react";
+import { ArrowLeft, Check, CreditCard, Lock, ShieldCheck, Smartphone } from "lucide-react";
 import type { PaymentMethod } from "@/lib/types";
 import { cx, formatINR } from "@/lib/format";
 import { indianStates, isEmail, isFilled, isIndianPhone, isPin } from "@/lib/validation";

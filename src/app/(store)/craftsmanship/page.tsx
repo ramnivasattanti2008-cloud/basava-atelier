@@ -2,12 +2,8 @@
 
 import Link from "next/link";
 import {
-  ArrowRight,
   Check,
-  Compass,
-  Layers,
   MessageCircle,
-  ShieldCheck,
   Sparkles,
 } from "lucide-react";
 import { HeritageSeal } from "@/components/heritage/HeritageSeal";

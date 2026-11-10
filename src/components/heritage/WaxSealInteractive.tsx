@@ -87,3 +87,4 @@ export function WaxSealInteractive({ className, size = 120 }: WaxSealInteractive
     </div>
   );
 }
+

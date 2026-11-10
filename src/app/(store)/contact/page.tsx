@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { ArrowUpRight, CheckCircle2, Mail, MessageCircle, Phone, Send } from "lucide-react";
+import { ArrowUpRight, CheckCircle2, MessageCircle, Send } from "lucide-react";
 import { brand } from "@/data/brand";
-import { isEmail, isFilled, isIndianPhone } from "@/lib/validation";
+import { isEmail, isFilled } from "@/lib/validation";
 import { useDemoStore } from "@/lib/store";
 import { useToast } from "@/lib/toast";
 import { whatsappLink, whatsappMessages } from "@/lib/whatsapp";

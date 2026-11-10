@@ -510,14 +510,23 @@
     right: 6px;
   }
 
-  /* Silky Smooth Luxury Elevation Physics */
+  /* Silky Smooth Luxury Elevation Physics & GPU Acceleration */
   .luxury-card-hover {
-    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease;
+    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s ease;
+    will-change: transform, box-shadow;
+    transform: translateZ(0);
   }
   .luxury-card-hover:hover {
-    transform: translateY(-5px);
+    transform: translateY(-5px) translateZ(0);
     box-shadow: 0 20px 35px -12px rgba(48, 37, 30, 0.16), 0 0 15px rgba(168, 137, 89, 0.18);
     border-color: rgba(168, 137, 89, 0.55);
+  }
+
+  .gpu-smooth {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+    will-change: transform, opacity;
   }
 
   /* Mysore Silk Matte Card */

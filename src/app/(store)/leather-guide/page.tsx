@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, Droplets, Leaf, Shield, Sparkles, Sun, Wind } from "lucide-react";
+import { ArrowRight, Droplets, Leaf, Sparkles, Sun, Wind } from "lucide-react";
 import { HeritageFlourish } from "@/components/heritage/HeritageFlourish";
 
 export default function LeatherGuidePage() {

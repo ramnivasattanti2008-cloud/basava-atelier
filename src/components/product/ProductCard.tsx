@@ -46,7 +46,7 @@ export function ProductCard({ product, onQuickView, className, eager = false }: 
   return (
     <div
       className={cx(
-        "group relative flex flex-col transition-all duration-500 ease-out hover:-translate-y-1.5",
+        "group relative flex flex-col transition-all duration-500 ease-out hover:-translate-y-1.5 gpu-smooth",
         className
       )}
       onMouseEnter={() => setHovered(true)}
@@ -55,7 +55,7 @@ export function ProductCard({ product, onQuickView, className, eager = false }: 
       {/* Photograph Container with Heritage Framing */}
       <Link
         href={`/products/${product.slug}`}
-        className="photo-tile relative block aspect-square w-full overflow-hidden bg-linen border border-espresso/10 transition-all duration-500 group-hover:border-[#caa359] group-hover:shadow-[0_20px_35px_-12px_rgba(48,37,30,0.2)] focus:outline-none focus:ring-2 focus:ring-espresso focus:ring-offset-2"
+        className="photo-tile relative block aspect-square w-full overflow-hidden bg-linen border border-espresso/10 transition-all duration-500 group-hover:border-[#caa359] group-hover:shadow-[0_20px_35px_-12px_rgba(48,37,30,0.2)] focus:outline-none focus:ring-2 focus:ring-espresso focus:ring-offset-2 gpu-smooth"
         aria-label={`View details for ${product.name}`}
       >
         {/* Subtle Decorative Golden Corner Accents on Hover */}

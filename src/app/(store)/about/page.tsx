@@ -1,6 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, Hammer, HeartHandshake, ShieldCheck, Sparkles } from "lucide-react";
-import { brand } from "@/data/brand";
+import { ArrowRight, Hammer, HeartHandshake, ShieldCheck } from "lucide-react";
 import { HeritageSeal } from "@/components/heritage/HeritageSeal";
 import { HeritageFlourish } from "@/components/heritage/HeritageFlourish";
 

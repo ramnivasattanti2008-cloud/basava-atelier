@@ -1,0 +1,1719 @@
+{
+  "meta": {
+    "source": "https://basava.store.link/",
+    "importedAt": "2026-11-10",
+    "productCount": 40,
+    "currency": "INR",
+    "note": "Names, prices, stock and specifications are copied as listed on the public storefront and have not been reconfirmed with the owner. Treat as demo data."
+  },
+  "products": [
+    {
+      "id": "kd-001",
+      "sku": "BBN601BK01",
+      "name": "Textured Effortlessly Chic Genuine Leather Metallic BlackBindle Carryall",
+      "slug": "textured-effortlessly-chic-genuine-leather-metallic-blackbindle-carryall",
+      "category": "totes-carryalls",
+      "listedType": "Bindle",
+      "priceINR": 5500,
+      "description": "With our Bindle Bag embrace the spirit of adventure. Stay organized, carry your essentials with ease, and make a statement with this essential accessory that captures the essence of wanderlust and freedom. Embark on your next journey with a bag that embodies the spirit of the modern explorer.",
+      "images": [
+        "https://cdn.store.link/products/basava/fkv6v4-bbn601bk01_1.jpg?versionId=mMiN2HP5yXaOgwzCC5gJUBu4v6P7oT5.",
+        "https://cdn.store.link/products/basava/2znkto-bbn601bk01_2.jpg?versionId=YP9aL.wk8Yuaok9tCm1s5SA0lGhR8DDj",
+        "https://cdn.store.link/products/basava/d1rfcq-bbn601bk01_3.jpg?versionId=T8yYj2Duh08XXDyQg9ieEOUPYLxuxVg4",
+        "https://cdn.store.link/products/basava/zf1bel-bbn601bk01_4.jpg?versionId=Ab8bdMVrx3WSpezbW2GjbMtXX1F3w5kJ",
+        "https://cdn.store.link/products/basava/d8nu7q-bbn601bk01_5.jpg?versionId=gVnBjiccbra5PeRk9jOmp4nK_HpSfwTK"
+      ],
+      "colours": [
+        "Metallic Black"
+      ],
+      "material": "Genuine Leather",
+      "leatherGrade": null,
+      "stock": {
+        "quantity": 1,
+        "status": "in_stock"
+      },
+      "dimensions": {
+        "length": 13,
+        "width": 7.5,
+        "depth": 7.5,
+        "unit": null,
+        "asListed": "L-13, W-7.5, B-7.5"
+      },
+      "careInstructions": "Wipe with a clean, dry cloth when needed",
+      "deliveryTime": "7-10 days",
+      "featured": false,
+      "customisable": null,
+      "visible": true,
+      "source": {
+        "origin": "basava.store.link",
+        "listedBrand": "basava",
+        "variantCount": 1
+      }
+    },
+    {
+      "id": "kd-002",
+      "sku": "BCB601BK02",
+      "name": "Sleek and Stylish Genuine Leather Black Crossbody Tote",
+      "slug": "sleek-and-stylish-genuine-leather-black-crossbody-tote",
+      "category": "crossbody-bags",
+      "listedType": "Cross-Body",
+      "priceINR": 3000,
+      "description": "With its convenient crossbody design, our bag offers hands-free convenience while ensuring your belongings are always within reach. The adjustable strap allows you to wear it comfortably across your body, providing a secure and comfortable fit.",
+      "images": [
+        "https://cdn.store.link/products/basava/4wdwvl-bcb601bk02_1.jpg?versionId=FnqU9VgJxDiEDgpOxcOqA4mLAizH1h_i",
+        "https://cdn.store.link/products/basava/fl4kj4-bcb601bk02_2.jpg?versionId=2aE20sg9m9iJwsPqPhhwsLoMyUKPGWXD",
+        "https://cdn.store.link/products/basava/ohkha5-bcb601bk02_3.jpg?versionId=kMwhcQJiVf73gqtiH0S0LTwhlB2hvrc1",
+        "https://cdn.store.link/products/basava/ae-npl-bcb601bk02_4.jpg?versionId=S3ewksN1wwJmg4jBg0WqEmsUtOBBckQg",
+        "https://cdn.store.link/products/basava/mrjhin-bcb601bk02_5.jpg?versionId=dqHLMbSTMidZnIpBK6wEQczYuIaA7H3E"
+      ],
+      "colours": [
+        "Black"
+      ],
+      "material": "Genuine Leather",
+      "leatherGrade": null,
+      "stock": {
+        "quantity": 1,
+        "status": "in_stock"
+      },
+      "dimensions": {
+        "length": 11,
+        "width": 12,
+        "depth": 2,
+        "unit": null,
+        "asListed": "L-11, W-12, B-2"
+      },
+      "careInstructions": "Wipe with a clean, dry cloth when needed",
+      "deliveryTime": "7-10 days",
+      "featured": false,
+      "customisable": null,
+      "visible": true,
+      "source": {
+        "origin": "basava.store.link",
+        "listedBrand": "basava",
+        "variantCount": 1
+      }
+    },
+    {
+      "id": "kd-003",
+      "sku": "BHH601BL01",
+      "name": "Solid Ocean Breeze Genuine Leather Blue Hand-Held Bag",
+      "slug": "solid-ocean-breeze-genuine-leather-blue-hand-held-bag",
+      "category": "handbags",
+      "listedType": "Hand-Held",
+      "priceINR": 2500,
+      "description": "Embrace the serenity of the sea with our Ocean Breeze Hand-Held Bag. Its soothing hues and nautical charm make it a captivating accessory for beach getaways",
+      "images": [
+        "https://cdn.store.link/products/basava/kutnjm-bhh601bl01_1.jpg?versionId=8flTiflEMYAFQwIdlJm2F6VG6UGl0mRC",
+        "https://cdn.store.link/products/basava/pppytc-bhh601bl01_2.jpg?versionId=nA_0e76FZVAo7Uv9YoJb.lQVzSvb3i9o",
+        "https://cdn.store.link/products/basava/unaejd-bhh601bl01_3.jpg?versionId=tGxmgUNgmRvltU9.fg1hq6EPdr7p21E3",
+        "https://cdn.store.link/products/basava/21fm84-bhh601bl01_4.jpg?versionId=22zlXq.uzcX8XIcgOG.ySn6OAOPltcCt",
+        "https://cdn.store.link/products/basava/34y2t6-bhh601bl01_5.jpg?versionId=sQ7SPvOitM.vwqpQJxvNyaTdO36HP33."
+      ],
+      "colours": [
+        "Blue"
+      ],
+      "material": "Genuine Leather",
+      "leatherGrade": null,
+      "stock": {
+        "quantity": 1,
+        "status": "in_stock"
+      },
+      "dimensions": {
+        "length": 8.5,
+        "width": 7,
+        "depth": 7,
+        "unit": null,
+        "asListed": "L-8.5, W-7, B-7"
+      },
+      "careInstructions": "Wipe with a clean, dry cloth when needed",
+      "deliveryTime": "7-10 days",
+      "featured": false,
+      "customisable": null,
+      "visible": true,
+      "source": {
+        "origin": "basava.store.link",
+        "listedBrand": "basava",
+        "variantCount": 1
+      }
+    },
+    {
+      "id": "kd-004",
+      "sku": "BSH601BK02",
+      "name": "Textured and Versatile Everyday Genuine Leather Black Tote",
+      "slug": "textured-and-versatile-everyday-genuine-leather-black-tote",
+      "category": "totes-carryalls",
+      "listedType": "Shoulder-Bag",
+      "priceINR": 5500,
+      "description": "Our stylish and versatile Shoulder Bag, a perfect blend of fashion and functionality. This meticulously crafted bag is designed to elevate your everyday style while providing the convenience you need to carry your essentials.",
+      "images": [
+        "https://cdn.store.link/products/basava/4qeasr-bsh601bk02_1.jpg?versionId=xQkRvxKj9n7qEF4m6PmT8.G9t8tN9_PE",
+        "https://cdn.store.link/products/basava/1x0odb-bsh601bk02_2.jpg?versionId=37RS.pe9MrcEGQ10AGA9I1544cenjYlw",
+        "https://cdn.store.link/products/basava/trzch1-bsh601bk01_3.jpg?versionId=TGyeDjN5Kqx_IxaEqxeO80AHXNGOkY_v",
+        "https://cdn.store.link/products/basava/qevgb--bsh601bk02_4.jpg?versionId=pVhUa9G3YAatBtgzRmE_tyrDTgoX255J",
+        "https://cdn.store.link/products/basava/yn3qgr-bsh601bk02_5.jpg?versionId=R22yrrMvEZgNjlPazUhWPFcbPnWwPFL2"
+      ],
+      "colours": [
+        "Black"
+      ],
+      "material": "Genuine Leather",
+      "leatherGrade": null,
+      "stock": {
+        "quantity": 1,
+        "status": "in_stock"
+      },
+      "dimensions": {
+        "length": 14,
+        "width": 15,
+        "depth": 5,
+        "unit": null,
+        "asListed": "L-14, W-15, B-5"
+      },
+      "careInstructions": "Wipe with a clean, dry cloth when needed",
+      "deliveryTime": "7-10 days",
+      "featured": false,
+      "customisable": null,
+      "visible": true,
+      "source": {
+        "origin": "basava.store.link",
+        "listedBrand": "basava",
+        "variantCount": 1
+      }
+    },
+    {
+      "id": "kd-005",
+      "sku": "BTT601BK02",
+      "name": "Textured Modern Twist Genuine Leather Metallic Black Tote",
+      "slug": "textured-modern-twist-genuine-leather-metallic-black-tote",
+      "category": "totes-carryalls",
+      "listedType": "Tote",
+      "priceINR": 3500,
+      "description": "Designed for versatility, our Tote Bag seamlessly transitions from work to leisure, effortlessly complementing your style. Its sleek and contemporary design adds a touch of sophistication to any outfit, making it suitable for both casual and professional occasions.",
+      "images": [
+        "https://cdn.store.link/products/basava/ity-pb-btt601bk02_1.jpg?versionId=YryolkTnX3FxgZPK8IK5uzVfAY_YFATH",
+        "https://cdn.store.link/products/basava/obfo6l-btt601bk02_2.jpg?versionId=zDip8MBYWdE9MgWNRvVu5tnxsXEHr62L",
+        "https://cdn.store.link/products/basava/zdd9a7-btt601bk02_3.jpg?versionId=kFqo7GD4QQJ0wvqv4tyDQI.1adki5ikP",
+        "https://cdn.store.link/products/basava/jwms5k-btt601bk02_4.jpg?versionId=nYk_EJ7Zrz.NQsoWNbRiTcxgRzy4qRQC",
+        "https://cdn.store.link/products/basava/4esfph-btt601bk02_5.jpg?versionId=j5csJ5A47WkM9kM60nFLdcr_XezaAgRO"
+      ],
+      "colours": [
+        "Metallic Black"
+      ],
+      "material": "Genuine Leather",
+      "leatherGrade": null,
+      "stock": {
+        "quantity": 1,
+        "status": "in_stock"
+      },
+      "dimensions": {
+        "length": 13.5,
+        "width": 11,
+        "depth": 3.5,
+        "unit": null,
+        "asListed": "L-13.5, W-11, B-3.5"
+      },
+      "careInstructions": "Wipe with a clean, dry cloth when needed",
+      "deliveryTime": "7-10 days",
+      "featured": false,
+      "customisable": null,
+      "visible": true,
+      "source": {
+        "origin": "basava.store.link",
+        "listedBrand": "basava",
+        "variantCount": 1
+      }
+    },
+    {
+      "id": "kd-006",
+      "sku": "BTT601BR02",
+      "name": "Textured Stylish Genuine Leather Brown Tote Carryall",
+      "slug": "textured-stylish-genuine-leather-brown-tote-carryall",
+      "category": "totes-carryalls",
+      "listedType": "Tote",
+      "priceINR": 6000,
+      "description": "Designed for versatility, our Tote Bag seamlessly transitions from work to leisure, effortlessly complementing your style. Its sleek and contemporary design adds a touch of sophistication to any outfit, making it suitable for both casual and professional occasions.",
+      "images": [
+        "https://cdn.store.link/products/basava/li8fmr-btt601br02_1.jpg?versionId=cP_ukunXujglgdCD3ckq2CLCKt1E8C19",
+        "https://cdn.store.link/products/basava/e3gpfj-btt601br02_2.jpg?versionId=mlS8qVnpSxLlcEKYefvkFmfNumP4k3sm",
+        "https://cdn.store.link/products/basava/6c-21y-btt601br02_3.jpg?versionId=0waMf5.ItuyLcqW94R7DNVQGTQOG_8NF",
+        "https://cdn.store.link/products/basava/1xe1y3-btt601br02_4.jpg?versionId=gzplzqWcl_yp7bHjQK7xRUzrjYP.h5q0",
+        "https://cdn.store.link/products/basava/3om4td-btt601br02_5.jpg?versionId=QHs_CQolem_qr3fx9__V.V1z8RpbWosG"
+      ],
+      "colours": [
+        "Brown"
+      ],
+      "material": "Genuine Leather",
+      "leatherGrade": null,
+      "stock": {
+        "quantity": 1,
+        "status": "in_stock"
+      },
+      "dimensions": {
+        "length": 10.5,
+        "width": 14,
+        "depth": 6.5,
+        "unit": null,
+        "asListed": "L-10.5, W-14, B-6.5"
+      },
+      "careInstructions": "Wipe with a clean, dry cloth when needed",
+      "deliveryTime": "7-10 days",
+      "featured": false,
+      "customisable": null,
+      "visible": true,
+      "source": {
+        "origin": "basava.store.link",
+        "listedBrand": "basava",
+        "variantCount": 1
+      }
+    },
+    {
+      "id": "kd-007",
+      "sku": "BTT601BR03",
+      "name": "Textured Modern Twist Genuine Leather Brown Tote",
+      "slug": "textured-modern-twist-genuine-leather-brown-tote",
+      "category": "totes-carryalls",
+      "listedType": "Tote",
+      "priceINR": 5500,
+      "description": "With its spacious interior and sturdy construction, our Tote Bag offers practicality without compromising on style. The wide straps ensure comfort during extended use, and the open-top design allows for easy access to your belongings. Carry it by hand or sling it over your shoulder",
+      "images": [
+        "https://cdn.store.link/products/basava/kr4bqq-btt601br03_1.jpg?versionId=qHcbHuvzXsVcw8CUazW8YUI2M1I8fUPm",
+        "https://cdn.store.link/products/basava/-8vgk5-btt601br03_2.jpg?versionId=SNK.6iAvL_l23tq0x9Xn8neGGsMQ2x4M",
+        "https://cdn.store.link/products/basava/uanxyy-btt601br03_3.jpg?versionId=rJfzJwmqd6fypLsSiljM4op9i6MjHyQb",
+        "https://cdn.store.link/products/basava/j1vmdu-btt601br03_4.jpg?versionId=WxjUxdKBsjRGvAdOsN3CXV0ZAfD76cID",
+        "https://cdn.store.link/products/basava/xnefai-btt601br03_5.jpg?versionId=7AdwCjLcPzvaiSF2IeKUoq5BmdUiAmhA"
+      ],
+      "colours": [
+        "Brown"
+      ],
+      "material": "Genuine Leather",
+      "leatherGrade": null,
+      "stock": {
+        "quantity": 1,
+        "status": "in_stock"
+      },
+      "dimensions": {
+        "length": 14,
+        "width": 12.5,
+        "depth": 4,
+        "unit": null,
+        "asListed": "L-14, W-12.5, B-4"
+      },
+      "careInstructions": "Wipe with a clean, dry cloth when needed",
+      "deliveryTime": "7-10 days",
+      "featured": false,
+      "customisable": null,
+      "visible": true,
+      "source": {
+        "origin": "basava.store.link",
+        "listedBrand": "basava",
+        "variantCount": 1
+      }
+    },
+    {
+      "id": "kd-008",
+      "sku": "BTT601BR04",
+      "name": "Textured Trendy Genuine Leather Tote Shoulder Bag",
+      "slug": "textured-trendy-genuine-leather-tote-shoulder-bag",
+      "category": "totes-carryalls",
+      "listedType": "Tote",
+      "priceINR": 2500,
+      "description": "With its spacious interior and sturdy construction, our Tote Bag offers practicality without compromising on style. The wide straps ensure comfort during extended use, and the open-top design allows for easy access to your belongings. Carry it by hand or sling it over your shoulder",
+      "images": [
+        "https://cdn.store.link/products/basava/e-gt2v-btt601br04_1.jpg?versionId=ZOpUfdY5hKthzkoFOfDTl0HrwHqh0Rtn",
+        "https://cdn.store.link/products/basava/-c8stq-btt601br04_2.jpg?versionId=Huf1x7o.5PPISVOtxmK_aHej.LFT43Rd",
+        "https://cdn.store.link/products/basava/2zt54r-btt601br04_3.jpg?versionId=KPHA8YHkRgByzYlYFloEEjPxqZoYKICl",
+        "https://cdn.store.link/products/basava/6mbxwr-btt601br04_4.jpg?versionId=DROTPafkXTZHjiE2ja0pcDfRV.wjfkHh",
+        "https://cdn.store.link/products/basava/c6yjfx-btt601br04_5.jpg?versionId=ovAsfBKTHL_8hKQ1Mdcy3tifbmtacDcK"
+      ],
+      "colours": [
+        "Brown"
+      ],
+      "material": "Genuine Leather",
+      "leatherGrade": null,
+      "stock": {
+        "quantity": 1,
+        "status": "in_stock"
+      },
+      "dimensions": {
+        "length": 13,
+        "width": 9,
+        "depth": 4,
+        "unit": null,
+        "asListed": "L-13, W-9, B-4"
+      },
+      "careInstructions": "Wipe with a clean, dry cloth when needed",
+      "deliveryTime": "7-10 days",
+      "featured": false,
+      "customisable": null,
+      "visible": true,
+      "source": {
+        "origin": "basava.store.link",
+        "listedBrand": "basava",
+        "variantCount": 1
+      }
+    },
+    {
+      "id": "kd-009",
+      "sku": "BTT601GY01",
+      "name": "Textured Chic and Spacious Genuine Leather Grey Tote",
+      "slug": "textured-chic-and-spacious-genuine-leather-grey-tote",
+      "category": "totes-carryalls",
+      "listedType": "Tote",
+      "priceINR": 4000,
+      "description": "The spacious main compartment of the Tote Bag offers ample room for your belongings, making it ideal for carrying essentials, books, a laptop, or even groceries. The interior features additional pockets and organizers, allowing you to keep your items well-arranged and easily accessible. A zippered closure keeps your belongings secure while providing peace of mind on the go.",
+      "images": [
+        "https://cdn.store.link/products/basava/f2c7uy-btt601gy01_1.jpg?versionId=vsM1NgTXdZD8j2q4xYRqirZPhedp1fkD",
+        "https://cdn.store.link/products/basava/vkherv-btt601gy01_2.jpg?versionId=XnFTZ0AHjpA.4zPH2QzhpfC0FA_uqxCI",
+        "https://cdn.store.link/products/basava/xoxxgc-btt601gy01_3.jpg?versionId=mRF5Bk54dsqAwIBc7DpLVnwSBN8fw6vY",
+        "https://cdn.store.link/products/basava/vu8-mg-btt601gy01_4.jpg?versionId=78oK2XLySqDTOlbg1o0xPuB.bZqI15UN",
+        "https://cdn.store.link/products/basava/ltbah3-btt601gy01_5.jpg?versionId=OwFMf8nHxauovvTjTiwoAhVhUmKLFRlY"
+      ],
+      "colours": [
+        "Grey"
+      ],
+      "material": "Genuine Leather",
+      "leatherGrade": null,
+      "stock": {
+        "quantity": 1,
+        "status": "in_stock"
+      },
+      "dimensions": {
+        "length": 9,
+        "width": 9.5,
+        "depth": 10,
+        "unit": null,
+        "asListed": "L-9, W-9.5, B-10"
+      },
+      "careInstructions": "Wipe with a clean, dry cloth when needed",
+      "deliveryTime": "7-10 days",
+      "featured": false,
+      "customisable": null,
+      "visible": true,
+      "source": {
+        "origin": "basava.store.link",
+        "listedBrand": "basava",
+        "variantCount": 1
+      }
+    },
+    {
+      "id": "kd-010",
+      "sku": "BSL601BR01",
+      "name": "Textured Leather Chic Genuine Brown Sling Bag",
+      "slug": "textured-leather-chic-genuine-brown-sling-bag",
+      "category": "sling-bags",
+      "listedType": "Sling-Bag",
+      "priceINR": 2000,
+      "description": "Crafted from high-quality Leather, our Sling Bag is built to withstand the rigors of daily use. Its compact yet spacious design offers ample storage space for all your essentials, making it ideal for commuting, traveling, or simply running errands.",
+      "images": [
+        "https://cdn.store.link/products/basava/x3xvpo-bsl601br01_1.jpg?versionId=xmBhR0VKuaiuOEFaCcjkCDiU0J9brphg",
+        "https://cdn.store.link/products/basava/s9ryle-bsl601br01_2.jpg?versionId=NjM20APIrkTgVbKUFzQvHovSGTKFU.Ni",
+        "https://cdn.store.link/products/basava/k3umv4-bsl601br01_3.jpg?versionId=B5.2OwxT6hAWp.PjAXES.wQULNIE3NLs",
+        "https://cdn.store.link/products/basava/nx8or--bsl601br01_4.jpg?versionId=j4F0DkmRCnzOQHoZAh.LrXDNqLh0U7Fz",
+        "https://cdn.store.link/products/basava/7ysklz-bsl601br01_5.jpg?versionId=rGtRjbsy2zfaKJZMSMoQmTM69EqAlLKs"
+      ],
+      "colours": [
+        "Brown"
+      ],
+      "material": "Genuine Leather",
+      "leatherGrade": null,
+      "stock": {
+        "quantity": 1,
+        "status": "in_stock"
+      },
+      "dimensions": {
+        "length": 7.5,
+        "width": 8,
+        "depth": 2,
+        "unit": null,
+        "asListed": "L-7.5, W-8, B-2"
+      },
+      "careInstructions": "Wipe with a clean, dry cloth when needed",
+      "deliveryTime": "7-10 days",
+      "featured": false,
+      "customisable": null,
+      "visible": true,
+      "source": {
+        "origin": "basava.store.link",
+        "listedBrand": "basava",
+        "variantCount": 1
+      }
+    },
+    {
+      "id": "kd-011",
+      "sku": "BSL601SA01",
+      "name": "Textured Urban Explorer Genuine Leather Sand Sling Bag",
+      "slug": "textured-urban-explorer-genuine-leather-sand-sling-bag",
+      "category": "sling-bags",
+      "listedType": "Sling-Bag",
+      "priceINR": 2500,
+      "description": "Crafted from high-quality Leather, our Sling Bag is built to withstand the rigors of daily use. Its compact yet spacious design offers ample storage space for all your essentials, making it ideal for commuting, traveling, or simply running errands.",
+      "images": [
+        "https://cdn.store.link/products/basava/qhao3f-bsl601sa01_1.jpg?versionId=YXeamh4LyMnUcuJizXCBbVTP5mXNXZx3",
+        "https://cdn.store.link/products/basava/mnya50-bsl601sa01_2.jpg?versionId=RNP.kfoDCebfDUGTENtFEsFf2nZdesRy",
+        "https://cdn.store.link/products/basava/2hjkkv-bsl601sa01_3.jpg?versionId=HFQvLwzFiotQHdj8Bzd30u_KhCG6ncfd",
+        "https://cdn.store.link/products/basava/lozc7t-bsl601sa01_4.jpg?versionId=aEq6XPqhFlbvKGidbGuoPyUvARDd8jMY",
+        "https://cdn.store.link/products/basava/z67do3-bsl601sa01_5.jpg?versionId=UJ47VeWK3WXYUucXQXviwa4Pt6rOw9sF"
+      ],
+      "colours": [
+        "Sand"
+      ],
+      "material": "Genuine Leather",
+      "leatherGrade": null,
+      "stock": {
+        "quantity": 1,
+        "status": "in_stock"
+      },
+      "dimensions": {
+        "length": 9,
+        "width": 5,
+        "depth": 2.5,
+        "unit": null,
+        "asListed": "L-9, W-5, B-2.5"
+      },
+      "careInstructions": "Wipe with a clean, dry cloth when needed",
+      "deliveryTime": "7-10 days",
+      "featured": true,
+      "customisable": null,
+      "visible": true,
+      "source": {
+        "origin": "basava.store.link",
+        "listedBrand": "basava",
+        "variantCount": 1
+      }
+    },
+    {
+      "id": "kd-012",
+      "sku": "BSH601GR02",
+      "name": "Textured Stylish Canvas and Leather Green Shoulder Messenger Bag",
+      "slug": "textured-stylish-canvas-and-leather-green-shoulder-messenger-bag",
+      "category": "shoulder-messenger-bags",
+      "listedType": "Shoulder-Bag",
+      "priceINR": 2500,
+      "description": "Designed with versatility in mind, our Envelope Bag features a detachable strap that allows you to wear it as a clutch, shoulder bag, or crossbody bag. Adjust the strap to your preferred length for a comfortable and customized fit, making it suitable for various situations and outfits.",
+      "images": [
+        "https://cdn.store.link/products/basava/g505-6-bsh601gr02_1.jpg?versionId=e9jUqWVlUGuwumS9cB3qsnAk2xbzSFLT",
+        "https://cdn.store.link/products/basava/st9iah-bsh601gr02_2.jpg?versionId=BqoBxq7bFHCBsMOgyJ5oYLD9ZTUNkvZk",
+        "https://cdn.store.link/products/basava/se00xr-bsh601gr02_3.jpg?versionId=bgc1yuWWKTFR8X0tzuA3oxti5lLzMqj2",
+        "https://cdn.store.link/products/basava/nn4yeg-bsh601gr02_4.jpg?versionId=.X6SMG3fNQzt5GoguP6vLQjgAtl7xwel",
+        "https://cdn.store.link/products/basava/vf7t2j-bsh601gr02_5.jpg?versionId=vsUPqx_jUnX22nxRDABo3vQRymNyHmlT"
+      ],
+      "colours": [
+        "Green"
+      ],
+      "material": "Canvas and Leather",
+      "leatherGrade": null,
+      "stock": {
+        "quantity": 1,
+        "status": "in_stock"
+      },
+      "dimensions": {
+        "length": 12.5,
+        "width": 9,
+        "depth": 6.5,
+        "unit": null,
+        "asListed": "L-12.5, W-9, D-6.5"
+      },
+      "careInstructions": null,
+      "deliveryTime": "7-10 days",
+      "featured": false,
+      "customisable": null,
+      "visible": true,
+      "source": {
+        "origin": "basava.store.link",
+        "listedBrand": "basava",
+        "variantCount": 1
+      }
+    },
+    {
+      "id": "kd-013",
+      "sku": "BEN601PK04",
+      "name": "Textured Ethereal Whispers Genuine Leather Pink Envelope Bag",
+      "slug": "textured-ethereal-whispers-genuine-leather-pink-envelope-bag",
+      "category": "envelope-bags",
+      "listedType": "Envelope",
+      "priceINR": 1200,
+      "description": "Embrace the enchanting whispers of style with our Ethereal Whispers Envelope Bag. Its dreamy design and delicate details make it a captivating accessory for romantic evenings",
+      "images": [
+        "https://cdn.store.link/products/basava/0kp1io-ben601pk04_1.jpg?versionId=ZRqAqf.dhYcTMZnHw_KqCHba6AEzLqVV",
+        "https://cdn.store.link/products/basava/1bksj7-ben601pk04_2.jpg?versionId=Brha1FKbfb6OMtsvq92gclSN6pLgVKwf",
+        "https://cdn.store.link/products/basava/isqgka-ben601pk04_3.jpg?versionId=GhuKraqWpQVMsvkdiBtsiQjK4yaOgvrD",
+        "https://cdn.store.link/products/basava/3kqfha-ben601pk04_4.jpg?versionId=c9NDUTz.9YCHq0AsYr2MGKyeL9_WuoQb"
+      ],
+      "colours": [
+        "Pink"
+      ],
+      "material": "Genuine Leather",
+      "leatherGrade": null,
+      "stock": {
+        "quantity": 1,
+        "status": "in_stock"
+      },
+      "dimensions": {
+        "length": 5.5,
+        "width": 10,
+        "depth": null,
+        "unit": null,
+        "asListed": "L-5.5, W-10"
+      },
+      "careInstructions": null,
+      "deliveryTime": "7-10 days",
+      "featured": false,
+      "customisable": null,
+      "visible": true,
+      "source": {
+        "origin": "basava.store.link",
+        "listedBrand": "basava",
+        "variantCount": 1
+      }
+    },
+    {
+      "id": "kd-014",
+      "sku": "BEN601PK03",
+      "name": "Textured Pearlescent Dreams Genuine Leather Pink Envelope Bag",
+      "slug": "textured-pearlescent-dreams-genuine-leather-pink-envelope-bag",
+      "category": "envelope-bags",
+      "listedType": "Envelope",
+      "priceINR": 1200,
+      "description": "Be the epitome of modern style with our Modern Muse Envelope Bag. Its contemporary design and minimalist charm create an understated yet striking impression",
+      "images": [
+        "https://cdn.store.link/products/basava/hb6p16-ben601pk03_1.jpg?versionId=Of4IOuqrNsjlxTdygMAYnOa9mloLYWxe",
+        "https://cdn.store.link/products/basava/2wniak-ben601pk03_2.jpg?versionId=cRZbRZ5kBiJkGo7mCEtGeNBtFPzlTgtU",
+        "https://cdn.store.link/products/basava/ep23tp-ben601pk03_3.jpg?versionId=C9H0fk4a2LoGHrkWmZtI6q3XRUfpBei9",
+        "https://cdn.store.link/products/basava/44g62v-ben601pk03_4.jpg?versionId=pmVL9zrxhAuY2UlqiIPMDq_61mRIBYym"
+      ],
+      "colours": [
+        "Pink"
+      ],
+      "material": "Genuine Leather",
+      "leatherGrade": null,
+      "stock": {
+        "quantity": 1,
+        "status": "in_stock"
+      },
+      "dimensions": {
+        "length": 5.5,
+        "width": 10,
+        "depth": null,
+        "unit": null,
+        "asListed": "L-5.5, W-10"
+      },
+      "careInstructions": null,
+      "deliveryTime": "7-10 days",
+      "featured": false,
+      "customisable": null,
+      "visible": true,
+      "source": {
+        "origin": "basava.store.link",
+        "listedBrand": "basava",
+        "variantCount": 1
+      }
+    },
+    {
+      "id": "kd-015",
+      "sku": "BEN601GD03",
+      "name": "Textured Modern Simplicity Genuine Leather Gold Envelope Bag",
+      "slug": "textured-modern-simplicity-genuine-leather-gold-envelope-bag",
+      "category": "envelope-bags",
+      "listedType": "Envelope",
+      "priceINR": 1200,
+      "description": "Embrace modern simplicity with our chic Envelope Bag. Its clean lines and minimalist charm make it a versatile accessory for both casual and formal occasions",
+      "images": [
+        "https://cdn.store.link/products/basava/fo0u6j-ben601gd03_1.jpg?versionId=5HgVmHanjoCbG7aVCvTNqk6ZDaLFviZ8",
+        "https://cdn.store.link/products/basava/iuihnu-ben601gd03_2.jpg?versionId=nXQLykDEMS3EohuOrPnOEnf8_bzRpy8Y",
+        "https://cdn.store.link/products/basava/un905p-ben601gd03_3.jpg?versionId=UY.6cZt4ppHNescr49YW1xCWFz1o.Knq",
+        "https://cdn.store.link/products/basava/un905p-ben601gd03_3.jpg?versionId=UY.6cZt4ppHNescr49YW1xCWFz1o.Knq"
+      ],
+      "colours": [
+        "Gold"
+      ],
+      "material": "Genuine Leather",
+      "leatherGrade": null,
+      "stock": {
+        "quantity": 1,
+        "status": "in_stock"
+      },
+      "dimensions": {
+        "length": 5.5,
+        "width": 10,
+        "depth": null,
+        "unit": null,
+        "asListed": "L-5.5,, W-10"
+      },
+      "careInstructions": null,
+      "deliveryTime": "7-10 days",
+      "featured": false,
+      "customisable": null,
+      "visible": true,
+      "source": {
+        "origin": "basava.store.link",
+        "listedBrand": "basava",
+        "variantCount": 1
+      }
+    },
+    {
+      "id": "kd-016",
+      "sku": "BEN601BG01",
+      "name": "Textured Vintage Elegance Genuine Leather Beige Envelope Bag",
+      "slug": "textured-vintage-elegance-genuine-leather-beige-envelope-bag",
+      "category": "envelope-bags",
+      "listedType": "Envelope",
+      "priceINR": 1200,
+      "description": "Step back in time with our Vintage Elegance Envelope Bag. Its retro-inspired design and timeless beauty evoke the elegance of bygone eras",
+      "images": [
+        "https://cdn.store.link/products/basava/re48vr-ben601bg01_1.jpg?versionId=sRNyjB5gWTZLsesdTURVBkpgdg6NfV8R",
+        "https://cdn.store.link/products/basava/u5d24b-ben601bg01_2.jpg?versionId=CQ5AJSqqizCeZK39AW3bW078Iqv2NEOL",
+        "https://cdn.store.link/products/basava/9ri0e--ben601bg01_3.jpg?versionId=LM6avEHeSq6w9LTJhTVhVIIFowplATJp",
+        "https://cdn.store.link/products/basava/4kfxog-ben601bg01_4.jpg?versionId=lhYefT64NGiCPSmzpiDYgNOlLW8ZLguI"
+      ],
+      "colours": [
+        "Gold"
+      ],
+      "material": "Genuine Leather",
+      "leatherGrade": null,
+      "stock": {
+        "quantity": 1,
+        "status": "in_stock"
+      },
+      "dimensions": {
+        "length": 5.5,
+        "width": 9.5,
+        "depth": null,
+        "unit": null,
+        "asListed": "L-5.5,, W-9.5"
+      },
+      "careInstructions": null,
+      "deliveryTime": "7-10 days",
+      "featured": false,
+      "customisable": null,
+      "visible": true,
+      "source": {
+        "origin": "basava.store.link",
+        "listedBrand": "basava",
+        "variantCount": 1
+      }
+    },
+    {
+      "id": "kd-017",
+      "sku": "BEN601BR01",
+      "name": "Textured Rustic Romance Genuine Leather Brown Envelope Bag",
+      "slug": "textured-rustic-romance-genuine-leather-brown-envelope-bag",
+      "category": "envelope-bags",
+      "listedType": "Envelope",
+      "priceINR": 1200,
+      "description": "Fall in love with the rustic romance of our Envelope Bag. Its earthy tones and artisanal design bring a touch of charm and elegance to your look",
+      "images": [
+        "https://cdn.store.link/products/basava/l136dn-ben601br01_1.jpg?versionId=OQZ9q5re9grY7OKgzhRhULq3VbNgPBI3",
+        "https://cdn.store.link/products/basava/clh71k-ben601br01_2.jpg?versionId=Kdjb2UGC8p.lH8vkVC5BJUKWrykV_WHp",
+        "https://cdn.store.link/products/basava/1qov7d-ben601br01_3.jpg?versionId=fdED6tEJtBCSGFy2hchtoyYS6rBhlu0V",
+        "https://cdn.store.link/products/basava/h5emev-ben601br01_4.jpg?versionId=eI3LpP7wWT6yLp3lh.hkPncZtPlnsP7H"
+      ],
+      "colours": [
+        "Brown"
+      ],
+      "material": "Genuine Leather",
+      "leatherGrade": null,
+      "stock": {
+        "quantity": 1,
+        "status": "in_stock"
+      },
+      "dimensions": {
+        "length": 5.5,
+        "width": 9.5,
+        "depth": null,
+        "unit": null,
+        "asListed": "L-5.5,, W-9.5"
+      },
+      "careInstructions": null,
+      "deliveryTime": "7-10 days",
+      "featured": false,
+      "customisable": null,
+      "visible": true,
+      "source": {
+        "origin": "basava.store.link",
+        "listedBrand": "basava",
+        "variantCount": 1
+      }
+    },
+    {
+      "id": "kd-018",
+      "sku": "BWR601BK01",
+      "name": "Textured Chic and Compact Genuine Leather Black Wristlet Purse",
+      "slug": "textured-chic-and-compact-genuine-leather-black-wristlet-purse",
+      "category": "wristlets-wallets",
+      "listedType": "Wrislet",
+      "priceINR": 1000,
+      "description": "The chic and compact yet functional design of the Wristlet Bag allows you to carry your essentials in style. It features a spacious main compartment that can accommodate your phone, keys, cards, and other small belongings. while the zippered closure keeps your items secure.",
+      "images": [
+        "https://cdn.store.link/products/basava/0u7z30-bwr601bk01_1.jpg?versionId=N2TZcvddJlpM904gcxD1dxj0x0jWYjUB",
+        "https://cdn.store.link/products/basava/gzuf37-bwr601bk01_2.jpg?versionId=R.ybWxBaFSAv_tHqyNdmI8OfNnJLck1m",
+        "https://cdn.store.link/products/basava/ki6otg-bwr601bk01_3.jpg?versionId=57.T7RTp3GnsJsFZcW1Owzh09g3PVMQA",
+        "https://cdn.store.link/products/basava/etsgs1-bwr601bk01_4.jpg?versionId=ag.SV2EyxjALvyr2_sgV0T7LDHA7Iy6t"
+      ],
+      "colours": [
+        "Black"
+      ],
+      "material": "Genuine Leather",
+      "leatherGrade": null,
+      "stock": {
+        "quantity": 2,
+        "status": "in_stock"
+      },
+      "dimensions": {
+        "length": 6,
+        "width": 8.5,
+        "depth": null,
+        "unit": null,
+        "asListed": "L-6,W-8.5"
+      },
+      "careInstructions": null,
+      "deliveryTime": "7-10 days",
+      "featured": false,
+      "customisable": null,
+      "visible": true,
+      "source": {
+        "origin": "basava.store.link",
+        "listedBrand": "basava",
+        "variantCount": 1
+      }
+    },
+    {
+      "id": "kd-019",
+      "sku": "BWR601BR01",
+      "name": "Texured Effortlessly Cool Genuine Leather Brown Wrislet Purse",
+      "slug": "texured-effortlessly-cool-genuine-leather-brown-wrislet-purse",
+      "category": "wristlets-wallets",
+      "listedType": "Wrislet",
+      "priceINR": 1500,
+      "description": "The compact yet functional design of the Wristlet Bag allows you to carry your essentials in style. It features a spacious main compartment that can accommodate your phone, keys, cards, and other small belongings. The interior pockets help you stay organized, while the zippered closure keeps your items secure.",
+      "images": [
+        "https://cdn.store.link/products/basava/tv6syj-bwr601br01_1.jpg?versionId=p0o.HbDa5nXu_mzUlXsmbtcsXB_T4lel",
+        "https://cdn.store.link/products/basava/fngz2a-bwr601br01_2.jpg?versionId=.2.lPoHRP_sFz3z2dE9a0bIaLM_uJRWG",
+        "https://cdn.store.link/products/basava/mlnbqe-bwr601br01_3.jpg?versionId=Nx6hy4Wn_jp_Ar_4n8otxIg3pekfcUAJ",
+        "https://cdn.store.link/products/basava/msnj5o-bwr601br01_4.jpg?versionId=hQOSH_hCqh2lai.mZs0bcc1K91lrwUOj",
+        "https://cdn.store.link/products/basava/h3u558-bwr601br01_5.jpg?versionId=Ln0SgCzzI1mcWxQT.FGNSEevY0fMjC6i"
+      ],
+      "colours": [
+        "Brown"
+      ],
+      "material": "Genuine Leather",
+      "leatherGrade": null,
+      "stock": {
+        "quantity": 1,
+        "status": "in_stock"
+      },
+      "dimensions": {
+        "length": 4.5,
+        "width": 8,
+        "depth": null,
+        "unit": null,
+        "asListed": "L-4.5,W-8"
+      },
+      "careInstructions": null,
+      "deliveryTime": "7-10 days",
+      "featured": false,
+      "customisable": null,
+      "visible": true,
+      "source": {
+        "origin": "basava.store.link",
+        "listedBrand": "basava",
+        "variantCount": 1
+      }
+    },
+    {
+      "id": "kd-020",
+      "sku": "BWR601BR02",
+      "name": "Textured Versatile Genuine Leather Brown Wristlet Wallet",
+      "slug": "textured-versatile-genuine-leather-brown-wristlet-wallet",
+      "category": "wristlets-wallets",
+      "listedType": "Wrislet",
+      "priceINR": 1500,
+      "description": "The detachable wristlet strap provides versatility, allowing you to wear the bag comfortably on your wrist or carry it as a clutch. This hands-free convenience makes it perfect for a night out or when you need to keep your hands free while running errands. The interior pockets help you stay organized, while the zippered closure keeps your items secure.",
+      "images": [
+        "https://cdn.store.link/products/basava/n0-3pq-bwr601br02_1.jpg?versionId=75A515mXL1R7qQbKNN.ARWxFw0GAtFsS",
+        "https://cdn.store.link/products/basava/d14whx-bwr601br02_2.jpg?versionId=3m4tw.23bxH1V.5TSTUO1rPPFqVGgbnK",
+        "https://cdn.store.link/products/basava/5neel3-bwr601br02_3.jpg?versionId=ocrj.U6Mb6qRp2i7J_GKjp4pmgQfFPhI",
+        "https://cdn.store.link/products/basava/c3w-ta-bwr601br02_4.jpg?versionId=VGAmBH_RjtqqdMBhhiYVTPAGBDv1pd0y"
+      ],
+      "colours": [
+        "Brown"
+      ],
+      "material": "Genuine Leather",
+      "leatherGrade": null,
+      "stock": {
+        "quantity": 1,
+        "status": "in_stock"
+      },
+      "dimensions": {
+        "length": 4.5,
+        "width": 8.5,
+        "depth": null,
+        "unit": null,
+        "asListed": "L-4.5,W-8.5"
+      },
+      "careInstructions": null,
+      "deliveryTime": "7-10 days",
+      "featured": true,
+      "customisable": null,
+      "visible": true,
+      "source": {
+        "origin": "basava.store.link",
+        "listedBrand": "basava",
+        "variantCount": 1
+      }
+    },
+    {
+      "id": "kd-021",
+      "sku": "BWR601BR03",
+      "name": "Textured, Functional and Fashionable Genuine Leather Brown Wristlet Companion",
+      "slug": "textured-functional-and-fashionable-genuine-leather-brown-wristlet-companion",
+      "category": "wristlets-wallets",
+      "listedType": "Wrislet",
+      "priceINR": 1500,
+      "description": "The detachable wristlet strap provides versatility, allowing you to wear the bag comfortably on your wrist or carry it as a clutch. This hands-free convenience makes it perfect for a night out or when you need to keep your hands free while running errands. The interior pockets help you stay organized, while the zippered closure keeps your items secure.",
+      "images": [
+        "https://cdn.store.link/products/basava/-250r3-bwr601br03_1.jpg?versionId=HA3gJQSGNXhDJe9.9Q64fF0wHBCxLjfW",
+        "https://cdn.store.link/products/basava/gi4o-n-bwr601br03_2.jpg?versionId=cPfErhXQDa4JJiRjONC5bzSdj29mNoOP",
+        "https://cdn.store.link/products/basava/uv781v-bwr601br03_3.jpg?versionId=aZgO4Xmi6Suhp5FO7dmGYdAIagpvWZvm",
+        "https://cdn.store.link/products/basava/g1oua1-bwr601br03_4.jpg?versionId=jj57pXXp9Cu471rlLNAwO5MmvUYlKQ4x"
+      ],
+      "colours": [
+        "Brown"
+      ],
+      "material": "Genuine Leather",
+      "leatherGrade": null,
+      "stock": {
+        "quantity": 1,
+        "status": "in_stock"
+      },
+      "dimensions": {
+        "length": 4.5,
+        "width": 8,
+        "depth": null,
+        "unit": null,
+        "asListed": "L-4.5,W-8"
+      },
+      "careInstructions": null,
+      "deliveryTime": "7-10 days",
+      "featured": false,
+      "customisable": null,
+      "visible": true,
+      "source": {
+        "origin": "basava.store.link",
+        "listedBrand": "basava",
+        "variantCount": 1
+      }
+    },
+    {
+      "id": "kd-022",
+      "sku": "BWR601BK05",
+      "name": "Textured Urban Genuine Leather Black Wrislet",
+      "slug": "textured-urban-genuine-leather-black-wrislet",
+      "category": "wristlets-wallets",
+      "listedType": "Wrislet",
+      "priceINR": 1500,
+      "description": "Designed for versatility, our Wristlet Bag effortlessly complements various outfits and occasions. Whether you're attending a formal event, going for a casual outing, or just need a compact bag for everyday use, this bag is the perfect choice.",
+      "images": [
+        "https://cdn.store.link/products/basava/9mgjdg-bwr601bk05_1.jpg?versionId=iVhcVsRrbPaQxDimOXZikfncQpSzsqYL",
+        "https://cdn.store.link/products/basava/ghig0g-bwr601bk05_2.jpg?versionId=MD2VuuJujPnaTPmQ.yQp03bn_obNF_uv",
+        "https://cdn.store.link/products/basava/cp7d0e-bwr601bk05_3.jpg?versionId=I7gmFKNR.ApqLL939TjDGRVEqlBP6_EI",
+        "https://cdn.store.link/products/basava/lfk8uy-bwr601bk05_4.jpg?versionId=UGlSsf9hkNTGlyOmDg6Fw2vc9divdGwm",
+        "https://cdn.store.link/products/basava/u7eteq-bwr601bk05_5.jpg?versionId=Aeygg9YNdeU.zaU7SlhKTWOWwZHzEbJF"
+      ],
+      "colours": [
+        "Black"
+      ],
+      "material": "Genuine Leather",
+      "leatherGrade": null,
+      "stock": {
+        "quantity": 1,
+        "status": "in_stock"
+      },
+      "dimensions": {
+        "length": 4.5,
+        "width": 8,
+        "depth": null,
+        "unit": null,
+        "asListed": "L-4.5,W-8"
+      },
+      "careInstructions": null,
+      "deliveryTime": "7-10 days",
+      "featured": false,
+      "customisable": null,
+      "visible": true,
+      "source": {
+        "origin": "basava.store.link",
+        "listedBrand": "basava",
+        "variantCount": 1
+      }
+    },
+    {
+      "id": "kd-023",
+      "sku": "BWR601BK07",
+      "name": "Textured Trendy Genuine Leather Metallic Black Wristlet",
+      "slug": "textured-trendy-genuine-leather-metallic-black-wristlet",
+      "category": "wristlets-wallets",
+      "listedType": "Wrislet",
+      "priceINR": 1500,
+      "description": "The detachable wristlet strap provides versatility, allowing you to wear the bag comfortably on your wrist or carry it as a clutch. This hands-free convenience makes it perfect for a night out or when you need to keep your hands free while running errands. The interior pockets help you stay organized, while the zippered closure keeps your items secure.",
+      "images": [
+        "https://cdn.store.link/products/basava/njz3yw-bwr601bk07_1.jpg?versionId=TsKtk2mMbJhtRvogrosxo.DW334zV.VB",
+        "https://cdn.store.link/products/basava/1flb6f-bwr601bk07_2.jpg?versionId=8E7EbbjfWa7P1.NCOH73Zy8H.6SSv2eI",
+        "https://cdn.store.link/products/basava/g4cpit-bwr601bk07_3.jpg?versionId=6oJeHMh5gRtyoRvkaiZW_ZuZxcEfTyFi",
+        "https://cdn.store.link/products/basava/jwn-0b-bwr601bk07_4.jpg?versionId=3jTpuvlqGeE9U4V_S6Xqav8YmX3WrG7u",
+        "https://cdn.store.link/products/basava/r8q8jx-bwr601bk07_5.jpg?versionId=6ew.HjJrB4ie8FCP8vKlfJSom1N5Giuc"
+      ],
+      "colours": [
+        "Metallic Black"
+      ],
+      "material": "Genuine Leather",
+      "leatherGrade": null,
+      "stock": {
+        "quantity": 1,
+        "status": "in_stock"
+      },
+      "dimensions": {
+        "length": 4.5,
+        "width": 8,
+        "depth": null,
+        "unit": null,
+        "asListed": "L-4.5,W-8"
+      },
+      "careInstructions": null,
+      "deliveryTime": "7-10 days",
+      "featured": false,
+      "customisable": null,
+      "visible": true,
+      "source": {
+        "origin": "basava.store.link",
+        "listedBrand": "basava",
+        "variantCount": 1
+      }
+    },
+    {
+      "id": "kd-024",
+      "sku": "BWR601BK08",
+      "name": "Textured Functional and Fashionable Genuine Leather Metallic Black Wristlet Companion",
+      "slug": "textured-functional-and-fashionable-genuine-leather-metallic-black-wristlet-companion",
+      "category": "wristlets-wallets",
+      "listedType": "Wrislet",
+      "priceINR": 1500,
+      "description": "Choose our Wristlet Bag and experience the perfect blend of style and functionality. Stay organized, embrace the convenience of a bag that effortlessly carries your essentials, and elevate your fashion game with this essential accessory that captures the essence of modern versatility.",
+      "images": [
+        "https://cdn.store.link/products/basava/4f8zlm-bwr601bk08_1.jpg?versionId=JeSqGD7LxivKAIICZdXz5dQf5lA_4uCW",
+        "https://cdn.store.link/products/basava/wckuwu-bwr601bk08_2.jpg?versionId=FYOrR7gm3tfxTI3q4ZbHMoYvcqX.7nqP",
+        "https://cdn.store.link/products/basava/a1vdoo-bwr601bk08_3.jpg?versionId=ZbYrn7JCo1Lel9vtEHZXYcd2OyEB6bm_",
+        "https://cdn.store.link/products/basava/-r0k92-bwr601bk08_4.jpg?versionId=QE3QUtaA7Uv56WelwsagGN1SUaSihfcP"
+      ],
+      "colours": [
+        "Metallic Black"
+      ],
+      "material": "Genuine Leather",
+      "leatherGrade": null,
+      "stock": {
+        "quantity": 1,
+        "status": "in_stock"
+      },
+      "dimensions": {
+        "length": 4.5,
+        "width": 8,
+        "depth": null,
+        "unit": null,
+        "asListed": "L-4.5,W-8"
+      },
+      "careInstructions": null,
+      "deliveryTime": "7-10 days",
+      "featured": false,
+      "customisable": null,
+      "visible": true,
+      "source": {
+        "origin": "basava.store.link",
+        "listedBrand": "basava",
+        "variantCount": 1
+      }
+    },
+    {
+      "id": "kd-025",
+      "sku": "BSL601BK02",
+      "name": "Textured Chic Genuine Leather Metallic Black Sling Bag",
+      "slug": "textured-chic-genuine-leather-metallic-black-sling-bag",
+      "category": "sling-bags",
+      "listedType": "Sling Bag",
+      "priceINR": 1000,
+      "description": "With its sleek and minimalist design, our Sling Bag seamlessly blends into any outfit or environment. It's available in a range of stylish color to suit your personal taste and complements both casual and professional attire.",
+      "images": [
+        "https://cdn.store.link/products/basava/4dze60-bsl601bk02_1.jpg?versionId=Xs.T.p8T8MXuokU6xbKyfzN7sanjMo4Z",
+        "https://cdn.store.link/products/basava/0s-jbh-bsl601bk02_2.jpg?versionId=qTJyA2hsQeuDrVfugjUOebEeu_PyGg9P",
+        "https://cdn.store.link/products/basava/-oez2i-bsl601bk02_3.jpg?versionId=bJ7my0PIcPmzT8Q.iJ._.4uMm.JJFBZH",
+        "https://cdn.store.link/products/basava/inif99-bsl601bk02_4.jpg?versionId=aqdYyY25n5GwmrCcl3DX4OQ98fGLDyXG"
+      ],
+      "colours": [
+        "Metallic Black"
+      ],
+      "material": "Genuine Leather",
+      "leatherGrade": null,
+      "stock": {
+        "quantity": 0,
+        "status": "out_of_stock"
+      },
+      "dimensions": {
+        "length": 8,
+        "width": 7,
+        "depth": 1.5,
+        "unit": null,
+        "asListed": "L-8, W-7,D-1.5"
+      },
+      "careInstructions": null,
+      "deliveryTime": "7-10 days",
+      "featured": false,
+      "customisable": null,
+      "visible": true,
+      "source": {
+        "origin": "basava.store.link",
+        "listedBrand": "basava",
+        "variantCount": 1
+      }
+    },
+    {
+      "id": "kd-026",
+      "sku": "BSL601BK03",
+      "name": "Solid Fashionable Genuine Leather Black Shoulder Sling Bag",
+      "slug": "solid-fashionable-genuine-leather-black-shoulder-sling-bag",
+      "category": "sling-bags",
+      "listedType": "Sling Bag",
+      "priceINR": 1500,
+      "description": "The ergonomic and adjustable shoulder strap allows you to customize the fit of the bag, ensuring maximum comfort throughout the day. Whether you prefer to wear it across your chest or over your shoulder, the Sling Bag can be effortlessly adjusted to suit your preferred carrying style.",
+      "images": [
+        "https://cdn.store.link/products/basava/3icu80-bsl601bk03_1.jpg?versionId=s9tk8Dp7GxWXkKFDmVfPaL0k5r896ykM",
+        "https://cdn.store.link/products/basava/j34qm5-bsl601bk03_2.jpg?versionId=MyXtZ8XO0HW5NLnk9ujgDyue._Q1AUlZ",
+        "https://cdn.store.link/products/basava/a2h3jo-bsl601bk03_3.jpg?versionId=HR0Z7KGc6QqfPlFPkdAuAqHxQoNWr8DT",
+        "https://cdn.store.link/products/basava/cvrnsi-bsl601bk03_4.jpg?versionId=knQ3wgc9NvvXobPNMs1FyOtWBbFshe85"
+      ],
+      "colours": [
+        "Black"
+      ],
+      "material": "Genuine Leather",
+      "leatherGrade": null,
+      "stock": {
+        "quantity": 1,
+        "status": "in_stock"
+      },
+      "dimensions": {
+        "length": 7.5,
+        "width": 6.5,
+        "depth": 2,
+        "unit": null,
+        "asListed": "L-7.5,W-6.5,D-2"
+      },
+      "careInstructions": null,
+      "deliveryTime": "7-10 days",
+      "featured": false,
+      "customisable": null,
+      "visible": true,
+      "source": {
+        "origin": "basava.store.link",
+        "listedBrand": "basava",
+        "variantCount": 1
+      }
+    },
+    {
+      "id": "kd-027",
+      "sku": "BCB601BK03",
+      "name": "Functional and Fashionable Genuine Leather Black Crossbody Companion",
+      "slug": "functional-and-fashionable-genuine-leather-black-crossbody-companion",
+      "category": "crossbody-bags",
+      "listedType": "Cross-Body",
+      "priceINR": 3500,
+      "description": "The compact yet spacious main compartment of the Crossbody Bag offers ample room for your essentials. Whether you're carrying your wallet, phone, keys, or even a small tablet, this bag can accommodate it all. Additional pockets and compartments help keep your belongings organized and easily accessible.",
+      "images": [
+        "https://cdn.store.link/products/basava/6hncqq-bcb601bk03_1%20%281%29.jpg?versionId=M6g11D1jloZa1Uai_BZQF2q_XvK2rgKQ",
+        "https://cdn.store.link/products/basava/gouo7l-bcb601bk03_2.jpg?versionId=7PrkU69hhUfrF2gunichidmNfzVmlRnG",
+        "https://cdn.store.link/products/basava/kecbn7-bcb601bk03_3.jpg?versionId=T0VogxK.chU..7Zm7kIThMHmOhJzQOE7",
+        "https://cdn.store.link/products/basava/zlqk1x-bcb601bk03_4.jpg?versionId=.d4BskgzNLBsRGHnwyfNSh1FMDTUBc7f",
+        "https://cdn.store.link/products/basava/trba8o-bcb601bk03_5.jpg?versionId=8xGyPhrxvJbpUV1Ssq8y4fh.joBDczhf"
+      ],
+      "colours": [
+        "Black"
+      ],
+      "material": "Genuine Leather",
+      "leatherGrade": null,
+      "stock": {
+        "quantity": 1,
+        "status": "in_stock"
+      },
+      "dimensions": {
+        "length": 12,
+        "width": 8,
+        "depth": 2.5,
+        "unit": null,
+        "asListed": "L-12, W-8, B-2.5"
+      },
+      "careInstructions": "Wipe with a clean, dry cloth when needed",
+      "deliveryTime": "7-10 days",
+      "featured": false,
+      "customisable": null,
+      "visible": true,
+      "source": {
+        "origin": "basava.store.link",
+        "listedBrand": "basava",
+        "variantCount": 1
+      }
+    },
+    {
+      "id": "kd-028",
+      "sku": "BCB601BR02",
+      "name": "Textured Rugged Explorer Genuine Leather and Canvas Brown Crossbody",
+      "slug": "textured-rugged-explorer-genuine-leather-and-canvas-brown-crossbody",
+      "category": "crossbody-bags",
+      "listedType": "Cross-Body",
+      "priceINR": 2000,
+      "description": "Conquer new horizons with the Rugged Explorer Crossbody, a rugged and reliable bag that accompanies you through every adventure",
+      "images": [
+        "https://cdn.store.link/products/basava/tgxfry-bcb601br02_1.jpg?versionId=HeAGd1O6kimJOWvWiuUV86jOXUZT2xVu",
+        "https://cdn.store.link/products/basava/q7q1dp-bcb601br02_2.jpg?versionId=qgNBsu_zDjyMxYHrr_ZYzMpHQopH3NdZ",
+        "https://cdn.store.link/products/basava/i4uink-bcb601br02_3.jpg?versionId=1gWaOHZ39V7qLMyF_vKCxPoy4lm1jJCL",
+        "https://cdn.store.link/products/basava/uttyk4-bcb601br02_4.jpg?versionId=WgEK4pGVpqL0NqetsVolb7thyJqoQX_K",
+        "https://cdn.store.link/products/basava/0t20tl-bcb601br02_5.jpg?versionId=IxMjPwGmu8TAKkECNZ4t22_Jao1rCZOM"
+      ],
+      "colours": [
+        "Khaki Brown"
+      ],
+      "material": "Leather and Canvas",
+      "leatherGrade": null,
+      "stock": {
+        "quantity": 1,
+        "status": "in_stock"
+      },
+      "dimensions": {
+        "length": 9.5,
+        "width": 8,
+        "depth": 2.5,
+        "unit": null,
+        "asListed": "L-9.5, W-8, B-2.5"
+      },
+      "careInstructions": "Wipe with a clean, dry cloth when needed",
+      "deliveryTime": "7-10 days",
+      "featured": false,
+      "customisable": null,
+      "visible": true,
+      "source": {
+        "origin": "basava.store.link",
+        "listedBrand": "basava",
+        "variantCount": 1
+      }
+    },
+    {
+      "id": "kd-029",
+      "sku": "BCB601RD01",
+      "name": "Textured Effortless Genuine Leather Chic Red Crossbody",
+      "slug": "textured-effortless-genuine-leather-chic-red-crossbody",
+      "category": "crossbody-bags",
+      "listedType": "Cross-Body",
+      "priceINR": 2500,
+      "description": "The adjustable shoulder strap offers a comfortable and customizable fit, allowing you to wear the bag on your shoulder or across your body. This hands-free convenience ensures easy mobility while keeping your belongings secure.",
+      "images": [
+        "https://cdn.store.link/products/basava/q14n6y-bcb601rd01_1.jpg?versionId=BYVSGOlUyImJtW4lHTHlGIx6ejLoKZ0l",
+        "https://cdn.store.link/products/basava/leyy0i-bcb601rd01_2.jpg?versionId=COwNiCWB53PO_bmRIEguq.sasU0r4vkJ",
+        "https://cdn.store.link/products/basava/833a21-bcb601rd01_3.jpg?versionId=3RBLBaJfljRd3mEXOK73QSFuQk8y.CfB",
+        "https://cdn.store.link/products/basava/ihpe9t-bcb601rd01_4.jpg?versionId=Ly1b0ecErgUO7moXbQH5SUSf2hondLx3",
+        "https://cdn.store.link/products/basava/1h8zio-bcb601rd01_5.jpg?versionId=R2iWmleZbL2m69mDr0GfPmwD8AuhWJaq"
+      ],
+      "colours": [
+        "Red"
+      ],
+      "material": "Genuine Leather",
+      "leatherGrade": null,
+      "stock": {
+        "quantity": 1,
+        "status": "in_stock"
+      },
+      "dimensions": {
+        "length": 9,
+        "width": 8,
+        "depth": 2.5,
+        "unit": null,
+        "asListed": "L-9, W-8, B-2.5"
+      },
+      "careInstructions": "Wipe with a clean, dry cloth when needed",
+      "deliveryTime": "7-10 days",
+      "featured": true,
+      "customisable": null,
+      "visible": true,
+      "source": {
+        "origin": "basava.store.link",
+        "listedBrand": "basava",
+        "variantCount": 1
+      }
+    },
+    {
+      "id": "kd-030",
+      "sku": "BFR601BK01",
+      "name": "Textured Chic Fringe Genuine Leather Black Tote",
+      "slug": "textured-chic-fringe-genuine-leather-black-tote",
+      "category": "totes-carryalls",
+      "listedType": "Fringe",
+      "priceINR": 5500,
+      "description": "Not only does our Fringe Bag exude style, but it also captures the spirit of freedom and self-expression. The swaying fringes add movement and playfulness to your ensemble, making it a perfect accessory for music festivals, bohemian-inspired outfits, or any occasion where you want to stand out from the crowd.",
+      "images": [
+        "https://cdn.store.link/products/basava/56xacl-bfr601bk01_1.jpg?versionId=KgnBV56z36MuVtb5yHvOJ9ZL.TrlQhVv",
+        "https://cdn.store.link/products/basava/jmj7lp-bfr601bk01_2.jpg?versionId=BMj2jFe3KXALYRC7bpyJwZxn0jkeoHkp",
+        "https://cdn.store.link/products/basava/uviohv-bfr601bk01_3.jpg?versionId=SahLHT_CP9Jofhzs3_FMna55xcih7WgI",
+        "https://cdn.store.link/products/basava/wlr0ow-bfr601bk01_4.jpg?versionId=Jx9aKbw_Qes1CjiAjwXCa3BqFjBCQM.F",
+        "https://cdn.store.link/products/basava/tj8ltn-bfr601bk01_5.jpg?versionId=U_WLYLmkh7.jK2g3NAMq37vvYRHPctr7"
+      ],
+      "colours": [
+        "Black"
+      ],
+      "material": "Genuine Leather",
+      "leatherGrade": null,
+      "stock": {
+        "quantity": 1,
+        "status": "in_stock"
+      },
+      "dimensions": {
+        "length": 12,
+        "width": 9.5,
+        "depth": 6.5,
+        "unit": null,
+        "asListed": "L-12, W-9.5, B-6.5"
+      },
+      "careInstructions": "Wipe with a clean, dry cloth when needed",
+      "deliveryTime": "7-10 days",
+      "featured": true,
+      "customisable": null,
+      "visible": true,
+      "source": {
+        "origin": "basava.store.link",
+        "listedBrand": "basava",
+        "variantCount": 1
+      }
+    },
+    {
+      "id": "kd-031",
+      "sku": "BHH601BK01",
+      "name": "Solid Timeless Beauty Genuine Leather Black Handheld Bag",
+      "slug": "solid-timeless-beauty-genuine-leather-black-handheld-bag",
+      "category": "handbags",
+      "listedType": "Hand-Held",
+      "priceINR": 2500,
+      "description": "Elevate your style with the Timeless Beauty Hand-Held Bag. Its classic design and premium materials make it a statement piece for any occasion",
+      "images": [
+        "https://cdn.store.link/products/basava/xsfrrf-bhh601bk01_1.jpg?versionId=ydn_xU9t31WHGMUzX94RIuy0g31FuPF6",
+        "https://cdn.store.link/products/basava/exwytd-bhh601bk01_2.jpg?versionId=09ryttQ1fJ9H_jmqAC50kQkl8g4h6Z8E",
+        "https://cdn.store.link/products/basava/ifs3ph-bhh601bk01_3.jpg?versionId=v2i0o7O5Amhe163vyPMqHQ98gtoah60r",
+        "https://cdn.store.link/products/basava/zk4roy-bhh601bk01_4.jpg?versionId=p9tt0TfiHaHj8yaZMBM9CUfDJuJ39y2a",
+        "https://cdn.store.link/products/basava/3q0w3x-bhh601bk01_5.jpg?versionId=Ma.Rm7kfh3AX_P1U0s3TA078CwfwzVDZ"
+      ],
+      "colours": [
+        "Black"
+      ],
+      "material": "Genuine Leather",
+      "leatherGrade": null,
+      "stock": {
+        "quantity": 1,
+        "status": "in_stock"
+      },
+      "dimensions": {
+        "length": 8.5,
+        "width": 8,
+        "depth": 7,
+        "unit": null,
+        "asListed": "L-8.5, W-8, B-7"
+      },
+      "careInstructions": "Wipe with a clean, dry cloth when needed",
+      "deliveryTime": "7-10 days",
+      "featured": false,
+      "customisable": null,
+      "visible": true,
+      "source": {
+        "origin": "basava.store.link",
+        "listedBrand": "basava",
+        "variantCount": 1
+      }
+    },
+    {
+      "id": "kd-032",
+      "sku": "BSH601GY01",
+      "name": "Solid Classic Genuine Leather Grey Shoulder Bag",
+      "slug": "solid-classic-genuine-leather-grey-shoulder-bag",
+      "category": "shoulder-messenger-bags",
+      "listedType": "Shoulder-Bag",
+      "priceINR": 4000,
+      "description": "Our Shoulder Bag features a long shoulder strap that you can wear over your shoulder or across your body, it is designed to carry all of the essentials (wallet, lipstick, sunglasses, phone, etc.) for the day.Easier to access because you can just reach down and grab whatever you need without taking the bag off your body.",
+      "images": [
+        "https://cdn.store.link/products/basava/qv5xya-bsh601gy01_1.jpg?versionId=DZ_vsgw0OG5WMDLjXyLBt1p.8THsEzm.",
+        "https://cdn.store.link/products/basava/uecxl--bsh601gy01_2.jpg?versionId=OiAAQ4saXIsKkMIzE9Nq9QfvQgyiSF7u",
+        "https://cdn.store.link/products/basava/ni7ewm-bsh601gy01_3.jpg?versionId=RfKwzY1XAzencZXu15ovXTT7YaA3nbsk",
+        "https://cdn.store.link/products/basava/1zr4ds-bsh601gy01_4.jpg?versionId=kfPClvyaXq16navlD5AemI2IJ4ShVLtZ",
+        "https://cdn.store.link/products/basava/6-hlj9-bsh601gy01_5.jpg?versionId=fiknr68_YQew.rik14dPbILnvYCTbiF7"
+      ],
+      "colours": [
+        "Grey"
+      ],
+      "material": "Genuine Leather",
+      "leatherGrade": null,
+      "stock": {
+        "quantity": 1,
+        "status": "in_stock"
+      },
+      "dimensions": {
+        "length": 11.5,
+        "width": 10,
+        "depth": 6,
+        "unit": null,
+        "asListed": "L-11.5, W-10, B-6"
+      },
+      "careInstructions": "Wipe with a clean, dry cloth when needed",
+      "deliveryTime": "7-10 days",
+      "featured": true,
+      "customisable": null,
+      "visible": true,
+      "source": {
+        "origin": "basava.store.link",
+        "listedBrand": "basava",
+        "variantCount": 1
+      }
+    },
+    {
+      "id": "kd-033",
+      "sku": "BTT601BR01",
+      "name": "Textured Functional and Fashionable Genuine Leather Brown Tote Companion",
+      "slug": "textured-functional-and-fashionable-genuine-leather-brown-tote-companion",
+      "category": "totes-carryalls",
+      "listedType": "Tote",
+      "priceINR": 5500,
+      "description": "Designed for versatility, our Tote Bag seamlessly transitions from work to leisure, effortlessly complementing your style. Its sleek and contemporary design adds a touch of sophistication to any outfit, making it suitable for both casual and professional occasions.",
+      "images": [
+        "https://cdn.store.link/products/basava/yvz5ry-btt601br01_1.jpg?versionId=mBMw_G3kYKU86erskAgWdS3DBjqjiwk7",
+        "https://cdn.store.link/products/basava/rti5j2-btt601br01_2.jpg?versionId=a5X6xXw9Sip5MmndkrgBBtkcvmGPVSE7",
+        "https://cdn.store.link/products/basava/dbt9xn-btt601br01_3.jpg?versionId=_rJLGI88aMalJklnDSUbqq5afLNmFLfQ",
+        "https://cdn.store.link/products/basava/t3lq2a-btt601br01_4.jpg?versionId=Y06XgwLuUOcG_vTT6fe7ymsulA5oNF1K",
+        "https://cdn.store.link/products/basava/tpdgzq-btt601br01_5.jpg?versionId=HU4XV7C9zw60o9XiJlm3uXYi1mCBTXi1"
+      ],
+      "colours": [
+        "Brown"
+      ],
+      "material": "Genuine Leather",
+      "leatherGrade": null,
+      "stock": {
+        "quantity": 1,
+        "status": "in_stock"
+      },
+      "dimensions": {
+        "length": 14,
+        "width": 12.5,
+        "depth": 4,
+        "unit": null,
+        "asListed": "L-14, W-12.5, B-4"
+      },
+      "careInstructions": "Wipe with a clean, dry cloth when needed",
+      "deliveryTime": "7-10 days",
+      "featured": false,
+      "customisable": null,
+      "visible": true,
+      "source": {
+        "origin": "basava.store.link",
+        "listedBrand": "basava",
+        "variantCount": 1
+      }
+    },
+    {
+      "id": "kd-034",
+      "sku": "BTT601CH01",
+      "name": "Textured Chic and Spacious Genuine Leather Chocolate Tote Companion",
+      "slug": "textured-chic-and-spacious-genuine-leather-chocolate-tote-companion",
+      "category": "totes-carryalls",
+      "listedType": "Tote",
+      "priceINR": 3000,
+      "description": "Crafted with high-quality Leather our Tote Bag is built to withstand the demands of your busy lifestyle. Its durable construction ensures longevity, while the reinforced handles provide a comfortable and sturdy grip.",
+      "images": [
+        "https://cdn.store.link/products/basava/kt12t5-btt601ch01_1.jpg?versionId=xKjUPjAdDXJ8IiDKEeXtJ8CMURrRb2Ee",
+        "https://cdn.store.link/products/basava/yk4e7c-btt601ch01_2.jpg?versionId=w5rG.G.53Nmg0k8UvH2wGnZaqR9X2zQz",
+        "https://cdn.store.link/products/basava/vu-5of-btt601ch01_3.jpg?versionId=tLJ4AyOk9IIrQJpvjsoewWkIgNLJDPPQ",
+        "https://cdn.store.link/products/basava/h2nrxi-btt601ch01_4.jpg?versionId=bX8mXbSQWpZkMIF1Q8WvkmVfyN1LbJof",
+        "https://cdn.store.link/products/basava/10vxvv-btt601ch01_5.jpg?versionId=wyRojled7LbarjFx7TRlVWbqmKM0wHh4"
+      ],
+      "colours": [
+        "Chocolate"
+      ],
+      "material": "Genuine Leather",
+      "leatherGrade": null,
+      "stock": {
+        "quantity": 1,
+        "status": "in_stock"
+      },
+      "dimensions": {
+        "length": 10.5,
+        "width": 13,
+        "depth": 6,
+        "unit": null,
+        "asListed": "L-10.5, W-13, B-6"
+      },
+      "careInstructions": "Wipe with a clean, dry cloth when needed",
+      "deliveryTime": "7-10 days",
+      "featured": false,
+      "customisable": null,
+      "visible": true,
+      "source": {
+        "origin": "basava.store.link",
+        "listedBrand": "basava",
+        "variantCount": 1
+      }
+    },
+    {
+      "id": "kd-035",
+      "sku": "BTT601SA01",
+      "name": "Textured Stylish Genuine Leather Sand Tote Carryall",
+      "slug": "textured-stylish-genuine-leather-sand-tote-carryall",
+      "category": "totes-carryalls",
+      "listedType": "Tote",
+      "priceINR": 6000,
+      "description": "Our versatile and stylish Tote Bag, the perfect companion for your everyday needs. This meticulously designed bag combines functionality with fashion-forward aesthetics, making it a must-have accessory for the modern individual.",
+      "images": [
+        "https://cdn.store.link/products/basava/q1c-sh-btt601sa01_1.jpg?versionId=d_CePr5tYIBXXp46oBheNrclvfbhbg9H",
+        "https://cdn.store.link/products/basava/x3bvb0-btt601sa01_2.jpg?versionId=Ec_IDSPVWfra5Id.0Cei_RJcNvX9fs5k",
+        "https://cdn.store.link/products/basava/-vexzu-btt601sa01_3.jpg?versionId=pO.tvLAm28D_9xyySx9fsGD6GM0YWMeA",
+        "https://cdn.store.link/products/basava/l7wkm3-btt601sa01_4.jpg?versionId=19hnjV_oAz1wjRkPlA3VMnW_XoP_h7Pq",
+        "https://cdn.store.link/products/basava/g4w3uv-btt601sa01_5.jpg?versionId=YoduA3pKVQik.AhEkgBpaoY2SiuPLrxN"
+      ],
+      "colours": [
+        "Sand"
+      ],
+      "material": "Genuine Leather",
+      "leatherGrade": null,
+      "stock": {
+        "quantity": 1,
+        "status": "in_stock"
+      },
+      "dimensions": {
+        "length": 13,
+        "width": 15.5,
+        "depth": 5,
+        "unit": null,
+        "asListed": "L-13, W-15.5, B-5"
+      },
+      "careInstructions": "Wipe with a clean, dry cloth when needed",
+      "deliveryTime": "7-10 days",
+      "featured": true,
+      "customisable": null,
+      "visible": true,
+      "source": {
+        "origin": "basava.store.link",
+        "listedBrand": "basava",
+        "variantCount": 1
+      }
+    },
+    {
+      "id": "kd-036",
+      "sku": "BST601BK01",
+      "name": "Solid Elegant Genuine Leather Black Satchel Handbag",
+      "slug": "solid-elegant-genuine-leather-black-satchel-handbag",
+      "category": "handbags",
+      "listedType": "Satchel-Bag",
+      "priceINR": 3500,
+      "description": "The Satchel Bag features a comfortable and adjustable shoulder strap, allowing you to find the perfect fit for your carrying preference. The strap is detachable, providing the flexibility to carry the bag as a traditional satchel or convert it into a sleek handbag, depending on your needs and style.",
+      "images": [
+        "https://cdn.store.link/products/basava/4gs9ve-bst601bk01_1.jpg?versionId=JNDjC0fxpSTFLJYxNbKNTTgjHDv3Oygn",
+        "https://cdn.store.link/products/basava/2ticfo-bst601bk01_2.jpg?versionId=n5p.akCyX1ft0zEQRgm7nkygAZCsR52u",
+        "https://cdn.store.link/products/basava/xmxkwz-bst601bk01_3.jpg?versionId=J_SKARspgpTAzz.a82_4ldItWHO3ICvO",
+        "https://cdn.store.link/products/basava/6f341w-bst601bk01_4.jpg?versionId=C_wPfz9InV7.B22DjcOJJnr_UKN33GKJ",
+        "https://cdn.store.link/products/basava/l97yii-bst601bk01_5.jpg?versionId=4CRK3dH7F_SUXruBKM9Z6p9_Uz0o._HF"
+      ],
+      "colours": [
+        "Black"
+      ],
+      "material": "Genuine Leather",
+      "leatherGrade": null,
+      "stock": {
+        "quantity": 1,
+        "status": "in_stock"
+      },
+      "dimensions": {
+        "length": 7,
+        "width": 9,
+        "depth": 5,
+        "unit": null,
+        "asListed": "L-7, W-9, B-5"
+      },
+      "careInstructions": "Wipe with a clean, dry cloth when needed",
+      "deliveryTime": "7-10 days",
+      "featured": true,
+      "customisable": null,
+      "visible": true,
+      "source": {
+        "origin": "basava.store.link",
+        "listedBrand": "basava",
+        "variantCount": 1
+      }
+    },
+    {
+      "id": "kd-037",
+      "sku": "BBG601BK01",
+      "name": "Chic and Compact Genuine Leather Black Baguette Bag",
+      "slug": "chic-and-compact-genuine-leather-black-baguette-bag",
+      "category": "handbags",
+      "listedType": "Baguette",
+      "priceINR": 3500,
+      "description": "The baguette shape, characterized by its slim and elongated profile, adds a touch of sophistication to your ensemble. It can be carried elegantly by its short handle or worn crossbody offering versatility and convenience to suit your preferred style.",
+      "images": [
+        "https://cdn.store.link/products/basava/1tcc1h-bbg601bk01_1.jpg?versionId=tvipktto.jpRO9N9Mu.IlNSx1ayRvq.K",
+        "https://cdn.store.link/products/basava/js3rm1-bbg601bk01_2.jpg?versionId=CboA.JxJB1QOkQ2lPbCUDiK6jcbyRtGg",
+        "https://cdn.store.link/products/basava/rfjz9n-bbg601bk01_3.jpg?versionId=cDQKPs37C__BUTj.xQr5l5Txw6pfqoMG",
+        "https://cdn.store.link/products/basava/cx9fn0-bbg601bk01_4.jpg?versionId=CTnV9XCjb2GDiO.MtV_SCbN5eHI7l9Gv",
+        "https://cdn.store.link/products/basava/ny0m2o-bbg601bk01_5.jpg?versionId=Nt_dG4J3Nrwic8QGeYJn5ZzsKHOacK_i"
+      ],
+      "colours": [
+        "Black"
+      ],
+      "material": "Genuine Leather",
+      "leatherGrade": null,
+      "stock": {
+        "quantity": 1,
+        "status": "in_stock"
+      },
+      "dimensions": {
+        "length": 11,
+        "width": 14,
+        "depth": 4.5,
+        "unit": null,
+        "asListed": "L-11, W-14, B-4.5"
+      },
+      "careInstructions": "Wipe with a clean, dry cloth when needed",
+      "deliveryTime": "7-10 days",
+      "featured": false,
+      "customisable": null,
+      "visible": true,
+      "source": {
+        "origin": "basava.store.link",
+        "listedBrand": "basava",
+        "variantCount": 1
+      }
+    },
+    {
+      "id": "kd-038",
+      "sku": "BSL601BL01",
+      "name": "Solid Urban Explorer Genuine Leather Dark Blue Sling Bag",
+      "slug": "solid-urban-explorer-genuine-leather-dark-blue-sling-bag",
+      "category": "sling-bags",
+      "listedType": "Sling-Bag",
+      "priceINR": 2500,
+      "description": "The ergonomic and adjustable shoulder strap allows you to customize the fit of the bag, ensuring maximum comfort throughout the day. Whether you prefer to wear it across your chest or over your shoulder, the Sling Bag can be effortlessly adjusted to suit your preferred carrying style.",
+      "images": [
+        "https://cdn.store.link/products/basava/ed9soe-bsl601bl01_1.jpg?versionId=Kqej1xIb2ZiBRy5CIof39QcRW9VYpsRW",
+        "https://cdn.store.link/products/basava/0psr28-bsl601bl01_2.jpg?versionId=7ZAoJlnK6k_wPyNGBXPc.D3sBpJr0Ns5",
+        "https://cdn.store.link/products/basava/79-nid-bsl601bl01_3.jpg?versionId=6fSab9RRUAWQfhYZDQgVka5YDejAjXoT",
+        "https://cdn.store.link/products/basava/psyz46-bsl601bl01_4.jpg?versionId=RLa3DGBpw5XLGQ9nIH.59YNaO_2IYOVv",
+        "https://cdn.store.link/products/basava/etlw4y-bsl601bl01_5.jpg?versionId=PJusd9ibxWWiiUa3WUXwR0qOL_mVB_L0"
+      ],
+      "colours": [
+        "Dark Blue"
+      ],
+      "material": "Genuine Leather",
+      "leatherGrade": null,
+      "stock": {
+        "quantity": 1,
+        "status": "in_stock"
+      },
+      "dimensions": {
+        "length": 7,
+        "width": 8.5,
+        "depth": 1,
+        "unit": null,
+        "asListed": "L-7, W-8.5, B-1"
+      },
+      "careInstructions": "Wipe with a clean, dry cloth when needed",
+      "deliveryTime": "7-10 days",
+      "featured": false,
+      "customisable": null,
+      "visible": true,
+      "source": {
+        "origin": "basava.store.link",
+        "listedBrand": "basava",
+        "variantCount": 1
+      }
+    },
+    {
+      "id": "kd-039",
+      "sku": "BCB601BL01",
+      "name": "Solid Safari Explorer's Genuine Leather Black Crossbody",
+      "slug": "solid-safari-explorers-genuine-leather-black-crossbody",
+      "category": "crossbody-bags",
+      "listedType": "Cross-Body",
+      "priceINR": 4500,
+      "description": "Embark on a safari-inspired journey with the Safari Explorer's Crossbody,Designed for the intrepid explorer Multiple compartments and zippered pockets cater to access compartments for your smartphone, tablet, travel documents, and chargers, allowing you to stay connected on the go",
+      "images": [
+        "https://cdn.store.link/products/basava/237wtw-bcb601bl01_1.jpg?versionId=IYYmls9FU7_YsV8tftAFckhBa_B28Z0n",
+        "https://cdn.store.link/products/basava/rd7g2v-bcb601bl01_2.jpg?versionId=_TTKD6xPpbhOh0GY8dgwKpc1LG9Vd4uh",
+        "https://cdn.store.link/products/basava/xdp7-a-bcb601bl01_3.jpg?versionId=G0L5.X89evwMdVmBRs6Of3but0yuJ4Jh",
+        "https://cdn.store.link/products/basava/ecyp8x-bcb601bl01_4.jpg?versionId=La.1MQPGf07DdCCRDhDnwAmhlsg09w2_",
+        "https://cdn.store.link/products/basava/o2hgz9-bcb601bl01_5.jpg?versionId=yTu.M2UN5yBiakvLXHSG9FKVut9eQD.E"
+      ],
+      "colours": [
+        "Black"
+      ],
+      "material": "Genuine Leather",
+      "leatherGrade": null,
+      "stock": {
+        "quantity": 1,
+        "status": "in_stock"
+      },
+      "dimensions": {
+        "length": 7,
+        "width": 9.5,
+        "depth": 5,
+        "unit": null,
+        "asListed": "L-7, W-9.5, D-5"
+      },
+      "careInstructions": null,
+      "deliveryTime": "7-10 days",
+      "featured": true,
+      "customisable": null,
+      "visible": true,
+      "source": {
+        "origin": "basava.store.link",
+        "listedBrand": "basava",
+        "variantCount": 1
+      }
+    },
+    {
+      "id": "kd-040",
+      "sku": "BEN601GD02",
+      "name": "Textured Golden Allure Genuine Leather Gold Envelope Bag",
+      "slug": "textured-golden-allure-genuine-leather-gold-envelope-bag",
+      "category": "envelope-bags",
+      "listedType": "Envelope",
+      "priceINR": 1200,
+      "description": "Radiate golden allure with our elegant Golden Allure Envelope Bag. Its shimmering accents and opulent design elevate your look for special occasions",
+      "images": [
+        "https://cdn.store.link/products/basava/n30iac-ben601gd02_1.jpg?versionId=H9OvpQBRj3euR60WYmzCoVEv6Z5GJMfd",
+        "https://cdn.store.link/products/basava/r-9eyy-ben601gd02_2.jpg?versionId=lhDxbLL.ymMPdrFTCFjFyOqVUC9J86yp",
+        "https://cdn.store.link/products/basava/ypt67s-ben601gd02_3.jpg?versionId=9AokVeIphC2RSO4_lk3U5kL1D.eMiv2w",
+        "https://cdn.store.link/products/basava/rxud1t-ben601gd02_4.jpg?versionId=4CCdh77vcl9aZkqTXPqAwguNpELKbgxj"
+      ],
+      "colours": [
+        "Gold"
+      ],
+      "material": "Genuine Leather",
+      "leatherGrade": null,
+      "stock": {
+        "quantity": 1,
+        "status": "in_stock"
+      },
+      "dimensions": {
+        "length": 6.5,
+        "width": 9.5,
+        "depth": null,
+        "unit": null,
+        "asListed": "L-6.5,, W-9.5"
+      },
+      "careInstructions": null,
+      "deliveryTime": "7-10 days",
+      "featured": false,
+      "customisable": null,
+      "visible": true,
+      "source": {
+        "origin": "basava.store.link",
+        "listedBrand": "basava",
+        "variantCount": 1
+      }
+    }
+  ]
+}

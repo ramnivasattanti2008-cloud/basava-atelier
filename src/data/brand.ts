@@ -111,6 +111,7 @@ export const navigation = {
   ],
   support: [
     { label: "Track an order", href: "/track-order" },
+    { label: "Saved Pieces (Wishlist)", href: "/wishlist" },
     { label: "My Account", href: "/account" },
     { label: "Delivery & returns", href: "/policies#delivery" },
     { label: "Leather care", href: "/leather-guide#care" },

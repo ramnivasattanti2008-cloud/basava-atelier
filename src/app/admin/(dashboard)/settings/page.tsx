@@ -47,7 +47,7 @@ export default function AdminSettingsPage() {
     const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(products, null, 2));
     const dlAnchor = document.createElement("a");
     dlAnchor.setAttribute("href", dataStr);
-    dlAnchor.setAttribute("download", `kris-designs-catalogue-${new Date().toISOString().slice(0, 10)}.json`);
+    dlAnchor.setAttribute("download", `basava-catalogue-${new Date().toISOString().slice(0, 10)}.json`);
     dlAnchor.click();
     showToast("Exported catalogue JSON.");
   };

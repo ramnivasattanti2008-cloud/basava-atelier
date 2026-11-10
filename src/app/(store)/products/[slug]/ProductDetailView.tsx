@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, Check, ChevronDown, ChevronUp, Compass, MessageCircle, ShieldCheck, ShoppingBag, Truck } from "lucide-react";
+import { ArrowLeft, Check, ChevronDown, ChevronUp, Compass, Heart, MessageCircle, ShieldCheck, ShoppingBag, Truck } from "lucide-react";
 import type { Product } from "@/lib/types";
 import { cx, formatDimensions, formatINR, isPurchasable, stockLabel } from "@/lib/format";
 import { useStorefrontCategories, useStorefrontProducts } from "@/lib/hooks";
@@ -19,12 +19,25 @@ export default function ProductDetailView({ initialSlug }: { initialSlug: string
   const categories = useStorefrontCategories();
   const settings = useDemoStore((s) => s.settings);
   const addToCart = useDemoStore((s) => s.addToCart);
+  const toggleWishlist = useDemoStore((s) => s.toggleWishlist);
+  const wishlist = useDemoStore((s) => s.wishlist) || [];
   const showToast = useToast((s) => s.show);
 
   // Retrieve current product (from live store in case admin updated it)
   const product = products.find((p) => p.slug === initialSlug);
+  const inWishlist = product ? wishlist.includes(product.id) : false;
   const [selectedImage, setSelectedImage] = useState(0);
   const [quantity, setQuantity] = useState(1);
+
+  const handleToggleWishlist = () => {
+    if (!product) return;
+    const added = toggleWishlist(product.id);
+    if (added) {
+      showToast(`Saved "${product.name}" to your Atelier Wishlist.`);
+    } else {
+      showToast(`Removed "${product.name}" from your Wishlist.`);
+    }
+  };
 
   // Accordion state
   const [openSection, setOpenSection] = useState<string>("specs");
@@ -38,11 +51,9 @@ export default function ProductDetailView({ initialSlug }: { initialSlug: string
   const dimensionsText = formatDimensions(product.dimensions);
 
   // Related products from same category (excluding current)
-  const relatedProducts = useMemo(() => {
-    return products
-      .filter((p) => p.category === product.category && p.id !== product.id)
-      .slice(0, 4);
-  }, [products, product]);
+  const relatedProducts = products
+    .filter((p) => p.category === product.category && p.id !== product.id)
+    .slice(0, 4);
 
   const handleAddToCart = () => {
     if (!purchasable) return;
@@ -176,6 +187,24 @@ export default function ProductDetailView({ initialSlug }: { initialSlug: string
                   >
                     <ShoppingBag size={16} strokeWidth={1.5} />
                     Add to Bag
+                  </button>
+                  <button
+                    type="button"
+                    onClick={handleToggleWishlist}
+                    className={cx(
+                      "btn-tactile h-12 px-4 flex items-center justify-center border transition-all duration-300 rounded-xs cursor-pointer",
+                      inWishlist
+                        ? "bg-ivory border-[#caa359] text-[#96722d] shadow-xs"
+                        : "bg-paper border-espresso/20 text-espresso hover:border-espresso hover:bg-linen"
+                    )}
+                    aria-label={inWishlist ? "Saved in Wishlist" : "Save to Wishlist"}
+                    title={inWishlist ? "Saved to your Atelier Wishlist" : "Save to Atelier Wishlist"}
+                  >
+                    <Heart
+                      size={18}
+                      strokeWidth={1.8}
+                      className={cx("transition-transform duration-300", inWishlist && "fill-[#96722d] scale-110")}
+                    />
                   </button>
                 </div>
 

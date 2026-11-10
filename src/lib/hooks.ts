@@ -54,6 +54,22 @@ export function useCart() {
   }, [cart, products]);
 }
 
+export function useWishlist() {
+  const wishlist = useDemoStore((s) => s.wishlist);
+  const products = useDemoStore((s) => s.products);
+  return useMemo(() => {
+    const list = wishlist || [];
+    const items = list
+      .map((id) => products.find((p) => p.id === id))
+      .filter((p): p is Product => Boolean(p && p.visible));
+    return {
+      items,
+      count: items.length,
+      has: (id: string) => list.includes(id),
+    };
+  }, [wishlist, products]);
+}
+
 const noop = () => () => {};
 
 /** true only in the browser after hydration; avoids effect-driven "mounted" state. */

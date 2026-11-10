@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, CheckCircle2, MessageCircle, Package, Truck } from "lucide-react";
+import { CheckCircle2, MessageCircle, Package, Printer, Truck } from "lucide-react";
 import { formatDate, formatINR } from "@/lib/format";
 import { useDemoStore } from "@/lib/store";
 import { whatsappLink, whatsappMessages } from "@/lib/whatsapp";
@@ -115,19 +115,31 @@ export default function OrderConfirmationView({ orderId }: { orderId: string }) 
 
         {/* Action Buttons */}
         <div className="border-t border-espresso/12 pt-6 flex flex-wrap items-center justify-between gap-4">
-          <Link
-            href={`/track-order?id=${order.id}`}
-            className="btn btn-outline btn-sm inline-flex items-center gap-2"
-          >
-            <Package size={14} />
-            Track Order Status
-          </Link>
+          <div className="flex items-center gap-3">
+            <Link
+              href={`/track-order?id=${order.id}`}
+              className="btn btn-outline btn-sm inline-flex items-center gap-2 btn-tactile"
+            >
+              <Package size={14} />
+              Track Order Status
+            </Link>
+
+            <button
+              type="button"
+              onClick={() => window.print()}
+              className="btn btn-outline btn-sm inline-flex items-center gap-2 btn-tactile cursor-pointer"
+              title="Print official atelier receipt"
+            >
+              <Printer size={14} />
+              Print Receipt
+            </button>
+          </div>
 
           <a
             href={whatsappLink(settings.whatsappNumber, whatsappMessages.order(order.id))}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn btn-solid btn-sm inline-flex items-center gap-2"
+            className="btn btn-solid btn-sm inline-flex items-center gap-2 btn-tactile shimmer-badge"
           >
             <MessageCircle size={14} />
             Confirm on WhatsApp

@@ -335,7 +335,7 @@ export default function CheckoutPage() {
             <button
               type="submit"
               disabled={submitting}
-              className="btn btn-solid w-full h-12"
+              className="btn btn-solid btn-tactile shimmer-badge w-full h-12 shadow-md hover:shadow-xl font-bold tracking-wider cursor-pointer"
             >
               {submitting ? "Placing Order…" : "Place Demo Order"}
             </button>

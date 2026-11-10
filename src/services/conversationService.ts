@@ -249,8 +249,8 @@ Respond with a strict JSON object matching this schema:
     } else if (patch.colourName) {
       reply = `I have updated your piece to ${patch.colourName}. Notice how the warm undertones highlight the leather's natural grain. Would you like to add custom debossed initials to make it personal?`;
       suggestedActions.push(
-        { label: "Add Gold Initials", action: "add_gold_initials", patch: { personalisation: { enabled: true, text: "KD", method: "gold-foil", placement: "bottom-center" } } },
-        { label: "Blind Heat Deboss", action: "add_blind_deboss", patch: { personalisation: { enabled: true, text: "KD", method: "blind-deboss", placement: "bottom-center" } } },
+        { label: "Add Gold Initials", action: "add_gold_initials", patch: { personalisation: { enabled: true, text: "BV", method: "gold-foil", placement: "bottom-center" } } },
+        { label: "Blind Heat Deboss", action: "add_blind_deboss", patch: { personalisation: { enabled: true, text: "BV", method: "blind-deboss", placement: "bottom-center" } } },
         { label: "Keep It Clean (No Initials)", action: "remove_monogram", patch: { personalisation: { enabled: false, text: "", method: "none", placement: "bottom-center" } } }
       );
     } else if (initialsMatch) {

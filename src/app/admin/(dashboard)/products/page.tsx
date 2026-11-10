@@ -60,8 +60,8 @@ export default function AdminProductsPage() {
   const openNew = () => {
     setIsNew(true);
     const newProd: Product = {
-      id: `kd-custom-${Date.now()}`,
-      sku: `KD-NEW-${Date.now().toString().slice(-4)}`,
+      id: `bv-custom-${Date.now()}`,
+      sku: `BV-NEW-${Date.now().toString().slice(-4)}`,
       name: "",
       slug: `custom-product-${Date.now()}`,
       category: "totes-carryalls",

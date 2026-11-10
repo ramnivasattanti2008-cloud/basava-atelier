@@ -484,7 +484,7 @@ export function CustomisationInspector({
                           },
                         })
                       }
-                      placeholder="e.g. RN, KD, ॐ"
+                      placeholder="e.g. RN, BV, ॐ"
                       className="w-full bg-paper border border-espresso/20 px-3 py-1.5 rounded-xs font-display text-lg tracking-widest text-center text-espresso"
                     />
                   </div>

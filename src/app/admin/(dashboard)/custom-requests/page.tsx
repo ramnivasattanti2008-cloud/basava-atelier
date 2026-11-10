@@ -735,7 +735,7 @@ export default function AdminCustomRequestsPage() {
                 const quoteText = quotedPriceINR.trim()
                   ? `Your bespoke price quote is confirmed at ₹${parseFloat(quotedPriceINR).toLocaleString("en-IN")} with a crafting timeline of ${quotedTimelineDays || 10} days.`
                   : "We have reviewed your design concept and would like to confirm your leather choices.";
-                const msg = `Hello ${selectedBespoke.customer.name}, regarding your Kris Designs bespoke commission ${selectedBespoke.referenceCode} (${selectedBespoke.currentConfig.bagType}): ${quoteText}`;
+                const msg = `Hello ${selectedBespoke.customer.name}, regarding your BASAVA bespoke commission ${selectedBespoke.referenceCode} (${selectedBespoke.currentConfig.bagType}): ${quoteText}`;
                 return (
                   <a
                     href={whatsappLink(selectedBespoke.customer.phone, msg)}

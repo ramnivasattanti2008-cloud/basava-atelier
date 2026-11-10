@@ -481,7 +481,7 @@ export class ImageGenerationService {
           <circle cx="0" cy="45" r="2.5" fill="url(#foilGrad)" />
 
           <text x="0" y="70" font-family="'Manrope', sans-serif" font-size="11" font-weight="700" fill="#E8CB85" text-anchor="middle" letter-spacing="0.35em" opacity="0.9">
-            KRIS DESIGNS · BENGALURU
+            BASAVA · BENGALURU
           </text>
           <text x="0" y="88" font-family="'Manrope', sans-serif" font-size="9" font-weight="600" fill="#D9C4A7" text-anchor="middle" letter-spacing="0.25em" opacity="0.75">
             24K GOLD LEAF FOIL DEBOSS

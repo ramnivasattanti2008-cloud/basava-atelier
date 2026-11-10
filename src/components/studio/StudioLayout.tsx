@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback, useRef } from "react";
+import { useSearchParams } from "next/navigation";
 import {
   Layers,
   MessageSquare,
@@ -47,6 +48,7 @@ export function StudioLayout({
   initialReferenceProduct,
   onSwitchToClassicWizard,
 }: StudioLayoutProps) {
+  const searchParams = useSearchParams();
   const showToast = useToast((s) => s.show);
   const studioOptions = useDemoStore((s) => s.studioOptions) || defaultStudioOptions;
   const products = useDemoStore((s) => s.products);
@@ -68,6 +70,25 @@ export function StudioLayout({
         else if (match.category === "crossbody") base.bagType = "crossbody";
         else if (match.category === "handbag") base.bagType = "handbag";
         else if (match.category === "clutch") base.bagType = "clutch";
+      }
+    }
+    if (searchParams) {
+      const pStyle = searchParams.get("style");
+      const pLeather = searchParams.get("leather");
+      const pColour = searchParams.get("colour");
+      const pHw = searchParams.get("hw");
+      const pInitials = searchParams.get("initials");
+
+      if (pStyle) {
+        base.bagType = pStyle as any;
+        base.designName = `Bespoke ${pStyle.charAt(0).toUpperCase() + pStyle.slice(1)}`;
+      }
+      if (pLeather) base.material = pLeather as any;
+      if (pColour) base.colourName = pColour;
+      if (pHw) base.hardware = pHw as any;
+      if (pInitials) {
+        base.personalisation.enabled = true;
+        base.personalisation.text = pInitials.toUpperCase().slice(0, 4);
       }
     }
     return base;
@@ -116,7 +137,7 @@ export function StudioLayout({
             colourHex: "#8A5D3B",
             personalisation: {
               enabled: true,
-              text: "KD",
+              text: "BV",
               method: "gold-foil",
               placement: "bottom-center",
             },

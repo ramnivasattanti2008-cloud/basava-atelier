@@ -57,6 +57,7 @@ interface DemoData {
   content: SiteContent;
   settings: SiteSettings;
   activity: ActivityEntry[];
+  wishlist: string[];
   orderSeq: number;
   enquirySeq: number;
 }
@@ -106,6 +107,9 @@ interface DemoActions {
   updateCategory: (slug: string, patch: Partial<Omit<Category, "slug">>) => void;
   updateContent: (content: SiteContent) => void;
   updateSettings: (settings: SiteSettings) => void;
+  toggleWishlist: (productId: string) => boolean;
+  isInWishlist: (productId: string) => boolean;
+  clearWishlist: () => void;
   resetDemo: () => void;
 }
 
@@ -126,6 +130,7 @@ function initialData(): DemoData {
     content: defaultContent,
     settings: defaultSettings,
     activity: [],
+    wishlist: [],
     orderSeq: 10009,
     enquirySeq: 2005,
   };
@@ -497,6 +502,33 @@ export const useDemoStore = create<DemoState>()(
 
       updateSettings: (settings) => set({ settings, activity: withLog(get().activity, "Settings updated.") }),
 
+      toggleWishlist: (productId: string) => {
+        const { wishlist, products, activity } = get();
+        const exists = (wishlist || []).includes(productId);
+        const next = exists
+          ? (wishlist || []).filter((id) => id !== productId)
+          : [...(wishlist || []), productId];
+        const prod = products.find((p) => p.id === productId);
+        set({
+          wishlist: next,
+          activity: withLog(
+            activity,
+            exists
+              ? `Removed ${prod?.name || "piece"} from Atelier Wishlist.`
+              : `Saved ${prod?.name || "piece"} to Atelier Wishlist.`
+          ),
+        });
+        return !exists;
+      },
+
+      isInWishlist: (productId: string) => {
+        return (get().wishlist || []).includes(productId);
+      },
+
+      clearWishlist: () => {
+        set({ wishlist: [], activity: withLog(get().activity, "Cleared Atelier Wishlist.") });
+      },
+
       resetDemo: () => {
         const now = Date.now();
         const data = initialData();
@@ -529,6 +561,7 @@ export const useDemoStore = create<DemoState>()(
         content: state.content,
         settings: state.settings,
         activity: state.activity,
+        wishlist: state.wishlist || [],
         orderSeq: state.orderSeq,
         enquirySeq: state.enquirySeq,
       }),
@@ -543,6 +576,7 @@ export const useDemoStore = create<DemoState>()(
           seedVersion: current.seedVersion,
           products: sameSeed && Array.isArray(saved.products) ? saved.products : current.products,
           categories: sameSeed && Array.isArray(saved.categories) ? saved.categories : current.categories,
+          wishlist: Array.isArray(saved.wishlist) ? saved.wishlist : (current.wishlist || []),
           content: { ...current.content, ...(saved.content ?? {}) },
           settings: { ...current.settings, ...(saved.settings ?? {}) },
         };

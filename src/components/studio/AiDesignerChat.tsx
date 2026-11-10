@@ -190,7 +190,7 @@ export function AiDesignerChat({
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            placeholder="Describe your wish (e.g. 'Add gold initials KD', 'Make it darker')…"
+            placeholder="Describe your wish (e.g. 'Add gold initials BV', 'Make it darker')…"
             className="flex-1 bg-paper border border-espresso/20 px-3.5 py-2 text-xs sm:text-sm text-espresso rounded-xs focus:outline-none focus:border-espresso focus:ring-1 focus:ring-espresso placeholder:text-charcoal/50"
           />
 

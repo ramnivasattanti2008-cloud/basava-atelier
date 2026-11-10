@@ -44,7 +44,7 @@ function TrackOrderContent() {
         <span className="eyebrow">Shipment Lookup</span>
         <h1 className="display-lg mt-3">Track Your Order</h1>
         <p className="lede mt-3">
-          Enter your order reference code (e.g. <strong>BV-10001</strong> or <strong>KD-10001</strong>) to view real-time packaging and dispatch updates.
+          Enter your order reference code (e.g. <strong>BV-10001</strong>) to view real-time packaging and dispatch updates.
         </p>
       </div>
 
@@ -68,7 +68,7 @@ function TrackOrderContent() {
       {!searchedId && (
         <div className="mt-6 flex flex-wrap items-center gap-2 text-xs text-charcoal/70">
           <span className="text-walnut/70">Try sample order:</span>
-          {["KD-10001", "KD-10004", "KD-10008"].map((id) => (
+          {["BV-10001", "BV-10002", "BV-10003"].map((id) => (
             <button
               key={id}
               type="button"
@@ -193,7 +193,7 @@ function TrackOrderContent() {
             <div className="border border-dashed border-espresso/20 p-10 text-center rounded-xs">
               <p className="font-display text-xl text-espresso">Order Reference "{searchedId}" Not Found</p>
               <p className="mt-2 text-xs text-charcoal/70">
-                Please double check the ID format. Demo orders follow the format <code>KD-10001</code>.
+                Please double check the ID format. Orders follow the format <code>BV-10001</code>.
               </p>
             </div>
           )}

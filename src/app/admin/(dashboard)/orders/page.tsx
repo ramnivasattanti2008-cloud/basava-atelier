@@ -182,7 +182,7 @@ export default function AdminOrdersPage() {
               <a
                 href={whatsappLink(
                   selectedOrder.customer.phone,
-                  `Hello ${selectedOrder.customer.name}, updating you regarding your Kris Designs order #${selectedOrder.id}. Current status: ${orderStatusLabel[selectedOrder.status]}.`
+                  `Hello ${selectedOrder.customer.name}, updating you regarding your BASAVA order #${selectedOrder.id}. Current status: ${orderStatusLabel[selectedOrder.status]}.`
                 )}
                 target="_blank"
                 rel="noopener noreferrer"

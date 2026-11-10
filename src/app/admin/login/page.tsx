@@ -84,7 +84,7 @@ export default function AdminLoginPage() {
 
         <div className="border-t border-espresso/12 pt-4 text-center">
           <p className="text-xs text-walnut/70">
-            Demo passcode: <code className="font-mono bg-paper px-1.5 py-0.5 border border-espresso/20 text-espresso">kris2026</code>
+            Demo passcode: <code className="font-mono bg-paper px-1.5 py-0.5 border border-espresso/20 text-espresso">basava2026</code>
           </p>
           <div className="mt-4">
             <Link href="/" className="text-xs font-semibold text-espresso hover:underline inline-flex items-center gap-1">

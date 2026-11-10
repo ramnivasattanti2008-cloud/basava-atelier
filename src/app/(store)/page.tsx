@@ -359,7 +359,7 @@ export default function HomePage() {
                 </h2>
               </div>
             </div>
-            <div className="prose-kd text-charcoal/85 text-sm sm:text-base leading-relaxed space-y-4">
+            <div className="prose-bv text-charcoal/85 text-sm sm:text-base leading-relaxed space-y-4">
               <p>
                 Most modern bags are made from synthetic polyurethane (PU) plastic. They look nice for a month, then start peeling and end up in the trash within a year.
               </p>

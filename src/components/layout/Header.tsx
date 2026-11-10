@@ -4,7 +4,7 @@ import { useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { AnimatePresence, motion } from "motion/react";
-import { ArrowRight, ArrowUpRight, Menu, Search, ShoppingBag, X } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Heart, Menu, Search, ShoppingBag, X } from "lucide-react";
 import { navigation } from "@/data/brand";
 import { cx, formatINR } from "@/lib/format";
 import { useCart, useStorefrontCategories, useStorefrontProducts } from "@/lib/hooks";
@@ -47,6 +47,8 @@ export function Header() {
   const categories = useStorefrontCategories();
   const products = useStorefrontProducts();
   const settings = useDemoStore((s) => s.settings);
+  const wishlist = useDemoStore((s) => s.wishlist) || [];
+  const wishlistCount = wishlist.length;
 
   // A panel stays open only on the path it was opened on, so any navigation closes it.
   const [panel, setPanel] = useState<{ name: Panel; path: string } | null>(null);
@@ -145,11 +147,11 @@ export function Header() {
           <Wordmark className="block whitespace-nowrap pl-[0.3em] text-[1.05rem] xs:text-[1.2rem] md:text-[1.45rem]" />
         </Link>
 
-        {/* Right: search and bag */}
+        {/* Right: search, wishlist and bag */}
         <div className="flex items-center justify-end gap-1 md:gap-3">
           <button
             type="button"
-            className="flex h-11 items-center gap-2 px-2 text-espresso"
+            className="flex h-11 items-center gap-2 px-2 text-espresso hover:text-walnut transition-colors"
             onClick={() => (active === "search" ? close() : open("search"))}
             aria-label="Search the collection"
             aria-expanded={active === "search"}
@@ -157,9 +159,22 @@ export function Header() {
             <Search size={19} strokeWidth={1.4} aria-hidden />
             <span className="hidden text-[0.78rem] font-medium uppercase tracking-[0.16em] xl:inline">Search</span>
           </button>
+          <Link
+            href="/wishlist"
+            className="flex h-11 items-center gap-2 px-2 text-espresso hover:text-walnut transition-colors"
+            aria-label={`View your saved pieces, ${wishlistCount} item${wishlistCount === 1 ? "" : "s"}`}
+          >
+            <Heart size={18} strokeWidth={1.5} className={cx(wishlistCount > 0 && "text-[#96722d] fill-[#96722d]/20")} aria-hidden />
+            <span className="hidden text-[0.78rem] font-medium uppercase tracking-[0.16em] xl:inline">Wishlist</span>
+            {wishlistCount > 0 && (
+              <span className="tabular flex h-4 min-w-4 items-center justify-center rounded-full bg-[#96722d] px-1 text-[0.6rem] font-bold text-ivory">
+                {wishlistCount}
+              </span>
+            )}
+          </Link>
           <button
             type="button"
-            className="-mr-2 flex h-11 items-center gap-2 px-2 text-espresso"
+            className="-mr-2 flex h-11 items-center gap-2 px-2 text-espresso hover:text-walnut transition-colors"
             onClick={() => setCartOpen(true)}
             aria-label={`Open your bag, ${count} item${count === 1 ? "" : "s"}`}
           >
@@ -332,6 +347,14 @@ export function Header() {
           <div className="mt-9 space-y-3 border-t border-espresso/15 pt-7 text-sm">
             <Link href="/track-order" onClick={close} className="block text-espresso">
               Track an order
+            </Link>
+            <Link href="/wishlist" onClick={close} className="flex items-center justify-between text-espresso">
+              <span>Saved Pieces (Wishlist)</span>
+              {wishlistCount > 0 && (
+                <span className="tabular flex h-4 min-w-4 items-center justify-center rounded-full bg-[#96722d] px-1.5 text-[0.6rem] font-bold text-ivory">
+                  {wishlistCount}
+                </span>
+              )}
             </Link>
             <a
               href={whatsappLink(settings.whatsappNumber, whatsappMessages.general(settings.makerName))}

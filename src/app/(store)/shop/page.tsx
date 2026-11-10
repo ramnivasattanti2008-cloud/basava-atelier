@@ -2,13 +2,14 @@
 
 import { Suspense, useMemo, useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
-import { Filter, SlidersHorizontal, X } from "lucide-react";
+import { Compass, Filter, SlidersHorizontal, X } from "lucide-react";
 import type { Product } from "@/lib/types";
 import { formatINR, formatNumber } from "@/lib/format";
 import { colourFamilies, colourFamilyOf } from "@/lib/colours";
 import { useStorefrontCategories, useStorefrontProducts } from "@/lib/hooks";
 import { ProductCard } from "@/components/product/ProductCard";
 import { QuickViewModal } from "@/components/product/QuickViewModal";
+import { SilhouetteAdvisorModal } from "@/components/shop/SilhouetteAdvisorModal";
 import { Overlay } from "@/components/ui/Overlay";
 
 type SortOption = "featured" | "price-asc" | "price-desc" | "name-asc";
@@ -28,6 +29,7 @@ function ShopContent() {
 
   const [quickViewProduct, setQuickViewProduct] = useState<Product | null>(null);
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
+  const [advisorOpen, setAdvisorOpen] = useState(false);
 
   // URL State
   const selectedCategory = searchParams.get("category") || "all";
@@ -221,13 +223,23 @@ function ShopContent() {
   return (
     <div className="shell py-10 sm:py-16">
       {/* Page Header */}
-      <div className="border-b border-espresso/15 pb-8">
-        <p className="eyebrow">The Complete Collection</p>
-        <h1 className="display-lg mt-3">All Pieces</h1>
-        <p className="lede mt-3 max-w-2xl">
-          Browse our entire catalogue of genuine leather totes, slings, crossbodies, and accessories.
-          Each piece is uniquely handcrafted.
-        </p>
+      <div className="border-b border-espresso/15 pb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div>
+          <p className="eyebrow">The Complete Collection</p>
+          <h1 className="display-lg mt-3">All Pieces</h1>
+          <p className="lede mt-3 max-w-2xl">
+            Browse our entire catalogue of genuine leather totes, slings, crossbodies, and accessories.
+            Each piece is uniquely handcrafted.
+          </p>
+        </div>
+        <button
+          type="button"
+          onClick={() => setAdvisorOpen(true)}
+          className="btn-tactile inline-flex items-center gap-2 px-4 py-2.5 border border-[#caa359] bg-[#caa359]/15 hover:bg-[#caa359]/25 text-espresso text-xs font-semibold uppercase tracking-wider rounded-xs transition-all cursor-pointer shadow-xs shrink-0 self-start md:self-auto"
+        >
+          <Compass size={15} className="text-[#96722d]" />
+          <span>✦ Silhouette Advisor</span>
+        </button>
       </div>
 
       {/* Control Bar: Filter Toggle, Active Chips, Sorting */}
@@ -376,6 +388,12 @@ function ShopContent() {
       <QuickViewModal
         product={quickViewProduct}
         onClose={() => setQuickViewProduct(null)}
+      />
+
+      {/* Silhouette Advisor Modal */}
+      <SilhouetteAdvisorModal
+        open={advisorOpen}
+        onClose={() => setAdvisorOpen(false)}
       />
     </div>
   );

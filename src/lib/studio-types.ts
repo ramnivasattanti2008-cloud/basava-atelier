@@ -1,6 +1,6 @@
 /**
  * Studio & Bespoke Bag Designer Domain Types
- * Kris Designs — Bespoke Bengaluru Leathercraft Atelier
+ * BASAVA — Bespoke Bengaluru Leathercraft Atelier
  */
 
 export type BagType =

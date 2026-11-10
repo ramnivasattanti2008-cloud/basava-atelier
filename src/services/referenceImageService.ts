@@ -67,7 +67,7 @@ export class ReferenceImageService {
     const base64Data = dataUrl.split(",")[1];
     const mimeType = dataUrl.substring(dataUrl.indexOf(":") + 1, dataUrl.indexOf(";"));
 
-    const systemPrompt = `You are a master bespoke leather artisan and luxury bag designer at Kris Designs (Bengaluru).
+    const systemPrompt = `You are a master bespoke leather artisan and luxury bag designer at BASAVA Atelier (Bengaluru).
 Analyze the attached reference photograph or sketch of a leather bag.
 Extract the bag silhouette, leather color, material grain, handle style, and hardware finish.
 Important: Never copy proprietary trademarked brand logos or hardware shapes. Focus on classic leathercraft proportions.

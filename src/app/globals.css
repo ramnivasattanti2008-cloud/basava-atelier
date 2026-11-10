@@ -214,9 +214,11 @@
     color: color-mix(in srgb, var(--color-ivory) 82%, transparent);
   }
 
+  .prose-bv p + p,
   .prose-kd p + p {
     margin-top: 1.1em;
   }
+  .prose-bv p,
   .prose-kd p {
     text-wrap: pretty;
   }

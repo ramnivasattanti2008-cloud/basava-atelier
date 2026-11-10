@@ -1,9 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { Download, Eye, History, Layers, Maximize2, RefreshCw, X, Compass } from "lucide-react";
+import { Download, Eye, History, Layers, Maximize2, RefreshCw, Share2, X, Compass } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import { cx } from "@/lib/format";
+import { useToast } from "@/lib/toast";
 import type { BespokeDesignConfig, ConceptImage, ConceptViewType, DesignVersion } from "@/lib/studio-types";
 
 interface BagConceptViewerProps {
@@ -29,6 +30,7 @@ export function BagConceptViewer({
 }: BagConceptViewerProps) {
   const [activeView, setActiveView] = useState<ConceptViewType>("front");
   const [isZoomOpen, setIsZoomOpen] = useState(false);
+  const showToast = useToast((s) => s.show);
 
   const currentImage = views[activeView] || views.front;
 
@@ -38,6 +40,31 @@ export function BagConceptViewer({
     { id: "interior", label: "Interior Layout", icon: "⌗" },
     { id: "detail", label: "Macro Detail", icon: "🔍" },
   ];
+
+  const handleShare = () => {
+    const params = new URLSearchParams({
+      style: config.bagType,
+      leather: config.material,
+      colour: config.colourName,
+      hw: config.hardware,
+    });
+    if (config.personalisation.enabled && config.personalisation.text) {
+      params.set("initials", config.personalisation.text);
+    }
+    const shareUrl = `${window.location.origin}/custom?${params.toString()}`;
+    if (navigator.share) {
+      navigator
+        .share({
+          title: `${config.designName} — BASAVA Bespoke Atelier`,
+          text: `Review my bespoke bag configuration: ${config.designName} in ${config.colourName} ${config.material}.`,
+          url: shareUrl,
+        })
+        .catch(() => {});
+    } else {
+      navigator.clipboard.writeText(shareUrl);
+      showToast("Bespoke specification link copied to clipboard.");
+    }
+  };
 
   const handleDownload = () => {
     if (!currentImage?.url) return;
@@ -137,6 +164,15 @@ export function BagConceptViewer({
 
               {/* Floating Controls Overlay */}
               <div className="absolute top-2 right-2 flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={handleShare}
+                  className="p-2 bg-ivory/90 hover:bg-ivory border border-espresso/20 text-espresso rounded-xs shadow-xs transition-colors cursor-pointer"
+                  title="Share bespoke specification link"
+                  aria-label="Share specification link"
+                >
+                  <Share2 size={15} />
+                </button>
                 <button
                   type="button"
                   onClick={() => setIsZoomOpen(true)}

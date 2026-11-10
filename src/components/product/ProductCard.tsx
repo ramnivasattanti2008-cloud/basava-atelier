@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Award, Eye, ShoppingBag } from "lucide-react";
+import { Award, Eye, Heart, ShoppingBag } from "lucide-react";
 import type { Product } from "@/lib/types";
 import { cx, formatINR, isPurchasable } from "@/lib/format";
 import { useDemoStore } from "@/lib/store";
@@ -20,10 +20,23 @@ interface ProductCardProps {
 export function ProductCard({ product, onQuickView, className, eager = false }: ProductCardProps) {
   const [hovered, setHovered] = useState(false);
   const addToCart = useDemoStore((s) => s.addToCart);
+  const toggleWishlist = useDemoStore((s) => s.toggleWishlist);
+  const inWishlist = useDemoStore((s) => (s.wishlist || []).includes(product.id));
   const showToast = useToast((s) => s.show);
 
   const purchasable = isPurchasable(product);
   const hasSecondaryImage = product.images.length > 1;
+
+  const handleToggleWishlist = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const added = toggleWishlist(product.id);
+    if (added) {
+      showToast(`Saved "${product.name}" to your Atelier Wishlist.`);
+    } else {
+      showToast(`Removed "${product.name}" from your Wishlist.`);
+    }
+  };
 
   const handleQuickAdd = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -115,6 +128,26 @@ export function ProductCard({ product, onQuickView, className, eager = false }: 
             </span>
           )}
         </div>
+
+        {/* Wishlist Heart Toggle */}
+        <button
+          type="button"
+          onClick={handleToggleWishlist}
+          className={cx(
+            "btn-tactile absolute right-3 top-3 z-20 flex h-8 w-8 items-center justify-center rounded-full border transition-all duration-300 cursor-pointer shadow-xs",
+            inWishlist
+              ? "bg-ivory border-[#caa359] text-[#96722d] scale-105"
+              : "bg-ivory/80 backdrop-blur-xs border-espresso/15 text-espresso/70 hover:text-espresso hover:bg-ivory hover:scale-105"
+          )}
+          aria-label={inWishlist ? `Remove ${product.name} from wishlist` : `Save ${product.name} to wishlist`}
+          title={inWishlist ? "Saved to Atelier Wishlist" : "Save to Atelier Wishlist"}
+        >
+          <Heart
+            size={14}
+            strokeWidth={1.8}
+            className={cx("transition-transform duration-300", inWishlist && "fill-[#96722d] scale-110")}
+          />
+        </button>
 
         {/* Action Overlay Bar */}
         <div className="absolute inset-x-0 bottom-0 z-10 hidden p-3 md:flex md:items-center md:gap-2 opacity-0 translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">

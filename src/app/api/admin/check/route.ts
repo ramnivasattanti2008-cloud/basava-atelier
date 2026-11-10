@@ -7,3 +7,4 @@ export async function GET() {
   const isAuthenticated = session?.value === "authenticated";
   return NextResponse.json({ authenticated: isAuthenticated });
 }
+

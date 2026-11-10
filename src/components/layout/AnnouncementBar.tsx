@@ -24,13 +24,15 @@ export function AnnouncementBar() {
 
   return (
     <div
-      className="on-dark relative z-50 bg-espresso text-ivory"
+      className="on-dark relative z-50 bg-[#1a0f0a] text-ivory border-b border-[#caa359]/30 shadow-xs"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       onFocus={() => setPaused(true)}
       onBlur={() => setPaused(false)}
     >
-      <div className="shell flex h-10 items-center justify-center overflow-hidden text-center">
+      <div className="shell flex h-10 items-center justify-center overflow-hidden text-center relative">
+        {/* Subtle gold leaf gradient wash */}
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#caa359]/10 to-transparent pointer-events-none" />
         <AnimatePresence mode="wait" initial={false}>
           <motion.p
             key={index % count}
@@ -38,15 +40,15 @@ export function AnnouncementBar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-            className="truncate text-[0.72rem] font-medium tracking-[0.08em]"
+            className="truncate text-[0.72rem] font-medium tracking-[0.08em] relative z-10 flex items-center justify-center gap-2"
           >
-            <span className="text-ivory/85">{current.text}</span>
+            <span className="text-ivory/90">{current.text}</span>
             {current.linkLabel && current.href && (
               <>
-                <span aria-hidden className="mx-2.5 text-saddle">
+                <span aria-hidden className="text-[#caa359]">
                   ·
                 </span>
-                <Link href={current.href} className="link-line text-sand">
+                <Link href={current.href} className="link-line text-[#e8cb85] font-semibold hover:text-white transition-colors">
                   {current.linkLabel}
                 </Link>
               </>

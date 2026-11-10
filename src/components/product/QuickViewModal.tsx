@@ -180,3 +180,4 @@ export function QuickViewModal({ product, onClose }: QuickViewModalProps) {
     </Overlay>
   );
 }
+

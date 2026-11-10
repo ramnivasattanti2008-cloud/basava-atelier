@@ -1,17 +1,26 @@
 import Link from "next/link";
-import { ArrowRight, Droplets, Shield, Sparkles, Sun, Wind } from "lucide-react";
+import { ArrowRight, Droplets, Leaf, Shield, Sparkles, Sun, Wind } from "lucide-react";
+import { HeritageFlourish } from "@/components/heritage/HeritageFlourish";
 
 export default function LeatherGuidePage() {
   return (
     <div className="shell py-12 sm:py-20 max-w-4xl">
       {/* Header */}
       <div className="border-b border-espresso/15 pb-10">
-        <span className="eyebrow">Materials & Craftsmanship</span>
-        <h1 className="display-lg mt-3">The Plain-English Leather Guide</h1>
+        <div className="flex items-center gap-2 mb-2">
+          <span className="font-serif text-xs text-brass tracking-wider select-none font-medium">
+            ಪ್ರಾಕೃತಿಕ ಚರ್ಮ · प्राकृतिक चमड़ा
+          </span>
+          <span className="h-1 w-1 rounded-full bg-brass/60" />
+          <span className="eyebrow text-saddle-deep">Materials & Craftsmanship</span>
+        </div>
+        <h1 className="display-lg mt-1">The Plain-English Leather Guide</h1>
         <p className="lede mt-4 max-w-2xl">
           Everything you need to know about leather grades, hide layers, natural patina, and how to care for your pieces so they last decades.
         </p>
       </div>
+
+      <HeritageFlourish variant="lotus" className="my-8" />
 
       {/* 1. Hide Cross-Section Infographic */}
       <section className="mt-12">
@@ -117,6 +126,63 @@ export default function LeatherGuidePage() {
         </div>
       </section>
 
+      {/* 2.5 South Indian Botanical Vegetable Tanning */}
+      <section className="mt-16 border border-saddle-deep/20 bg-linen/35 p-6 sm:p-8 rounded-xs space-y-6">
+        <div>
+          <div className="flex items-center gap-2">
+            <Leaf size={16} className="text-saddle-deep" />
+            <span className="eyebrow text-brass">Botanical Tanning Tradition</span>
+          </div>
+          <h2 className="display-sm mt-1 text-espresso">South India's Organic Vegetable Tannins</h2>
+          <p className="text-sm text-charcoal/80 mt-2 leading-relaxed">
+            Before industrial chrome solutions became widespread, South Indian master tanners perfected slow pit-tanning with indigenous plant barks, seeds, and leaves. This organic craft creates leather that breathes freely, smells rich, and ages with noble dignity.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 pt-2">
+          <div className="border border-espresso/12 bg-ivory p-5 rounded-xs flex flex-col justify-between">
+            <div>
+              <span className="font-mono text-xs text-saddle-deep font-semibold">BOTANICAL 01</span>
+              <h3 className="font-display text-lg text-espresso mt-2">Babul Bark (ಬಾಬುಲ್)</h3>
+              <p className="mt-2 text-xs text-charcoal/75 leading-relaxed">
+                Extracted from mature <em>Acacia arabica</em> trees across the Deccan. High in catechol tannins, giving leather incredible tensile fiber strength and deep amber tones.
+              </p>
+            </div>
+            <div className="mt-4 pt-3 border-t border-espresso/10 text-[0.6875rem] text-saddle-deep font-semibold uppercase">
+              Heavy Carryalls & Totes
+            </div>
+          </div>
+
+          <div className="border border-espresso/12 bg-ivory p-5 rounded-xs flex flex-col justify-between">
+            <div>
+              <span className="font-mono text-xs text-saddle-deep font-semibold">BOTANICAL 02</span>
+              <h3 className="font-display text-lg text-espresso mt-2">Avaram Senna (ಆವಾರಂ)</h3>
+              <p className="mt-2 text-xs text-charcoal/75 leading-relaxed">
+                Sun-dried golden blossoms and leaves from the dry plains of Karnataka and Tamil Nadu. Produces remarkably soft, pale straw hides prized for supple luxury bags.
+              </p>
+            </div>
+            <div className="mt-4 pt-3 border-t border-espresso/10 text-[0.6875rem] text-saddle-deep font-semibold uppercase">
+              Supple Handbags & Slings
+            </div>
+          </div>
+
+          <div className="border border-espresso/12 bg-ivory p-5 rounded-xs flex flex-col justify-between">
+            <div>
+              <span className="font-mono text-xs text-saddle-deep font-semibold">BOTANICAL 03</span>
+              <h3 className="font-display text-lg text-espresso mt-2">Myrobalan (ಅಳಲೆಕಾಯಿ)</h3>
+              <p className="mt-2 text-xs text-charcoal/75 leading-relaxed">
+                Also known as Haritaki fruit. Pyrogallol tannins clarify the hide, setting dyes deeply and providing natural defense against fungal mold in humid monsoon seasons.
+              </p>
+            </div>
+            <div className="mt-4 pt-3 border-t border-espresso/10 text-[0.6875rem] text-saddle-deep font-semibold uppercase">
+              Monsoon-Resilient Finishing
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <HeritageFlourish variant="divider" className="my-12" />
+
       {/* 3. Care & Maintenance */}
       <section id="care" className="mt-16 border-t border-espresso/15 pt-12 space-y-6">
         <div>
@@ -179,3 +245,4 @@ export default function LeatherGuidePage() {
     </div>
   );
 }
+

@@ -351,3 +351,4 @@ export default function ProductDetailView({ initialSlug }: { initialSlug: string
     </div>
   );
 }
+

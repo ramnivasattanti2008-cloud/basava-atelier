@@ -5,17 +5,28 @@
    Six brand colours, plus three working tints derived from them.
 ------------------------------------------------------------------- */
 @theme inline {
-  --color-espresso: #251911;
-  --color-walnut: #573c2c;
-  --color-saddle: #a77b52;
+  --color-espresso: #1e130c;
+  --color-walnut: #4a3022;
+  --color-saddle: #9c6c42;
   --color-sand: #d9c4a7;
-  --color-ivory: #f3ede3;
-  --color-charcoal: #292724;
+  --color-ivory: #f5efe6;
+  --color-charcoal: #221e1b;
+
+  /* Indian Heritage Regal Accents */
+  --color-gold: #c5a059;
+  --color-gold-deep: #96722d;
+  --color-gold-light: #f3e5c8;
+  --color-terracotta: #a34839;
+  --color-terracotta-deep: #782c20;
+  --color-brass: #b8975a;
+  --color-brass-dark: #644f28;
+  --color-indigo-royal: #162238;
+  --color-forest: #233827;
 
   /* Working tints (derived, not new brand colours) */
-  --color-paper: #faf6ef; /* lifted ivory: inputs, admin surfaces */
-  --color-linen: #e9dfcf; /* ivory → sand midpoint: photograph tiles */
-  --color-saddle-deep: #7d5a3a; /* saddle darkened to pass AA on ivory at small sizes */
+  --color-paper: #faf6f0; /* lifted ivory: inputs, admin surfaces */
+  --color-linen: #eae0d0; /* ivory → sand midpoint: photograph tiles */
+  --color-saddle-deep: #744d2d; /* saddle darkened to pass AA on ivory at small sizes */
 
   --font-display: var(--font-cormorant), "Cormorant Garamond", "Iowan Old Style", Georgia, serif;
   --font-sans: var(--font-manrope), ui-sans-serif, system-ui, "Segoe UI", sans-serif;
@@ -383,6 +394,94 @@
   .no-scrollbar::-webkit-scrollbar {
     display: none;
   }
+
+  /* Indian Heritage Ornaments & Textures */
+  .jaali-pattern {
+    background-color: var(--color-ivory);
+    background-image: radial-gradient(var(--color-walnut) 0.5px, transparent 0.5px), radial-gradient(var(--color-walnut) 0.5px, var(--color-ivory) 0.5px);
+    background-size: 20px 20px;
+    background-position: 0 0, 10px 10px;
+    opacity: 0.95;
+  }
+
+  .jaali-border {
+    border-style: solid;
+    border-image: linear-gradient(to right, transparent, var(--color-gold), transparent) 1;
+  }
+
+  .gold-shimmer {
+    background: linear-gradient(
+      105deg,
+      #b38738 0%,
+      #ffd875 35%,
+      #ffffff 50%,
+      #ffd875 65%,
+      #b38738 100%
+    );
+    background-size: 200% auto;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: kd-gold-shine 4s ease-in-out infinite;
+  }
+
+  .gold-foil-badge {
+    background: linear-gradient(135deg, #caa359 0%, #e8cb85 50%, #9e7930 100%);
+    box-shadow: 0 2px 8px rgba(158, 121, 48, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  }
+
+  .saddle-stitch {
+    position: relative;
+  }
+  .saddle-stitch::after {
+    content: "";
+    position: absolute;
+    inset: 4px;
+    border: 1px dashed rgba(167, 123, 82, 0.45);
+    pointer-events: none;
+    border-radius: inherit;
+  }
+
+  .arch-frame {
+    border-top-left-radius: 9999px;
+    border-top-right-radius: 9999px;
+  }
+}
+
+/* Luxury animations */
+@keyframes kd-gold-shine {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+@keyframes kd-spin-seal {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes kd-float-slow {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.spin-seal {
+  animation: kd-spin-seal 40s linear infinite;
+}
+
+.float-slow {
+  animation: kd-float-slow 6s ease-in-out infinite;
 }
 
 /* Hero entrance — CSS only so the headline never waits on JavaScript. */

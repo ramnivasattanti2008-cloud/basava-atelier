@@ -56,3 +56,4 @@ src/
 - **Client State**: Zustand store with localStorage persistence (`kris-designs-demo`).
 - **Synchronized Hydration**: `DemoStoreProvider` rehydrates persisted state in an effect after initial render to avoid SSR hydration mismatches, while broadcasting mutations across tabs using the browser `storage` event.
 - **Admin Isolation**: Admin routes (`/admin/...`) operate under a separate layout protected by a server-side session cookie (`kd_admin_session`).
+

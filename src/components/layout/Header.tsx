@@ -18,9 +18,14 @@ type Panel = "shop" | "menu" | "search";
 export function Wordmark({ className }: { className?: string }) {
   const name = useDemoStore((s) => s.settings.makerName);
   return (
-    <span className={cx("font-display font-medium uppercase leading-none tracking-[0.3em] text-espresso", className)}>
-      {name}
-    </span>
+    <div className="flex flex-col items-center select-none">
+      <span className={cx("font-display font-medium uppercase leading-none tracking-[0.3em] text-espresso", className)}>
+        {name}
+      </span>
+      <span className="text-[0.52rem] font-medium tracking-[0.22em] text-saddle-deep/90 uppercase mt-1">
+        ಬೆಂಗಳೂರು · BENGALURU
+      </span>
+    </div>
   );
 }
 

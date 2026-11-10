@@ -14,6 +14,11 @@ import { SectionHeading } from "@/components/ui/bits";
 import { ProductCard } from "@/components/product/ProductCard";
 import { QuickViewModal } from "@/components/product/QuickViewModal";
 import { EngravingPreview } from "@/components/custom/EngravingPreview";
+import { HeritageSeal } from "@/components/heritage/HeritageSeal";
+import { HeritageFlourish } from "@/components/heritage/HeritageFlourish";
+import { PackagingExperience } from "@/components/heritage/PackagingExperience";
+
+const KANNADA_NUMERALS = ["೦೧", "೦೨", "೦೩", "೦೪", "೦೫", "೦೬", "೦೭"];
 
 export default function HomePage() {
   const products = useStorefrontProducts();
@@ -33,8 +38,14 @@ export default function HomePage() {
         <div className="shell grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-16">
           {/* Left: Headline & CTAs */}
           <div className="lg:col-span-7 flex flex-col justify-center">
-            <span className="eyebrow rise [--i:0]">{content.hero.eyebrow}</span>
-            <h1 className="display-xl mt-5 rise [--i:1]">
+            <div className="flex items-center gap-3 mb-2 rise [--i:0]">
+              <span className="font-serif text-[0.82rem] text-brass tracking-wider select-none font-medium">
+                ಕೈಯಿಂದ ಮಾಡಿದ · हस्तनिर्मित
+              </span>
+              <span className="h-1 w-1 rounded-full bg-brass/60" />
+              <span className="eyebrow text-saddle-deep">Bengaluru Bespoke Atelier</span>
+            </div>
+            <h1 className="display-xl mt-3 rise [--i:1]">
               Made to last.<br />
               <span className="italic font-normal">Made to be yours.</span>
             </h1>
@@ -71,6 +82,11 @@ export default function HomePage() {
           {/* Right: Asymmetric Editorial Tile */}
           {heroProduct && (
             <div className="lg:col-span-5 relative unveil [--i:2]">
+              {/* Rotating Artisan Heritage Seal overlay */}
+              <div className="absolute -top-7 -right-7 z-20 hidden sm:block float-slow">
+                <HeritageSeal size={96} rotating={true} />
+              </div>
+
               <div className="photo-tile photo-tile--paper relative aspect-[4/5] w-full max-w-md mx-auto rounded-xs shadow-2xl p-8 flex flex-col justify-between">
                 <div className="flex items-center justify-between text-xs">
                   <span className="eyebrow">{heroProduct.listedType || "Genuine Leather"}</span>
@@ -112,6 +128,9 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Heritage Lotus Transition */}
+      <HeritageFlourish variant="lotus" className="py-2" />
+
       {/* 2. CATEGORY SPOTLIGHT */}
       <section className="border-b border-espresso/15 py-16 sm:py-24 bg-paper/40">
         <div className="shell">
@@ -134,7 +153,9 @@ export default function HomePage() {
               >
                 <div>
                   <div className="flex items-center justify-between text-xs text-walnut/70">
-                    <span className="font-mono text-[0.6875rem]">0{idx + 1}</span>
+                    <span className="font-mono text-[0.6875rem] text-saddle-deep font-semibold">
+                      {KANNADA_NUMERALS[idx] ?? `0${idx + 1}`} · 0{idx + 1}
+                    </span>
                     <span className="font-semibold uppercase tracking-wider text-saddle-deep">
                       {products.filter((p) => p.category === cat.slug).length} pieces
                     </span>
@@ -178,6 +199,9 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* Ornate Royal Divider */}
+      <HeritageFlourish variant="divider" />
 
       {/* 3. FEATURED PRODUCTS GRID */}
       <section className="py-20 sm:py-28 border-b border-espresso/15">
@@ -284,11 +308,16 @@ export default function HomePage() {
       <section className="py-20 sm:py-28 border-b border-espresso/15 bg-paper/50">
         <div className="shell grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           <div className="lg:col-span-6 space-y-6">
-            <p className="eyebrow">Our Philosophy</p>
-            <h2 className="display-lg text-espresso">
-              Crafted One Stitch<br />
-              <span className="italic font-normal">at a Time.</span>
-            </h2>
+            <div className="flex items-center gap-4">
+              <HeritageSeal size={80} rotating={false} className="shrink-0" />
+              <div>
+                <p className="eyebrow text-brass">Our Philosophy</p>
+                <h2 className="display-lg text-espresso mt-1">
+                  Crafted One Stitch<br />
+                  <span className="italic font-normal">at a Time.</span>
+                </h2>
+              </div>
+            </div>
             <div className="prose-kd text-charcoal/85 text-sm sm:text-base leading-relaxed space-y-4">
               <p>
                 At <strong>{settings.makerName}</strong>, leather is not mass-produced in factories; it is cut, edge-finished, and assembled by hand. From generous totes engineered for daily use to compact wristlets made from textured hides, each design balances functional utility with understated heritage.
@@ -298,7 +327,15 @@ export default function HomePage() {
               </p>
             </div>
 
-            <div className="pt-4 flex items-center gap-6">
+            {/* Preserving South Indian Heritage Callout */}
+            <div className="border border-saddle-deep/20 bg-linen/50 p-4 rounded-xs text-xs text-charcoal/80 space-y-1">
+              <p className="font-semibold text-espresso">Preserving Indian Leatherwork Traditions</p>
+              <p>
+                Rooted in centuries of South Indian vegetable tanning using babul bark and natural plant extracts. We pair traditional hand saddle-stitching with cast brass hardware crafted right here in Karnataka.
+              </p>
+            </div>
+
+            <div className="pt-2 flex items-center gap-6">
               <Link href="/about" className="link-line text-xs font-semibold uppercase tracking-wider text-espresso">
                 Read Our Story & Craft <ArrowRight size={13} className="inline ml-1" />
               </Link>
@@ -349,7 +386,15 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 6. LEATHER EDUCATION HIGHLIGHT */}
+      {/* 6. UNBOXING RITUAL */}
+      <section className="py-16 sm:py-24 border-b border-espresso/15 bg-linen/30">
+        <div className="shell">
+          <HeritageFlourish variant="lotus" className="mb-8" />
+          <PackagingExperience />
+        </div>
+      </section>
+
+      {/* 7. LEATHER EDUCATION HIGHLIGHT */}
       <section className="py-20 border-b border-espresso/15">
         <div className="shell">
           <div className="mx-auto max-w-2xl text-center">
@@ -399,7 +444,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 7. CONTACT / CONSULTATION BANNER */}
+      {/* 8. CONTACT / CONSULTATION BANNER */}
       <section className="py-20 bg-linen/50">
         <div className="shell flex flex-col md:flex-row items-center justify-between gap-8">
           <div className="max-w-xl">
@@ -434,3 +479,4 @@ export default function HomePage() {
     </div>
   );
 }
+

@@ -17,3 +17,4 @@ Build a luxury, bespoke leather goods e-commerce experience and operational stud
 - **State & Local Persistence**: Zustand v5 with localStorage persistence, synchronized across browser tabs
 - **Fonts**: Cormorant Garamond (display serif) + Manrope (sans-serif)
 - **Admin Security**: Server-side passcode gate (`ADMIN_PASSCODE` in `.env.local`, signed session cookies)
+

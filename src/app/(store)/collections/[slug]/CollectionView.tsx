@@ -69,3 +69,4 @@ export default function CollectionView({ categorySlug }: { categorySlug: string 
     </div>
   );
 }
+

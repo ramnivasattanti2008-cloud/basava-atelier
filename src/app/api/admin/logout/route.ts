@@ -6,3 +6,4 @@ export async function POST() {
   cookieStore.delete("kd_admin_session");
   return NextResponse.json({ ok: true });
 }
+

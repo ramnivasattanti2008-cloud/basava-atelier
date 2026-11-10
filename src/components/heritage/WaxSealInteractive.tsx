@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "motion/react";
-import { Sparkles, ShieldCheck } from "lucide-react";
+import { Award, ShieldCheck } from "lucide-react";
 import { BasavaMark } from "@/components/brand/BasavaLogo";
 import { cx } from "@/lib/format";
 
@@ -81,7 +81,7 @@ export function WaxSealInteractive({ className, size = 120 }: WaxSealInteractive
       {/* Interactive Helper Text */}
       <div className="mt-2 text-center">
         <span className="text-[0.65rem] tracking-wider uppercase font-semibold text-[#a88959] flex items-center justify-center gap-1">
-          <Sparkles size={11} /> {stampedCount > 0 ? "Artisan Seal Stamped" : "Tap Seal to Stamp"}
+          <Award size={11} /> {stampedCount > 0 ? "Artisan Seal Stamped" : "Tap Seal to Stamp"}
         </span>
       </div>
     </div>

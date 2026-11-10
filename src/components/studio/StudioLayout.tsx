@@ -2,7 +2,6 @@
 
 import { useState, useEffect, useCallback, useRef } from "react";
 import {
-  Sparkles,
   Layers,
   MessageSquare,
   Eye,
@@ -484,7 +483,7 @@ export function StudioLayout({
             onClick={() => setIsQuoteModalOpen(true)}
             className="btn btn-solid btn-sm flex items-center gap-1.5 shadow-xs cursor-pointer"
           >
-            <Sparkles size={13} className="text-sand" />
+            <Compass size={13} className="text-sand" />
             <span>Request Quote</span>
           </button>
         </div>

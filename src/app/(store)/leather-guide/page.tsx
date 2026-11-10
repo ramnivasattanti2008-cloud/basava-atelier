@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, Droplets, Leaf, Sparkles, Sun, Wind } from "lucide-react";
+import { ArrowRight, Award, Droplets, Leaf, Sun, Wind } from "lucide-react";
 import { HeritageFlourish } from "@/components/heritage/HeritageFlourish";
 
 export default function LeatherGuidePage() {
@@ -205,7 +205,7 @@ export default function LeatherGuidePage() {
           </div>
 
           <div className="flex items-start gap-3.5 border border-espresso/12 bg-paper p-5">
-            <Sparkles size={22} className="text-saddle-deep shrink-0 mt-0.5" />
+            <Award size={22} className="text-saddle-deep shrink-0 mt-0.5" />
             <div>
               <h4 className="font-display text-lg text-espresso">Conditioning Every 6 Months</h4>
               <p className="mt-1 text-xs text-charcoal/80 leading-relaxed">

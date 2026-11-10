@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { MapPin, Sparkles, Compass, CheckCircle2, ChevronRight } from "lucide-react";
+import { MapPin, Award, Compass, CheckCircle2, ChevronRight } from "lucide-react";
 import { cx } from "@/lib/format";
 import { HeritageFlourish } from "./HeritageFlourish";
 
@@ -235,7 +235,7 @@ export function IndianArtisanalMap() {
                     </span>
                   </div>
                   <div className="flex items-center gap-1 text-[0.7rem] text-charcoal/70 font-mono">
-                    <Sparkles size={13} className="text-brass" /> Authenticated Origin
+                    <Award size={13} className="text-brass" /> Authenticated Origin
                   </div>
                 </div>
 

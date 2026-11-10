@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { CheckCircle2, MessageCircle, Send, ShieldCheck, Sparkles, X } from "lucide-react";
+import { Award, CheckCircle2, MessageCircle, Send, ShieldCheck, X } from "lucide-react";
 import { cx } from "@/lib/format";
 import { isEmail, isFilled, isIndianPhone } from "@/lib/validation";
 import { whatsappLink } from "@/lib/whatsapp";
@@ -108,7 +108,7 @@ export function QuotationModal({
             {/* WhatsApp Fast Track */}
             <div className="mt-6 p-4 border border-saddle-deep/30 bg-linen/50 rounded-xs text-left max-w-md mx-auto">
               <div className="flex items-center gap-2 text-espresso font-semibold text-xs">
-                <Sparkles size={14} className="text-brass" />
+                <Award size={14} className="text-brass" />
                 <span>Fast-Track with the Maker</span>
               </div>
               <p className="text-xs text-charcoal/75 mt-1 leading-relaxed">

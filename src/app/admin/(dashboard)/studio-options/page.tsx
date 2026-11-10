@@ -10,7 +10,7 @@ import {
   RotateCcw,
   ShieldAlert,
   ShieldCheck,
-  Sparkles,
+  Compass,
   ToggleLeft,
   ToggleRight,
   XCircle,
@@ -180,7 +180,7 @@ export default function AdminStudioOptionsPage() {
         {/* Studio Acceptance Status */}
         <div className="border border-espresso/15 bg-paper p-5 rounded-xs space-y-3 shadow-2xs">
           <div className="flex items-center gap-2">
-            <Sparkles size={16} className="text-saddle-deep" />
+            <Compass size={16} className="text-saddle-deep" />
             <h3 className="font-display text-base text-espresso font-semibold">
               Public Commission Submissions
             </h3>

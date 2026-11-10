@@ -11,7 +11,7 @@ import {
   DollarSign,
   Package,
   ShoppingBag,
-  Sparkles,
+  Compass,
 } from "lucide-react";
 import { formatDate, formatINR, orderStatusLabel } from "@/lib/format";
 import { useDemoStore } from "@/lib/store";
@@ -110,7 +110,7 @@ export default function AdminOverviewPage() {
         <div className="border border-espresso/15 bg-ivory p-5 rounded-xs space-y-2">
           <div className="flex items-center justify-between text-walnut/70">
             <span className="text-xs font-semibold uppercase tracking-wider">Custom Requests</span>
-            <Sparkles size={16} className="text-saddle-deep" />
+            <Compass size={16} className="text-saddle-deep" />
           </div>
           <p className="tabular font-display text-3xl font-bold text-espresso">
             {openEnquiriesCount}

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Eye, ShoppingBag, Sparkles } from "lucide-react";
+import { Award, Eye, ShoppingBag } from "lucide-react";
 import type { Product } from "@/lib/types";
 import { cx, formatINR, isPurchasable } from "@/lib/format";
 import { useDemoStore } from "@/lib/store";
@@ -58,11 +58,11 @@ export function ProductCard({ product, onQuickView, className, eager = false }: 
         className="photo-tile relative block aspect-square w-full overflow-hidden bg-linen border border-espresso/10 transition-all duration-500 group-hover:border-[#caa359] group-hover:shadow-[0_20px_35px_-12px_rgba(48,37,30,0.2)] focus:outline-none focus:ring-2 focus:ring-espresso focus:ring-offset-2 gpu-smooth"
         aria-label={`View details for ${product.name}`}
       >
-        {/* Subtle Decorative Golden Corner Accents on Hover */}
-        <div className="absolute top-2 left-2 h-2.5 w-2.5 border-t border-l border-[#caa359] opacity-0 transition-opacity duration-300 group-hover:opacity-100 z-10" />
-        <div className="absolute top-2 right-2 h-2.5 w-2.5 border-t border-r border-[#caa359] opacity-0 transition-opacity duration-300 group-hover:opacity-100 z-10" />
-        <div className="absolute bottom-2 left-2 h-2.5 w-2.5 border-b border-l border-[#caa359] opacity-0 transition-opacity duration-300 group-hover:opacity-100 z-10" />
-        <div className="absolute bottom-2 right-2 h-2.5 w-2.5 border-b border-r border-[#caa359] opacity-0 transition-opacity duration-300 group-hover:opacity-100 z-10" />
+        {/* Subtle Decorative Golden Corner Accents with smooth scale and fade on hover */}
+        <div className="absolute top-2.5 left-2.5 h-3 w-3 border-t-2 border-l-2 border-[#caa359] opacity-0 scale-75 transition-all duration-300 ease-out group-hover:opacity-100 group-hover:scale-100 z-10" />
+        <div className="absolute top-2.5 right-2.5 h-3 w-3 border-t-2 border-r-2 border-[#caa359] opacity-0 scale-75 transition-all duration-300 ease-out group-hover:opacity-100 group-hover:scale-100 z-10" />
+        <div className="absolute bottom-2.5 left-2.5 h-3 w-3 border-b-2 border-l-2 border-[#caa359] opacity-0 scale-75 transition-all duration-300 ease-out group-hover:opacity-100 group-hover:scale-100 z-10" />
+        <div className="absolute bottom-2.5 right-2.5 h-3 w-3 border-b-2 border-r-2 border-[#caa359] opacity-0 scale-75 transition-all duration-300 ease-out group-hover:opacity-100 group-hover:scale-100 z-10" />
 
         {/* Primary Image */}
         <div
@@ -101,7 +101,7 @@ export function ProductCard({ product, onQuickView, className, eager = false }: 
         <div className="absolute left-3 top-3 z-10 flex flex-col gap-1">
           {product.featured && (
             <span className="bg-gradient-to-r from-[#96722d] to-[#c5a059] text-ivory px-2 py-0.5 text-[0.55rem] font-bold uppercase tracking-widest shadow-xs flex items-center gap-1">
-              <Sparkles size={10} /> Signature
+              <Award size={10} /> Signature
             </span>
           )}
           {product.stock.status === "out_of_stock" && (

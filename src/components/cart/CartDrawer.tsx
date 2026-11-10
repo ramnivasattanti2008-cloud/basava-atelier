@@ -96,7 +96,7 @@ export function CartDrawer() {
             <p className="mt-2 flex items-center gap-2 text-xs text-charcoal/70">
               <DemoTag>Demo</DemoTag> No payment is taken in this demonstration.
             </p>
-            <Link href="/checkout" onClick={close} className="btn btn-solid mt-5 w-full">
+            <Link href="/checkout" onClick={close} className="btn btn-solid btn-tactile shimmer-badge mt-5 w-full shadow-md hover:shadow-lg">
               Checkout
             </Link>
             <Link href="/cart" onClick={close} className="mt-4 block text-center text-[0.78rem] font-medium uppercase tracking-[0.16em] text-espresso">

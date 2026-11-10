@@ -13,7 +13,7 @@ import {
   Package,
   Settings,
   Sliders,
-  Sparkles,
+  Compass,
 } from "lucide-react";
 import { cx } from "@/lib/format";
 import { useDemoStore } from "@/lib/store";
@@ -24,7 +24,7 @@ const navItems = [
   { label: "Products", href: "/admin/products", icon: Package },
   { label: "Inventory", href: "/admin/inventory", icon: Boxes },
   { label: "Orders", href: "/admin/orders", icon: ClipboardList },
-  { label: "Custom Requests", href: "/admin/custom-requests", icon: Sparkles },
+  { label: "Custom Requests", href: "/admin/custom-requests", icon: Compass },
   { label: "Studio Options", href: "/admin/studio-options", icon: Sliders },
   { label: "Settings", href: "/admin/settings", icon: Settings },
 ];

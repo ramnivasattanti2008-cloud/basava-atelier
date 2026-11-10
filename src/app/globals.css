@@ -549,9 +549,75 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
+
+  /* Shimmer button overlay */
+  .shimmer-badge {
+    position: relative;
+    overflow: hidden;
+  }
+  .shimmer-badge::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+    animation: kd-shimmer-sweep 4s infinite cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* Tactile button micro-physics */
+  .btn-tactile {
+    transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.22s ease, background-color 0.2s ease, border-color 0.2s ease;
+  }
+  .btn-tactile:hover {
+    transform: translateY(-2px);
+  }
+  .btn-tactile:active {
+    transform: translateY(1px) scale(0.98);
+  }
 }
 
 /* Luxury animations */
+@keyframes kd-shimmer-sweep {
+  0% {
+    left: -100%;
+  }
+  40%, 100% {
+    left: 160%;
+  }
+}
+
+@keyframes kd-pulse-aura {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(168, 137, 89, 0.45);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(168, 137, 89, 0);
+    transform: scale(1.02);
+  }
+}
+
+@keyframes kd-ripple-ring {
+  0% {
+    transform: scale(0.85);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+
+.pulse-aura {
+  animation: kd-pulse-aura 3s ease-in-out infinite;
+}
+
+.ripple-ring {
+  animation: kd-ripple-ring 2.4s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
 @keyframes kd-gold-shine {
   0% {
     background-position: -200% center;

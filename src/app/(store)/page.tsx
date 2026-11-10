@@ -19,6 +19,7 @@ import { PackagingExperience } from "@/components/heritage/PackagingExperience";
 import { PatinaInteractiveSimulator } from "@/components/heritage/PatinaInteractiveSimulator";
 import { IndianArtisanalMap } from "@/components/heritage/IndianArtisanalMap";
 import { WaxSealInteractive } from "@/components/heritage/WaxSealInteractive";
+import { Reveal } from "@/components/ui/Reveal";
 
 const KANNADA_NUMERALS = ["೦೧", "೦೨", "೦೩", "೦೪", "೦೫", "೦೬", "೦೭"];
 
@@ -56,11 +57,11 @@ export default function HomePage() {
             </p>
 
             <div className="mt-8 flex flex-wrap items-center gap-4 rise [--i:3]">
-              <Link href="/shop" className="btn btn-solid shadow-md hover:shadow-lg transition-all">
+              <Link href="/shop" className="btn btn-solid btn-tactile shadow-md hover:shadow-xl transition-all">
                 EXPLORE COLLECTION
                 <ArrowRight size={15} strokeWidth={1.5} />
               </Link>
-              <Link href="/custom" className="btn btn-outline hover:border-espresso transition-all">
+              <Link href="/custom" className="btn btn-outline btn-tactile hover:border-espresso transition-all">
                 CREATE YOUR OWN
               </Link>
             </div>
@@ -84,6 +85,9 @@ export default function HomePage() {
           {/* Right: Asymmetric Editorial Tile */}
           {heroProduct && (
             <div className="lg:col-span-5 relative unveil [--i:2]">
+              {/* Warm Ambient Golden Aura */}
+              <div className="absolute -inset-4 rounded-3xl bg-gradient-to-tr from-[#caa359]/20 via-[#a88959]/10 to-transparent blur-2xl pointer-events-none pulse-aura" />
+
               {/* Rotating Artisan Heritage Seal overlay */}
               <div className="absolute -top-7 -right-7 z-20 hidden sm:block float-slow">
                 <HeritageSeal size={96} rotating={true} />
@@ -164,7 +168,8 @@ export default function HomePage() {
       {/* 2. CATEGORY SPOTLIGHT */}
       <section className="border-b border-espresso/15 py-16 sm:py-24 bg-paper/40">
         <div className="shell">
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 pb-12">
+          <Reveal>
+            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 pb-12">
             <div>
               <p className="eyebrow text-saddle-deep">Find Your Daily Bag</p>
               <h2 className="display-lg mt-2">Seven Everyday Shapes</h2>
@@ -230,6 +235,7 @@ export default function HomePage() {
               </div>
             </Link>
           </div>
+          </Reveal>
         </div>
       </section>
 
@@ -239,7 +245,8 @@ export default function HomePage() {
       {/* 3. FEATURED PRODUCTS GRID */}
       <section className="py-20 sm:py-28 border-b border-espresso/15">
         <div className="shell">
-          <SectionHeading
+          <Reveal>
+            <SectionHeading
             eyebrow="Signature Leathercraft"
             title="Handcrafted Everyday Favorites"
             className="mb-14"
@@ -262,6 +269,7 @@ export default function HomePage() {
               Browse Complete Catalogue (40 Pieces)
             </Link>
           </div>
+          </Reveal>
         </div>
       </section>
 
@@ -308,7 +316,7 @@ export default function HomePage() {
             </div>
 
             <div className="mt-8 flex flex-wrap gap-4">
-              <Link href="/custom" className="btn btn-light shadow-md hover:shadow-lg transition-all flex items-center gap-2">
+              <Link href="/custom" className="btn btn-light btn-tactile shimmer-badge shadow-md hover:shadow-xl transition-all flex items-center gap-2">
                 <Compass size={14} className="text-sand" />
                 Launch Bespoke Atelier Studio
                 <ArrowRight size={14} />
@@ -626,28 +634,32 @@ export default function HomePage() {
 
       {/* 10. CONTACT / CONSULTATION BANNER */}
       <section className="py-16 sm:py-20 bg-linen/60 border-t border-espresso/10">
-        <div className="shell flex flex-col md:flex-row items-center justify-between gap-8">
-          <div className="max-w-xl">
-            <p className="eyebrow text-saddle-deep">Direct Artisan Support</p>
-            <h2 className="display-sm mt-2">Have a Question? Talk Directly to the Maker</h2>
-            <p className="text-sm text-charcoal/80 mt-2 leading-relaxed">
-              Not sure which size fits your laptop? Want a custom strap length or a personalised gift? Send a quick message on WhatsApp — our Bengaluru maker answers you directly.
-            </p>
-          </div>
-          <div className="flex flex-wrap items-center gap-4 shrink-0">
-            <a
-              href={whatsappLink(settings.whatsappNumber, "Hello! I am viewing your leather collection and have a question.")}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn-solid flex items-center gap-2 shadow-md hover:shadow-lg transition-all"
-            >
-              <MessageCircle size={16} />
-              Chat on WhatsApp
-            </a>
-            <Link href="/contact" className="btn btn-outline hover:border-espresso transition-all">
-              Send an Email
-            </Link>
-          </div>
+        <div className="shell">
+          <Reveal>
+            <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+              <div className="max-w-xl">
+                <p className="eyebrow text-saddle-deep">Direct Artisan Support</p>
+                <h2 className="display-sm mt-2">Have a Question? Talk Directly to the Maker</h2>
+                <p className="text-sm text-charcoal/80 mt-2 leading-relaxed">
+                  Not sure which size fits your laptop? Want a custom strap length or a personalised gift? Send a quick message on WhatsApp — our Bengaluru maker answers you directly.
+                </p>
+              </div>
+              <div className="flex flex-wrap items-center gap-4 shrink-0">
+                <a
+                  href={whatsappLink(settings.whatsappNumber, "Hello! I am viewing your leather collection and have a question.")}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-solid btn-tactile flex items-center gap-2 shadow-md hover:shadow-lg transition-all"
+                >
+                  <MessageCircle size={16} />
+                  Chat on WhatsApp
+                </a>
+                <Link href="/contact" className="btn btn-outline btn-tactile hover:border-espresso transition-all">
+                  Send an Email
+                </Link>
+              </div>
+            </div>
+          </Reveal>
         </div>
       </section>
 

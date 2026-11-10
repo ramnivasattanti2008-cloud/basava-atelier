@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Sparkles, Clock, ShieldCheck, Award } from "lucide-react";
+import { Award, Clock, ShieldCheck, Compass } from "lucide-react";
 import { cx } from "@/lib/format";
 import { HeritageFlourish } from "./HeritageFlourish";
 
@@ -171,7 +171,7 @@ export function PatinaInteractiveSimulator() {
           </div>
 
           <div className="mt-3 flex items-center gap-2 text-[0.7rem] text-[#caa359] font-medium tracking-wide">
-            <Sparkles size={12} />
+            <Award size={12} />
             <span>Interactive simulated hide: changes color & patina in real-time</span>
           </div>
         </div>

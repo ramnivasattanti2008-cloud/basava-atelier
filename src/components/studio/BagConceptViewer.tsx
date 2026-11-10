@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Download, Eye, History, Layers, Maximize2, RefreshCw, Sparkles, X, Compass } from "lucide-react";
+import { Download, Eye, History, Layers, Maximize2, RefreshCw, X, Compass } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import { cx } from "@/lib/format";
 import type { BespokeDesignConfig, ConceptImage, ConceptViewType, DesignVersion } from "@/lib/studio-types";
@@ -104,6 +104,9 @@ export function BagConceptViewer({
             </div>
           ) : currentImage?.url ? (
             <div className="relative w-full h-full flex items-center justify-center">
+              {/* Soft Ambient Brass Lighting Aura */}
+              <div className="absolute inset-16 rounded-full bg-gradient-to-tr from-[#caa359]/15 via-transparent to-transparent blur-3xl pointer-events-none pulse-aura" />
+
               {/* Subtle Atelier CAD Crosshair Guidelines */}
               <div className="absolute inset-x-8 top-1/2 h-[1px] bg-brass/10 pointer-events-none" />
               <div className="absolute inset-y-8 left-1/2 w-[1px] bg-brass/10 pointer-events-none" />
@@ -187,10 +190,10 @@ export function BagConceptViewer({
                 type="button"
                 onClick={() => setActiveView(tab.id)}
                 className={cx(
-                  "flex items-center justify-center gap-1.5 py-2 px-2 text-xs font-semibold uppercase tracking-wider rounded-xs border transition-all cursor-pointer truncate",
+                  "btn-tactile flex items-center justify-center gap-1.5 py-2 px-2 text-xs font-semibold uppercase tracking-wider rounded-xs border transition-all cursor-pointer truncate active:scale-95",
                   isSelected
                     ? "bg-espresso text-ivory border-espresso shadow-xs"
-                    : "bg-ivory/90 border-espresso/15 text-charcoal/80 hover:border-espresso/40 hover:bg-ivory"
+                    : "bg-ivory/90 border-espresso/15 text-charcoal/80 hover:border-espresso/40 hover:bg-ivory hover:-translate-y-0.5"
                 )}
               >
                 <span className="text-[0.65rem] opacity-75">{tab.icon}</span>

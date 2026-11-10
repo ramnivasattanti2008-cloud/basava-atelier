@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
-import { Award, Feather, Gift, ShieldCheck, Sparkles } from "lucide-react";
+import { Award, Feather, Gift, ShieldCheck } from "lucide-react";
 import { cx } from "@/lib/format";
 
 const packagingSteps = [
@@ -123,8 +123,8 @@ export function PackagingExperience() {
 
           <div className="mt-8 pt-4 border-t border-espresso/10 flex items-center justify-between text-xs text-walnut/70">
             <span className="flex items-center gap-1.5 font-medium">
-              <Sparkles size={14} className="text-brass" />
-              Included free with every order
+              <Gift size={14} className="text-brass" />
+              Included with every handcrafted commission
             </span>
             <div className="flex gap-2">
               {packagingSteps.map((_, i) => (

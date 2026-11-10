@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Sparkles } from "lucide-react";
+import { Award } from "lucide-react";
 import { cx } from "@/lib/format";
 
 interface EngravingPreviewProps {

@@ -36,7 +36,7 @@ export function QuantityStepper({ value, max, onChange, label, size = "md" }: Qu
     <div className="inline-flex items-stretch border border-espresso/30" role="group" aria-label={label}>
       <button
         type="button"
-        className={cx("flex items-center justify-center text-espresso transition-colors hover:bg-linen disabled:opacity-35", box)}
+        className={cx("flex items-center justify-center text-espresso transition-all hover:bg-linen active:scale-90 disabled:opacity-35", box)}
         onClick={() => onChange(value - 1)}
         disabled={value <= 1}
         aria-label="Decrease quantity"
@@ -51,7 +51,7 @@ export function QuantityStepper({ value, max, onChange, label, size = "md" }: Qu
       </span>
       <button
         type="button"
-        className={cx("flex items-center justify-center text-espresso transition-colors hover:bg-linen disabled:opacity-35", box)}
+        className={cx("flex items-center justify-center text-espresso transition-all hover:bg-linen active:scale-90 disabled:opacity-35", box)}
         onClick={() => onChange(value + 1)}
         disabled={value >= max}
         aria-label="Increase quantity"
@@ -68,7 +68,7 @@ export function Swatch({ colour, size = 14, className }: { colour: string; size?
   return (
     <span
       aria-hidden
-      className={cx("inline-block shrink-0 rounded-full border border-espresso/25", className)}
+      className={cx("inline-block shrink-0 rounded-full border border-espresso/25 transition-transform duration-300 hover:scale-125 cursor-pointer", className)}
       style={{
         width: size,
         height: size,

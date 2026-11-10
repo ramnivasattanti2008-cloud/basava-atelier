@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, Check, ChevronDown, ChevronUp, MessageCircle, ShieldCheck, ShoppingBag, Sparkles, Truck } from "lucide-react";
+import { ArrowLeft, Check, ChevronDown, ChevronUp, Compass, MessageCircle, ShieldCheck, ShoppingBag, Truck } from "lucide-react";
 import type { Product } from "@/lib/types";
 import { cx, formatDimensions, formatINR, isPurchasable, stockLabel } from "@/lib/format";
 import { useStorefrontCategories, useStorefrontProducts } from "@/lib/hooks";
@@ -210,7 +210,7 @@ export default function ProductDetailView({ initialSlug }: { initialSlug: string
           {/* Bespoke / Monogram Callout */}
           <div className="mt-8 border border-saddle-deep/30 bg-linen/50 p-4 rounded-xs">
             <div className="flex items-center gap-2 text-saddle-deep">
-              <Sparkles size={16} />
+              <Compass size={16} />
               <span className="text-xs font-semibold uppercase tracking-wider">Customise This Piece</span>
             </div>
             <p className="mt-1 text-xs text-charcoal/80 leading-relaxed">

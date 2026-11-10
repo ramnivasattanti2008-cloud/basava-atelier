@@ -9,7 +9,6 @@ import {
   MessageCircle,
   Package,
   Send,
-  Sparkles,
   Sliders,
 } from "lucide-react";
 import { cx } from "@/lib/format";
@@ -127,7 +126,7 @@ export function CustomisationInspector({
                     disabled={!b.available}
                     onClick={() => handleTypeChange(b.id as BagType)}
                     className={cx(
-                      "p-2.5 text-left border rounded-xs transition-all relative flex flex-col justify-between cursor-pointer",
+                      "btn-tactile p-2.5 text-left border rounded-xs transition-all relative flex flex-col justify-between cursor-pointer active:scale-95",
                       isSel
                         ? "border-espresso bg-linen/80 ring-1 ring-espresso shadow-2xs font-bold text-espresso"
                         : b.available
@@ -176,7 +175,7 @@ export function CustomisationInspector({
                         type="button"
                         onClick={() => onChange({ colourName: c.name, colourHex: c.hex || "#8A5D3B" })}
                         className={cx(
-                          "flex items-center gap-2 p-2 border rounded-xs transition-all cursor-pointer text-left",
+                          "btn-tactile flex items-center gap-2 p-2 border rounded-xs transition-all cursor-pointer text-left active:scale-95",
                           isSel
                             ? "border-espresso bg-linen/80 ring-1 ring-espresso font-bold"
                             : "border-espresso/15 bg-paper hover:border-espresso/40 text-charcoal/80"
@@ -205,7 +204,7 @@ export function CustomisationInspector({
                         type="button"
                         onClick={() => onChange({ material: m.id as LeatherMaterial })}
                         className={cx(
-                          "p-2 text-left border rounded-xs transition-all cursor-pointer",
+                          "btn-tactile p-2 text-left border rounded-xs transition-all cursor-pointer active:scale-95",
                           isSel
                             ? "border-espresso bg-linen/80 ring-1 ring-espresso font-bold"
                             : "border-espresso/15 bg-paper hover:border-espresso/35 text-charcoal/80"
@@ -345,7 +344,7 @@ export function CustomisationInspector({
                         type="button"
                         onClick={() => onChange({ hardware: h.id as HardwareFinish })}
                         className={cx(
-                          "p-2 text-left border rounded-xs transition-all cursor-pointer",
+                          "btn-tactile p-2 text-left border rounded-xs transition-all cursor-pointer active:scale-95",
                           isSel
                             ? "border-espresso bg-linen/80 ring-1 ring-espresso font-bold"
                             : "border-espresso/15 bg-paper hover:border-espresso/35 text-charcoal/80"
@@ -370,7 +369,7 @@ export function CustomisationInspector({
                         type="button"
                         onClick={() => onChange({ closure: c.id as ClosureType })}
                         className={cx(
-                          "p-2 text-left border rounded-xs transition-all cursor-pointer",
+                          "btn-tactile p-2 text-left border rounded-xs transition-all cursor-pointer active:scale-95",
                           isSel
                             ? "border-espresso bg-linen/80 ring-1 ring-espresso font-bold"
                             : "border-espresso/15 bg-paper hover:border-espresso/35 text-charcoal/80"
@@ -533,7 +532,7 @@ export function CustomisationInspector({
         <button
           type="button"
           onClick={onSubmitQuote}
-          className="btn btn-solid w-full flex items-center justify-center gap-2 shadow-sm py-3 text-xs sm:text-sm font-bold tracking-wider"
+          className="btn btn-solid btn-tactile shimmer-badge w-full flex items-center justify-center gap-2 shadow-md hover:shadow-xl py-3 text-xs sm:text-sm font-bold tracking-wider"
         >
           <Send size={15} />
           Submit for Artisan Quotation
@@ -546,7 +545,7 @@ export function CustomisationInspector({
           )}
           target="_blank"
           rel="noopener noreferrer"
-          className="btn btn-outline w-full flex items-center justify-center gap-2 text-xs py-2 hover:bg-ivory/60"
+          className="btn btn-outline btn-tactile w-full flex items-center justify-center gap-2 text-xs py-2 hover:bg-ivory/60 hover:border-espresso hover:-translate-y-0.5"
         >
           <MessageCircle size={14} />
           Direct WhatsApp Chat

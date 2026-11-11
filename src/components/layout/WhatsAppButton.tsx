@@ -28,13 +28,13 @@ export function WhatsAppButton() {
       href={whatsappLink(settings.whatsappNumber, whatsappMessages.general(settings.makerName))}
       target="_blank"
       rel="noopener noreferrer"
-      className={`on-dark fixed right-4 z-30 flex h-12 items-center gap-2.5 border border-sand/30 bg-espresso px-3.5 text-ivory rounded-xs shadow-xl transition-all duration-300 hover:-translate-y-1 hover:bg-walnut hover:border-sand hover:shadow-2xl active:scale-95 md:right-6 md:px-4 ${
-        onProduct ? "bottom-[5.75rem] lg:bottom-6" : "bottom-4 md:bottom-6"
-      }`}
+      className={`on-dark fixed right-4 z-30 flex h-12 items-center gap-2.5 border border-sand/30 bg-espresso px-3.5 text-ivory rounded-xs shadow-xl transition-all duration-300 hover:-translate-y-1 hover:bg-walnut hover:border-sand hover:shadow-2xl active:scale-95 md:right-6 md:px-4 ${onProduct ? "bottom-[5.75rem] lg:bottom-6" : "bottom-4 md:bottom-6"
+        }`}
       aria-label="Message us on WhatsApp (opens in a new tab)"
     >
       <div className="relative">
         <WhatsAppGlyph />
+        <span className="absolute -top-0.5 -right-0.5 h-2 w-2 rounded-full bg-emerald-500 ring-2 ring-espresso" />
       </div>
       <span className="hidden text-[0.72rem] font-semibold uppercase tracking-[0.16em] md:inline">WhatsApp</span>
     </a>

@@ -659,6 +659,52 @@
   animation: kd-float-slow 6s ease-in-out infinite;
 }
 
+@keyframes kd-float-dust {
+  0% {
+    transform: translate(0, 0) scale(0.85);
+    opacity: 0.2;
+  }
+  35% {
+    transform: translate(14px, -18px) scale(1.15);
+    opacity: 0.75;
+  }
+  70% {
+    transform: translate(-10px, -36px) scale(0.95);
+    opacity: 0.45;
+  }
+  100% {
+    transform: translate(0, -54px) scale(0.7);
+    opacity: 0;
+  }
+}
+
+.animate-float-dust {
+  animation: kd-float-dust 10s ease-in-out infinite;
+}
+
+/* Subtle luxury brass border shimmer */
+@keyframes kd-border-shimmer {
+  0%, 100% {
+    border-color: rgba(168, 137, 89, 0.2);
+  }
+  50% {
+    border-color: rgba(168, 137, 89, 0.55);
+  }
+}
+
+.border-brass-shimmer {
+  animation: kd-border-shimmer 4s ease-in-out infinite;
+}
+
+/* Luxury card hover dynamics */
+.card-luxury-hover {
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease, border-color 0.25s ease;
+}
+.card-luxury-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px -8px rgba(48, 37, 30, 0.12), 0 0 0 1px rgba(168, 137, 89, 0.35);
+}
+
 @keyframes kd-marquee {
   0% {
     transform: translateX(0%);

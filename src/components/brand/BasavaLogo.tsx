@@ -8,7 +8,8 @@ interface BasavaLogoProps {
   symbolSize?: number;
   showWordmark?: boolean;
   showSubtitle?: boolean;
-  invert?: boolean; // For dark surfaces (Heritage Brown backgrounds)
+  invert?: boolean; // For dark surfaces (Heritage Brown / Charcoal backgrounds)
+  tone?: "default" | "ivory" | "brass";
   orientation?: "horizontal" | "vertical";
 }
 
@@ -26,11 +27,20 @@ export function BasavaLogo({
   showWordmark = true,
   showSubtitle = true,
   invert = false,
+  tone,
   orientation = "vertical",
 }: BasavaLogoProps) {
-  // Proportions: Original asset is 38 x 32 (ratio ~ 1.1875)
+  // Proportions: Original authentic mark ratio is 38 x 32 (~ 1.1875)
   const width = Math.round(symbolSize * 1.1875);
   const height = symbolSize;
+
+  const resolvedTone = tone ?? (invert ? "ivory" : "default");
+  const logoSrc =
+    resolvedTone === "ivory"
+      ? "/images/basava-logo-ivory-4x.png"
+      : resolvedTone === "brass"
+      ? "/images/basava-logo-brass-4x.png"
+      : "/images/basava-logo-dark-4x.png";
 
   return (
     <div
@@ -49,15 +59,12 @@ export function BasavaLogo({
         style={{ width, height }}
       >
         <Image
-          src="/images/basava-logo.png"
+          src={logoSrc}
           alt="BASAVA Official Brand Mark"
           width={width}
           height={height}
           priority
-          className={cx(
-            "object-contain filter transition-all",
-            invert ? "invert mix-blend-screen" : "mix-blend-multiply"
-          )}
+          className="object-contain filter transition-all select-none"
           style={{
             imageRendering: "-webkit-optimize-contrast",
           }}
@@ -70,7 +77,11 @@ export function BasavaLogo({
           <span
             className={cx(
               "font-display font-medium tracking-[0.28em] uppercase transition-colors",
-              invert ? "text-ivory" : "text-espresso",
+              resolvedTone === "ivory"
+                ? "text-ivory"
+                : resolvedTone === "brass"
+                ? "text-brass"
+                : "text-espresso",
               symbolSize <= 28 ? "text-base tracking-[0.22em]" : "text-xl md:text-2xl"
             )}
           >
@@ -81,7 +92,11 @@ export function BasavaLogo({
             <span
               className={cx(
                 "mt-1 text-[0.52rem] font-medium tracking-[0.22em] uppercase transition-colors",
-                invert ? "text-sand/80" : "text-saddle-deep"
+                resolvedTone === "ivory"
+                  ? "text-sand/80"
+                  : resolvedTone === "brass"
+                  ? "text-brass/90"
+                  : "text-saddle-deep"
               )}
             >
               ಬಸವ · BENGALURU
@@ -100,26 +115,32 @@ export function BasavaMark({
   size = 28,
   className,
   invert = false,
+  tone,
 }: {
   size?: number;
   className?: string;
   invert?: boolean;
+  tone?: "default" | "ivory" | "brass";
 }) {
   const width = Math.round(size * 1.1875);
+  const resolvedTone = tone ?? (invert ? "ivory" : "default");
+  const logoSrc =
+    resolvedTone === "ivory"
+      ? "/images/basava-logo-ivory-4x.png"
+      : resolvedTone === "brass"
+      ? "/images/basava-logo-brass-4x.png"
+      : "/images/basava-logo-dark-4x.png";
+
   return (
-    <div className={cx("relative inline-flex items-center justify-center shrink-0", className)} style={{ width, height: size }}>
+    <div className={cx("relative inline-flex items-center justify-center shrink-0 select-none", className)} style={{ width, height: size }}>
       <Image
-        src="/images/basava-logo.png"
+        src={logoSrc}
         alt="BASAVA Brand Mark"
         width={width}
         height={size}
-        className={cx(
-          "object-contain filter",
-          invert ? "invert mix-blend-screen" : "mix-blend-multiply"
-        )}
+        className="object-contain filter select-none"
         style={{ imageRendering: "-webkit-optimize-contrast" }}
       />
     </div>
   );
 }
-

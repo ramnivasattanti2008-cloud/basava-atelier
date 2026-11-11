@@ -66,18 +66,17 @@ export function IntroReveal() {
           aria-label="BASAVA"
         >
           <motion.div
-            className="mix-blend-screen"
             initial={{ opacity: 0, y: 14, scale: 0.94 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 0.9, ease: EASE }}
           >
             <Image
-              src="/images/basava-logo.png"
-              alt=""
+              src="/images/basava-logo-ivory-4x.png"
+              alt="BASAVA Brand Mark"
               width={76}
               height={64}
               priority
-              className="h-16 w-auto object-contain invert"
+              className="h-16 w-auto object-contain select-none"
             />
           </motion.div>
 

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback, useRef } from "react";
+import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import {
   Layers,
@@ -38,6 +39,7 @@ import { BagConceptViewer } from "./BagConceptViewer";
 import { CustomisationInspector } from "./CustomisationInspector";
 import { VersionHistoryModal } from "./VersionHistoryModal";
 import { QuotationModal } from "./QuotationModal";
+import { BasavaMark } from "@/components/brand/BasavaLogo";
 
 interface StudioLayoutProps {
   initialReferenceProduct?: string | null;
@@ -469,13 +471,16 @@ export function StudioLayout({
       {/* Top Heritage Utility Bar */}
       <header className="border-b border-espresso/15 bg-paper/90 backdrop-blur-xs px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-x-4 gap-y-2 shrink-0">
         <div className="flex items-center gap-3">
-          <div className="flex items-center gap-2">
-            
-            <span className="eyebrow tracking-widest text-espresso font-bold whitespace-nowrap">The Bespoke Designer</span>
-          </div>
+          <Link href="/" aria-label="BASAVA Home" className="flex items-center gap-2.5 group">
+            <BasavaMark size={24} className="transition-transform group-hover:scale-105" />
+            <div className="flex flex-col">
+              <span className="font-display font-medium tracking-[0.22em] text-espresso text-sm leading-none">BASAVA</span>
+              <span className="text-[0.45rem] font-medium tracking-[0.16em] uppercase text-saddle-deep leading-tight">Bespoke Studio</span>
+            </div>
+          </Link>
           <span className="hidden sm:inline text-xs text-charcoal/40">|</span>
           <p className="hidden sm:block text-xs text-charcoal/75">
-            Your personal bag designer
+            Your personal bag designer · Bengaluru Atelier
           </p>
         </div>
 

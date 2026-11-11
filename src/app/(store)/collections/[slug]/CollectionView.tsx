@@ -8,6 +8,7 @@ import { useStorefrontCategories, useStorefrontProducts } from "@/lib/hooks";
 import { ProductCard } from "@/components/product/ProductCard";
 import { StaggerItem } from "@/components/motion/MaskText";
 import { QuickViewModal } from "@/components/product/QuickViewModal";
+import { HeritageAtmosphere } from "@/components/heritage/HeritageAtmosphere";
 
 export default function CollectionView({ categorySlug }: { categorySlug: string }) {
   const products = useStorefrontProducts();
@@ -30,16 +31,18 @@ export default function CollectionView({ categorySlug }: { categorySlug: string 
       </nav>
 
       {/* Header */}
-      <div className="border-b border-espresso/15 pb-8">
-        <span className="eyebrow">Category Collection</span>
-        <h1 className="display-lg mt-3">{category?.name || categorySlug}</h1>
-        {category?.description && (
-          <p className="lede mt-3 max-w-2xl">{category.description}</p>
-        )}
-        <p className="mt-4 text-xs font-semibold uppercase tracking-wider text-saddle-deep">
-          {matchingProducts.length} pieces in this collection
-        </p>
-      </div>
+      <HeritageAtmosphere variant="radial-spotlight" intensity="subtle">
+        <div className="border-b border-espresso/15 pb-8 pt-2">
+          <span className="eyebrow">Category Collection</span>
+          <h1 className="display-lg mt-3">{category?.name || categorySlug}</h1>
+          {category?.description && (
+            <p className="lede mt-3 max-w-2xl">{category.description}</p>
+          )}
+          <p className="mt-4 text-xs font-semibold uppercase tracking-wider text-saddle-deep">
+            {matchingProducts.length} pieces in this collection
+          </p>
+        </div>
+      </HeritageAtmosphere>
 
       {/* Grid */}
       <div className="mt-12">

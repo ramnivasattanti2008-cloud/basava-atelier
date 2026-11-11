@@ -6,6 +6,7 @@ import { formatINR } from "@/lib/format";
 import { useCart } from "@/lib/hooks";
 import { useDemoStore } from "@/lib/store";
 import { CartLineRow } from "@/components/cart/CartDrawer";
+import { BasavaLogo } from "@/components/brand/BasavaLogo";
 
 export default function CartPage() {
   const { entries, count, subtotal } = useCart();
@@ -14,10 +15,10 @@ export default function CartPage() {
   if (entries.length === 0) {
     return (
       <div className="shell py-20 max-w-xl mx-auto text-center">
-        <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-linen border border-espresso/20 text-espresso mb-6">
-          <ShoppingBag size={28} className="text-saddle-deep" strokeWidth={1.5} />
+        <div className="flex justify-center mb-6">
+          <BasavaLogo symbolSize={38} orientation="vertical" />
         </div>
-        <h1 className="display-md">Your Bag is Empty</h1>
+        <h1 className="display-md mt-2">Your Bag is Empty</h1>
         <p className="lede mt-3">
           Explore our collection of 40 handcrafted leather pieces and add items to your bag.
         </p>

@@ -8,6 +8,7 @@ import { useDemoStore } from "@/lib/store";
 import { Overlay } from "@/components/ui/Overlay";
 import { ProductImage } from "@/components/ui/ProductImage";
 import { DemoTag, QuantityStepper } from "@/components/ui/bits";
+import { BasavaMark } from "@/components/brand/BasavaLogo";
 
 export function CartLineRow({ entry, onNavigate, compact = false }: { entry: CartEntry; onNavigate?: () => void; compact?: boolean }) {
   const setLineQuantity = useDemoStore((s) => s.setLineQuantity);
@@ -75,6 +76,7 @@ export function CartDrawer() {
 
       {entries.length === 0 ? (
         <div className="flex flex-1 flex-col items-start justify-center px-6">
+          <BasavaMark size={32} className="mb-4 text-espresso" />
           <p className="display-sm">Nothing here yet.</p>
           <p className="mt-3 max-w-xs text-sm text-charcoal/75">Most pieces in the collection are single items — when you find yours, it will wait here.</p>
           <Link href="/shop" onClick={close} className="btn btn-solid mt-7">

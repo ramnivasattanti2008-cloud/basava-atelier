@@ -8,6 +8,7 @@ import {
 } from "lucide-react";
 import { HeritageSeal } from "@/components/heritage/HeritageSeal";
 import { HeritageFlourish } from "@/components/heritage/HeritageFlourish";
+import { HeritageAtmosphere } from "@/components/heritage/HeritageAtmosphere";
 import { useDemoStore } from "@/lib/store";
 import { whatsappLink } from "@/lib/whatsapp";
 
@@ -39,22 +40,24 @@ export default function CraftsmanshipPage() {
   return (
     <div className="shell py-12 sm:py-20 space-y-16 sm:space-y-24">
       {/* Editorial Header */}
-      <div className="max-w-3xl border-b border-espresso/15 pb-10">
-        <div className="flex items-center gap-3 mb-3">
-          <span className="font-serif text-[0.82rem] text-brass tracking-wider select-none font-medium">
-            ಕೈಯಿಂದ ಮಾಡಿದ ಕರಕುಶಲತೆ
-          </span>
-          <span className="h-1 w-1 rounded-full bg-brass/60" />
-          <span className="eyebrow text-saddle-deep">BASAVA Atelier Standards</span>
+      <HeritageAtmosphere variant="weave" intensity="subtle">
+        <div className="max-w-3xl border-b border-espresso/15 pb-10 pt-4">
+          <div className="flex items-center gap-3 mb-3">
+            <span className="font-serif text-[0.82rem] text-brass tracking-wider select-none font-medium">
+              ಕೈಯಿಂದ ಮಾಡಿದ ಕರಕುಶಲತೆ
+            </span>
+            <span className="h-1 w-1 rounded-full bg-brass/60" />
+            <span className="eyebrow text-saddle-deep">BASAVA Atelier Standards</span>
+          </div>
+          <h1 className="display-lg text-espresso mt-2">
+            The Art of Making<br />
+            <span className="italic font-normal">by Hand.</span>
+          </h1>
+          <p className="lede mt-4 text-charcoal/80 leading-relaxed">
+            BASAVA bags are made by hand in Bengaluru. Here is what that involves.
+          </p>
         </div>
-        <h1 className="display-lg text-espresso mt-2">
-          The Art of Making<br />
-          <span className="italic font-normal">by Hand.</span>
-        </h1>
-        <p className="lede mt-4 text-charcoal/80 leading-relaxed">
-          BASAVA bags are made by hand in Bengaluru. Here is what that involves.
-        </p>
-      </div>
+      </HeritageAtmosphere>
 
       {/* Craftsmanship Hero Banner with Heritage Seal */}
       <div className="relative border border-espresso/20 bg-paper p-8 sm:p-14 rounded-xs shadow-md grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">

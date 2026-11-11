@@ -11,6 +11,7 @@ import { useCart } from "@/lib/hooks";
 import { useDemoStore } from "@/lib/store";
 import { useToast } from "@/lib/toast";
 import { ProductImage } from "@/components/ui/ProductImage";
+import { BasavaLogo } from "@/components/brand/BasavaLogo";
 
 export default function CheckoutPage() {
   const router = useRouter();
@@ -89,16 +90,22 @@ export default function CheckoutPage() {
 
   return (
     <div className="shell py-10 sm:py-16 max-w-5xl">
-      <div className="border-b border-espresso/15 pb-6 mb-8 flex items-center justify-between">
+      <div className="flex items-center justify-between pb-6 border-b border-espresso/15 mb-8">
+        <Link href="/" aria-label="BASAVA Home">
+          <BasavaLogo symbolSize={28} orientation="horizontal" />
+        </Link>
+        <div className="flex items-center gap-1.5 text-xs text-saddle-deep font-semibold uppercase tracking-wider">
+          <Lock size={14} />
+          <span>Atelier Checkout</span>
+        </div>
+      </div>
+
+      <div className="pb-4 mb-6 flex items-center justify-between">
         <div>
           <Link href="/cart" className="text-xs text-walnut/70 hover:text-espresso flex items-center gap-1 mb-2">
             <ArrowLeft size={13} /> Back to bag
           </Link>
-          <h1 className="display-md">Checkout</h1>
-        </div>
-        <div className="flex items-center gap-1.5 text-xs text-saddle-deep font-semibold uppercase tracking-wider">
-          <Lock size={14} />
-          <span>Demo Checkout</span>
+          <h1 className="display-md">Order Details</h1>
         </div>
       </div>
 

@@ -9,6 +9,7 @@ import { cx, formatDate, formatINR, orderStatusLabel } from "@/lib/format";
 import { useDemoStore } from "@/lib/store";
 import { whatsappLink, whatsappMessages } from "@/lib/whatsapp";
 import { ProductImage } from "@/components/ui/ProductImage";
+import { BasavaLogo } from "@/components/brand/BasavaLogo";
 
 const steps: Array<{ key: OrderStatus; label: string; desc: string }> = [
   { key: "placed", label: "Placed", desc: "Order registered in studio" },
@@ -40,12 +41,17 @@ function TrackOrderContent() {
 
   return (
     <div className="shell py-12 sm:py-20 max-w-3xl">
-      <div className="border-b border-espresso/15 pb-8 text-center sm:text-left">
-        <span className="eyebrow">Shipment Lookup</span>
-        <h1 className="display-lg mt-3">Track Your Order</h1>
-        <p className="lede mt-3">
-          Enter your order reference code (e.g. <strong>BV-10001</strong>) to view real-time packaging and dispatch updates.
-        </p>
+      <div className="border-b border-espresso/15 pb-8">
+        <Link href="/" aria-label="BASAVA Home" className="inline-block mb-5">
+          <BasavaLogo symbolSize={28} orientation="horizontal" />
+        </Link>
+        <div>
+          <span className="eyebrow">Shipment Lookup</span>
+          <h1 className="display-lg mt-2">Track Your Order</h1>
+          <p className="lede mt-3">
+            Enter your order reference code (e.g. <strong>BV-10001</strong>) to view real-time packaging and dispatch updates.
+          </p>
+        </div>
       </div>
 
       {/* Search Input */}

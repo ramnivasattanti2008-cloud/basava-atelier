@@ -2,29 +2,32 @@ import Link from "next/link";
 import { ArrowRight, Hammer, HeartHandshake, ShieldCheck } from "lucide-react";
 import { HeritageSeal } from "@/components/heritage/HeritageSeal";
 import { HeritageFlourish } from "@/components/heritage/HeritageFlourish";
+import { HeritageAtmosphere } from "@/components/heritage/HeritageAtmosphere";
 
 export default function AboutPage() {
   return (
     <div className="shell py-12 sm:py-20 max-w-4xl">
       {/* Header */}
-      <div className="border-b border-espresso/15 pb-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
-        <div>
-          <div className="flex items-center gap-2 mb-2">
-            <span className="font-serif text-xs text-brass tracking-wider select-none font-medium">
-              ಕೈಯಿಂದ ಮಾಡಿದ · हस्तनिर्मित
-            </span>
-            <span className="h-1 w-1 rounded-full bg-brass/60" />
-            <span className="eyebrow text-saddle-deep">Our Heritage</span>
+      <HeritageAtmosphere variant="jali" intensity="subtle">
+        <div className="border-b border-espresso/15 pb-10 pt-4 flex flex-col md:flex-row md:items-center justify-between gap-6">
+          <div>
+            <div className="flex items-center gap-2 mb-2">
+              <span className="font-serif text-xs text-brass tracking-wider select-none font-medium">
+                ಕೈಯಿಂದ ಮಾಡಿದ · हस्तनिर्मित
+              </span>
+              <span className="h-1 w-1 rounded-full bg-brass/60" />
+              <span className="eyebrow text-saddle-deep">Our Heritage</span>
+            </div>
+            <h1 className="display-lg mt-1">The BASAVA Story</h1>
+            <p className="lede mt-3 max-w-2xl">
+              Leather bags and accessories, and bespoke pieces made to order in Bengaluru.
+            </p>
           </div>
-          <h1 className="display-lg mt-1">The BASAVA Story</h1>
-          <p className="lede mt-3 max-w-2xl">
-            Leather bags and accessories, and bespoke pieces made to order in Bengaluru.
-          </p>
+          <div className="shrink-0 self-center md:self-auto">
+            <HeritageSeal size={100} rotating={true} />
+          </div>
         </div>
-        <div className="shrink-0 self-center md:self-auto">
-          <HeritageSeal size={100} rotating={true} />
-        </div>
-      </div>
+      </HeritageAtmosphere>
 
       <HeritageFlourish variant="lotus" className="my-8" />
 

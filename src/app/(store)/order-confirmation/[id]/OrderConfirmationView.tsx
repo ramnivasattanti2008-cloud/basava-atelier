@@ -6,6 +6,7 @@ import { formatDate, formatINR } from "@/lib/format";
 import { useDemoStore } from "@/lib/store";
 import { whatsappLink, whatsappMessages } from "@/lib/whatsapp";
 import { ProductImage } from "@/components/ui/ProductImage";
+import { BasavaLogo } from "@/components/brand/BasavaLogo";
 
 export default function OrderConfirmationView({ orderId }: { orderId: string }) {
   const orders = useDemoStore((s) => s.orders);
@@ -29,7 +30,14 @@ export default function OrderConfirmationView({ orderId }: { orderId: string }) 
 
   return (
     <div className="shell py-12 sm:py-20 max-w-3xl">
-      <div className="border border-espresso/15 bg-paper p-8 sm:p-12 rounded-xs space-y-8">
+      <div className="border border-espresso/15 bg-paper p-8 sm:p-12 rounded-xs space-y-8 shadow-sm">
+        {/* Atelier Brand Header */}
+        <div className="flex justify-center pb-4 border-b border-espresso/10">
+          <Link href="/" aria-label="BASAVA Home">
+            <BasavaLogo symbolSize={32} orientation="vertical" />
+          </Link>
+        </div>
+
         {/* Celebration Header */}
         <div className="text-center space-y-3">
           <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-linen border border-espresso/20 text-espresso">

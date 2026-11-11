@@ -17,6 +17,7 @@ import { HeritageSeal } from "@/components/heritage/HeritageSeal";
 import { HeritageFlourish } from "@/components/heritage/HeritageFlourish";
 import { MaskText, StaggerItem } from "@/components/motion/MaskText";
 import { Reveal } from "@/components/ui/Reveal";
+import { HeritageAtmosphere, AmbientDustParticles } from "@/components/heritage/HeritageAtmosphere";
 
 const KANNADA_NUMERALS = ["೦೧", "೦೨", "೦೩", "೦೪", "೦೫", "೦೬", "೦೭"];
 
@@ -35,8 +36,10 @@ export default function HomePage() {
     <div className="flex flex-col">
       {/* 1. HERO SECTION */}
       <section className="relative overflow-hidden border-b border-espresso/15 pt-8 pb-16 sm:pt-14 sm:pb-24">
-        <div className="shell grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-16">
-          {/* Left: Headline & CTAs */}
+        <HeritageAtmosphere variant="full" intensity="subtle">
+          <AmbientDustParticles count={7} />
+          <div className="shell grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-16">
+            {/* Left: Headline & CTAs */}
           <div className="lg:col-span-7 flex flex-col justify-center">
             <div className="flex items-center gap-3 mb-2 rise [--i:0]">
               <span className="font-serif text-[0.82rem] text-brass tracking-wider select-none font-medium">
@@ -131,6 +134,7 @@ export default function HomePage() {
             </div>
           )}
         </div>
+        </HeritageAtmosphere>
       </section>
 
       {/* MARQUEE TICKER */}
@@ -270,9 +274,10 @@ export default function HomePage() {
       </section>
 
       {/* 4. CUSTOM STUDIO & ENGRAVING INTERACTIVE BAND */}
-      <section className="on-dark bg-espresso text-ivory py-20 sm:py-28 border-b border-sand/20">
-        <div className="shell grid grid-cols-1 lg:grid-cols-12 items-center gap-14">
-          <div className="lg:col-span-6">
+      <section className="on-dark bg-espresso text-ivory py-20 sm:py-28 border-b border-sand/20 relative">
+        <HeritageAtmosphere variant="jali" intensity="medium">
+          <div className="shell grid grid-cols-1 lg:grid-cols-12 items-center gap-14">
+            <div className="lg:col-span-6">
             <p className="eyebrow text-sand">Custom Orders & Gifts</p>
             <h2 className="display-lg mt-3 text-ivory">
               Want Something Made Just For You?
@@ -339,6 +344,7 @@ export default function HomePage() {
             </p>
           </div>
         </div>
+        </HeritageAtmosphere>
       </section>
 
       {/* 5. CRAFTSMANSHIP & OUR STORY */}

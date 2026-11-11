@@ -9,6 +9,7 @@ interface RevealTextProps {
   delay?: number;
   duration?: number;
   as?: "h1" | "h2" | "h3" | "h4" | "p" | "span" | "div";
+  animateOnMount?: boolean;
 }
 
 /**
@@ -23,13 +24,15 @@ export function RevealText({
   delay = 0,
   duration = 0.8,
   as: Component = "div",
+  animateOnMount = true, // Default to animateOnMount for reliable instant display
 }: RevealTextProps) {
   return (
     <Component className={cx("overflow-hidden leading-tight", className)}>
       <motion.div
         initial={{ y: "110%", opacity: 0 }}
-        whileInView={{ y: "0%", opacity: 1 }}
-        viewport={{ once: true, margin: "-20px" }}
+        animate={animateOnMount ? { y: "0%", opacity: 1 } : undefined}
+        whileInView={!animateOnMount ? { y: "0%", opacity: 1 } : undefined}
+        viewport={!animateOnMount ? { once: true } : undefined}
         transition={{
           duration,
           delay,

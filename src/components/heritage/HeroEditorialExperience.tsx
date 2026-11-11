@@ -9,9 +9,9 @@ import { formatINR } from "@/lib/format";
 import { BasavaLogo } from "@/components/brand/BasavaLogo";
 import { JaliShadowPattern } from "@/components/motion/JaliShadowPattern";
 import { BrassBorderHighlight } from "@/components/motion/BrassBorderHighlight";
-import { RevealText } from "@/components/motion/RevealText";
 import { SmoothScrollIndicator } from "@/components/motion/SmoothScrollIndicator";
 import { KolamLinework } from "@/components/motion/KolamLinework";
+import { RoyalCulturalOpening } from "./RoyalCulturalOpening";
 import { HeroInteractiveCard } from "./HeroInteractiveCard";
 
 interface HeroEditorialExperienceProps {
@@ -39,14 +39,14 @@ export function HeroEditorialExperience({ product, onQuickView }: HeroEditorialE
 
       <div className="shell relative z-10">
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-16 pt-2 pb-6">
-          {/* Left Column: Editorial Headline & Shopping Actions */}
+          {/* Left Column: Editorial Headline, Cultural Opening & Shopping Actions */}
           <div className="lg:col-span-7 flex flex-col justify-center">
             {/* Authenticated Brand Identification & Official Logo */}
             <motion.div
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-              className="flex flex-wrap items-center gap-4 mb-6"
+              className="flex flex-wrap items-center gap-4 mb-4 sm:mb-6"
             >
               <div className="flex items-center gap-3">
                 <BasavaLogo
@@ -60,28 +60,42 @@ export function HeroEditorialExperience({ product, onQuickView }: HeroEditorialE
 
               <div className="h-6 w-px bg-[#C5A059]/30 hidden sm:block" />
 
-              <div className="flex items-center gap-2 px-3 py-1 rounded-full border border-[#C5A059]/40 bg-[#C5A059]/10 text-[#F5D77F] text-xs font-serif tracking-widest uppercase">
-                <Sparkles size={11} className="text-[#F5D77F]" />
+              <div className="flex items-center gap-2 px-3 py-1 rounded-full border border-[#C5A059]/40 bg-[#C5A059]/10 text-[#F5D77F] text-xs font-serif tracking-widest uppercase shadow-sm">
+                <Sparkles size={11} className="text-[#F5D77F] animate-pulse" />
                 <span>ಬೆಂಗಳೂರು ಅಟೆಲಿಯರ್ · BENGALURU ATELIER</span>
               </div>
             </motion.div>
 
-            {/* Editorial Headline Revealing through Mask */}
-            <div className="space-y-1">
-              <RevealText as="h1" delay={0.1} className="display-xl sm:display-2xl text-[#FAF7F2] font-display font-medium tracking-tight">
+            {/* Direct, Unclipped Editorial Headline with Mysore Gold Shimmer */}
+            <div className="space-y-2 mb-3">
+              <motion.h1
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+                className="font-display text-4xl sm:text-5xl lg:text-6xl text-[#FAF7F2] font-medium tracking-tight leading-tight"
+              >
                 An art of its own.
-              </RevealText>
-              <RevealText as="p" delay={0.25} className="font-display italic text-2xl sm:text-3xl lg:text-4xl text-[#E8CB85] font-normal">
+              </motion.h1>
+
+              <motion.p
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.22, ease: [0.16, 1, 0.3, 1] }}
+                className="font-display italic text-2xl sm:text-3xl lg:text-4xl text-[#F5D77F] font-normal leading-snug"
+              >
                 Rooted in heritage. Crafted for today.
-              </RevealText>
+              </motion.p>
             </div>
+
+            {/* Cultural Opening Centerpiece: Architectural Torana Arch & Heritage Seal */}
+            <RoyalCulturalOpening className="my-3 sm:my-5" />
 
             {/* Supporting Copy */}
             <motion.p
-              initial={{ opacity: 0, y: 15 }}
+              initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
-              className="mt-6 max-w-xl text-[#D8CEBD]/90 leading-relaxed text-sm sm:text-base font-sans"
+              className="mt-3 max-w-xl text-[#D8CEBD]/90 leading-relaxed text-sm sm:text-base font-sans"
             >
               Explore distinctive leather essentials or create a design that is uniquely yours.
               Every piece is shaped by hand in our Bengaluru workshop from 100% botanical tree-bark tanned hides, solid sand-cast brass, and hand-waxed saddle stitching built to last generations.
@@ -89,10 +103,10 @@ export function HeroEditorialExperience({ product, onQuickView }: HeroEditorialE
 
             {/* Two Clear Primary Shopping Actions */}
             <motion.div
-              initial={{ opacity: 0, y: 15 }}
+              initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.45, ease: [0.16, 1, 0.3, 1] }}
-              className="mt-9 flex flex-wrap items-center gap-4"
+              className="mt-7 flex flex-wrap items-center gap-4"
             >
               <Link
                 href="/shop"
@@ -115,7 +129,7 @@ export function HeroEditorialExperience({ product, onQuickView }: HeroEditorialE
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.55 }}
-              className="mt-10 pt-6 border-t border-[#C5A059]/20 flex flex-wrap items-center gap-6 sm:gap-8 text-xs text-[#D8CEBD]/80"
+              className="mt-8 pt-5 border-t border-[#C5A059]/20 flex flex-wrap items-center gap-6 sm:gap-8 text-xs text-[#D8CEBD]/80"
             >
               <div className="flex items-center gap-2">
                 <Check size={14} className="text-[#F5D77F] shrink-0 font-bold" />
@@ -133,7 +147,7 @@ export function HeroEditorialExperience({ product, onQuickView }: HeroEditorialE
           </div>
 
           {/* Right Column: 3D Interactive Tilting Showcase */}
-          <div className="lg:col-span-5 relative">
+          <div className="lg:col-span-5 relative mt-6 lg:mt-0">
             <HeroInteractiveCard product={product} onQuickView={onQuickView} />
           </div>
         </div>

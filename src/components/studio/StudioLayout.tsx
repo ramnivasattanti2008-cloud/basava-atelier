@@ -467,15 +467,15 @@ export function StudioLayout({
   return (
     <div className="flex flex-col h-full w-full bg-[#FAF7F2] text-charcoal">
       {/* Top Heritage Utility Bar */}
-      <header className="border-b border-espresso/15 bg-paper/90 backdrop-blur-xs px-4 sm:px-6 py-3 flex items-center justify-between gap-4 shrink-0 shadow-2xs">
+      <header className="border-b border-espresso/15 bg-paper/90 backdrop-blur-xs px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-x-4 gap-y-2 shrink-0">
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-2">
             
-            <span className="eyebrow tracking-widest text-espresso font-bold">BASAVA Bespoke Studio</span>
+            <span className="eyebrow tracking-widest text-espresso font-bold whitespace-nowrap">The Bespoke Designer</span>
           </div>
           <span className="hidden sm:inline text-xs text-charcoal/40">|</span>
           <p className="hidden sm:block text-xs text-charcoal/75">
-            Bespoke Leather Atelier · Bengaluru
+            Your personal bag designer
           </p>
         </div>
 
@@ -484,9 +484,9 @@ export function StudioLayout({
             <button
               type="button"
               onClick={onSwitchToClassicWizard}
-              className="text-xs text-charcoal/70 hover:text-espresso underline transition-colors px-2 py-1"
+              className="hidden sm:inline text-xs text-charcoal/70 hover:text-espresso underline transition-colors px-2 py-1"
             >
-              Classic 5-Step Brief
+              Use the simple form instead
             </button>
           )}
 
@@ -505,7 +505,7 @@ export function StudioLayout({
             className="btn btn-solid btn-sm flex items-center gap-1.5 shadow-xs cursor-pointer"
           >
             <Compass size={13} className="text-sand" />
-            <span>Request Quote</span>
+            <span className="whitespace-nowrap">Send for a quote</span>
           </button>
         </div>
       </header>
@@ -537,7 +537,7 @@ export function StudioLayout({
           )}
         >
           <Eye size={14} />
-          <span>Canvas</span>
+          <span>Your design</span>
         </button>
 
         <button
@@ -551,7 +551,7 @@ export function StudioLayout({
           )}
         >
           <Sliders size={14} />
-          <span>Customise</span>
+          <span>Options</span>
         </button>
       </div>
 

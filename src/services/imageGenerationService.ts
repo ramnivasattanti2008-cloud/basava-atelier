@@ -250,21 +250,21 @@ export class ImageGenerationService {
   <defs>
     <!-- Studio Ambient Radial Vignette Background -->
     <radialGradient id="studioLighting" cx="50%" cy="38%" r="65%">
-      <stop offset="0%" stopColor="#FAF7F2" />
-      <stop offset="55%" stopColor="#ECE3D4" />
-      <stop offset="100%" stopColor="#DACBB7" />
+      <stop offset="0%" stop-color="#FAF7F2" />
+      <stop offset="55%" stop-color="#ECE3D4" />
+      <stop offset="100%" stop-color="#DACBB7" />
     </radialGradient>
 
     <!-- 3-Tier Volumetric Pedestal Floor Shadows -->
     <radialGradient id="tightContactShadow" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stopColor="rgba(25,16,10,0.58)" />
-      <stop offset="50%" stopColor="rgba(25,16,10,0.18)" />
-      <stop offset="100%" stopColor="rgba(25,16,10,0)" />
+      <stop offset="0%" stop-color="rgba(25,16,10,0.58)" />
+      <stop offset="50%" stop-color="rgba(25,16,10,0.18)" />
+      <stop offset="100%" stop-color="rgba(25,16,10,0)" />
     </radialGradient>
     <radialGradient id="ambientFloorShadow" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stopColor="rgba(48,37,30,0.28)" />
-      <stop offset="65%" stopColor="rgba(48,37,30,0.06)" />
-      <stop offset="100%" stopColor="rgba(48,37,30,0)" />
+      <stop offset="0%" stop-color="rgba(48,37,30,0.28)" />
+      <stop offset="65%" stop-color="rgba(48,37,30,0.06)" />
+      <stop offset="100%" stop-color="rgba(48,37,30,0)" />
     </radialGradient>
 
     <!-- Material-Specific Physical 3D Leather Bump-Mapping & Surface Lighting Filter -->
@@ -284,36 +284,36 @@ export class ImageGenerationService {
 
     <!-- Volumetric Leather Body Shading Gradient -->
     <linearGradient id="volumetricShine" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0.22" />
-      <stop offset="25%" stopColor="#FFFFFF" stopOpacity="0.06" />
-      <stop offset="65%" stopColor="#000000" stopOpacity="0.08" />
-      <stop offset="100%" stopColor="#000000" stopOpacity="0.42" />
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.22" />
+      <stop offset="25%" stop-color="#FFFFFF" stop-opacity="0.06" />
+      <stop offset="65%" stop-color="#000000" stop-opacity="0.08" />
+      <stop offset="100%" stop-color="#000000" stop-opacity="0.42" />
     </linearGradient>
 
     <!-- Cylindrical Handle Shading Gradient -->
     <linearGradient id="handleCylinder" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0.32" />
-      <stop offset="40%" stopColor="#FFFFFF" stopOpacity="0.05" />
-      <stop offset="80%" stopColor="#000000" stopOpacity="0.25" />
-      <stop offset="100%" stopColor="#000000" stopOpacity="0.55" />
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.32" />
+      <stop offset="40%" stop-color="#FFFFFF" stop-opacity="0.05" />
+      <stop offset="80%" stop-color="#000000" stop-opacity="0.25" />
+      <stop offset="100%" stop-color="#000000" stop-opacity="0.55" />
     </linearGradient>
 
     <!-- Sand-Cast Solid Brass / Metallurgy Gradient -->
     <linearGradient id="brassMetalGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stopColor="#FFF9E0" />
-      <stop offset="30%" stopColor="${hwColor}" />
-      <stop offset="70%" stopColor="#6E4D1B" />
-      <stop offset="85%" stopColor="${hwColor}" />
-      <stop offset="100%" stopColor="#FFF9E0" />
+      <stop offset="0%" stop-color="#FFF9E0" />
+      <stop offset="30%" stop-color="${hwColor}" />
+      <stop offset="70%" stop-color="#6E4D1B" />
+      <stop offset="85%" stop-color="${hwColor}" />
+      <stop offset="100%" stop-color="#FFF9E0" />
     </linearGradient>
 
     <!-- 24K Gold Leaf Foil Hot-Stamp Gradient -->
     <linearGradient id="goldFoilGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stopColor="#FFFDF2" />
-      <stop offset="30%" stopColor="#F5D77F" />
-      <stop offset="70%" stopColor="#B38728" />
-      <stop offset="90%" stopColor="#FBF5B7" />
-      <stop offset="100%" stopColor="#AA771C" />
+      <stop offset="0%" stop-color="#FFFDF2" />
+      <stop offset="30%" stop-color="#F5D77F" />
+      <stop offset="70%" stop-color="#B38728" />
+      <stop offset="90%" stop-color="#FBF5B7" />
+      <stop offset="100%" stop-color="#AA771C" />
     </linearGradient>
 
     <!-- Khadi Organic Cotton Weave Pattern -->
@@ -352,7 +352,14 @@ export class ImageGenerationService {
 </svg>
 `;
 
-    return `data:image/svg+xml;utf8,${encodeURIComponent(fullSvg)}`;
+    // Plain SVG needs hyphenated attribute names; the React-style spellings
+    // (stopColor, stopOpacity) are ignored by browsers and render as black.
+    const validSvg = fullSvg
+      .replace(/([^\s>])stop-color=/g, "$1 stop-color=")
+      .replace(/([^\s>])stop-opacity=/g, "$1 stop-opacity=")
+      .replace(/\s*stopColor=/g, " stop-color=")
+      .replace(/\s*stopOpacity=/g, " stop-opacity=");
+    return `data:image/svg+xml;utf8,${encodeURIComponent(validSvg)}`;
   }
 
   /**

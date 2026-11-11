@@ -1,8 +1,10 @@
 "use client";
 
 import { useRef, useEffect, useState } from "react";
-import { ArrowUp, Compass, ImagePlus, Loader2, User, X } from "lucide-react";
+import { ArrowUp, Compass, ImagePlus, X } from "lucide-react";
+import { AnimatePresence, motion } from "motion/react";
 import { cx } from "@/lib/format";
+import { useIsClient } from "@/lib/hooks";
 import type { DesignMessage, BespokeDesignConfig } from "@/lib/studio-types";
 import { BasavaMark } from "@/components/brand/BasavaLogo";
 
@@ -25,6 +27,8 @@ export function AiDesignerChat({
   const [attachedImage, setAttachedImage] = useState<string | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  // Times use the visitor locale, so they are only drawn in the browser.
+  const isClient = useIsClient();
 
   useEffect(() => {
     if (scrollRef.current) {
@@ -84,11 +88,16 @@ export function AiDesignerChat({
 
       {/* Messages Scroll Area */}
       <div ref={scrollRef} className="flex-1 overflow-y-auto p-4 space-y-4">
+        {/* Messages already on screen at load are shown at once; only new ones animate in. */}
+        <AnimatePresence initial={false}>
         {messages.map((m) => {
           const isUser = m.sender === "user";
           return (
-            <div
+            <motion.div
               key={m.id}
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
               className={cx("flex flex-col", isUser ? "items-end" : "items-start")}
             >
               <div
@@ -114,36 +123,58 @@ export function AiDesignerChat({
 
               {/* Timestamp */}
               <span className="text-[0.625rem] text-walnut/60 mt-1 px-1">
-                {new Date(m.timestamp).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
+                {isClient ? new Date(m.timestamp).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }) : "\u00a0"}
               </span>
 
               {/* Action Chips from Assistant */}
               {!isUser && m.suggestedActions && m.suggestedActions.length > 0 && (
                 <div className="flex flex-wrap gap-1.5 mt-2 max-w-[95%]">
                   {m.suggestedActions.map((action, idx) => (
-                    <button
+                    <motion.button
                       key={idx}
                       type="button"
                       onClick={() => onApplyAction(action)}
-                      className="text-[0.6875rem] font-semibold bg-linen hover:bg-sand/40 border border-espresso/20 text-espresso px-2.5 py-1 rounded-xs transition-colors cursor-pointer text-left flex items-center gap-1.5"
+                      initial={{ opacity: 0, y: 8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.3, delay: 0.2 + idx * 0.07, ease: [0.22, 1, 0.36, 1] }}
+                      whileTap={{ scale: 0.97 }}
+                      className="text-[0.6875rem] font-semibold bg-linen hover:bg-sand/40 border border-espresso/20 text-espresso px-2.5 py-1.5 rounded-xs transition-colors cursor-pointer text-left flex items-center gap-1.5"
                     >
                       <Compass size={11} className="text-brass shrink-0" />
                       <span>{action.label}</span>
-                    </button>
+                    </motion.button>
                   ))}
                 </div>
               )}
-            </div>
+            </motion.div>
           );
         })}
+        </AnimatePresence>
 
         {/* Typing indicator */}
-        {isThinking && (
-          <div className="flex items-center gap-2 text-xs text-walnut/70 italic p-2 bg-linen/50 rounded-xs border border-espresso/10 max-w-xs">
-            <Loader2 size={13} className="animate-spin text-brass" />
-            <span>The artisan is refining the design…</span>
-          </div>
-        )}
+        <AnimatePresence>
+          {isThinking && (
+            <motion.div
+              key="typing"
+              role="status"
+              aria-label="Working on your design"
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.25 }}
+              className="flex w-fit items-center gap-1.5 rounded-xs border border-espresso/12 bg-ivory px-3.5 py-3"
+            >
+              {[0, 1, 2].map((dot) => (
+                <motion.span
+                  key={dot}
+                  className="block h-1.5 w-1.5 rounded-full bg-walnut"
+                  animate={{ opacity: [0.25, 1, 0.25], y: [0, -3, 0] }}
+                  transition={{ duration: 1, repeat: Infinity, delay: dot * 0.16, ease: "easeInOut" }}
+                />
+              ))}
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
 
       {/* Input Tray */}
@@ -189,7 +220,7 @@ export function AiDesignerChat({
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            placeholder="Describe your wish (e.g. 'Add gold initials BV', 'Make it darker')…"
+            placeholder="Tell us what to change, e.g. make it darker"
             className="flex-1 bg-paper border border-espresso/20 px-3.5 py-2 text-xs sm:text-sm text-espresso rounded-xs focus:outline-none focus:border-espresso focus:ring-1 focus:ring-espresso placeholder:text-charcoal/50"
           />
 
@@ -204,7 +235,7 @@ export function AiDesignerChat({
         </div>
 
         <p className="text-[0.625rem] text-charcoal/60 mt-2 text-center">
-          Ask questions, change colours, upload sketches, or request custom monograms.
+          Ask a question, change a colour, or add a photo of a bag you like.
         </p>
       </form>
     </div>

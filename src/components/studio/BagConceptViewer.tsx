@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Download, Eye, History, Layers, Maximize2, RefreshCw, Share2, X, Compass } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import { cx } from "@/lib/format";
+import { repairSvgDataUrl } from "@/lib/svg";
 import { useToast } from "@/lib/toast";
 import type { BespokeDesignConfig, ConceptImage, ConceptViewType, DesignVersion } from "@/lib/studio-types";
 
@@ -69,7 +70,7 @@ export function BagConceptViewer({
   const handleDownload = () => {
     if (!currentImage?.url) return;
     const a = document.createElement("a");
-    a.href = currentImage.url;
+    a.href = repairSvgDataUrl(currentImage.url);
     a.download = `${config.designName.toLowerCase().replace(/\s+/g, "-")}-${activeView}-concept.svg`;
     document.body.appendChild(a);
     a.click();
@@ -118,21 +119,23 @@ export function BagConceptViewer({
       </div>
 
       {/* Main Concept Stage */}
-      <div className="relative flex-1 bg-gradient-to-b from-[#FAF7F2] to-[#EFE8DE] flex items-center justify-center p-4 sm:p-6 overflow-hidden min-h-[380px]">
+      <div className="relative flex-1 bg-[#f6f0e4] flex items-center justify-center p-4 sm:p-6 overflow-hidden min-h-[380px]">
         {/* Concept Image / SVG */}
         <div className="relative w-full h-full max-h-[500px] flex items-center justify-center">
           {isGenerating ? (
-            <div className="flex flex-col items-center justify-center text-center p-8">
-              <div className="w-16 h-16 rounded-full border-2 border-espresso/20 border-t-espresso animate-spin mb-4" />
-              <p className="font-display text-lg text-espresso">Rendering bespoke leather visual…</p>
-              <p className="text-xs text-charcoal/70 mt-1">
-                Applying {config.colourName} hide texture, {config.hardware} fittings, and hand-stitching.
-              </p>
+            <div className="flex w-full max-w-sm flex-col items-center text-center" role="status">
+              <p className="font-display text-2xl text-espresso">Drawing your design</p>
+              <p className="mt-1 text-xs text-charcoal/70">This takes a few seconds.</p>
+              <div className="mt-6 h-px w-full overflow-hidden bg-espresso/15">
+                <motion.div
+                  className="h-full w-1/3 bg-espresso"
+                  animate={{ x: ["-100%", "300%"] }}
+                  transition={{ duration: 1.4, repeat: Infinity, ease: [0.45, 0, 0.55, 1] }}
+                />
+              </div>
             </div>
           ) : currentImage?.url ? (
             <div className="relative w-full h-full flex items-center justify-center">
-              {/* Soft Ambient Brass Lighting Aura */}
-              <div className="absolute inset-16 rounded-full bg-gradient-to-tr from-[#caa359]/15 via-transparent to-transparent blur-3xl pointer-events-none pulse-aura" />
 
               {/* Subtle Atelier CAD Crosshair Guidelines */}
               <div className="absolute inset-x-8 top-1/2 h-[1px] bg-brass/10 pointer-events-none" />
@@ -142,16 +145,17 @@ export function BagConceptViewer({
               <AnimatePresence mode="wait">
                 <motion.div
                   key={`${activeView}-${activeVersionNumber}`}
-                  initial={{ opacity: 0, scale: 0.96 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 1.03 }}
-                  transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                  // The unveil: the concept opens from a tight crop to the full piece.
+                  initial={{ opacity: 0, scale: 1.18, clipPath: "inset(18% 18% 18% 18%)" }}
+                  animate={{ opacity: 1, scale: 1, clipPath: "inset(0% 0% 0% 0%)" }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
                   className="relative w-full h-full flex items-center justify-center"
                 >
                   <img
-                    src={currentImage.url}
+                    src={repairSvgDataUrl(currentImage.url)}
                     alt={`${config.designName} — ${activeView} view`}
-                    className="max-h-full max-w-full object-contain filter drop-shadow-xl select-none transition-transform duration-500 hover:scale-105"
+                    className="max-h-full max-w-full object-contain select-none"
                   />
                 </motion.div>
               </AnimatePresence>
@@ -195,13 +199,14 @@ export function BagConceptViewer({
             </div>
           ) : (
             <div className="text-center p-6 text-charcoal/70">
-              <p className="font-display text-lg">No concept image available.</p>
+              <p className="font-display text-2xl text-espresso">See your design</p>
+              <p className="mt-1 text-xs">We will draw a concept from the choices you have made.</p>
               <button
                 type="button"
                 onClick={onRegenerate}
                 className="btn btn-sm btn-solid mt-3"
               >
-                Generate Concept Now
+                Show my design
               </button>
             </div>
           )}
@@ -210,7 +215,7 @@ export function BagConceptViewer({
         {/* Atelier Craftsmanship Specification Badge */}
         <div className="absolute bottom-3 left-4 right-4 flex justify-center pointer-events-none">
           <div className="bg-espresso/90 backdrop-blur-xs text-[#F4E2B8] text-[0.625rem] sm:text-[0.6875rem] font-semibold tracking-wider px-3 py-1 rounded-2xs border border-sand/30 shadow-md text-center max-w-lg">
-            BESPOKE ATELIER SPECIFICATION · HANDCRAFTED IN BENGALURU
+            DESIGN CONCEPT · NOT A PHOTOGRAPH OF A FINISHED BAG
           </div>
         </div>
       </div>
@@ -254,7 +259,7 @@ export function BagConceptViewer({
 
           <div className="max-w-4xl max-h-[85vh] w-full flex items-center justify-center p-2">
             <img
-              src={currentImage.url}
+              src={repairSvgDataUrl(currentImage.url)}
               alt={currentImage.label}
               className="max-h-full max-w-full object-contain rounded-xs shadow-2xl"
             />

@@ -239,13 +239,12 @@ export default function CustomerAccountPage() {
           <div className="border border-espresso/15 bg-paper p-6 rounded-xs space-y-4">
             <div className="flex items-center gap-2">
               <ShieldCheck size={18} className="text-saddle-deep" />
-              <h2 className="font-display text-lg text-espresso font-semibold">Atelier Guarantee</h2>
+              <h2 className="font-display text-lg text-espresso font-semibold">Need a hand?</h2>
             </div>
             <p className="text-xs text-charcoal/80 leading-relaxed">
-              Every piece leaving our Bengaluru bench carries 100% natural vegetable-tanned hide certification, lifetime seam integrity, and complimentary leather reconditioning.
+              Questions about an order or a custom piece? Message or email us and a person will reply.
             </p>
             <div className="pt-2 border-t border-espresso/10 text-xs text-charcoal/70 space-y-1">
-              <p>📍 <strong>Workshop:</strong> Bengaluru, Karnataka, Bharat</p>
               <p>📞 <strong>Direct WhatsApp:</strong> +91 89519 89891</p>
               <p>✉️ <strong>Customer Email:</strong> {settings.email}</p>
             </div>

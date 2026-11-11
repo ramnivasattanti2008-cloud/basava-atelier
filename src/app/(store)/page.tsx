@@ -505,60 +505,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 8. REAL PATRON EXPERIENCES & ARTISAN GUARANTEES */}
-      <section className="py-20 sm:py-28 border-b border-espresso/15 bg-paper/60">
-        <div className="shell">
-          <div className="mx-auto max-w-2xl text-center">
-            <span className="eyebrow text-saddle-deep">Authentic Heritage Testimonials</span>
-            <h2 className="display-md text-espresso mt-2">Carried & Cherished Across India</h2>
-            <p className="text-sm text-charcoal/80 mt-2 leading-relaxed">
-              Real feedback from patrons who wear their BASAVA bags to work, travel, and celebrations every day.
-            </p>
-          </div>
-
-          <div className="mt-14 grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="border border-espresso/15 bg-ivory p-8 rounded-xs flex flex-col justify-between shadow-2xs hover:border-espresso/40 transition-all">
-              <div>
-                <div className="flex text-brass mb-4 text-sm tracking-widest">★★★★★</div>
-                <p className="font-display text-lg text-espresso leading-snug">
-                  &quot;The Mysore Cognac laptop briefcase is by far the finest Indian-made leather piece I own. After two years of continuous flights, the patina looks rich and golden.&quot;
-                </p>
-              </div>
-              <div className="mt-6 pt-4 border-t border-espresso/10">
-                <p className="text-xs font-bold text-espresso">Vikram K.</p>
-                <p className="text-[0.6875rem] text-charcoal/60">Architect · Bengaluru</p>
-              </div>
-            </div>
-
-            <div className="border border-espresso/15 bg-ivory p-8 rounded-xs flex flex-col justify-between shadow-2xs hover:border-espresso/40 transition-all">
-              <div>
-                <div className="flex text-brass mb-4 text-sm tracking-widest">★★★★★</div>
-                <p className="font-display text-lg text-espresso leading-snug">
-                  &quot;Ordered a personalized tote with 24K gold foil initials for my wife&apos;s birthday. The packaging experience—with the royal box and cotton khadi dust bag—felt like a luxury atelier in Paris or Florence.&quot;
-                </p>
-              </div>
-              <div className="mt-6 pt-4 border-t border-espresso/10">
-                <p className="text-xs font-bold text-espresso">Ananya & Siddharth R.</p>
-                <p className="text-[0.6875rem] text-charcoal/60">Creative Directors · Mumbai</p>
-              </div>
-            </div>
-
-            <div className="border border-espresso/15 bg-ivory p-8 rounded-xs flex flex-col justify-between shadow-2xs hover:border-espresso/40 transition-all">
-              <div>
-                <div className="flex text-brass mb-4 text-sm tracking-widest">★★★★★</div>
-                <p className="font-display text-lg text-espresso leading-snug">
-                  &quot;Needed a sling bag with an extended strap for my height. I talked directly to the maker on WhatsApp, and they custom-adjusted the brass strap before dispatch. Outstanding personal service.&quot;
-                </p>
-              </div>
-              <div className="mt-6 pt-4 border-t border-espresso/10">
-                <p className="text-xs font-bold text-espresso">Meera N.</p>
-                <p className="text-[0.6875rem] text-charcoal/60">Design Researcher · Hyderabad</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* 9. INSTAGRAM GALLERY USING REAL ASSETS */}
       <section className="py-20 sm:py-28 border-b border-espresso/15 bg-linen/20">
         <div className="shell">

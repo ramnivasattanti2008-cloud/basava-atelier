@@ -350,16 +350,63 @@ Respond ONLY with a strict JSON object matching this schema:
     }
 
     // 7. Contextual Knowledge Reasoning & Response Generation
-    const isMaterialInquiry = lower.includes("full grain") || lower.includes("top grain") || lower.includes("difference") || lower.includes("leather type") || lower.includes("which leather");
-    const isPatinaInquiry = lower.includes("patina") || lower.includes("age") || lower.includes("aging") || lower.includes("years") || lower.includes("darken");
-    const isCareInquiry = lower.includes("care") || lower.includes("clean") || lower.includes("monsoon") || lower.includes("rain") || lower.includes("water") || lower.includes("humidity");
-    const isSizingInquiry = lower.includes("size") || lower.includes("dimension") || lower.includes("capacity") || lower.includes("fit") || lower.includes("16 inch") || lower.includes("14 inch") || lower.includes("laptop fit");
-    const isTurnaroundInquiry = lower.includes("how long") || lower.includes("delivery") || lower.includes("timeline") || lower.includes("turnaround") || lower.includes("days");
-    const isHardwareInquiry = lower.includes("tarnish") || lower.includes("rust") || lower.includes("brass") || lower.includes("zipper") || lower.includes("hardware") || lower.includes("moradabad");
-    const isStitchingInquiry = lower.includes("stitch") || lower.includes("thread") || lower.includes("sewing") || lower.includes("saddle stitch") || lower.includes("lin cable");
-    const isEdgeInquiry = lower.includes("edge") || lower.includes("burnish") || lower.includes("peel") || lower.includes("tokonole");
+    const isExplicitQuestion = text.includes("?") || /\b(how|what|why|which|can|does|is there|explain|tell me)\b/i.test(lower);
+    const isMaterialInquiry = /\b(full[\s-]grain|top[\s-]grain|difference|leather type|which leather|grades?)\b/i.test(lower) && isExplicitQuestion;
+    const isPatinaInquiry = /\b(patina|aging|age over time|darken over years|scratches self heal)\b/i.test(lower);
+    const isCareInquiry = /\b(monsoon|rainy?|humidity|mold|mildew)\b/i.test(lower) || (/\b(care|clean|conditioner|maintain)\b/i.test(lower) && isExplicitQuestion);
+    const isSizingInquiry = /\b(dimension|capacity|fits?|16[\s-]?inch|14[\s-]?inch|laptop size)\b/i.test(lower) && isExplicitQuestion;
+    const isTurnaroundInquiry = /\b(how long|delivery time|timeline|turnaround|how many days)\b/i.test(lower);
+    const isHardwareInquiry = /\b(tarnish|rust|pittal|solid brass|zipper snag|pot metal)\b/i.test(lower) && isExplicitQuestion;
+    const isStitchingInquiry = /\b(saddle stitch|lin c[aâ]bl[eé]|hand stitch|lockstitch|why hand sewn)\b/i.test(lower) && isExplicitQuestion;
+    const isEdgeInquiry = /\b(burnish|tokonole|edge paint|creasing|raw edge)\b/i.test(lower) && isExplicitQuestion;
 
-    if (isStitchingInquiry) {
+    // Check if configuration parameters were applied this turn
+    const hasConfigChanges = Object.keys(patch).length > 0;
+
+    if (hasConfigChanges && !isExplicitQuestion) {
+      const activeBag = patch.bagType || current.bagType;
+      const activeColor = patch.colourName || current.colourName;
+      const activeMat = patch.material || current.material;
+      const matName = activeMat === "full-grain" ? "Full-Grain Heirloom" : activeMat === "top-grain" ? "Top-Grain Smooth" : activeMat === "suede" ? "Nilgiri Suede" : activeMat === "canvas-leather" ? "Canvas & Leather Hybrid" : "Handcrafted";
+
+      if (patch.personalisation?.text) {
+        reply = `A distinguished specification. I have customized your piece in ${matName} leather (${activeColor}) with your hot-stamped 24K gold foil monogram "${patch.personalisation.text}" on the lower center face. Notice the precision saddle stitch alignment and balanced proportions. Would you prefer a full top zipper or an effortless magnetic snap closure?`;
+        suggestedActions.push(
+          { label: "Full Zippered Closure", action: "set_zip", patch: { closure: "zipper" } },
+          { label: "Concealed Magnetic Snap", action: "set_snap", patch: { closure: "magnetic-snap" } },
+          { label: "Review Complete Brief", action: "review_brief" }
+        );
+      } else if (detectedType && patch.colourName) {
+        reply = `A distinguished choice. I have tailored your design to an executive ${activeColor} ${detectedType} in ${matName} leather with Moradabad antique brass hardware. Notice the architectural balance and reinforced corner piping. Would you like to add your 24K gold debossed initials?`;
+        suggestedActions.push(
+          { label: "Add 24K Gold Initials", action: "prompt_monogram" },
+          { label: "Solid Antique Brass Hardware", action: "set_brass", patch: { hardware: "antique-brass" } },
+          { label: "Add Padded Laptop Sleeve", action: "add_laptop", patch: { interior: { ...current.interior, laptopSleeve: true } } }
+        );
+      } else if (patch.colourName) {
+        reply = `I have updated your piece to ${patch.colourName}. The natural hide grain reflects light with warm, luxurious depth. Shall we personalize this with your hot-stamped gold foil initials on the lower face?`;
+        suggestedActions.push(
+          { label: "Add Gold Initials (24K Foil)", action: "add_gold_initials", patch: { personalisation: { enabled: true, text: "BV", method: "gold-foil", placement: "bottom-center" } } },
+          { label: "Blind Heat Deboss (Subtle)", action: "add_blind_deboss", patch: { personalisation: { enabled: true, text: "BV", method: "blind-deboss", placement: "bottom-center" } } },
+          { label: "Keep It Unembellished", action: "remove_monogram", patch: { personalisation: { enabled: false, text: "", method: "none", placement: "bottom-center" } } }
+        );
+      } else if (detectedType) {
+        const spec = SILHOUETTE_SPECS[detectedType] || SILHOUETTE_SPECS.tote;
+        reply = `I have transitioned your silhouette to the ${spec.title}. It features ${spec.deviceFit} Which leather hide tone would you love to see on this shape?`;
+        suggestedActions.push(
+          { label: "Royal Saddle Tan", action: "set_tan", patch: { colourName: "Royal Saddle Tan", colourHex: "#8A5D3B" } },
+          { label: "Dark Chocolate Brown", action: "set_chocolate", patch: { colourName: "Dark Chocolate Brown", colourHex: "#3D2314" } },
+          { label: "Midnight Onyx Black", action: "set_black", patch: { colourName: "Midnight Onyx Black", colourHex: "#1A1A1A" } }
+        );
+      } else {
+        reply = `I have applied your bespoke adjustments. Notice how the proportions and textures harmonize with the design blueprint. What would you like to refine next?`;
+        suggestedActions.push(
+          { label: "Antique Brass Hardware", action: "set_brass", patch: { hardware: "antique-brass" } },
+          { label: "Add Laptop Compartment", action: "add_laptop", patch: { interior: { ...current.interior, laptopSleeve: true } } },
+          { label: "Review Complete Brief", action: "review_brief" }
+        );
+      }
+    } else if (isStitchingInquiry) {
       reply = `In our Bengaluru atelier, we refuse machine lockstitching because a single broken loop can cause an entire seam to unravel. Instead, we use traditional two-needle hand saddle stitching with French Lin Câblé linen thread coated in wild Nilgiri forest beeswax. Two independent threads lock inside each diamond awl hole at a 45° angle, ensuring the seam remains intact for generations. Shall we inspect the leather options next?`;
       suggestedActions.push(
         { label: "Select Full-Grain Leather", action: "set_full_grain", patch: { material: "full-grain" } },
@@ -415,35 +462,6 @@ Respond ONLY with a strict JSON object matching this schema:
         { label: "Antique Hand-Buffed Brass", action: "set_brass", patch: { hardware: "antique-brass" } },
         { label: "24K Brushed Gold Leaf", action: "set_gold", patch: { hardware: "gold" } },
         { label: "Polished Architectural Silver", action: "set_silver", patch: { hardware: "silver" } }
-      );
-    } else if (detectedType && patch.colourName) {
-      reply = `A distinguished choice. I have tailored your design to an executive ${patch.colourName} ${detectedType} in handcrafted leather. Notice the architectural balance and reinforced corner piping. Would you like solid antique brass hardware, or would you prefer 24K brushed gold fittings?`;
-      suggestedActions.push(
-        { label: "Solid Antique Brass Hardware", action: "set_brass", patch: { hardware: "antique-brass" } },
-        { label: "24K Brushed Gold Hardware", action: "set_gold", patch: { hardware: "gold" } },
-        { label: "Add Custom Debossed Initials", action: "prompt_monogram" }
-      );
-    } else if (patch.colourName) {
-      reply = `I have updated your piece to ${patch.colourName}. The natural hide grain reflects light with warm, luxurious depth. Shall we personalize this with your hot-stamped gold foil initials on the lower face?`;
-      suggestedActions.push(
-        { label: "Add Gold Initials (24K Foil)", action: "add_gold_initials", patch: { personalisation: { enabled: true, text: "BV", method: "gold-foil", placement: "bottom-center" } } },
-        { label: "Blind Heat Deboss (Subtle)", action: "add_blind_deboss", patch: { personalisation: { enabled: true, text: "BV", method: "blind-deboss", placement: "bottom-center" } } },
-        { label: "Keep It Unembellished", action: "remove_monogram", patch: { personalisation: { enabled: false, text: "", method: "none", placement: "bottom-center" } } }
-      );
-    } else if (patch.personalisation?.text) {
-      reply = `Your monogram "${patch.personalisation.text}" is positioned with precision balance. We use heated brass typographic dies at 110°C to press the letters deep into the hide grain. Would you like a secure top zipper or an effortless magnetic closure?`;
-      suggestedActions.push(
-        { label: "Full Zippered Closure", action: "set_zip", patch: { closure: "zipper" } },
-        { label: "Concealed Magnetic Snap", action: "set_snap", patch: { closure: "magnetic-snap" } },
-        { label: "Review Complete Brief", action: "review_brief" }
-      );
-    } else if (detectedType) {
-      const spec = SILHOUETTE_SPECS[detectedType] || SILHOUETTE_SPECS.tote;
-      reply = `I have transitioned your silhouette to the ${spec.title}. It features ${spec.deviceFit} Which leather hide tone would you love to see on this shape?`;
-      suggestedActions.push(
-        { label: "Royal Saddle Tan", action: "set_tan", patch: { colourName: "Royal Saddle Tan", colourHex: "#8A5D3B" } },
-        { label: "Dark Chocolate Brown", action: "set_chocolate", patch: { colourName: "Dark Chocolate Brown", colourHex: "#3D2314" } },
-        { label: "Midnight Onyx Black", action: "set_black", patch: { colourName: "Midnight Onyx Black", colourHex: "#1A1A1A" } }
       );
     } else {
       reply = `I have noted your preferences in your design brief. We can refine the strap configuration, integrate dedicated tech compartments, or proceed to submit this specification directly to the artisan for a bespoke quotation. What would you like to explore next?`;

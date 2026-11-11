@@ -70,7 +70,6 @@ export function AiDesignerChat({
             <div className="w-8 h-8 rounded-full bg-espresso text-[#f3e5c8] flex items-center justify-center p-1 shadow-xs border border-brass/30">
               <BasavaMark size={18} invert={true} />
             </div>
-            <span className="absolute bottom-0 right-0 w-2 h-2 rounded-full bg-emerald-500 ring-2 ring-linen" />
           </div>
           <div>
             <h3 className="font-display text-base text-espresso leading-none">The Bespoke Designer</h3>

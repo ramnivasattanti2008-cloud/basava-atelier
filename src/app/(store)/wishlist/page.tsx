@@ -42,7 +42,7 @@ export default function WishlistPage() {
         title: "My BASAVA Leather Wishlist",
         text: "Discover my handcrafted leather collection curated from BASAVA Atelier Bengaluru.",
         url: window.location.href,
-      }).catch(() => {});
+      }).catch(() => { });
     } else {
       navigator.clipboard.writeText(window.location.href);
       showToast("Wishlist link copied to clipboard.");

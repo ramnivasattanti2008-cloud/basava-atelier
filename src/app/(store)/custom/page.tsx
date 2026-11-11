@@ -196,7 +196,6 @@ function CustomStudioContent() {
       <div className="mb-8 p-4 sm:p-5 border border-espresso/20 bg-linen/70 rounded-xs flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-2xs">
         <div>
           <div className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-emerald-600 animate-pulse" />
             <p className="font-display text-lg text-espresso font-semibold">
               The Bespoke Designer Studio
             </p>

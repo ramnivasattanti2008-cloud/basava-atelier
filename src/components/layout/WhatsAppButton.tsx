@@ -35,7 +35,6 @@ export function WhatsAppButton() {
     >
       <div className="relative">
         <WhatsAppGlyph />
-        <span className="absolute -top-0.5 -right-0.5 h-2 w-2 rounded-full bg-emerald-500 ring-2 ring-espresso" />
       </div>
       <span className="hidden text-[0.72rem] font-semibold uppercase tracking-[0.16em] md:inline">WhatsApp</span>
     </a>

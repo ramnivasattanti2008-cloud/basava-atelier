@@ -17,7 +17,6 @@ import { HeritageSeal } from "@/components/heritage/HeritageSeal";
 import { HeritageFlourish } from "@/components/heritage/HeritageFlourish";
 import { PackagingExperience } from "@/components/heritage/PackagingExperience";
 import { PatinaInteractiveSimulator } from "@/components/heritage/PatinaInteractiveSimulator";
-import { IndianArtisanalMap } from "@/components/heritage/IndianArtisanalMap";
 import { WaxSealInteractive } from "@/components/heritage/WaxSealInteractive";
 import { Reveal } from "@/components/ui/Reveal";
 
@@ -428,7 +427,6 @@ export default function HomePage() {
       </section>
 
       {/* 5B. INDIAN ARTISANAL PROVENANCE MAP */}
-      <IndianArtisanalMap />
 
       {/* 6. UNBOXING RITUAL */}
       <section className="py-16 sm:py-24 border-b border-espresso/15 bg-linen/30">

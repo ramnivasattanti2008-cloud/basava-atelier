@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect, useCallback, useRef } from "react";
-import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import {
   Layers,
@@ -39,7 +38,6 @@ import { BagConceptViewer } from "./BagConceptViewer";
 import { CustomisationInspector } from "./CustomisationInspector";
 import { VersionHistoryModal } from "./VersionHistoryModal";
 import { QuotationModal } from "./QuotationModal";
-import { BasavaMark } from "@/components/brand/BasavaLogo";
 
 interface StudioLayoutProps {
   initialReferenceProduct?: string | null;
@@ -85,8 +83,31 @@ export function StudioLayout({
         base.bagType = pStyle as any;
         base.designName = `Bespoke ${pStyle.charAt(0).toUpperCase() + pStyle.slice(1)}`;
       }
-      if (pLeather) base.material = pLeather as any;
-      if (pColour) base.colourName = pColour;
+      if (pLeather) {
+        const foundColour = studioOptions.colours.find(
+          (c) => c.id === pLeather || c.name.toLowerCase().includes(pLeather.toLowerCase())
+        );
+        const foundMaterial = studioOptions.materials.find((m) => m.id === pLeather);
+
+        if (foundColour) {
+          base.colourName = foundColour.name;
+          base.colourHex = foundColour.hex || base.colourHex;
+          base.material = "full-grain";
+        } else if (foundMaterial) {
+          base.material = foundMaterial.id as any;
+        }
+      }
+      if (pColour) {
+        const matchCol = studioOptions.colours.find(
+          (c) => c.id === pColour || c.name.toLowerCase().includes(pColour.toLowerCase())
+        );
+        if (matchCol) {
+          base.colourName = matchCol.name;
+          base.colourHex = matchCol.hex || base.colourHex;
+        } else {
+          base.colourName = pColour;
+        }
+      }
       if (pHw) base.hardware = pHw as any;
       if (pInitials) {
         base.personalisation.enabled = true;
@@ -211,7 +232,23 @@ export function StudioLayout({
     async function loadInitialConcept() {
       setIsGenerating(true);
       try {
-        const generatedViews = await ImageGenerationService.generateConceptViews(config);
+        let generatedViews: Record<ConceptViewType, ConceptImage>;
+        try {
+          const res = await fetch("/api/studio/generate-concept", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ config }),
+          });
+          if (res.ok) {
+            const data = await res.json();
+            generatedViews = data.views;
+          } else {
+            generatedViews = await ImageGenerationService.generateConceptViews(config);
+          }
+        } catch {
+          generatedViews = await ImageGenerationService.generateConceptViews(config);
+        }
+
         if (isCancelled) return;
 
         setViews(generatedViews);
@@ -250,7 +287,23 @@ export function StudioLayout({
     async (nextConfig: BespokeDesignConfig, changeSummary?: string) => {
       setIsGenerating(true);
       try {
-        const nextViews = await ImageGenerationService.generateConceptViews(nextConfig);
+        let nextViews: Record<ConceptViewType, ConceptImage>;
+        try {
+          const res = await fetch("/api/studio/generate-concept", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ config: nextConfig }),
+          });
+          if (res.ok) {
+            const data = await res.json();
+            nextViews = data.views;
+          } else {
+            nextViews = await ImageGenerationService.generateConceptViews(nextConfig);
+          }
+        } catch {
+          nextViews = await ImageGenerationService.generateConceptViews(nextConfig);
+        }
+
         setViews(nextViews);
 
         // Record new version
@@ -288,6 +341,14 @@ export function StudioLayout({
         if (patch.bagType || patch.colourName) {
           next.designName = DesignConfigurationService.generateAutoTitle(next);
         }
+
+        // Instant 0ms vector CAD blueprint update across all views
+        setViews((curr) => ({
+          front: { ...curr.front, blueprintUrl: ImageGenerationService.generateStudioConceptSVG(next, "front") },
+          angle: { ...curr.angle, blueprintUrl: ImageGenerationService.generateStudioConceptSVG(next, "angle") },
+          interior: { ...curr.interior, blueprintUrl: ImageGenerationService.generateStudioConceptSVG(next, "interior") },
+          detail: { ...curr.detail, blueprintUrl: ImageGenerationService.generateStudioConceptSVG(next, "detail") },
+        }));
 
         // Trigger concept plate re-render with computed diff summary
         const diffSummary = DesignVersionService.computeDiffSummary(prev, next);
@@ -329,7 +390,22 @@ export function StudioLayout({
       // If user attached an image, first analyze it
       if (referenceImage) {
         try {
-          const imageAnalysis = await ReferenceImageService.analyzeReferenceImage(referenceImage, text);
+          let imageAnalysis;
+          try {
+            const res = await fetch("/api/studio/analyze-image", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ dataUrl: referenceImage, prompt: text }),
+            });
+            if (res.ok) {
+              imageAnalysis = await res.json();
+            } else {
+              imageAnalysis = await ReferenceImageService.analyzeReferenceImage(referenceImage, text);
+            }
+          } catch {
+            imageAnalysis = await ReferenceImageService.analyzeReferenceImage(referenceImage, text);
+          }
+
           turnResult = {
             reply: `${imageAnalysis.artisanAssessment} Identified features: ${imageAnalysis.featuresIdentified.join(", ")}. Would you like me to adapt these suggestions into your bespoke design canvas?`,
             patch: imageAnalysis.suggestedPatch,
@@ -469,18 +545,15 @@ export function StudioLayout({
   return (
     <div className="flex flex-col h-full w-full bg-[#FAF7F2] text-charcoal">
       {/* Top Heritage Utility Bar */}
-      <header className="border-b border-espresso/15 bg-paper/90 backdrop-blur-xs px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-x-4 gap-y-2 shrink-0">
+      <header className="border-b border-espresso/15 bg-paper/90 backdrop-blur-xs px-4 sm:px-6 py-3 flex items-center justify-between gap-4 shrink-0 shadow-2xs">
         <div className="flex items-center gap-3">
-          <Link href="/" aria-label="BASAVA Home" className="flex items-center gap-2.5 group">
-            <BasavaMark size={24} className="transition-transform group-hover:scale-105" />
-            <div className="flex flex-col">
-              <span className="font-display font-medium tracking-[0.22em] text-espresso text-sm leading-none">BASAVA</span>
-              <span className="text-[0.45rem] font-medium tracking-[0.16em] uppercase text-saddle-deep leading-tight">Bespoke Studio</span>
-            </div>
-          </Link>
+          <div className="flex items-center gap-2">
+            
+            <span className="eyebrow tracking-widest text-espresso font-bold">BASAVA Bespoke Studio</span>
+          </div>
           <span className="hidden sm:inline text-xs text-charcoal/40">|</span>
           <p className="hidden sm:block text-xs text-charcoal/75">
-            Your personal bag designer · Bengaluru Atelier
+            Bespoke Leather Atelier · Bengaluru
           </p>
         </div>
 
@@ -489,9 +562,9 @@ export function StudioLayout({
             <button
               type="button"
               onClick={onSwitchToClassicWizard}
-              className="hidden sm:inline text-xs text-charcoal/70 hover:text-espresso underline transition-colors px-2 py-1"
+              className="text-xs text-charcoal/70 hover:text-espresso underline transition-colors px-2 py-1"
             >
-              Use the simple form instead
+              Classic 5-Step Brief
             </button>
           )}
 
@@ -510,7 +583,7 @@ export function StudioLayout({
             className="btn btn-solid btn-sm flex items-center gap-1.5 shadow-xs cursor-pointer"
           >
             <Compass size={13} className="text-sand" />
-            <span className="whitespace-nowrap">Send for a quote</span>
+            <span>Request Quote</span>
           </button>
         </div>
       </header>
@@ -542,7 +615,7 @@ export function StudioLayout({
           )}
         >
           <Eye size={14} />
-          <span>Your design</span>
+          <span>Canvas</span>
         </button>
 
         <button
@@ -556,7 +629,7 @@ export function StudioLayout({
           )}
         >
           <Sliders size={14} />
-          <span>Options</span>
+          <span>Customise</span>
         </button>
       </div>
 

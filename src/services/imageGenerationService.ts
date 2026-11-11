@@ -50,6 +50,7 @@ export class ImageGenerationService {
     timestamp: string
   ): Promise<ConceptImage> {
     const prompt = this.constructLuxuryPrompt(config, view);
+    const blueprintUrl = this.generateStudioConceptSVG(config, view);
     let imageUrl = "";
 
     // 1. Try Google Gemini Imagen if API key is configured
@@ -89,6 +90,7 @@ export class ImageGenerationService {
       view,
       label: labels[view],
       url: imageUrl,
+      blueprintUrl,
       prompt,
       provider: imageUrl.startsWith("https://") ? "studio-engine" : (imageUrl.startsWith("data:image/svg+xml") ? "studio-engine" : provider),
       generatedAt: timestamp,
@@ -488,7 +490,7 @@ export class ImageGenerationService {
    * Features physical bump-mapping lighting, material-specific surface shaders, 3D volumetric shading,
    * authentic stitch punch holes, cast brass metallurgy, and hot-stamped 24K gold foil debossing.
    */
-  private static generateStudioConceptSVG(config: BespokeDesignConfig, view: ConceptViewType): string {
+  public static generateStudioConceptSVG(config: BespokeDesignConfig, view: ConceptViewType): string {
     const hex = config.colourHex || "#8A5D3B";
     const hwColor = config.hardware === "gold"
       ? "#E5C168"

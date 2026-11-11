@@ -12,10 +12,7 @@ import { useToast } from "@/lib/toast";
 import { whatsappLink, whatsappMessages } from "@/lib/whatsapp";
 import { ProductImage } from "@/components/ui/ProductImage";
 import { QuantityStepper, Swatch } from "@/components/ui/bits";
-import { StaggerItem } from "@/components/motion/MaskText";
 import { ProductCard } from "@/components/product/ProductCard";
-import { ProductGallery } from "@/components/product/ProductGallery";
-import { Reveal } from "@/components/ui/Reveal";
 
 export default function ProductDetailView({ initialSlug }: { initialSlug: string }) {
   const products = useStorefrontProducts();
@@ -29,8 +26,7 @@ export default function ProductDetailView({ initialSlug }: { initialSlug: string
   // Retrieve current product (from live store in case admin updated it)
   const product = products.find((p) => p.slug === initialSlug);
   const inWishlist = product ? wishlist.includes(product.id) : false;
-  const [justAdded, setJustAdded] = useState(false);
-  const setCartOpen = useDemoStore((s) => s.setCartOpen);
+  const [selectedImage, setSelectedImage] = useState(0);
   const [quantity, setQuantity] = useState(1);
 
   const handleToggleWishlist = () => {
@@ -63,12 +59,7 @@ export default function ProductDetailView({ initialSlug }: { initialSlug: string
     if (!purchasable) return;
     const result = addToCart(product.id, product.colours[0] ?? null, quantity);
     if (result.ok) {
-      // Confirm on the button itself, then open the bag so the next step is obvious.
-      setJustAdded(true);
-      window.setTimeout(() => {
-        setJustAdded(false);
-        setCartOpen(true);
-      }, 900);
+      showToast(`${product.name} added to your bag.`);
     } else {
       showToast(result.message, "warn");
     }
@@ -99,17 +90,47 @@ export default function ProductDetailView({ initialSlug }: { initialSlug: string
       {/* Main Product Layout */}
       <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
         {/* Left: Product Gallery */}
-        <div className="lg:col-span-7">
-          <ProductGallery
-            key={product.id}
-            images={product.images}
-            name={product.name}
-            soldOut={product.stock.status === "out_of_stock"}
-          />
+        <div className="lg:col-span-7 flex flex-col-reverse gap-4 sm:flex-row">
+          {/* Vertical Thumbnail Rail (Desktop) */}
+          {product.images.length > 1 && (
+            <div className="flex sm:flex-col gap-3 overflow-x-auto sm:overflow-y-auto sm:max-h-[620px] pb-2 sm:pb-0 sm:w-20 shrink-0 no-scrollbar">
+              {product.images.map((img, idx) => (
+                <button
+                  key={img}
+                  type="button"
+                  onClick={() => setSelectedImage(idx)}
+                  className={`photo-tile relative aspect-square h-18 w-18 sm:h-20 sm:w-20 shrink-0 border transition-all ${
+                    selectedImage === idx
+                      ? "border-espresso ring-1 ring-espresso"
+                      : "border-transparent opacity-65 hover:opacity-100"
+                  }`}
+                  aria-label={`View photo ${idx + 1}`}
+                >
+                  <ProductImage src={img} alt="" sizes="80px" className="p-1" />
+                </button>
+              ))}
+            </div>
+          )}
+
+          {/* Main Hero Photograph */}
+          <div className="photo-tile relative aspect-square w-full flex-1 overflow-hidden bg-linen rounded-xs shadow-xs">
+            <ProductImage
+              src={product.images[selectedImage] || product.images[0]}
+              alt={product.name}
+              sizes="(min-width: 1024px) 50vw, 100vw"
+              eager
+              className="p-8 sm:p-12 drop-shadow-md transition-all duration-300"
+            />
+            {product.stock.status === "out_of_stock" && (
+              <div className="absolute left-4 top-4 bg-[#8e2f2a] px-3 py-1 text-xs font-semibold uppercase tracking-wider text-white">
+                Out of Stock
+              </div>
+            )}
+          </div>
         </div>
 
         {/* Right: Sticky Details & Purchase Panel */}
-        <Reveal className="lg:col-span-5 flex flex-col" rise={16}>
+        <div className="lg:col-span-5 flex flex-col">
           <div className="flex items-center justify-between gap-3">
             <span className="eyebrow">{product.listedType || category?.singular || "Genuine Leather"}</span>
             {product.sku && (
@@ -162,21 +183,10 @@ export default function ProductDetailView({ initialSlug }: { initialSlug: string
                   <button
                     type="button"
                     onClick={handleAddToCart}
-                    disabled={justAdded}
-                    aria-live="polite"
-                    className={cx("btn btn-solid flex-1 h-12 text-xs disabled:opacity-100", justAdded && "bg-walnut border-walnut")}
+                    className="btn btn-solid flex-1 h-12 text-xs"
                   >
-                    {justAdded ? (
-                      <>
-                        <Check size={16} strokeWidth={2} />
-                        Added to Bag
-                      </>
-                    ) : (
-                      <>
-                        <ShoppingBag size={16} strokeWidth={1.5} />
-                        Add to Bag
-                      </>
-                    )}
+                    <ShoppingBag size={16} strokeWidth={1.5} />
+                    Add to Bag
                   </button>
                   <button
                     type="button"
@@ -226,21 +236,32 @@ export default function ProductDetailView({ initialSlug }: { initialSlug: string
             )}
           </div>
 
-          {/* Bespoke / Monogram Callout */}
-          <div className="mt-8 border border-saddle-deep/30 bg-linen/50 p-4 rounded-xs">
-            <div className="flex items-center gap-2 text-saddle-deep">
-              <Compass size={16} />
-              <span className="text-xs font-semibold uppercase tracking-wider">Customise This Piece</span>
+          {/* Bespoke Atelier Studio Callout */}
+          <div className="mt-8 border-2 border-[#caa359]/40 bg-gradient-to-br from-[#fcf9f2] via-[#f7f0e4] to-[#ede3d0] p-5 rounded-xs shadow-md relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-24 h-24 bg-[#caa359]/10 rounded-full blur-xl pointer-events-none" />
+            <div className="flex items-center justify-between gap-2">
+              <div className="flex items-center gap-2 text-saddle-deep">
+                <Compass size={17} className="text-[#caa359]" />
+                <span className="text-xs font-bold uppercase tracking-wider text-espresso">
+                  Bespoke Atelier Studio
+                </span>
+              </div>
+              <span className="text-[0.625rem] font-serif font-bold uppercase tracking-wider text-[#8a2e1e] bg-[#caa359]/20 px-2 py-0.5 rounded-full border border-[#caa359]/30">
+                ಕೈಯಿಂದ ಮಾಡಿದ
+              </span>
             </div>
-            <p className="mt-1 text-xs text-charcoal/80 leading-relaxed">
-              Want this bag in a different leather colour, altered strap length, or personalised with embossed initials?
+            <p className="mt-2 text-xs text-charcoal/85 leading-relaxed">
+              Want this exact <strong>{product.name}</strong> tailored in a custom leather shade (Mysore Cognac, Royal Saddle Tan, Midnight Onyx), bespoke strap length, or personalised with 24K hot-stamped gold initials?
             </p>
-            <Link
-              href={`/custom?ref=${encodeURIComponent(product.name)}`}
-              className="mt-3 inline-block text-xs font-semibold uppercase tracking-wider text-espresso underline underline-offset-4"
-            >
-              Start custom enquiry for this shape →
-            </Link>
+            <div className="mt-4 flex items-center gap-3">
+              <Link
+                href={`/custom?ref=${encodeURIComponent(product.slug)}`}
+                className="btn btn-sm btn-solid shimmer-badge shadow-sm hover:shadow-lg transition-all flex items-center gap-1.5"
+              >
+                <Compass size={13} className="text-sand" />
+                <span>Customize in Atelier Studio</span>
+              </Link>
+            </div>
           </div>
 
           {/* Accordion Tabs */}
@@ -342,7 +363,7 @@ export default function ProductDetailView({ initialSlug }: { initialSlug: string
               )}
             </div>
           </div>
-        </Reveal>
+        </div>
       </div>
 
       {/* Related Products */}
@@ -361,10 +382,8 @@ export default function ProductDetailView({ initialSlug }: { initialSlug: string
           </div>
 
           <div className="grid grid-cols-2 gap-x-4 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 sm:gap-x-6">
-            {relatedProducts.map((p, i) => (
-              <StaggerItem key={p.id} index={i} columns={4}>
-                <ProductCard product={p} />
-              </StaggerItem>
+            {relatedProducts.map((p) => (
+              <ProductCard key={p.id} product={p} />
             ))}
           </div>
         </section>

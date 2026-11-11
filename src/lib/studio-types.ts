@@ -114,8 +114,9 @@ export interface ConceptImage {
   view: ConceptViewType;
   label: string;
   url: string;
+  blueprintUrl?: string;
   prompt?: string;
-  provider: "gemini" | "imagen" | "openai" | "studio-engine" | "demo-plate";
+  provider: "gemini" | "imagen" | "openai" | "studio-engine" | "demo-plate" | "flux";
   generatedAt: string;
   disclaimer: string;
 }

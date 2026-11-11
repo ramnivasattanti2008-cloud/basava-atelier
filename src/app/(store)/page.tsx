@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { ArrowRight, ArrowUpRight, Award, Check, Compass, Layers, MessageCircle, PenTool, ShieldCheck } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Award, Check, Compass, Layers, MessageCircle, PenTool, ShieldCheck, Sparkles } from "lucide-react";
 import type { Product } from "@/lib/types";
 import { formatINR } from "@/lib/format";
 import { useStorefrontCategories, useStorefrontProducts } from "@/lib/hooks";
@@ -15,9 +15,14 @@ import { QuickViewModal } from "@/components/product/QuickViewModal";
 import { EngravingPreview } from "@/components/custom/EngravingPreview";
 import { HeritageSeal } from "@/components/heritage/HeritageSeal";
 import { HeritageFlourish } from "@/components/heritage/HeritageFlourish";
-import { MaskText, StaggerItem } from "@/components/motion/MaskText";
+import { IndianHeritageCanvas } from "@/components/heritage/IndianHeritageCanvas";
+import { HeroInteractiveCard } from "@/components/heritage/HeroInteractiveCard";
+import { RoyalPaintingBanner } from "@/components/heritage/RoyalPaintingBanner";
+import { RoyalIndianPaintingGallery } from "@/components/heritage/RoyalIndianPaintingGallery";
+import { IndianArtisanalMap } from "@/components/heritage/IndianArtisanalMap";
+import { PatinaInteractiveSimulator } from "@/components/heritage/PatinaInteractiveSimulator";
+import { PackagingExperience } from "@/components/heritage/PackagingExperience";
 import { Reveal } from "@/components/ui/Reveal";
-import { HeritageAtmosphere, AmbientDustParticles } from "@/components/heritage/HeritageAtmosphere";
 
 const KANNADA_NUMERALS = ["೦೧", "೦೨", "೦೩", "೦೪", "೦೫", "೦೬", "೦೭"];
 
@@ -34,48 +39,51 @@ export default function HomePage() {
 
   return (
     <div className="flex flex-col">
-      {/* 1. HERO SECTION */}
-      <section className="relative overflow-hidden border-b border-espresso/15 pt-8 pb-16 sm:pt-14 sm:pb-24">
-        <HeritageAtmosphere variant="full" intensity="subtle">
-          <AmbientDustParticles count={7} />
-          <div className="shell grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-16">
-            {/* Left: Headline & CTAs */}
+      {/* 1. HERO SECTION WITH ROYAL INDIAN ANIMATED CANVAS */}
+      <section className="relative overflow-hidden border-b border-espresso/15 pt-10 pb-16 sm:pt-16 sm:pb-28">
+        {/* Real-time 24K Gold Embers & Sacred Hoysala Mandala Background */}
+        <IndianHeritageCanvas intensity="rich" interactive={true} />
+
+        <div className="shell relative z-10 grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-16">
+          {/* Left: Headline & CTAs */}
           <div className="lg:col-span-7 flex flex-col justify-center">
-            <div className="flex items-center gap-3 mb-2 rise [--i:0]">
-              <span className="font-serif text-[0.82rem] text-brass tracking-wider select-none font-medium">
-                ಕೈಯಿಂದ ಮಾಡಿದ · हस्तनिर्मित
+            <div className="flex items-center gap-2.5 mb-3 rise [--i:0]">
+              <span className="font-serif text-[0.82rem] text-[#8a2e1e] font-bold tracking-wider select-none bg-[#caa359]/20 border border-[#caa359]/40 px-3 py-0.5 rounded-full shadow-2xs">
+                ಕೈಯಿಂದ ಮಾಡಿದ · ರಾಜ ಸನ್ನಿಧಾನ · हस्तनिर्मित
               </span>
               <span className="h-1 w-1 rounded-full bg-brass/60" />
               <span className="eyebrow text-saddle-deep">BASAVA Atelier · Bengaluru</span>
             </div>
-            <h1 className="display-xl mt-3">
-              <MaskText
-                delay={0.15}
-                lines={["Rooted in craft.", <span key="l2" className="italic font-normal">Made for living.</span>]}
-              />
+            <h1 className="display-xl mt-2 rise [--i:1]">
+              Rooted in royal craft.<br />
+              <span className="italic font-normal bg-gradient-to-r from-[#8a2e1e] via-[#c5a059] to-[#5c412d] bg-clip-text text-transparent">
+                Made for living eternity.
+              </span>
             </h1>
             <p className="lede mt-5 max-w-xl text-charcoal/85 rise [--i:2]">
-              Discover thoughtfully designed leather essentials and create something uniquely yours.
+              Discover 40 bespoke leather pieces curated from our Bengaluru workshop.
+              Crafted from 100% botanical tree-bark tanned hides, hand-waxed with pure Nilgiri forest beeswax, and fitted with solid sand-cast Moradabad brass.
             </p>
 
             <div className="mt-8 flex flex-wrap items-center gap-4 rise [--i:3]">
-              <Link href="/shop" className="btn btn-solid btn-tactile shadow-md hover:shadow-xl transition-all">
-                EXPLORE COLLECTION
+              <Link href="/shop" className="btn btn-solid btn-tactile shadow-md hover:shadow-2xl transition-all flex items-center gap-2">
+                <span>EXPLORE COLLECTION</span>
                 <ArrowRight size={15} strokeWidth={1.5} />
               </Link>
-              <Link href="/custom" className="btn btn-outline btn-tactile hover:border-espresso transition-all">
-                CREATE YOUR OWN
+              <Link href="/custom" className="btn btn-outline btn-tactile hover:border-espresso transition-all shimmer-badge flex items-center gap-2">
+                <Compass size={15} className="text-brass" />
+                <span>BESPOKE ATELIER STUDIO</span>
               </Link>
             </div>
 
             <div className="mt-10 flex flex-wrap items-center gap-6 sm:gap-8 border-t border-espresso/12 pt-5 text-xs text-charcoal/80 rise [--i:4]">
               <div className="flex items-center gap-2">
                 <Check size={14} className="text-saddle-deep font-bold" />
-                <span>40 Ready Pieces (₹1,000–₹6,000)</span>
+                <span>40 Masterpieces (₹1,000–₹6,000)</span>
               </div>
               <div className="flex items-center gap-2">
                 <Check size={14} className="text-saddle-deep font-bold" />
-                <span>Initials Added on Request</span>
+                <span>24K Gold Monogram on Request</span>
               </div>
               <div className="flex items-center gap-2">
                 <Check size={14} className="text-saddle-deep font-bold" />
@@ -84,75 +92,35 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Right: Asymmetric Editorial Tile */}
+          {/* Right: 3D Interactive Tilting Product Card */}
           {heroProduct && (
             <div className="lg:col-span-5 relative unveil [--i:2]">
-              {/* Warm Ambient Golden Aura */}
-              <div className="absolute -inset-4 rounded-3xl bg-gradient-to-tr from-[#caa359]/20 via-[#a88959]/10 to-transparent blur-2xl pointer-events-none pulse-aura" />
-
-              {/* Rotating Artisan Heritage Seal overlay */}
-              <div className="absolute -top-7 -right-7 z-20 hidden sm:block float-slow">
-                <HeritageSeal size={96} rotating={true} />
-              </div>
-
-              <div className="photo-tile photo-tile--paper relative aspect-[4/5] w-full max-w-md mx-auto rounded-xs shadow-2xl p-8 flex flex-col justify-between">
-                <div className="flex items-center justify-between text-xs">
-                  <span className="eyebrow">{heroProduct.listedType || "Genuine Leather"}</span>
-                  <span className="tabular font-semibold text-espresso">{formatINR(heroProduct.priceINR)}</span>
-                </div>
-
-                <div className="relative aspect-square w-full my-auto">
-                  <ProductImage
-                    src={heroProduct.images[0]}
-                    alt={heroProduct.name}
-                    sizes="(min-width: 1024px) 38vw, 90vw"
-                    eager
-                    className="p-4 drop-shadow-lg"
-                  />
-                </div>
-
-                <div className="border-t border-espresso/15 pt-4 flex items-center justify-between">
-                  <div className="min-w-0 pr-4">
-                    <p className="font-display text-lg text-espresso truncate">{heroProduct.name}</p>
-                    <p className="text-[0.6875rem] text-walnut/70">Handcrafted leather by BASAVA</p>
-                  </div>
-                  <Link
-                    href={`/products/${heroProduct.slug}`}
-                    className="btn btn-sm btn-solid shrink-0"
-                    aria-label={`Explore ${heroProduct.name}`}
-                  >
-                    View Piece
-                  </Link>
-                </div>
-              </div>
-
-              {/* Decorative floating badge */}
-              <div className="absolute -bottom-4 -left-4 hidden sm:flex items-center gap-3 bg-espresso text-ivory px-4 py-2.5 shadow-lg border border-sand/30">
-                <Award size={15} className="text-sand" />
-                <span className="text-[0.72rem] font-medium tracking-wider uppercase">Handcrafted Leather</span>
-              </div>
+              <HeroInteractiveCard product={heroProduct} />
             </div>
           )}
         </div>
-        </HeritageAtmosphere>
       </section>
 
-      {/* MARQUEE TICKER */}
-      <div className="relative overflow-hidden border-b border-espresso/15 bg-[#170e08] text-[#e8cb85] py-3.5 select-none shadow-inner">
+      {/* MARQUEE TICKER WITH INDIAN ROYAL GOLD ACCENTS */}
+      <div className="relative overflow-hidden border-b border-espresso/15 bg-gradient-to-r from-[#170e08] via-[#24170f] to-[#120b06] text-[#e8cb85] py-3.5 select-none shadow-inner">
         <div className="marquee-track flex gap-8 text-[0.72rem] font-semibold tracking-[0.2em] uppercase">
           {[
-            "✦ Genuine Leather",
-            "✦ Handcrafted in Bengaluru",
-            "✦ Made to Order on Request",
-            "✦ Initials on Request",
-            "✦ Direct WhatsApp with the Maker",
-            "✦ 40 Pieces in the Collection",
-            "✦ Genuine Leather",
-            "✦ Handcrafted in Bengaluru",
-            "✦ Made to Order on Request",
-            "✦ Initials on Request",
-            "✦ Direct WhatsApp with the Maker",
-            "✦ 40 Pieces in the Collection",
+            "✦ 100% Genuine Full-Grain Leather",
+            "✦ Handcrafted in Bengaluru Atelier",
+            "✦ 45-Day Botanical Acacia Bark Tanning",
+            "✦ Solid Sand-Cast Moradabad Brass",
+            "✦ 24K Hot-Stamped Gold Monograms",
+            "✦ Pure Nilgiri Forest Beeswax Edges",
+            "✦ ಕಾಯಕವೇ ಕೈಲಾಸ · Hand-Saddle Stitched",
+            "✦ Exactly 40 Curated Pieces",
+            "✦ 100% Genuine Full-Grain Leather",
+            "✦ Handcrafted in Bengaluru Atelier",
+            "✦ 45-Day Botanical Acacia Bark Tanning",
+            "✦ Solid Sand-Cast Moradabad Brass",
+            "✦ 24K Hot-Stamped Gold Monograms",
+            "✦ Pure Nilgiri Forest Beeswax Edges",
+            "✦ ಕಾಯಕವೇ ಕೈಲಾಸ · Hand-Saddle Stitched",
+            "✦ Exactly 40 Curated Pieces",
           ].map((item, idx) => (
             <span key={idx} className="flex items-center gap-2 whitespace-nowrap text-[#f4e2b8]">
               {item}
@@ -238,8 +206,11 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Divider */}
-      <HeritageFlourish variant="divider" />
+      {/* Royal Indian Painting & Heritage Architecture Banner */}
+      <RoyalPaintingBanner />
+
+      {/* Royal Indian Miniature Painting Gallery & Tapestry */}
+      <RoyalIndianPaintingGallery />
 
       {/* 3. FEATURED PRODUCTS GRID */}
       <section className="py-20 sm:py-28 border-b border-espresso/15">
@@ -254,13 +225,12 @@ export default function HomePage() {
           </SectionHeading>
 
           <div className="grid grid-cols-2 gap-x-4 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 sm:gap-x-6 sm:gap-y-12">
-            {featuredProducts.map((p, i) => (
-              <StaggerItem key={p.id} index={i} columns={4}>
-                <ProductCard
-                  product={p}
-                  onQuickView={setQuickViewProduct}
-                />
-              </StaggerItem>
+            {featuredProducts.map((p) => (
+              <ProductCard
+                key={p.id}
+                product={p}
+                onQuickView={setQuickViewProduct}
+              />
             ))}
           </div>
 
@@ -273,11 +243,13 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Interactive Indian Artisanal Provenance & Tannery Map */}
+      <IndianArtisanalMap />
+
       {/* 4. CUSTOM STUDIO & ENGRAVING INTERACTIVE BAND */}
-      <section className="on-dark bg-espresso text-ivory py-20 sm:py-28 border-b border-sand/20 relative">
-        <HeritageAtmosphere variant="jali" intensity="medium">
-          <div className="shell grid grid-cols-1 lg:grid-cols-12 items-center gap-14">
-            <div className="lg:col-span-6">
+      <section className="on-dark bg-espresso text-ivory py-20 sm:py-28 border-b border-sand/20">
+        <div className="shell grid grid-cols-1 lg:grid-cols-12 items-center gap-14">
+          <div className="lg:col-span-6">
             <p className="eyebrow text-sand">Custom Orders & Gifts</p>
             <h2 className="display-lg mt-3 text-ivory">
               Want Something Made Just For You?
@@ -344,7 +316,6 @@ export default function HomePage() {
             </p>
           </div>
         </div>
-        </HeritageAtmosphere>
       </section>
 
       {/* 5. CRAFTSMANSHIP & OUR STORY */}
@@ -423,7 +394,9 @@ export default function HomePage() {
 
       {/* 7. LEATHER EDUCATION HIGHLIGHT & PATINA SIMULATOR */}
       <section className="py-20 border-b border-espresso/15">
-        <div className="shell space-y-16">
+        <div className="shell space-y-20">
+          {/* Interactive Patina Ageing Simulator */}
+          <PatinaInteractiveSimulator />
 
           <div>
             <div className="mx-auto max-w-2xl text-center">
@@ -483,6 +456,13 @@ export default function HomePage() {
               </Link>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* 8. ROYAL UNBOXING RITUAL EXPERIENCE */}
+      <section className="py-20 sm:py-28 border-b border-espresso/15 bg-paper/60">
+        <div className="shell">
+          <PackagingExperience />
         </div>
       </section>
 

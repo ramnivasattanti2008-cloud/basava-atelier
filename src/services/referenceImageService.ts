@@ -126,6 +126,7 @@ Respond ONLY with a valid JSON object matching this schema:
         generationConfig: {
           response_mime_type: "application/json",
           temperature: 0.2,
+          maxOutputTokens: 1024,
         },
       };
 
@@ -134,6 +135,7 @@ Respond ONLY with a valid JSON object matching this schema:
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(payload),
+          signal: AbortSignal.timeout(9000),
         });
 
         if (res.ok) {

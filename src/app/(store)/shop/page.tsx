@@ -13,6 +13,10 @@ import { SilhouetteAdvisorModal } from "@/components/shop/SilhouetteAdvisorModal
 import { StaggerItem } from "@/components/motion/MaskText";
 import { Overlay } from "@/components/ui/Overlay";
 import { HeritageAtmosphere } from "@/components/heritage/HeritageAtmosphere";
+import { ShopHeritageHeader } from "@/components/heritage/ShopHeritageHeader";
+import { RoyalPaintingBanner } from "@/components/heritage/RoyalPaintingBanner";
+import { TextileWeavePattern } from "@/components/motion/TextileWeavePattern";
+import { KolamLinework } from "@/components/motion/KolamLinework";
 
 type SortOption = "featured" | "price-asc" | "price-desc" | "name-asc";
 
@@ -223,30 +227,28 @@ function ShopContent() {
   );
 
   return (
-    <div className="shell py-10 sm:py-16">
-      {/* Page Header */}
-      <HeritageAtmosphere variant="radial-spotlight" intensity="subtle">
-        <div className="border-b border-espresso/15 pb-8 pt-2 flex flex-col md:flex-row md:items-end justify-between gap-4">
-          <div>
-            <p className="eyebrow">The Complete Collection</p>
-            <h1 className="display-lg mt-3">All Pieces</h1>
-            <p className="lede mt-3 max-w-2xl">
-              Browse our entire catalogue of genuine leather totes, slings, crossbodies, and accessories.
-              Each piece is uniquely handcrafted.
-            </p>
-          </div>
-          <button
-            type="button"
-            onClick={() => setAdvisorOpen(true)}
-            className="btn-tactile inline-flex items-center gap-2 px-4 py-2.5 border border-[#caa359] bg-[#caa359]/15 hover:bg-[#caa359]/25 text-espresso text-xs font-semibold uppercase tracking-wider rounded-xs transition-all cursor-pointer shadow-xs shrink-0 self-start md:self-auto"
-          >
-            <Compass size={15} className="text-[#96722d]" />
-            <span>✦ Silhouette Advisor</span>
-          </button>
-        </div>
-      </HeritageAtmosphere>
+    <div className="relative min-h-screen">
+      {/* 1. ROYAL HERITAGE SHOPPING HEADER BANNER WITH RANGOLI & PARTICLES */}
+      <ShopHeritageHeader
+        totalPieces={products.length}
+        onOpenAdvisor={() => setAdvisorOpen(true)}
+      />
 
-      {/* Control Bar: Filter Toggle, Active Chips, Sorting */}
+      {/* 2. MAIN CATALOGUE STAGE WITH HANDWOVEN TEXTILE & RANGOLI WATERMARKS */}
+      <div className="relative overflow-hidden py-4 sm:py-8">
+        {/* Subtle Handloom Textile Background Pattern */}
+        <TextileWeavePattern tone="parchment" animated={true} />
+
+        {/* Ambient Animated Rangoli Watermark Medallions */}
+        <div className="absolute top-10 right-4 opacity-15 pointer-events-none hidden xl:block">
+          <KolamLinework size={180} variant="medallion" tone="brass" animated={true} />
+        </div>
+        <div className="absolute bottom-20 left-4 opacity-15 pointer-events-none hidden xl:block">
+          <KolamLinework size={180} variant="medallion" tone="brass" animated={true} />
+        </div>
+
+        <div className="shell relative z-10">
+          {/* Control Bar: Filter Toggle, Active Chips, Sorting */}
       <div className="mt-8 flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-espresso/12 pb-5">
         <div className="flex flex-wrap items-center gap-3">
           {/* Mobile Filter Button */}
@@ -365,6 +367,11 @@ function ShopContent() {
           )}
         </div>
       </div>
+    </div>
+  </div>
+
+  {/* 3. ROYAL INDIAN PAINTING SHOWCASE BANNER */}
+  <RoyalPaintingBanner />
 
       {/* Mobile Filter Sheet */}
       <Overlay

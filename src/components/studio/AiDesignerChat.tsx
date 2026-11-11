@@ -78,7 +78,7 @@ export function AiDesignerChat({
         </div>
 
         <span className="text-[0.625rem] bg-sand/40 border border-espresso/10 text-espresso font-semibold uppercase tracking-wider px-2 py-0.5 rounded-xs">
-          Master Atelier
+          Design Studio
         </span>
       </div>
 

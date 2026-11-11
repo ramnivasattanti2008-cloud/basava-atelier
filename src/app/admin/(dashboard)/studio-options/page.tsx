@@ -53,12 +53,12 @@ export default function AdminStudioOptionsPage() {
     },
     colours: {
       label: "Leather Colours",
-      description: "Configure available dyed aniline and vegetable-tanned leather shades.",
+      description: "Choose which leather colours customers can pick.",
       icon: "✦",
     },
     hardware: {
       label: "Hardware Finishes",
-      description: "Manage metallic fittings, rivets, buckles, and custom brass castings.",
+      description: "Manage metallic fittings, rivets, buckles, and custom fittings.",
       icon: "⌗",
     },
     closures: {

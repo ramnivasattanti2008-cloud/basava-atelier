@@ -16,7 +16,7 @@ export default function CollectionsDirectoryPage() {
         <span className="eyebrow text-saddle-deep">Bespoke Atelier Archives</span>
         <h1 className="display-lg mt-2 text-espresso">The Collections</h1>
         <p className="lede mt-3 max-w-2xl text-charcoal/80">
-          Handcrafted genuine leather pieces grouped by silhouette. Every shape is built by hand in Bengaluru with natural vegetable-tanned hides and solid brass hardware.
+          Handcrafted genuine leather pieces grouped by silhouette. Every shape is made by hand in Bengaluru.
         </p>
       </div>
 
@@ -79,7 +79,7 @@ export default function CollectionsDirectoryPage() {
           </div>
           <h2 className="display-sm text-espresso">Looking for a Tailored Proportion?</h2>
           <p className="text-sm text-charcoal/80 mt-2 leading-relaxed">
-            Our Bespoke Atelier Studio allows you to customize handle drops, laptop compartment dimensions, and select from 8 royal Karnataka leather shades.
+            Our Bespoke Atelier Studio lets you choose the size, the handles, the compartments and the leather colour.
           </p>
         </div>
         <Link

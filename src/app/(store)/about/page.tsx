@@ -18,7 +18,7 @@ export default function AboutPage() {
           </div>
           <h1 className="display-lg mt-1">The BASAVA Story</h1>
           <p className="lede mt-3 max-w-2xl">
-            Bespoke leather bags, honest materials, and an enduring commitment to craft made stitch by stitch in Bengaluru.
+            Leather bags and accessories, and bespoke pieces made to order in Bengaluru.
           </p>
         </div>
         <div className="shrink-0 self-center md:self-auto">
@@ -33,33 +33,11 @@ export default function AboutPage() {
         <section className="space-y-4">
           <h2 className="font-display text-3xl text-espresso">The Maker & The Craft</h2>
           <p>
-            <strong>BASAVA</strong> began with a single conviction: leather goods should be personal, durable, and free from superficial embellishment. In an era of disposable fashion, we wanted to return to the tactile intimacy of natural hides, saddle stitching, and hand-burnished edges.
+            <strong>BASAVA</strong> makes genuine leather bags and accessories, and takes custom orders for pieces made to a customer’s own brief.
           </p>
           <p>
-            From our Bengaluru workshop, we create bespoke pieces tailored directly to customer ideas. Whether it is an everyday tote proportioned to carry a specific sketchbook or a monogrammed travel sling designed for comfort on the road, our process starts with a conversation and ends with a piece made to last a lifetime.
+            From our Bengaluru workshop, we create bespoke pieces tailored directly to customer ideas. Whether it is an everyday tote proportioned to carry a specific sketchbook or a monogrammed travel sling designed for comfort on the road, our process starts with a conversation.
           </p>
-        </section>
-
-        {/* Indian Tanning Heritage Section */}
-        <section className="border border-saddle-deep/25 bg-paper p-6 sm:p-8 rounded-xs space-y-4">
-          <span className="eyebrow text-brass">Centuries of South Indian Artistry</span>
-          <h2 className="font-display text-2xl text-espresso">The Deccan Plateau & Tanning Traditions</h2>
-          <p className="text-sm text-charcoal/80 leading-relaxed">
-            South India holds one of the world's oldest and most respected traditions of organic vegetable tanning. Centers like Ranipet, Ambur, and Vaniyambadi have for generations mastered tanning with <em>Acacia arabica</em> (Babul bark) and <em>Terminalia chebula</em> (Myrobalan nuts).
-          </p>
-          <p className="text-sm text-charcoal/80 leading-relaxed">
-            Unlike rapid chemical chrome tanneries, natural vegetable tanning preserves the organic breathability and dense fibrous structure of the hide. Each hide retains its subtle earthen fragrance, absorbs natural sunlight, and deepens into a warm, lustrous patina that tells the story of every journey you take together.
-          </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-            <div className="border border-espresso/10 bg-ivory p-4">
-              <h4 className="font-display text-base text-espresso">Pure Beeswax Burnishing</h4>
-              <p className="text-xs text-charcoal/70 mt-1">Raw cut edges are hand-sanded and sealed with natural Nilgiris beeswax for smooth, weather-resistant bevels.</p>
-            </div>
-            <div className="border border-espresso/10 bg-ivory p-4">
-              <h4 className="font-display text-base text-espresso">Karnataka Brass Hardware</h4>
-              <p className="text-xs text-charcoal/70 mt-1">Fittings, rivets, and buckles crafted from solid cast brass that never flakes or rusts under tropical climates.</p>
-            </div>
-          </div>
         </section>
 
         {/* Studio Tenets */}
@@ -69,7 +47,7 @@ export default function AboutPage() {
             <div className="mt-6">
               <h3 className="font-display text-xl text-espresso">Hand Assembled</h3>
               <p className="mt-2 text-xs text-charcoal/70 leading-relaxed">
-                Hand-cut panels, reinforced stress corners, and solid metal hardware chosen for longevity.
+                Each piece is put together by hand in our Bengaluru workshop.
               </p>
             </div>
           </div>

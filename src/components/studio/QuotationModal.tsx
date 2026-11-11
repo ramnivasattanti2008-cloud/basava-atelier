@@ -102,7 +102,7 @@ export function QuotationModal({
             </p>
 
             <p className="text-xs sm:text-sm text-charcoal/80 max-w-md mx-auto mt-3 leading-relaxed">
-              Thank you, <strong>{name}</strong>. Our master artisan in Bengaluru has received your design brief for <strong>{config.designName}</strong>. We will review hide availability, pattern scaling, and prepare your confirmed quote.
+              Thank you, <strong>{name}</strong>. Our Bengaluru workshop has received your design brief for <strong>{config.designName}</strong>. We will review it and reply with a quote.
             </p>
 
             {/* WhatsApp Fast Track */}
@@ -147,7 +147,7 @@ export function QuotationModal({
               <span className="eyebrow text-saddle-deep">Artisan Quotation Request</span>
               <h2 className="font-display text-2xl text-espresso mt-0.5">Submit Your Bespoke Brief</h2>
               <p className="text-xs text-charcoal/70 mt-1">
-                Zero payment required now. Our master leather artisan will verify feasibility and return a confirmed quotation.
+                Zero payment required now. The workshop will check what is possible and reply with a quote.
               </p>
             </div>
 
@@ -219,7 +219,7 @@ export function QuotationModal({
                     <option value="₹2,500 – ₹4,000">₹2,500 – ₹4,000 (Slings / Small bags)</option>
                     <option value="₹3,500 – ₹6,000">₹3,500 – ₹6,000 (Standard Totes / Crossbodies)</option>
                     <option value="₹6,000 – ₹10,000">₹6,000 – ₹10,000 (Executive Briefs / Duffles)</option>
-                    <option value="Above ₹10,000">Above ₹10,000 (Exotic / Heirloom work)</option>
+                    <option value="Above ₹10,000">Above ₹10,000</option>
                   </select>
                 </div>
 

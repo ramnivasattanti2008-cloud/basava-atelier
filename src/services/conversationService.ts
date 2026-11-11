@@ -359,6 +359,7 @@ Respond ONLY with a strict JSON object matching this schema:
     const isHardwareInquiry = /\b(tarnish|rust|pittal|solid brass|zipper snag|pot metal)\b/i.test(lower) && isExplicitQuestion;
     const isStitchingInquiry = /\b(saddle stitch|lin c[aâ]bl[eé]|hand stitch|lockstitch|why hand sewn)\b/i.test(lower) && isExplicitQuestion;
     const isEdgeInquiry = /\b(burnish|tokonole|edge paint|creasing|raw edge)\b/i.test(lower) && isExplicitQuestion;
+    const isViewInquiry = /\b(show.*(inside|interior|macro|detail|angle|perspective|close up)|look inside|view.*(interior|macro|detail|angle))\b/i.test(lower);
 
     // Check if configuration parameters were applied this turn
     const hasConfigChanges = Object.keys(patch).length > 0;
@@ -462,6 +463,13 @@ Respond ONLY with a strict JSON object matching this schema:
         { label: "Antique Hand-Buffed Brass", action: "set_brass", patch: { hardware: "antique-brass" } },
         { label: "24K Brushed Gold Leaf", action: "set_gold", patch: { hardware: "gold" } },
         { label: "Polished Architectural Silver", action: "set_silver", patch: { hardware: "silver" } }
+      );
+    } else if (isViewInquiry) {
+      reply = `You can explore all 4 master angles of your bespoke design using the view tabs above the studio canvas. The Interior view reveals our 240 GSM organic handspun Khadi cotton lining and cushioned laptop sleeve; the Macro view highlights the 45° Lin Câblé saddle stitches and 24K gold foil debossing. Which perspective would you like to examine?`;
+      suggestedActions.push(
+        { label: "Inspect Interior Architecture", action: "view_interior" },
+        { label: "Inspect Macro Craftsmanship", action: "view_macro_detail" },
+        { label: "Inspect 3/4 Perspective", action: "view_angle" }
       );
     } else {
       reply = `I have noted your preferences in your design brief. We can refine the strap configuration, integrate dedicated tech compartments, or proceed to submit this specification directly to the artisan for a bespoke quotation. What would you like to explore next?`;

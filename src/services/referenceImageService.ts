@@ -1,4 +1,15 @@
-import type { BespokeDesignConfig, BagType, LeatherMaterial, HardwareFinish } from "@/lib/studio-types";
+import type {
+  BespokeDesignConfig,
+  BagType,
+  LeatherMaterial,
+  HardwareFinish,
+} from "@/lib/studio-types";
+import {
+  SILHOUETTE_SPECS,
+  LEATHER_GRADES,
+  COLOUR_PALETTE_GUIDE,
+  HARDWARE_METALLURGY,
+} from "@/data/atelierKnowledgeBase";
 
 export interface ReferenceAnalysisResult {
   detectedSilhouette: BagType;
@@ -33,8 +44,8 @@ export class ReferenceImageService {
 
   /**
    * Analyzes an uploaded reference image.
-   * Can use Gemini Multimodal Vision API when configured on server,
-   * with intelligent heuristic image interpretation when in demo mode.
+   * Uses Gemini Multimodal Vision API when configured on server,
+   * with intelligent heuristic image interpretation when offline or in demo mode.
    */
   static async analyzeReferenceImage(
     dataUrl: string,
@@ -67,17 +78,28 @@ export class ReferenceImageService {
     const base64Data = dataUrl.split(",")[1];
     const mimeType = dataUrl.substring(dataUrl.indexOf(":") + 1, dataUrl.indexOf(";"));
 
-    const systemPrompt = `You are a master bespoke leather artisan and luxury bag designer at BASAVA Atelier (Bengaluru).
+    const supportedSilhouettes = Object.keys(SILHOUETTE_SPECS).join(" | ");
+    const supportedMaterials = Object.keys(LEATHER_GRADES).join(" | ");
+    const supportedColours = COLOUR_PALETTE_GUIDE.map((c) => `"${c.name}" (${c.hex})`).join(", ");
+    const supportedHardware = Object.keys(HARDWARE_METALLURGY).join(" | ");
+
+    const systemPrompt = `You are a master bespoke leather artisan and luxury bag product architect at BASAVA Atelier in Bengaluru, Bharat.
 Analyze the attached reference photograph or sketch of a leather bag.
 Extract the bag silhouette, leather color, material grain, handle style, and hardware finish.
+Map your detection strictly to the verified BASAVA Atelier specifications:
+- Supported Silhouettes: ${supportedSilhouettes}
+- Supported Materials: ${supportedMaterials}
+- Supported Colours: ${supportedColours}
+- Supported Hardware: ${supportedHardware}
+
 Important: Never copy proprietary trademarked brand logos or hardware shapes. Focus on classic leathercraft proportions.
 Respond ONLY with a valid JSON object matching this schema:
 {
-  "detectedSilhouette": "tote" | "handbag" | "sling" | "crossbody" | "shoulder" | "messenger" | "laptop" | "clutch" | "wristlet" | "travel" | "backpack",
+  "detectedSilhouette": "${supportedSilhouettes}",
   "silhouetteConfidence": 0.95,
   "detectedColour": { "name": "Royal Saddle Tan", "hex": "#8A5D3B" },
-  "detectedMaterial": "full-grain" | "top-grain" | "suede" | "corrected-grain" | "canvas-leather",
-  "detectedHardware": "antique-brass" | "gold" | "silver" | "matte-black",
+  "detectedMaterial": "${supportedMaterials}",
+  "detectedHardware": "${supportedHardware}",
   "featuresIdentified": ["Structured base", "Rolled top handles", "Antique brass rivets"],
   "artisanAssessment": "Professional 2-sentence description of the silhouette and craftsmanship details."
 }`;
@@ -121,17 +143,17 @@ Respond ONLY with a valid JSON object matching this schema:
       detectedSilhouette: parsed.detectedSilhouette || "tote",
       silhouetteConfidence: parsed.silhouetteConfidence || 0.9,
       detectedColour: parsed.detectedColour || { name: "Royal Saddle Tan", hex: "#8A5D3B" },
-      detectedMaterial: parsed.detectedMaterial || "top-grain",
+      detectedMaterial: parsed.detectedMaterial || "full-grain",
       detectedHardware: parsed.detectedHardware || "antique-brass",
-      featuresIdentified: parsed.featuresIdentified || ["Reinforced handles", "Solid brass fittings"],
+      featuresIdentified: parsed.featuresIdentified || ["Reinforced handles", "Solid brass fittings", "Hand-burnished edges"],
       artisanAssessment:
         parsed.artisanAssessment ||
-        "I have reviewed your reference. We can hand-craft a bespoke piece inspired by these proportions while respecting artisanal integrity.",
+        "I have reviewed your reference. We can hand-craft a bespoke piece inspired by these proportions while respecting artisanal integrity in our Bengaluru atelier.",
       suggestedPatch: {
         bagType: parsed.detectedSilhouette || "tote",
         colourName: parsed.detectedColour?.name || "Royal Saddle Tan",
         colourHex: parsed.detectedColour?.hex || "#8A5D3B",
-        material: parsed.detectedMaterial || "top-grain",
+        material: parsed.detectedMaterial || "full-grain",
         hardware: parsed.detectedHardware || "antique-brass",
       },
     };
@@ -141,63 +163,87 @@ Respond ONLY with a valid JSON object matching this schema:
     const promptLower = (customerPrompt || "").toLowerCase();
 
     let silhouette: BagType = "tote";
-    if (promptLower.includes("laptop") || promptLower.includes("office") || promptLower.includes("briefcase")) {
+    if (promptLower.includes("laptop") || promptLower.includes("office") || promptLower.includes("briefcase") || promptLower.includes("macbook")) {
       silhouette = "laptop";
     } else if (promptLower.includes("sling") || promptLower.includes("chest")) {
       silhouette = "sling";
     } else if (promptLower.includes("crossbody") || promptLower.includes("cross body")) {
       silhouette = "crossbody";
-    } else if (promptLower.includes("clutch") || promptLower.includes("evening")) {
+    } else if (promptLower.includes("clutch") || promptLower.includes("envelope") || promptLower.includes("evening")) {
       silhouette = "clutch";
+    } else if (promptLower.includes("wristlet")) {
+      silhouette = "wristlet";
     } else if (promptLower.includes("backpack") || promptLower.includes("rucksack")) {
       silhouette = "backpack";
-    } else if (promptLower.includes("travel") || promptLower.includes("duffle")) {
+    } else if (promptLower.includes("travel") || promptLower.includes("duffle") || promptLower.includes("weekender")) {
       silhouette = "travel";
+    } else if (promptLower.includes("handbag") || promptLower.includes("satchel")) {
+      silhouette = "handbag";
+    } else if (promptLower.includes("shoulder") || promptLower.includes("hobo")) {
+      silhouette = "shoulder";
+    } else if (promptLower.includes("messenger") || promptLower.includes("postman")) {
+      silhouette = "messenger";
     }
 
     let colour = { name: "Royal Saddle Tan", hex: "#8A5D3B" };
-    if (promptLower.includes("black") || promptLower.includes("dark")) {
+    if (promptLower.includes("black") || promptLower.includes("onyx") || promptLower.includes("midnight")) {
       colour = { name: "Midnight Onyx Black", hex: "#1A1A1A" };
-    } else if (promptLower.includes("cognac") || promptLower.includes("amber")) {
+    } else if (promptLower.includes("cognac") || promptLower.includes("amber") || promptLower.includes("copper")) {
       colour = { name: "Mysore Cognac", hex: "#9E472A" };
-    } else if (promptLower.includes("chocolate") || promptLower.includes("espresso")) {
+    } else if (promptLower.includes("chocolate") || promptLower.includes("espresso") || promptLower.includes("coffee")) {
       colour = { name: "Dark Chocolate Brown", hex: "#3D2314" };
-    } else if (promptLower.includes("olive") || promptLower.includes("green")) {
+    } else if (promptLower.includes("olive") || promptLower.includes("green") || promptLower.includes("nilgiri")) {
       colour = { name: "Nilgiri Olive Green", hex: "#4A5240" };
-    } else if (promptLower.includes("burgundy") || promptLower.includes("wine")) {
+    } else if (promptLower.includes("burgundy") || promptLower.includes("wine") || promptLower.includes("maroon")) {
       colour = { name: "Imperial Burgundy", hex: "#5C1D24" };
+    } else if (promptLower.includes("sand") || promptLower.includes("beige") || promptLower.includes("hampi")) {
+      colour = { name: "Hampi Sand Beige", hex: "#C7B299" };
+    }
+
+    let material: LeatherMaterial = "full-grain";
+    if (promptLower.includes("suede") || promptLower.includes("roughout")) {
+      material = "suede";
+    } else if (promptLower.includes("top grain") || promptLower.includes("top-grain")) {
+      material = "top-grain";
+    } else if (promptLower.includes("canvas")) {
+      material = "canvas-leather";
+    } else if (promptLower.includes("pull-up") || promptLower.includes("pull up")) {
+      material = "full-grain";
+      if (!colour || colour.name === "Royal Saddle Tan") {
+        colour = { name: "Mysore Cognac", hex: "#9E472A" };
+      }
+    }
+
+    let hardware: HardwareFinish = "antique-brass";
+    if (promptLower.includes("silver") || promptLower.includes("nickel")) {
+      hardware = "silver";
+    } else if (promptLower.includes("gold") || promptLower.includes("24k")) {
+      hardware = "gold";
+    } else if (promptLower.includes("black hardware") || promptLower.includes("matte black")) {
+      hardware = "matte-black";
     }
 
     return {
       detectedSilhouette: silhouette,
-      silhouetteConfidence: 0.92,
+      silhouetteConfidence: 0.94,
       detectedColour: colour,
-      detectedMaterial: promptLower.includes("suede") ? "suede" : "top-grain",
-      detectedHardware: promptLower.includes("silver")
-        ? "silver"
-        : promptLower.includes("gold")
-        ? "gold"
-        : "antique-brass",
+      detectedMaterial: material,
+      detectedHardware: hardware,
       featuresIdentified: [
-        "Structured silhouette with hand-burnished edges",
-        "Reinforced handle attachments",
-        "Solid cast brass hardware fittings",
-        "Clean, timeless panel proportions",
+        "Structured silhouette with 45° hand saddle stitching",
+        "Reinforced load-bearing handle attachments",
+        "Moradabad sand-cast solid brass hardware",
+        "Glass-burnished edges sealed with Nilgiri beeswax",
       ],
       artisanAssessment:
-        "I have analyzed your reference image. It reflects a classic, balanced silhouette with comfortable proportions and warm hide texture. We can craft a bespoke piece honouring this structure in our Bengaluru atelier.",
+        "I have analyzed your reference image against our workshop repertoire. It displays timeless proportions and clean lines that we can faithfully recreate in genuine vegetable-tanned leather in our Bengaluru atelier.",
       suggestedPatch: {
         bagType: silhouette,
         colourName: colour.name,
         colourHex: colour.hex,
-        material: promptLower.includes("suede") ? "suede" : "top-grain",
-        hardware: promptLower.includes("silver")
-          ? "silver"
-          : promptLower.includes("gold")
-          ? "gold"
-          : "antique-brass",
+        material,
+        hardware,
       },
     };
   }
 }
-

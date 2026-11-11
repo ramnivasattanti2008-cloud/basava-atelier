@@ -109,7 +109,7 @@ export default function WishlistPage() {
             </div>
             <h2 className="font-display text-2xl text-espresso">Your Wishlist is Empty</h2>
             <p className="mt-2 text-xs sm:text-sm text-charcoal/70 leading-relaxed max-w-md mx-auto">
-              Explore our catalogue of full-grain leather bags and tap the heart icon on any piece to save it to your private curation.
+              Explore our catalogue of genuine leather bags and tap the heart icon on any piece to save it to your private curation.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link href="/shop" className="btn btn-solid w-full sm:w-auto px-6 h-11 text-xs">
@@ -153,14 +153,14 @@ export default function WishlistPage() {
             </div>
 
             {/* Bespoke Studio Prompt Banner */}
-            <div className="mt-16 bg-gradient-to-r from-espresso to-walnut text-ivory rounded-xs p-8 sm:p-10 border border-sand/30 shadow-md flex flex-col md:flex-row items-center justify-between gap-6">
+            <div className="mt-16 bg-espresso text-ivory rounded-xs p-8 sm:p-10 border border-sand/30 shadow-md flex flex-col md:flex-row items-center justify-between gap-6">
               <div className="max-w-xl text-center md:text-left">
                 <span className="eyebrow text-sand/80">Bengaluru Bespoke Atelier</span>
                 <h3 className="font-display text-2xl sm:text-3xl text-ivory mt-1">
                   Commission a Bespoke Variation
                 </h3>
                 <p className="text-xs sm:text-sm text-sand/80 mt-2 leading-relaxed">
-                  Love one of your saved pieces but want custom proportions, heirloom Nilgiri beeswax burnishing, or 24K gold debossed monogramming? Our master craftsmen craft to your exact vision.
+                  Love one of your saved pieces but want a different size, colour or your initials added? Tell us and we will make it to order.
                 </p>
               </div>
               <Link

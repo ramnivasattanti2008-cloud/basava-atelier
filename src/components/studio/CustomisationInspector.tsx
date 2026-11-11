@@ -403,7 +403,7 @@ export function CustomisationInspector({
                 { key: "zipperPocket", label: "Interior Zippered Valuables Pocket" },
                 { key: "phonePocket", label: "Slip Pockets for Phone & Passport" },
                 { key: "cardSlots", label: "Four Integrated Card Slots" },
-                { key: "keyLeash", label: "Solid Brass Key Leash / Swivel Hook" },
+                { key: "keyLeash", label: "Key Leash / Swivel Hook" },
               ].map((item) => {
                 const val = (config.interior as any)[item.key];
                 return (
@@ -493,9 +493,9 @@ export function CustomisationInspector({
                     <label className="field-label mb-1 block">Debossing Method</label>
                     <div className="grid grid-cols-3 gap-1.5">
                       {[
-                        { id: "gold-foil", label: "24K Gold Foil" },
+                        { id: "gold-foil", label: "Gold Foil" },
                         { id: "blind-deboss", label: "Blind Heat" },
-                        { id: "brass-tag", label: "Brass Tag" },
+                        { id: "brass-tag", label: "Metal Tag" },
                       ].map((m) => (
                         <button
                           key={m.id}

@@ -3,6 +3,7 @@ import type {
   ConceptViewType,
   ConceptImage,
 } from "@/lib/studio-types";
+import { IMAGE_GENERATION_TRAINING_SPEC } from "@/data/atelierKnowledgeBase";
 
 export const CONCEPT_DISCLAIMER =
   "BESPOKE ATELIER SPECIFICATION · HANDCRAFTED IN BENGALURU";
@@ -95,7 +96,7 @@ export class ImageGenerationService {
   }
 
   /**
-   * Google Gemini Imagen 3 Generation.
+   * Google Gemini Imagen 3 Generation with Diffusion Optics Conditioning.
    */
   private static async generateWithGeminiImagen(apiKey: string, prompt: string): Promise<string | null> {
     const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/imagen-3.0-generate-002:predict?key=${apiKey}`;
@@ -105,6 +106,7 @@ export class ImageGenerationService {
         sampleCount: 1,
         aspectRatio: "4:3",
         outputMimeType: "image/jpeg",
+        personGeneration: "dont_allow",
       },
     };
 
@@ -124,7 +126,7 @@ export class ImageGenerationService {
   }
 
   /**
-   * OpenAI DALL-E 3 Generation.
+   * OpenAI DALL-E 3 Generation with Natural Commercial Styling.
    */
   private static async generateWithOpenAI(apiKey: string, prompt: string): Promise<string | null> {
     const res = await fetch("https://api.openai.com/v1/images/generations", {
@@ -154,14 +156,16 @@ export class ImageGenerationService {
   }
 
   /**
-   * Constructs the professional luxury product photography prompt.
+   * Advanced Diffusion Optics Prompt Synthesizer.
+   * Generates deep photographic instructions calibrated to Hasselblad medium-format optics,
+   * natural leather pore rendering, Moradabad sand-cast brass reflections, and genuine saddle stitch mechanics.
    */
   public static constructLuxuryPrompt(config: BespokeDesignConfig, view: ConceptViewType): string {
     const bagTypeDesc: Record<string, string> = {
-      tote: "classic flared luxury leather tote carryall bag with dual rolled handles, wide base, and brass bridge rivets",
-      laptop: "executive bespoke leather briefcase laptop carrier with dual rolled handles, solid brass #8 YKK zipper collar, front document slip pocket, and luggage trolley strap",
-      crossbody: "timeless structured leather crossbody bag with front curved flap, Moradabad sand-cast brass turn-lock clasp, and adjustable roller buckle strap",
-      sling: "minimalist urban explorer chest sling leather bag with ergonomic contoured shape, diagonal heavy brass zipper, and brass swivel clip",
+      tote: "classic flared luxury leather carryall tote bag with dual hand-rolled handles, wide structured base, and solid brass bridge rivets",
+      laptop: "executive bespoke leather briefcase laptop carrier with dual rolled handles, solid brass #8 YKK Excella zipper collar, front document slip pocket, and luggage trolley strap",
+      crossbody: "timeless structured leather crossbody bag with front curved flap, Moradabad sand-cast brass turn-lock clasp, and 7-hole adjustable roller buckle strap",
+      sling: "minimalist urban explorer chest sling leather bag with ergonomic contoured shape, heavy diagonal brass zipper, and cast swivel clip",
       handbag: "sculptural architectural top-handle handbag with solid brass handle arch anchors, dome purse feet, and structured silhouette",
       shoulder: "relaxed curved crescent leather shoulder hobo bag with wide integrated shoulder strap and brass side O-rings",
       messenger: "heritage postman saddle leather messenger satchel with front dual flap straps, solid brass roller buckles, and padded shoulder rest",
@@ -172,21 +176,31 @@ export class ImageGenerationService {
       custom: "bespoke artisanal leather bag with hand-saddled linen stitching and glass-burnished beeswax edges",
     };
 
+    const materialDesc: Record<string, string> = {
+      "full-grain": "authentic 2.0mm Full-Grain Heirloom Leather (Purna Charma) showing intact natural hair follicle pores, subtle pastoral growth wrinkles, and rich vegetable tannin oil glow",
+      "top-grain": "refined 1.5mm Top-Grain Leather with uniform silky smooth grain, subtle satin sheen, and clean architectural drape",
+      "corrected-grain": "resilient corrected-grain leather with consistent architectural pebble embossing and water-resistant protective finish",
+      "suede": "plush Nilgiri Velvet Suede / Roughout with a rich velvety matte nap and deep light absorption",
+      "split-leather": "supple split leather with light vegetable wax conditioning and flexible hand-feel",
+      "canvas-leather": "heavyweight 18oz waterproof paraffin-waxed duck canvas body paired with thick 3.5mm full-grain bridle leather straps and corner reinforcements",
+    };
+
     const typeStr = bagTypeDesc[config.bagType] || "bespoke luxury leather bag";
-    const materialStr = `${config.material} genuine vegetable-tanned leather with natural hair pores and visible grain depth`;
-    const colorStr = `${config.colourName} (${config.colourHex})`;
-    const hardwareStr = `${config.hardware.replace("-", " ")} solid sand-cast brass fittings, rivets, and clasps`;
+    const matStr = materialDesc[config.material] || `${config.material} genuine vegetable-tanned leather`;
+    const colStr = `${config.colourName} (${config.colourHex})`;
+    const hwStr = `${config.hardware.replace("-", " ")} solid sand-cast brass fittings, rivets, and buckles from Moradabad`;
     const monoStr = config.personalisation.enabled && config.personalisation.text
-      ? `with hot-stamped 24K gold foil debossed monogram '${config.personalisation.text}' on the lower center face`
+      ? `personalized with hot-stamped 24K gold foil debossed monogram initials '${config.personalisation.text}' pressed 1.2mm deep into the hide grain with crisp Caslon serif typography`
       : "clean unembellished exterior";
 
-    const cameraSettings = "shot on Hasselblad H6D-100c, 100MP medium format, 85mm f/1.4 lens, Profoto softbox studio illumination, neutral warm ivory linen background, tack-sharp grain texture, photorealistic luxury catalogue editorial, zero artificial artifacts";
+    const cameraDirectives = `${IMAGE_GENERATION_TRAINING_SPEC.cameraOptics.cameraBody}, ${IMAGE_GENERATION_TRAINING_SPEC.cameraOptics.lens}, ${IMAGE_GENERATION_TRAINING_SPEC.cameraOptics.aperture}, ${IMAGE_GENERATION_TRAINING_SPEC.cameraOptics.lighting}, ${IMAGE_GENERATION_TRAINING_SPEC.cameraOptics.colorGrading}`;
+    const negativeDirectives = `Negative prompt: ${IMAGE_GENERATION_TRAINING_SPEC.negativePromptRules.join(", ")}`;
 
     const viewDescriptions: Record<ConceptViewType, string> = {
-      front: `Master commercial studio product photograph of a ${typeStr}, crafted from ${materialStr} in ${colorStr}, ${hardwareStr}, ${monoStr}. Straight-on elevation, crisp 45-degree saddle stitching, realistic volumetric floor drop shadow, ${cameraSettings}.`,
-      angle: `Three-quarters perspective view of a ${typeStr}, showing 3D depth, leather side gusset, strap attachment with solid brass D-rings, ${colorStr} ${materialStr}, elegant ambient drop shadow, ${cameraSettings}.`,
-      interior: `Overhead top-down open interior view looking into a ${typeStr}, revealing unbleached organic handspun Khadi cotton lining, high-density cushioned laptop compartment, solid brass zippered pocket, leather card sleeves and brass swivel key leash, perfectly illuminated interior, ${cameraSettings}.`,
-      detail: `Extreme close-up macro product photograph focusing on the glass-burnished beeswax edge, Lin Câblé waxed linen saddle stitches piercing genuine hide holes at 45-degree angle, solid sand-cast brass rivet, and ${monoStr}, extreme surface resolution showing natural leather pores, ${cameraSettings}.`,
+      front: `Award-winning commercial product photography of a ${typeStr}, mastercrafted from ${matStr} in ${colStr}, adorned with ${hwStr}, ${monoStr}. Orthographic front elevation, perfectly symmetrical rolled handles, crisp 45-degree hand saddle stitching with French Lin Câblé linen thread, clean welted perimeter, volumetric floor drop shadow, ${cameraDirectives}. ${negativeDirectives}`,
+      angle: `Three-quarters (3/4) perspective product photography of a ${typeStr}, showing 3D structural depth, side gusset thickness, shoulder strap drape with cast brass D-rings, ${colStr} ${matStr}, elegant ambient drop shadow, ${cameraDirectives}. ${negativeDirectives}`,
+      interior: `Overhead 60-degree top-down open interior view looking into a ${typeStr}, revealing unbleached 240 GSM organic handspun Khadi cotton lining, cushioned 16-inch laptop compartment with leather snap, solid brass zippered pocket, leather card sleeves and brass swivel key leash, perfectly illuminated interior, ${cameraDirectives}. ${negativeDirectives}`,
+      detail: `Extreme 1:1 macro close-up product photograph focusing on the glass-burnished beeswax edge, Lin Câblé #532 waxed linen saddle stitches piercing authentic awl puncture holes at a 45-degree angle, solid sand-cast brass rivet, and ${monoStr}, extreme surface resolution showing natural leather pores and hide texture, ${cameraDirectives}. ${negativeDirectives}`,
     };
 
     return viewDescriptions[view];
@@ -194,8 +208,8 @@ export class ImageGenerationService {
 
   /**
    * Generates a photorealistic SVG concept plate matching the exact customer specifications.
-   * Features physical bump-mapping lighting, 3D volumetric shading, authentic stitch punch holes,
-   * cast brass metallurgy, and hot-stamped 24K gold foil debossing.
+   * Features physical bump-mapping lighting, material-specific surface shaders, 3D volumetric shading,
+   * authentic stitch punch holes, cast brass metallurgy, and hot-stamped 24K gold foil debossing.
    */
   private static generateStudioConceptSVG(config: BespokeDesignConfig, view: ConceptViewType): string {
     const hex = config.colourHex || "#8A5D3B";
@@ -210,6 +224,14 @@ export class ImageGenerationService {
     const initials = config.personalisation.enabled && config.personalisation.text.trim()
       ? config.personalisation.text.trim().toUpperCase()
       : "BV";
+
+    // Tailor noise frequency and specularity to chosen leather grade
+    const mat = config.material;
+    const isPullUp = config.colourName.toLowerCase().includes("cognac") || config.colourName.toLowerCase().includes("pull-up");
+    const baseFreq = mat === "full-grain" ? (isPullUp ? "0.04" : "0.052") : mat === "suede" ? "0.08" : "0.035";
+    const octaves = mat === "full-grain" ? "5" : mat === "suede" ? "6" : "4";
+    const specScale = mat === "full-grain" ? (isPullUp ? "3.2" : "2.6") : mat === "suede" ? "0.5" : "2.0";
+    const specExponent = mat === "suede" ? "8" : isPullUp ? "35" : "25";
 
     let svgBody = "";
 
@@ -245,15 +267,15 @@ export class ImageGenerationService {
       <stop offset="100%" stopColor="rgba(48,37,30,0)" />
     </radialGradient>
 
-    <!-- Physical 3D Leather Bump-Mapping & Surface Lighting Filter -->
+    <!-- Material-Specific Physical 3D Leather Bump-Mapping & Surface Lighting Filter -->
     <filter id="leatherRealisticTexture" x="-10%" y="-10%" width="120%" height="120%">
-      <feTurbulence type="fractalNoise" baseFrequency="0.045" numOctaves="4" result="noise" />
+      <feTurbulence type="fractalNoise" baseFrequency="${baseFreq}" numOctaves="${octaves}" result="noise" />
       <feColorMatrix type="matrix" values="0.33 0.33 0.33 0 0  0.33 0.33 0.33 0 0  0.33 0.33 0.33 0 0  0 0 0 1 0" in="noise" result="mono" />
       <feDiffuseLighting in="mono" lighting-color="#FFF9ED" surfaceScale="2.2" result="diffuse">
         <fePointLight x="360" y="160" z="280" />
       </feDiffuseLighting>
       <feBlend mode="multiply" in="SourceGraphic" in2="diffuse" result="textured" />
-      <feSpecularLighting in="mono" surfaceScale="2.8" specularConstant="0.4" specularExponent="30" lighting-color="#FFFFFF" result="specular">
+      <feSpecularLighting in="mono" surfaceScale="${specScale}" specularConstant="0.4" specularExponent="${specExponent}" lighting-color="#FFFFFF" result="specular">
         <fePointLight x="360" y="160" z="280" />
       </feSpecularLighting>
       <feComposite in="specular" in2="SourceGraphic" operator="in" result="specularCut" />

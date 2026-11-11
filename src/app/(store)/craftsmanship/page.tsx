@@ -8,49 +8,31 @@ import {
 } from "lucide-react";
 import { HeritageSeal } from "@/components/heritage/HeritageSeal";
 import { HeritageFlourish } from "@/components/heritage/HeritageFlourish";
-import { PackagingExperience } from "@/components/heritage/PackagingExperience";
 import { useDemoStore } from "@/lib/store";
 import { whatsappLink } from "@/lib/whatsapp";
 
 export default function CraftsmanshipPage() {
   const settings = useDemoStore((s) => s.settings);
 
+  // Only steps the workshop has shown publicly are described here.
   const stages = [
     {
       num: "01",
-      title: "Sustainable Plant Bark Tanning",
-      desc: "Unlike fast-fashion factories that bathe hides in toxic chromium salts, our leather is slowly steeped in natural extracts of babul tree bark, myrobalan, and acacia nuts. The process takes weeks, yielding an earthen aroma and a hide that ages with a glowing amber patina.",
-      tag: "Organic & Biodegradable",
+      title: "Cutting",
+      desc: "Each panel is cut from the leather by hand at the bench in Bengaluru.",
+      tag: "By hand",
     },
     {
       num: "02",
-      title: "Hide Inspection & Dense Cut Selection",
-      desc: "Every hide is unrolled and inspected by hand under natural daylight. We inspect grain density, thickness, and natural character. Only the densest bend and butt portions are selected for high-stress straps and bag bottoms.",
-      tag: "Zero Synthetic Fillers",
+      title: "Hand Stitching",
+      desc: "Panels are stitched together by hand, one piece at a time.",
+      tag: "By hand",
     },
     {
       num: "03",
-      title: "Pattern Drafting & Hand Cutting",
-      desc: "We do not use high-speed automated laser cutters that singe leather fibers. Every panel is hand-marked with traditional brass scoring compasses and carved with razor-sharp round knives, following the natural grain direction.",
-      tag: "Individual Alignment",
-    },
-    {
-      num: "04",
-      title: "Traditional Hand Saddle-Stitching",
-      desc: "The hallmark of heirloom leathercraft. Two blunted needles pass simultaneously through every single hand-punched awl hole using waxed bonded thread. Even if one thread is severed after decades, the adjoining stitches will never unravel.",
-      tag: "Lifetime Seam Integrity",
-    },
-    {
-      num: "05",
-      title: "Edge Burnishing with Nilgiri Beeswax",
-      desc: "Raw cut edges are carefully beveled, moistened, and vigorously rubbed with hardwood slickers using pure organic beeswax from the Nilgiri hills. Natural friction heat melts the wax into the grain fibers, creating a glass-smooth waterproof seal.",
-      tag: "Natural Edge Protection",
-    },
-    {
-      num: "06",
-      title: "Solid Cast Brass & 24K Gold Monogram",
-      desc: "Hardware is hand-cast in solid brass with an antique brushed patina that resists coastal and tropical corrosion. Your chosen initials are impressed into the hide with a heated brass die and 24K gold foil.",
-      tag: "Cast Brass & Real Gold",
+      title: "Made to Your Brief",
+      desc: "For custom orders, the size, the colour and any initials you ask for are agreed with you before work begins.",
+      tag: "On request",
     },
   ];
 
@@ -67,10 +49,10 @@ export default function CraftsmanshipPage() {
         </div>
         <h1 className="display-lg text-espresso mt-2">
           The Art of Making<br />
-          <span className="italic font-normal">the Old-Fashioned Way.</span>
+          <span className="italic font-normal">by Hand.</span>
         </h1>
         <p className="lede mt-4 text-charcoal/80 leading-relaxed">
-          In an era of mass-produced plastic shortcuts and throwaway consumerism, BASAVA builds bags designed to outlive trends. Here is our exact, step-by-step master artisan pipeline.
+          BASAVA bags are made by hand in Bengaluru. Here is what that involves.
         </p>
       </div>
 
@@ -78,12 +60,12 @@ export default function CraftsmanshipPage() {
       <div className="relative border border-espresso/20 bg-paper p-8 sm:p-14 rounded-xs shadow-md grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
         <div className="lg:col-span-8 space-y-4">
           <span className="eyebrow text-saddle-deep">Material Integrity</span>
-          <h2 className="display-md text-espresso">Why Real Leather Matters</h2>
+          <h2 className="display-md text-espresso">Genuine Leather</h2>
           <p className="text-sm text-charcoal/85 leading-relaxed">
-            Most modern &quot;vegan&quot; bags are actually synthetic Polyurethane (PU) and PVC plastics derived from petroleum. They degrade within 12–18 months, begin peeling at the handles, and sit in landfills for centuries.
+            Every piece in the collection is listed as genuine leather; two pair leather with canvas. The listing does not state a leather grade, so if you want to know more about a particular piece, ask us.
           </p>
           <p className="text-sm text-charcoal/85 leading-relaxed">
-            Real vegetable-tanned leather is a durable byproduct of agricultural farming. It breathes, absorbs natural oils from your hands, develops rich depth of colour, and can be repaired, conditioned, and cherished for decades.
+            Real leather softens and deepens in colour with use. Our Leather Guide explains the grades and how to care for them.
           </p>
         </div>
         <div className="lg:col-span-4 flex justify-center">
@@ -95,9 +77,9 @@ export default function CraftsmanshipPage() {
       <div className="space-y-8">
         <div className="text-center max-w-xl mx-auto">
           <span className="eyebrow text-saddle-deep">Handmade in Bengaluru</span>
-          <h2 className="display-md text-espresso mt-1">The 6-Stage Atelier Method</h2>
+          <h2 className="display-md text-espresso mt-1">How a Piece Is Made</h2>
           <p className="text-xs text-charcoal/70 mt-2">
-            Every BASAVA bag requires 18 to 28 hours of concentrated artisan bench work.
+            A short account of the work, without embellishment.
           </p>
         </div>
 
@@ -117,19 +99,9 @@ export default function CraftsmanshipPage() {
                 <h3 className="font-display text-xl text-espresso mt-4">{st.title}</h3>
                 <p className="text-xs text-charcoal/80 leading-relaxed mt-2.5">{st.desc}</p>
               </div>
-              <div className="mt-6 pt-4 border-t border-espresso/8 flex items-center gap-1.5 text-[0.6875rem] font-semibold text-saddle-deep">
-                <Check size={13} className="text-emerald-700" />
-                <span>Verified Handcraft Step</span>
-              </div>
             </div>
           ))}
         </div>
-      </div>
-
-      {/* Royal Packaging Experience Component */}
-      <div className="border-t border-espresso/15 pt-16">
-        <HeritageFlourish variant="lotus" className="mb-6" />
-        <PackagingExperience />
       </div>
 
       {/* Direct WhatsApp & Bespoke Studio Callout */}
@@ -138,7 +110,7 @@ export default function CraftsmanshipPage() {
           <span className="eyebrow text-saddle-deep">Bespoke Commissions</span>
           <h2 className="display-sm text-espresso mt-1">Ready to Create an Original Piece?</h2>
           <p className="text-sm text-charcoal/80 mt-2 leading-relaxed">
-            Consult with our Bespoke Atelier Designer to customize your leather hide, proportions, and monogram, or message our master craftsman on WhatsApp.
+            Consult with our Bespoke Atelier Designer to choose your leather colour, size and initials, or message us on WhatsApp.
           </p>
         </div>
         <div className="flex flex-wrap items-center gap-4 shrink-0">

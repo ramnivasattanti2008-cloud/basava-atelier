@@ -15,9 +15,6 @@ import { QuickViewModal } from "@/components/product/QuickViewModal";
 import { EngravingPreview } from "@/components/custom/EngravingPreview";
 import { HeritageSeal } from "@/components/heritage/HeritageSeal";
 import { HeritageFlourish } from "@/components/heritage/HeritageFlourish";
-import { PackagingExperience } from "@/components/heritage/PackagingExperience";
-import { PatinaInteractiveSimulator } from "@/components/heritage/PatinaInteractiveSimulator";
-import { WaxSealInteractive } from "@/components/heritage/WaxSealInteractive";
 import { Reveal } from "@/components/ui/Reveal";
 
 const KANNADA_NUMERALS = ["೦೧", "೦೨", "೦೩", "೦೪", "೦೫", "೦೬", "೦೭"];
@@ -72,7 +69,7 @@ export default function HomePage() {
               </div>
               <div className="flex items-center gap-2">
                 <Check size={14} className="text-saddle-deep font-bold" />
-                <span>Custom 24K Gold Initials</span>
+                <span>Initials Added on Request</span>
               </div>
               <div className="flex items-center gap-2">
                 <Check size={14} className="text-saddle-deep font-bold" />
@@ -133,26 +130,22 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ROYAL ARTISAN MARQUEE TICKER */}
+      {/* MARQUEE TICKER */}
       <div className="relative overflow-hidden border-b border-espresso/15 bg-[#170e08] text-[#e8cb85] py-3.5 select-none shadow-inner">
         <div className="marquee-track flex gap-8 text-[0.72rem] font-semibold tracking-[0.2em] uppercase">
           {[
-            "✦ 100% Genuine Leather Hides",
+            "✦ Genuine Leather",
             "✦ Handcrafted in Bengaluru",
-            "✦ Zero Plastic or PU",
-            "✦ Solid Cast Brass Hardware",
-            "✦ Complimentary Royal Gift Packaging",
-            "✦ 24K Gold Foil Monograms",
-            "✦ Direct WhatsApp with Maker",
-            "✦ 40 Signature Designs",
-            "✦ 100% Genuine Leather Hides",
+            "✦ Made to Order on Request",
+            "✦ Initials on Request",
+            "✦ Direct WhatsApp with the Maker",
+            "✦ 40 Pieces in the Collection",
+            "✦ Genuine Leather",
             "✦ Handcrafted in Bengaluru",
-            "✦ Zero Plastic or PU",
-            "✦ Solid Cast Brass Hardware",
-            "✦ Complimentary Royal Gift Packaging",
-            "✦ 24K Gold Foil Monograms",
-            "✦ Direct WhatsApp with Maker",
-            "✦ 40 Signature Designs",
+            "✦ Made to Order on Request",
+            "✦ Initials on Request",
+            "✦ Direct WhatsApp with the Maker",
+            "✦ 40 Pieces in the Collection",
           ].map((item, idx) => (
             <span key={idx} className="flex items-center gap-2 whitespace-nowrap text-[#f4e2b8]">
               {item}
@@ -238,7 +231,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Ornate Royal Divider */}
+      {/* Divider */}
       <HeritageFlourish variant="divider" />
 
       {/* 3. FEATURED PRODUCTS GRID */}
@@ -281,7 +274,7 @@ export default function HomePage() {
               Want Something Made Just For You?
             </h2>
             <p className="lede mt-4 text-ivory/80 text-sm sm:text-base leading-relaxed">
-              If you need a specific laptop size, a particular leather colour, or your initials stamped in 24K gold foil, our Bengaluru artisan builds it from scratch.
+              If you need a specific laptop size, a particular leather colour, or your initials added, our Bengaluru workshop makes it to order.
             </p>
 
             <div className="mt-8 space-y-4">
@@ -300,7 +293,7 @@ export default function HomePage() {
                 </div>
                 <div>
                   <h4 className="text-sm font-semibold uppercase tracking-wider text-ivory">Add Your Monogram</h4>
-                  <p className="text-xs text-ivory/70 mt-0.5">Choose your leather colour and stamp your name in 24K gold foil or blind deboss.</p>
+                  <p className="text-xs text-ivory/70 mt-0.5">Choose your leather colour and tell us the initials or name you would like added.</p>
                 </div>
               </div>
               <div className="flex items-start gap-3.5">
@@ -309,7 +302,7 @@ export default function HomePage() {
                 </div>
                 <div>
                   <h4 className="text-sm font-semibold uppercase tracking-wider text-ivory">Handmade & Shipped to You</h4>
-                  <p className="text-xs text-ivory/70 mt-0.5">Cut and saddle-stitched by hand, packed in a royal box, and delivered to your doorstep.</p>
+                  <p className="text-xs text-ivory/70 mt-0.5">Made by hand in Bengaluru and delivered to your door.</p>
                 </div>
               </div>
             </div>
@@ -353,25 +346,17 @@ export default function HomePage() {
               <div>
                 <p className="eyebrow text-brass">Real Leather Matters</p>
                 <h2 className="display-lg text-espresso mt-1">
-                  Why We Make Bags<br />
-                  <span className="italic font-normal">the Old-Fashioned Way.</span>
+                  Leather Bags,<br />
+                  <span className="italic font-normal">Made by Hand.</span>
                 </h2>
               </div>
             </div>
             <div className="prose-bv text-charcoal/85 text-sm sm:text-base leading-relaxed space-y-4">
               <p>
-                Most modern bags are made from synthetic polyurethane (PU) plastic. They look nice for a month, then start peeling and end up in the trash within a year.
+                Every piece in the collection is made from genuine leather, one at a time, in Bengaluru.
               </p>
               <p>
-                At <strong>{settings.makerName}</strong>, we use 100% natural leather tanned with organic South Indian plant barks. It is cut by hand, edge-burnished with Nilgiris beeswax, and assembled with heavy-duty bonded thread. Real leather breathes, softens, and gains a gorgeous dark glow (patina) the more you carry it.
-              </p>
-            </div>
-
-            {/* Preserving South Indian Heritage Callout */}
-            <div className="border border-saddle-deep/20 bg-linen/50 p-4 rounded-xs text-xs text-charcoal/80 space-y-1">
-              <p className="font-semibold text-espresso">Preserving Indian Leatherwork Traditions</p>
-              <p>
-                Rooted in centuries of South Indian vegetable tanning using babul bark and natural plant extracts. We pair traditional hand saddle-stitching with cast brass hardware crafted right here in Karnataka.
+                Real leather softens and deepens in colour the more it is carried. If you want to know exactly which leather a piece uses, ask us and we will tell you plainly.
               </p>
             </div>
 
@@ -389,18 +374,18 @@ export default function HomePage() {
             <div className="border border-espresso/15 bg-ivory p-6 flex flex-col justify-between hover:border-espresso/40 transition-all hover:-translate-y-1 hover:shadow-md">
               <ShieldCheck size={28} className="text-saddle-deep" strokeWidth={1.5} />
               <div className="mt-8">
-                <h4 className="font-display text-xl text-espresso">100% Real Hides</h4>
+                <h4 className="font-display text-xl text-espresso">Genuine Leather</h4>
                 <p className="mt-2 text-xs text-charcoal/70 leading-relaxed">
-                  Genuine animal leather that never cracks or flakes like synthetic plastic.
+                  Listed as genuine leather in the catalogue; two pieces pair leather with canvas.
                 </p>
               </div>
             </div>
             <div className="border border-espresso/15 bg-ivory p-6 flex flex-col justify-between hover:border-espresso/40 transition-all hover:-translate-y-1 hover:shadow-md">
               <Layers size={28} className="text-saddle-deep" strokeWidth={1.5} />
               <div className="mt-8">
-                <h4 className="font-display text-xl text-espresso">Double-Stitched</h4>
+                <h4 className="font-display text-xl text-espresso">One at a Time</h4>
                 <p className="mt-2 text-xs text-charcoal/70 leading-relaxed">
-                  Reinforced corners and heavy-duty bonded threads that survive heavy books and laptops.
+                  Most pieces in the collection are single items, so what you see is the piece you receive.
                 </p>
               </div>
             </div>
@@ -416,9 +401,9 @@ export default function HomePage() {
             <div className="border border-espresso/15 bg-ivory p-6 flex flex-col justify-between hover:border-espresso/40 transition-all hover:-translate-y-1 hover:shadow-md">
               <PenTool size={28} className="text-saddle-deep" strokeWidth={1.5} />
               <div className="mt-8">
-                <h4 className="font-display text-xl text-espresso">24K Gold Initials</h4>
+                <h4 className="font-display text-xl text-espresso">Made Yours</h4>
                 <p className="mt-2 text-xs text-charcoal/70 leading-relaxed">
-                  Personalise with custom initials, auspicious symbols (ॐ, श्री), or blind debossing.
+                  Ask for your initials or a name to be added when you order a custom piece.
                 </p>
               </div>
             </div>
@@ -426,23 +411,9 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 5B. INDIAN ARTISANAL PROVENANCE MAP */}
-
-      {/* 6. UNBOXING RITUAL */}
-      <section className="py-16 sm:py-24 border-b border-espresso/15 bg-linen/30">
-        <div className="shell">
-          <HeritageFlourish variant="lotus" className="mb-8" />
-          <PackagingExperience />
-          <div className="mt-12 flex flex-col items-center justify-center">
-            <WaxSealInteractive size={110} />
-          </div>
-        </div>
-      </section>
-
       {/* 7. LEATHER EDUCATION HIGHLIGHT & PATINA SIMULATOR */}
       <section className="py-20 border-b border-espresso/15">
         <div className="shell space-y-16">
-          <PatinaInteractiveSimulator />
 
           <div>
             <div className="mx-auto max-w-2xl text-center">
@@ -459,7 +430,7 @@ export default function HomePage() {
                   <span className="font-mono text-xs text-saddle-deep font-bold">GRADE 01</span>
                   <h3 className="font-display text-xl text-espresso mt-2">Full-Grain</h3>
                   <p className="mt-3 text-xs text-charcoal/80 leading-relaxed">
-                    The toughest and longest-lasting leather in the world. Keeps its natural grain, absorbs natural oils, and develops a rich patina over decades.
+                    The top layer of the hide with its natural grain left intact. It shows natural marks and deepens in colour with use.
                   </p>
                 </div>
                 <span className="mt-4 pt-3 border-t border-espresso/10 text-[0.6875rem] font-semibold text-saddle-deep">Heirloom Quality</span>
@@ -536,7 +507,7 @@ export default function HomePage() {
               },
               {
                 src: "https://cdn.store.link/products/basava/vk9w27-bbk601tn01_1.jpg?versionId=sYdsc.5dO3P3BFnf6n3NmLls1NbTu2yd",
-                title: "Royal Saddle Sling",
+                title: "Tan Sling",
                 tag: "Hands-Free",
               },
               {

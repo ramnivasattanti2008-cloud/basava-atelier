@@ -71,7 +71,7 @@ export const defaultContent: SiteContent = {
       href: "/custom",
     },
     {
-      text: "Genuine Indian leather hides: Full Grain, Top Grain & Suede",
+      text: "Full grain, top grain, suede: leather explained plainly",
       linkLabel: "Read the Guide",
       href: "/leather-guide",
     },

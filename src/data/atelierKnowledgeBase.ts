@@ -586,6 +586,50 @@ export const BESPOKE_WORKFLOW_STEPS = [
   { step: 8, name: "Provenance Certificate & Dispatch", desc: "Final quality inspection, beeswax buff, and sealing with an embossed wax certificate of provenance in a bespoke wooden keepsake box." },
 ];
 
+export const IMAGE_GENERATION_TRAINING_SPEC = {
+  cameraOptics: {
+    cameraBody: "Hasselblad H6D-100c Medium Format / Phase One XF IQ4 150MP",
+    lens: "Schneider Kreuznach 80mm LS f/2.8 / Zeiss Otus 85mm f/1.4 Apo Planar",
+    aperture: "f/8 for edge-to-edge orthographic blueprint sharpness; f/2.8 for creamy bokeh in macro detail",
+    shutterSpeed: "1/160s sync speed",
+    iso: "ISO 64 base native sensitivity (zero digital grain or chroma noise)",
+    lighting: "Profoto B10X 3-point studio lighting: 5-foot octabox key at 45°, soft fill reflector for shadow recovery, subtle rim strip to define leather edges against warm ivory linen backdrop",
+    colorGrading: "Hasselblad Natural Colour Solution (HNCS) calibrated to D50 daylight, accurate leather aniline saturation",
+  },
+  viewPrompts: {
+    front: {
+      perspective: "Orthographic Front Elevation",
+      framing: "Full product centered, eye-level lens height, pedestal floor shadow with soft ambient occlusion",
+      focusPoints: ["Symmetrical rolled handles", "Clean welted perimeter seams", "Lower center 24K gold foil deboss", "Top brass zipper collar"],
+    },
+    angle: {
+      perspective: "Three-Quarters (3/4) Isometric Profile",
+      framing: "Rotated 35° clockwise, revealing side gusset thickness, shoulder strap drape, and sand-cast brass D-rings",
+      focusPoints: ["Gusset depth", "Strap attachment rivets", "Edge burnish line", "Dynamic volumetric light falloff"],
+    },
+    interior: {
+      perspective: "Overhead 60° Top-Down Interior View",
+      framing: "Bag mouth opened naturally, soft overhead diffused floodlight illuminating the entire interior compartment",
+      focusPoints: ["240 GSM unbleached handspun organic Khadi cotton weave", "High-density cushioned 16\" laptop sleeve with brass snap", "Solid brass zippered valuables pocket", "Leather fountain pen sleeves & brass key leash"],
+    },
+    detail: {
+      perspective: "1:1 Macro Craftsmanship Plate",
+      framing: "Extreme close-up focused on a 6cm × 4cm section of the hide face and seam",
+      focusPoints: ["Natural hair follicles & pebble pore texture", "45° slanted Lin Câblé #532 waxed linen saddle stitches piercing authentic awl puncture holes", "Solid sand-cast Moradabad brass rivet with concentric machining grooves", "24K gold leaf foil pressed 1.2mm deep into the hide grain with crisp Caslon typography", "Glass-burnished beeswax edge ribbon"],
+    },
+  },
+  negativePromptRules: [
+    "No CGI or 3D computer graphics render look",
+    "No plastic, vinyl, pleather, or polyurethane synthetic sheen",
+    "No patent leather excessive mirror reflection",
+    "No deformed, bent, or asymmetrical handles",
+    "No crooked, uneven, or blurry machine lockstitches",
+    "No cheap zinc pot metal or chrome flakes",
+    "No fake floating logos, distorted text, or illegible watermarks",
+    "No flat artificial colors or oversaturated neon gradients",
+  ],
+};
+
 export const FAQ_DATA = [
   {
     q: "How does full-grain leather handle Indian monsoon humidity and rain?",

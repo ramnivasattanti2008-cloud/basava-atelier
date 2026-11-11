@@ -546,7 +546,7 @@ function CustomStudioContent() {
               >
                 <option value="Under ₹3,000">Under ₹3,000 (Small accessories, wallets, straps)</option>
                 <option value="₹3,000 – ₹6,000">₹3,000 – ₹6,000 (Crossbodies, slings, standard totes)</option>
-                <option value="₹6,000 – ₹10,000">₹6,000 – ₹10,000 (Heavy-duty carryalls, full-grain briefcases)</option>
+                <option value="₹6,000 – ₹10,000">₹6,000 – ₹10,000 (Larger carryalls and briefcases)</option>
                 <option value="Above ₹10,000">Above ₹10,000 (Elaborate custom designs, exotic finishes)</option>
               </select>
             </div>

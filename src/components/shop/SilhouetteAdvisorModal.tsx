@@ -60,15 +60,15 @@ const purposes: PurposeOption[] = [
 ];
 
 const colourTones = [
-  { id: "tan", label: "Royal Saddle Tan", hex: "#8A5D3B", note: "Classic heirloom patina that richens with age" },
-  { id: "espresso", label: "Deep Nilgiri Espresso", hex: "#3D2314", note: "Rich dark chocolate brown with formal executive depth" },
-  { id: "cognac", label: "Mysore Cognac", hex: "#9E472A", note: "Vibrant warm amber undertones with visible grain" },
+  { id: "tan", label: "Saddle Tan", hex: "#8A5D3B", note: "A warm mid-brown" },
+  { id: "espresso", label: "Deep Espresso", hex: "#3D2314", note: "Rich dark chocolate brown with formal executive depth" },
+  { id: "cognac", label: "Cognac", hex: "#9E472A", note: "Vibrant warm amber undertones with visible grain" },
   { id: "black", label: "Obsidian Black", hex: "#1C1917", note: "Timeless contemporary versatility" },
 ];
 
 const hardwareFinishes = [
   { id: "antique-brass", label: "Antique Hand-Buffed Brass", note: "Aged golden glow, resists fingerprints" },
-  { id: "24k-gold", label: "24K Brushed Gold Leaf", note: "Luminous ceremonial brilliance" },
+  { id: "24k-gold", label: "Gold Tone", note: "A bright warm finish" },
   { id: "silver", label: "Polished Silver / Nickel", note: "Crisp architectural contrast" },
 ];
 
@@ -178,7 +178,7 @@ export function SilhouetteAdvisorModal({ open, onClose }: SilhouetteAdvisorModal
                 <div>
                   <h3 className="font-display text-2xl text-espresso">Choose your leather patina tone</h3>
                   <p className="text-xs text-charcoal/70 mt-1">
-                    Each vegetable-tanned hide matures uniquely with your touch and travels.
+                    Leather deepens in colour with use.
                   </p>
                 </div>
 
@@ -225,7 +225,7 @@ export function SilhouetteAdvisorModal({ open, onClose }: SilhouetteAdvisorModal
                 <div>
                   <h3 className="font-display text-2xl text-espresso">Select your metal hardware finish</h3>
                   <p className="text-xs text-charcoal/70 mt-1">
-                    Fittings are cast from solid brass and precision-plated for longevity.
+                    Hardware finish is confirmed with you before making.
                   </p>
                 </div>
 

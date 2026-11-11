@@ -92,7 +92,7 @@ export function EngravingPreview({
 
           {/* Rendered Monogram Impression */}
           <div className="text-center px-4">
-            {/* 1. 24K Gold Leaf Foil */}
+            {/* 1. Gold foil */}
             {finish === "gold" && (
               <p className="font-display tracking-[0.3em] font-bold text-3xl sm:text-4xl text-transparent bg-clip-text bg-gradient-to-b from-[#fff3cc] via-[#e5c168] to-[#997728] drop-shadow-[0_1px_1px_rgba(0,0,0,0.85)] filter contrast-125">
                 {initials.trim() ? initials : "•••"}
@@ -163,7 +163,7 @@ export function EngravingPreview({
               </p>
               <div className="flex border border-espresso/20 bg-paper rounded-xs overflow-hidden">
                 {[
-                  { id: "gold", label: "24K Gold Foil" },
+                  { id: "gold", label: "Gold Foil" },
                   { id: "brass", label: "Brass Tag" },
                   { id: "blind", label: "Blind Deboss" },
                 ].map((f) => (

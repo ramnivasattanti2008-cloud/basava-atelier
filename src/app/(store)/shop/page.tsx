@@ -2,7 +2,7 @@
 
 import { Suspense, useEffect, useMemo, useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
-import { Compass, Filter, SlidersHorizontal, X } from "lucide-react";
+import { Compass, Filter, Grid2X2, Grid3X3, LayoutGrid, RotateCcw, SlidersHorizontal, Sparkles, X } from "lucide-react";
 import type { Product } from "@/lib/types";
 import { formatINR, formatNumber } from "@/lib/format";
 import { colourFamilies, colourFamilyOf } from "@/lib/colours";
@@ -12,10 +12,9 @@ import { QuickViewModal } from "@/components/product/QuickViewModal";
 import { SilhouetteAdvisorModal } from "@/components/shop/SilhouetteAdvisorModal";
 import { StaggerItem } from "@/components/motion/MaskText";
 import { Overlay } from "@/components/ui/Overlay";
-import { HeritageAtmosphere } from "@/components/heritage/HeritageAtmosphere";
 import { ShopHeritageHeader } from "@/components/heritage/ShopHeritageHeader";
 import { RoyalPaintingBanner } from "@/components/heritage/RoyalPaintingBanner";
-import { TextileWeavePattern } from "@/components/motion/TextileWeavePattern";
+import { ShopAtmosphereBackdrop } from "@/components/heritage/ShopAtmosphereBackdrop";
 import { KolamLinework } from "@/components/motion/KolamLinework";
 
 type SortOption = "featured" | "price-asc" | "price-desc" | "name-asc";
@@ -36,6 +35,7 @@ function ShopContent() {
   const [quickViewProduct, setQuickViewProduct] = useState<Product | null>(null);
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   const [advisorOpen, setAdvisorOpen] = useState(false);
+  const [gridCols, setGridCols] = useState<3 | 4>(3);
 
   useEffect(() => {
     const handler = () => setAdvisorOpen(true);
@@ -116,20 +116,48 @@ function ShopContent() {
     (searchQuery ? 1 : 0);
 
   const filterSidebarContent = (
-    <div className="space-y-8 text-sm">
+    <div className="relative border border-[#C5A059]/35 bg-gradient-to-b from-[#FDFBF7]/95 via-[#FAF6EE]/95 to-[#F4ECDC]/95 p-6 rounded-xs shadow-xl backdrop-blur-md space-y-7 text-sm select-none">
+      {/* Corner Filigree Kolam Accents */}
+      <div className="absolute top-2 left-2 pointer-events-none opacity-40">
+        <KolamLinework size={24} variant="corner" tone="gold" animated={false} />
+      </div>
+      <div className="absolute top-2 right-2 pointer-events-none rotate-90 opacity-40">
+        <KolamLinework size={24} variant="corner" tone="gold" animated={false} />
+      </div>
+      <div className="absolute bottom-2 left-2 pointer-events-none -rotate-90 opacity-40">
+        <KolamLinework size={24} variant="corner" tone="gold" animated={false} />
+      </div>
+      <div className="absolute bottom-2 right-2 pointer-events-none rotate-180 opacity-40">
+        <KolamLinework size={24} variant="corner" tone="gold" animated={false} />
+      </div>
+
+      {/* Header Pill */}
+      <div className="flex items-center gap-2 pb-3 border-b border-[#C5A059]/20">
+        <Sparkles size={13} className="text-[#C5A059]" />
+        <span className="font-serif text-[0.6875rem] uppercase tracking-widest text-[#8A5D3B] font-bold">
+          ಕರಕುಶಲ ಫಿಲ್ಟರ್‌ಗಳು · ATELIER FILTERS
+        </span>
+      </div>
+
       {/* Category */}
       <div>
-        <p className="eyebrow mb-3.5">Category</p>
+        <p className="eyebrow mb-3 text-[#7B4E2B] flex items-center justify-between">
+          <span>ವರ್ಗಗಳು · Silhouettes</span>
+          <span className="font-mono text-[0.625rem] text-[#C5A059] font-normal">{products.length} Pieces</span>
+        </p>
         <ul className="space-y-1.5">
           <li>
             <button
               type="button"
               onClick={() => updateParam("category", "all")}
-              className={`w-full text-left py-1 text-xs transition-colors ${
-                selectedCategory === "all" ? "font-semibold text-espresso" : "text-charcoal/70 hover:text-espresso"
+              className={`w-full text-left py-2 px-3 rounded-2xs text-xs transition-all cursor-pointer flex justify-between items-center ${
+                selectedCategory === "all"
+                  ? "bg-[#C5A059]/25 border-l-2 border-[#C5A059] font-bold text-espresso shadow-xs"
+                  : "text-charcoal/75 hover:text-espresso hover:bg-[#C5A059]/10"
               }`}
             >
-              All Pieces ({products.length})
+              <span>All Pieces</span>
+              <span className="font-mono text-[0.6875rem] text-walnut/70">({products.length})</span>
             </button>
           </li>
           {categories.map((c) => {
@@ -140,12 +168,14 @@ function ShopContent() {
                 <button
                   type="button"
                   onClick={() => updateParam("category", isSel ? "all" : c.slug)}
-                  className={`w-full text-left py-1 text-xs flex justify-between items-center transition-colors ${
-                    isSel ? "font-semibold text-espresso" : "text-charcoal/70 hover:text-espresso"
+                  className={`w-full text-left py-2 px-3 rounded-2xs text-xs flex justify-between items-center transition-all cursor-pointer ${
+                    isSel
+                      ? "bg-[#C5A059]/25 border-l-2 border-[#C5A059] font-bold text-espresso shadow-xs"
+                      : "text-charcoal/75 hover:text-espresso hover:bg-[#C5A059]/10"
                   }`}
                 >
                   <span>{c.name}</span>
-                  <span className="font-mono text-[0.6875rem] text-walnut/60">({count})</span>
+                  <span className="font-mono text-[0.6875rem] text-walnut/70">({count})</span>
                 </button>
               </li>
             );
@@ -154,8 +184,8 @@ function ShopContent() {
       </div>
 
       {/* Price */}
-      <div className="border-t border-espresso/12 pt-6">
-        <p className="eyebrow mb-3.5">Price Range</p>
+      <div className="border-t border-[#C5A059]/20 pt-6">
+        <p className="eyebrow mb-3.5 text-[#7B4E2B]">ಬೆಲೆ ಶ್ರೇಣಿ · Price Spectrum</p>
         <ul className="space-y-1.5">
           {priceBands.map((band) => {
             const isSel = selectedPriceBand === band.id;
@@ -164,11 +194,14 @@ function ShopContent() {
                 <button
                   type="button"
                   onClick={() => updateParam("price", isSel ? "all" : band.id)}
-                  className={`w-full text-left py-1 text-xs transition-colors ${
-                    isSel ? "font-semibold text-espresso" : "text-charcoal/70 hover:text-espresso"
+                  className={`w-full text-left py-1.5 px-3 rounded-2xs text-xs transition-all cursor-pointer flex items-center justify-between ${
+                    isSel
+                      ? "bg-[#C5A059]/25 border-l-2 border-[#C5A059] font-bold text-espresso shadow-xs"
+                      : "text-charcoal/75 hover:text-espresso hover:bg-[#C5A059]/10"
                   }`}
                 >
-                  {band.label}
+                  <span>{band.label}</span>
+                  {isSel && <span className="text-[0.625rem] text-[#8A5D3B]">●</span>}
                 </button>
               </li>
             );
@@ -177,8 +210,8 @@ function ShopContent() {
       </div>
 
       {/* Colour Family */}
-      <div className="border-t border-espresso/12 pt-6">
-        <p className="eyebrow mb-3.5">Colour</p>
+      <div className="border-t border-[#C5A059]/20 pt-6">
+        <p className="eyebrow mb-3.5 text-[#7B4E2B]">ಚರ್ಮದ ಛಾಯೆ · Leather Tones</p>
         <div className="flex flex-wrap gap-2">
           {colourFamilies.map((cf) => {
             const isSel = selectedColour === cf.key;
@@ -187,14 +220,16 @@ function ShopContent() {
                 key={cf.key}
                 type="button"
                 onClick={() => updateParam("colour", isSel ? "all" : cf.key)}
-                className={`flex items-center gap-1.5 px-2.5 py-1 text-xs border transition-colors ${
-                  isSel ? "border-espresso bg-espresso text-ivory font-medium" : "border-espresso/20 bg-ivory text-charcoal hover:border-espresso/50"
+                className={`flex items-center gap-1.5 px-2.5 py-1 text-xs border rounded-2xs transition-all cursor-pointer ${
+                  isSel
+                    ? "border-[#C5A059] bg-[#18100A] text-[#FAF7F2] font-medium shadow-sm"
+                    : "border-[#C5A059]/30 bg-white/80 text-charcoal hover:border-[#C5A059] hover:bg-white"
                 }`}
                 title={cf.label}
               >
                 <span
                   aria-hidden
-                  className="h-2.5 w-2.5 rounded-full border border-black/20"
+                  className={`h-2.5 w-2.5 rounded-full border ${isSel ? "border-[#F5D77F]" : "border-black/20"}`}
                   style={{ backgroundColor: cf.swatch }}
                 />
                 <span>{cf.label}</span>
@@ -205,27 +240,28 @@ function ShopContent() {
       </div>
 
       {/* Availability */}
-      <div className="border-t border-espresso/12 pt-6">
-        <p className="eyebrow mb-3.5">Availability</p>
-        <label className="flex items-center gap-2 cursor-pointer text-xs text-charcoal hover:text-espresso">
+      <div className="border-t border-[#C5A059]/20 pt-6">
+        <p className="eyebrow mb-3.5 text-[#7B4E2B]">ಲಭ್ಯತೆ · Atelier Dispatch</p>
+        <label className="flex items-center gap-2.5 cursor-pointer text-xs text-charcoal hover:text-espresso">
           <input
             type="checkbox"
             checked={inStockOnly}
             onChange={(e) => updateParam("stock", e.target.checked ? "in" : null)}
-            className="h-4 w-4 border-espresso/30 text-espresso focus:ring-espresso"
+            className="h-4 w-4 border-[#C5A059]/40 text-[#8A5D3B] focus:ring-[#C5A059] rounded-xs"
           />
           <span>In stock only (ready to dispatch)</span>
         </label>
       </div>
 
       {activeFilterCount > 0 && (
-        <div className="border-t border-espresso/12 pt-6">
+        <div className="border-t border-[#C5A059]/20 pt-6">
           <button
             type="button"
             onClick={clearAllFilters}
-            className="text-xs font-semibold uppercase tracking-wider text-saddle-deep hover:underline"
+            className="w-full text-center py-2 text-xs font-semibold uppercase tracking-wider text-[#8A5D3B] hover:bg-[#C5A059]/15 border border-[#C5A059]/40 rounded-2xs transition-all cursor-pointer flex items-center justify-center gap-1.5"
           >
-            Clear all filters
+            <RotateCcw size={12} />
+            <span>Clear all filters ({activeFilterCount})</span>
           </button>
         </div>
       )}
@@ -233,139 +269,235 @@ function ShopContent() {
   );
 
   return (
-    <div className="relative overflow-hidden py-4 sm:py-8">
-      {/* Subtle Handloom Textile Background Pattern */}
-      <TextileWeavePattern tone="parchment" animated={true} />
-
-      {/* Ambient Animated Rangoli Watermark Medallions */}
-      <div className="absolute top-10 right-4 opacity-15 pointer-events-none hidden xl:block">
-        <KolamLinework size={180} variant="medallion" tone="brass" animated={true} />
-      </div>
-      <div className="absolute bottom-20 left-4 opacity-15 pointer-events-none hidden xl:block">
-        <KolamLinework size={180} variant="medallion" tone="brass" animated={true} />
-      </div>
-
+    <div className="relative overflow-hidden py-6 sm:py-10">
       <div className="shell relative z-10">
-          {/* Control Bar: Filter Toggle, Active Chips, Sorting */}
-      <div className="mt-8 flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-espresso/12 pb-5">
-        <div className="flex flex-wrap items-center gap-3">
-          {/* Mobile Filter Button */}
+        {/* Quick Atelier Preset Category Pills */}
+        <div className="mb-6 flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
           <button
             type="button"
-            onClick={() => setMobileFiltersOpen(true)}
-            className="btn btn-sm btn-outline md:hidden inline-flex items-center gap-2"
+            onClick={() => updateParam("category", "all")}
+            className={`px-3.5 py-1.5 rounded-full text-xs font-serif tracking-wider uppercase whitespace-nowrap transition-all cursor-pointer border ${
+              selectedCategory === "all"
+                ? "border-[#C5A059] bg-[#18100A] text-[#F5D77F] shadow-sm font-bold"
+                : "border-[#C5A059]/30 bg-white/70 text-charcoal hover:border-[#C5A059] hover:bg-white"
+            }`}
           >
-            <SlidersHorizontal size={14} />
-            Filters {activeFilterCount > 0 && `(${activeFilterCount})`}
+            ✦ All Pieces ({products.length})
           </button>
-
-          <span className="text-xs font-medium text-walnut/70">
-            Showing <strong className="text-espresso">{filteredProducts.length}</strong> of {products.length} pieces
-          </span>
-
-          {searchQuery && (
-            <span className="inline-flex items-center gap-1.5 bg-paper border border-espresso/20 px-2.5 py-1 text-xs text-espresso">
-              Search: "{searchQuery}"
-              <button type="button" onClick={() => updateParam("q", null)}>
-                <X size={12} />
-              </button>
-            </span>
-          )}
-
-          {selectedCategory !== "all" && (
-            <span className="inline-flex items-center gap-1.5 bg-paper border border-espresso/20 px-2.5 py-1 text-xs text-espresso">
-              Category: {categories.find((c) => c.slug === selectedCategory)?.name || selectedCategory}
-              <button type="button" onClick={() => updateParam("category", null)}>
-                <X size={12} />
-              </button>
-            </span>
-          )}
-
-          {selectedPriceBand !== "all" && (
-            <span className="inline-flex items-center gap-1.5 bg-paper border border-espresso/20 px-2.5 py-1 text-xs text-espresso">
-              Price: {priceBands.find((b) => b.id === selectedPriceBand)?.label}
-              <button type="button" onClick={() => updateParam("price", null)}>
-                <X size={12} />
-              </button>
-            </span>
-          )}
-
-          {selectedColour !== "all" && (
-            <span className="inline-flex items-center gap-1.5 bg-paper border border-espresso/20 px-2.5 py-1 text-xs text-espresso">
-              Colour: {selectedColour}
-              <button type="button" onClick={() => updateParam("colour", null)}>
-                <X size={12} />
-              </button>
-            </span>
-          )}
-
-          {inStockOnly && (
-            <span className="inline-flex items-center gap-1.5 bg-paper border border-espresso/20 px-2.5 py-1 text-xs text-espresso">
-              In Stock Only
-              <button type="button" onClick={() => updateParam("stock", null)}>
-                <X size={12} />
-              </button>
-            </span>
-          )}
-        </div>
-
-        {/* Sort Dropdown */}
-        <div className="flex items-center gap-2 self-end md:self-auto">
-          <label htmlFor="shop-sort" className="text-xs text-walnut/70 uppercase tracking-wider font-semibold">
-            Sort by:
-          </label>
-          <select
-            id="shop-sort"
-            value={sort}
-            onChange={(e) => updateParam("sort", e.target.value)}
-            className="field-input !min-h-[2.4rem] !py-1 !text-xs !w-44"
+          <button
+            type="button"
+            onClick={() => updateParam("category", "totes-and-carryalls")}
+            className={`px-3.5 py-1.5 rounded-full text-xs font-serif tracking-wider uppercase whitespace-nowrap transition-all cursor-pointer border ${
+              selectedCategory === "totes-and-carryalls"
+                ? "border-[#C5A059] bg-[#18100A] text-[#F5D77F] shadow-sm font-bold"
+                : "border-[#C5A059]/30 bg-white/70 text-charcoal hover:border-[#C5A059] hover:bg-white"
+            }`}
           >
-            <option value="featured">Featured First</option>
-            <option value="price-asc">Price: Low to High</option>
-            <option value="price-desc">Price: High to Low</option>
-            <option value="name-asc">Name: A to Z</option>
-          </select>
+            Totes & Carryalls (11)
+          </button>
+          <button
+            type="button"
+            onClick={() => updateParam("category", "crossbody-bags")}
+            className={`px-3.5 py-1.5 rounded-full text-xs font-serif tracking-wider uppercase whitespace-nowrap transition-all cursor-pointer border ${
+              selectedCategory === "crossbody-bags"
+                ? "border-[#C5A059] bg-[#18100A] text-[#F5D77F] shadow-sm font-bold"
+                : "border-[#C5A059]/30 bg-white/70 text-charcoal hover:border-[#C5A059] hover:bg-white"
+            }`}
+          >
+            Crossbody & Messenger (7)
+          </button>
+          <button
+            type="button"
+            onClick={() => updateParam("category", "sling-bags")}
+            className={`px-3.5 py-1.5 rounded-full text-xs font-serif tracking-wider uppercase whitespace-nowrap transition-all cursor-pointer border ${
+              selectedCategory === "sling-bags"
+                ? "border-[#C5A059] bg-[#18100A] text-[#F5D77F] shadow-sm font-bold"
+                : "border-[#C5A059]/30 bg-white/70 text-charcoal hover:border-[#C5A059] hover:bg-white"
+            }`}
+          >
+            Sling Bags (5)
+          </button>
+          <button
+            type="button"
+            onClick={() => updateParam("category", "envelope-bags")}
+            className={`px-3.5 py-1.5 rounded-full text-xs font-serif tracking-wider uppercase whitespace-nowrap transition-all cursor-pointer border ${
+              selectedCategory === "envelope-bags"
+                ? "border-[#C5A059] bg-[#18100A] text-[#F5D77F] shadow-sm font-bold"
+                : "border-[#C5A059]/30 bg-white/70 text-charcoal hover:border-[#C5A059] hover:bg-white"
+            }`}
+          >
+            Envelope Bags (6)
+          </button>
+          <button
+            type="button"
+            onClick={() => updateParam("stock", inStockOnly ? null : "in")}
+            className={`px-3.5 py-1.5 rounded-full text-xs font-serif tracking-wider uppercase whitespace-nowrap transition-all cursor-pointer border ${
+              inStockOnly
+                ? "border-[#C5A059] bg-[#8A5D3B] text-white shadow-sm font-bold"
+                : "border-[#C5A059]/30 bg-white/70 text-charcoal hover:border-[#C5A059] hover:bg-white"
+            }`}
+          >
+            ⚡ Ready to Dispatch
+          </button>
         </div>
-      </div>
 
-      {/* Main Grid & Desktop Sidebar */}
-      <div className="mt-8 grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12">
-        {/* Desktop Sidebar */}
-        <aside className="hidden md:block md:col-span-3 lg:col-span-3">
-          {filterSidebarContent}
-        </aside>
+        {/* Control Bar: Filter Toggle, Active Chips, Grid Toggle, Sorting */}
+        <div className="mb-8 flex flex-col md:flex-row md:items-center justify-between gap-4 border border-[#C5A059]/35 bg-gradient-to-r from-[#FAF6EE]/95 via-[#FDFBF7]/95 to-[#FAF6EE]/95 backdrop-blur-md p-4 rounded-xs shadow-md">
+          <div className="flex flex-wrap items-center gap-3">
+            {/* Mobile Filter Button */}
+            <button
+              type="button"
+              onClick={() => setMobileFiltersOpen(true)}
+              className="btn btn-sm btn-outline md:hidden inline-flex items-center gap-2 border-[#C5A059]"
+            >
+              <SlidersHorizontal size={14} className="text-[#8A5D3B]" />
+              <span>Filters {activeFilterCount > 0 && `(${activeFilterCount})`}</span>
+            </button>
 
-        {/* Product Cards Grid */}
-        <div className="md:col-span-9 lg:col-span-9">
-          {filteredProducts.length === 0 ? (
-            <div className="border border-dashed border-espresso/20 p-12 text-center my-8">
-              <p className="font-display text-2xl text-espresso">No matching pieces found.</p>
-              <p className="mt-2 text-sm text-charcoal/70">
-                Try widening your search terms, selecting a different price band, or clearing active filters.
-              </p>
+            <span className="text-xs font-medium text-walnut/80 flex items-center gap-1.5">
+              <span>Showing</span>
+              <strong className="text-espresso font-semibold font-mono">{filteredProducts.length}</strong>
+              <span>of</span>
+              <strong className="text-espresso font-semibold font-mono">{products.length}</strong>
+              <span>handcrafted pieces</span>
+            </span>
+
+            {searchQuery && (
+              <span className="inline-flex items-center gap-1.5 bg-paper border border-[#C5A059]/40 px-2.5 py-1 text-xs text-espresso rounded-2xs">
+                Search: "{searchQuery}"
+                <button type="button" onClick={() => updateParam("q", null)}>
+                  <X size={12} />
+                </button>
+              </span>
+            )}
+
+            {selectedCategory !== "all" && (
+              <span className="inline-flex items-center gap-1.5 bg-paper border border-[#C5A059]/40 px-2.5 py-1 text-xs text-espresso rounded-2xs">
+                Category: {categories.find((c) => c.slug === selectedCategory)?.name || selectedCategory}
+                <button type="button" onClick={() => updateParam("category", null)}>
+                  <X size={12} />
+                </button>
+              </span>
+            )}
+
+            {selectedPriceBand !== "all" && (
+              <span className="inline-flex items-center gap-1.5 bg-paper border border-[#C5A059]/40 px-2.5 py-1 text-xs text-espresso rounded-2xs">
+                Price: {priceBands.find((b) => b.id === selectedPriceBand)?.label}
+                <button type="button" onClick={() => updateParam("price", null)}>
+                  <X size={12} />
+                </button>
+              </span>
+            )}
+
+            {selectedColour !== "all" && (
+              <span className="inline-flex items-center gap-1.5 bg-paper border border-[#C5A059]/40 px-2.5 py-1 text-xs text-espresso rounded-2xs">
+                Colour: {selectedColour}
+                <button type="button" onClick={() => updateParam("colour", null)}>
+                  <X size={12} />
+                </button>
+              </span>
+            )}
+
+            {inStockOnly && (
+              <span className="inline-flex items-center gap-1.5 bg-paper border border-[#C5A059]/40 px-2.5 py-1 text-xs text-espresso rounded-2xs">
+                In Stock Only
+                <button type="button" onClick={() => updateParam("stock", null)}>
+                  <X size={12} />
+                </button>
+              </span>
+            )}
+          </div>
+
+          {/* Right Controls: Grid density & Sort Dropdown */}
+          <div className="flex items-center gap-4 self-end md:self-auto">
+            {/* Desktop Grid Switcher */}
+            <div className="hidden lg:flex items-center gap-1 border border-[#C5A059]/30 rounded-2xs p-0.5 bg-white/60">
               <button
                 type="button"
-                onClick={clearAllFilters}
-                className="btn btn-solid btn-sm mt-6"
+                onClick={() => setGridCols(3)}
+                className={`p-1.5 rounded-3xs transition-all cursor-pointer ${
+                  gridCols === 3 ? "bg-[#18100A] text-[#F5D77F]" : "text-walnut/60 hover:text-espresso"
+                }`}
+                title="3-Column Editorial View"
               >
-                Reset All Filters
+                <Grid3X3 size={15} />
+              </button>
+              <button
+                type="button"
+                onClick={() => setGridCols(4)}
+                className={`p-1.5 rounded-3xs transition-all cursor-pointer ${
+                  gridCols === 4 ? "bg-[#18100A] text-[#F5D77F]" : "text-walnut/60 hover:text-espresso"
+                }`}
+                title="4-Column Compact View"
+              >
+                <LayoutGrid size={15} />
               </button>
             </div>
-          ) : (
-            <div className="grid grid-cols-2 gap-x-4 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 sm:gap-x-6 sm:gap-y-12">
-              {filteredProducts.map((product, i) => (
-                <StaggerItem key={product.id} index={i} columns={3}>
-                  <ProductCard
-                    product={product}
-                    onQuickView={setQuickViewProduct}
-                  />
-                </StaggerItem>
-              ))}
+
+            {/* Sort Dropdown */}
+            <div className="flex items-center gap-2">
+              <label htmlFor="shop-sort" className="text-xs text-walnut/70 uppercase tracking-wider font-semibold">
+                Sort:
+              </label>
+              <select
+                id="shop-sort"
+                value={sort}
+                onChange={(e) => updateParam("sort", e.target.value)}
+                className="field-input !min-h-[2.4rem] !py-1 !text-xs !w-44 border-[#C5A059]/40 bg-white/90"
+              >
+                <option value="featured">Featured First</option>
+                <option value="price-asc">Price: Low to High</option>
+                <option value="price-desc">Price: High to Low</option>
+                <option value="name-asc">Name: A to Z</option>
+              </select>
             </div>
-          )}
+          </div>
+        </div>
+
+        {/* Main Grid & Desktop Sidebar */}
+        <div className="mt-8 grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12">
+          {/* Desktop Sidebar */}
+          <aside className="hidden md:block md:col-span-3 lg:col-span-3">
+            {filterSidebarContent}
+          </aside>
+
+          {/* Product Cards Grid */}
+          <div className="md:col-span-9 lg:col-span-9">
+            {filteredProducts.length === 0 ? (
+              <div className="border border-dashed border-[#C5A059]/40 bg-white/70 p-12 text-center my-8 rounded-xs backdrop-blur-xs">
+                <p className="font-display text-2xl text-espresso">No matching pieces found.</p>
+                <p className="mt-2 text-sm text-charcoal/70">
+                  Try widening your search terms, selecting a different price band, or clearing active filters.
+                </p>
+                <button
+                  type="button"
+                  onClick={clearAllFilters}
+                  className="btn btn-solid btn-sm mt-6 bg-[#18100A] text-[#FAF7F2] border border-[#C5A059]"
+                >
+                  Reset All Filters
+                </button>
+              </div>
+            ) : (
+              <div
+                className={`grid grid-cols-2 gap-x-4 gap-y-10 sm:gap-x-6 sm:gap-y-12 ${
+                  gridCols === 4
+                    ? "sm:grid-cols-2 lg:grid-cols-4"
+                    : "sm:grid-cols-2 lg:grid-cols-3"
+                }`}
+              >
+                {filteredProducts.map((product, i) => (
+                  <StaggerItem key={product.id} index={i} columns={gridCols}>
+                    <ProductCard
+                      product={product}
+                      onQuickView={setQuickViewProduct}
+                    />
+                  </StaggerItem>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
       </div>
-    </div>
 
       {/* Mobile Filter Sheet */}
       <Overlay
@@ -375,7 +507,7 @@ function ShopContent() {
         side="left"
         className="p-6"
       >
-        <div className="flex items-center justify-between border-b border-espresso/15 pb-4 mb-6">
+        <div className="flex items-center justify-between border-b border-[#C5A059]/20 pb-4 mb-6">
           <p className="font-display text-xl text-espresso">Filter Collection</p>
           <button
             type="button"
@@ -408,26 +540,34 @@ function ShopContent() {
 export default function ShopPage() {
   return (
     <div className="relative min-h-screen">
-      {/* 1. ROYAL HERITAGE SHOPPING HEADER BANNER WITH RANGOLI & PARTICLES */}
-      <ShopHeritageHeader totalPieces={40} />
+      {/* 1. Animated Indian Heritage Living Background System */}
+      <ShopAtmosphereBackdrop />
 
-      {/* 2. DYNAMIC CATALOGUE WITH FILTERS */}
-      <Suspense
-        fallback={
-          <div className="shell py-24 text-center">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#C5A059]/40 bg-[#C5A059]/10 text-[#96722D] text-xs font-serif tracking-widest uppercase mb-4">
-              <span>ಬೆಂಗಳೂರು ಅಟೆಲಿಯರ್ · BENGALURU ATELIER</span>
+      {/* 2. ROYAL HERITAGE SHOPPING HEADER BANNER WITH RANGOLI & PARTICLES */}
+      <div className="relative z-10">
+        <ShopHeritageHeader totalPieces={40} />
+      </div>
+
+      {/* 3. DYNAMIC CATALOGUE WITH FILTERS */}
+      <div className="relative z-10">
+        <Suspense
+          fallback={
+            <div className="shell py-24 text-center">
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#C5A059]/40 bg-[#C5A059]/10 text-[#96722D] text-xs font-serif tracking-widest uppercase mb-4">
+                <span>ಬೆಂಗಳೂರು ಅಟೆಲಿಯರ್ · BENGALURU ATELIER</span>
+              </div>
+              <p className="font-display text-2xl text-espresso">Opening the catalogue…</p>
             </div>
-            <p className="font-display text-2xl text-espresso">Opening the catalogue…</p>
-          </div>
-        }
-      >
-        <ShopContent />
-      </Suspense>
+          }
+        >
+          <ShopContent />
+        </Suspense>
+      </div>
 
-      {/* 3. ROYAL INDIAN PAINTING SHOWCASE BANNER */}
-      <RoyalPaintingBanner />
+      {/* 4. ROYAL INDIAN PAINTING SHOWCASE BANNER */}
+      <div className="relative z-10">
+        <RoyalPaintingBanner />
+      </div>
     </div>
   );
 }
-

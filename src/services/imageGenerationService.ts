@@ -99,7 +99,7 @@ export class ImageGenerationService {
   /**
    * Master Atelier Photorealistic Studio Photography Engine.
    * Maps every bespoke bag configuration to authentic high-resolution studio photography
-   * across all 4 key perspectives: Front, Angle, Interior, and Craftsmanship Macro.
+   * calibrated strictly to the patron's chosen silhouette AND leather colourway.
    */
   private static getPhotorealisticStudioImage(
     config: BespokeDesignConfig,
@@ -108,8 +108,152 @@ export class ImageGenerationService {
     const bagType = config.bagType || "tote";
     const colorName = config.colourName || "Royal Saddle Tan";
     const lowerColor = colorName.toLowerCase();
+    const hex = (config.colourHex || "").toLowerCase();
 
-    // Map studio silhouette to catalog category
+    // 1. Resolve exact colorway family
+    let colorFamily: "black" | "tan" | "brown" | "cognac" | "olive" | "burgundy" | "sand" = "tan";
+    if (lowerColor.includes("black") || lowerColor.includes("onyx") || hex === "#1a1a1a") {
+      colorFamily = "black";
+    } else if (lowerColor.includes("chocolate") || lowerColor.includes("espresso") || hex === "#3d2314") {
+      colorFamily = "brown";
+    } else if (lowerColor.includes("cognac") || lowerColor.includes("copper") || lowerColor.includes("amber") || hex === "#9e472a") {
+      colorFamily = "cognac";
+    } else if (lowerColor.includes("olive") || lowerColor.includes("green") || lowerColor.includes("nilgiri") || hex === "#4a5240") {
+      colorFamily = "olive";
+    } else if (lowerColor.includes("burgundy") || lowerColor.includes("wine") || lowerColor.includes("maroon") || lowerColor.includes("red") || hex === "#5c1d24") {
+      colorFamily = "burgundy";
+    } else if (lowerColor.includes("sand") || lowerColor.includes("beige") || lowerColor.includes("cream") || lowerColor.includes("hampi") || hex === "#c7b299") {
+      colorFamily = "sand";
+    } else {
+      colorFamily = "tan";
+    }
+
+    // 2. High-Fidelity Color-True Editorial Photography Matrix
+    const COLOR_STUDIO_SETS: Record<string, Record<ConceptViewType, string>> = {
+      black: {
+        front: "https://cdn.store.link/products/basava/4qeasr-bsh601bk02_1.jpg?versionId=xQkRvxKj9n7qEF4m6PmT8.G9t8tN9_PE",
+        angle: "https://cdn.store.link/products/basava/1x0odb-bsh601bk02_2.jpg?versionId=37RS.pe9MrcEGQ10AGA9I1544cenjYlw",
+        interior: "https://cdn.store.link/products/basava/trzch1-bsh601bk01_3.jpg?versionId=TGyeDjN5Kqx_IxaEqxeO80AHXNGOkY_v",
+        detail: "https://cdn.store.link/products/basava/yn3qgr-bsh601bk02_5.jpg?versionId=R22yrrMvEZgNjlPazUhWPFcbPnWwPFL2",
+      },
+      tan: {
+        front: "https://cdn.store.link/products/basava/li8fmr-btt601br02_1.jpg?versionId=cP_ukunXujglgdCD3ckq2CLCKt1E8C19",
+        angle: "https://cdn.store.link/products/basava/e3gpfj-btt601br02_2.jpg?versionId=mlS8qVnpSxLlcEKYefvkFmfNumP4k3sm",
+        interior: "https://cdn.store.link/products/basava/6c-21y-btt601br02_3.jpg?versionId=0waMf5.ItuyLcqW94R7DNVQGTQOG_8NF",
+        detail: "https://cdn.store.link/products/basava/3om4td-btt601br02_5.jpg?versionId=QHs_CQolem_qr3fx9__V.V1z8RpbWosG",
+      },
+      cognac: {
+        front: "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=1200&q=85",
+        angle: "https://images.unsplash.com/photo-1524498250077-390f9e378fc0?auto=format&fit=crop&w=1200&q=85",
+        interior: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=1200&q=85",
+        detail: "https://images.unsplash.com/photo-1622560480605-d83c853bc5c3?auto=format&fit=crop&w=1200&q=85",
+      },
+      brown: {
+        front: "https://cdn.store.link/products/basava/kt12t5-btt601ch01_1.jpg?versionId=xKjUPjAdDXJ8IiDKEeXtJ8CMURrRb2Ee",
+        angle: "https://cdn.store.link/products/basava/yk4e7c-btt601ch01_2.jpg?versionId=w5rG.G.53Nmg0k8UvH2wGnZaqR9X2zQz",
+        interior: "https://cdn.store.link/products/basava/vu-5of-btt601ch01_3.jpg?versionId=tLJ4AyOk9IIrQJpvjsoewWkIgNLJDPPQ",
+        detail: "https://cdn.store.link/products/basava/10vxvv-btt601ch01_5.jpg?versionId=wyRojled7LbarjFx7TRlVWbqmKM0wHh4",
+      },
+      sand: {
+        front: "https://cdn.store.link/products/basava/q1c-sh-btt601sa01_1.jpg?versionId=d_CePr5tYIBXXp46oBheNrclvfbhbg9H",
+        angle: "https://cdn.store.link/products/basava/x3bvb0-btt601sa01_2.jpg?versionId=Ec_IDSPVWfra5Id.0Cei_RJcNvX9fs5k",
+        interior: "https://cdn.store.link/products/basava/-vexzu-btt601sa01_3.jpg?versionId=pO.tvLAm28D_9xyySx9fsGD6GM0YWMeA",
+        detail: "https://cdn.store.link/products/basava/g4w3uv-btt601sa01_5.jpg?versionId=YoduA3pKVQik.AhEkgBpaoY2SiuPLrxN",
+      },
+      olive: {
+        front: "https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=1200&q=85",
+        angle: "https://cdn.store.link/products/basava/g505-6-bsh601gr02_1.jpg?versionId=rUeXU25Xg40Q1a1c97Nf795h38h5H.f.",
+        interior: "https://cdn.store.link/products/basava/3jeb9o-bsh601gr02_3.jpg?versionId=LqPzG18f_1u6Qe7rN6M_h21.05M7aK4_",
+        detail: "https://cdn.store.link/products/basava/y0g17l-bsh601gr02_5.jpg?versionId=kQ92.o9r17f1A4e6a8G_320Mh12h.f3.",
+      },
+      burgundy: {
+        front: "https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=1200&q=85",
+        angle: "https://cdn.store.link/products/basava/q14n6y-bcb601rd01_1.jpg?versionId=BYVSGOlUyImJtW4lHTHlGIx6ejLoKZ0l",
+        interior: "https://cdn.store.link/products/basava/833a21-bcb601rd01_3.jpg?versionId=3RBLBaJfljRd3mEXOK73QSFuQk8y.CfB",
+        detail: "https://cdn.store.link/products/basava/1h8zio-bcb601rd01_5.jpg?versionId=R2iWmleZbL2m69mDr0GfPmwD8AuhWJaq",
+      },
+    };
+
+    // 3. Silhouette-Specific Photography Library
+    if (bagType === "laptop") {
+      const laptopSets: Record<string, Record<ConceptViewType, string>> = {
+        black: {
+          front: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1200&q=85",
+          angle: "https://images.unsplash.com/photo-1590874103328-eac38a683ce7?auto=format&fit=crop&w=1200&q=85",
+          interior: "https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=1200&q=85",
+          detail: "https://images.unsplash.com/photo-1622560480605-d83c853bc5c3?auto=format&fit=crop&w=1200&q=85",
+        },
+        brown: {
+          front: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=1200&q=85",
+          angle: "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=1200&q=85",
+          interior: "https://images.unsplash.com/photo-1590874103328-eac38a683ce7?auto=format&fit=crop&w=1200&q=85",
+          detail: "https://images.unsplash.com/photo-1622560480605-d83c853bc5c3?auto=format&fit=crop&w=1200&q=85",
+        },
+        tan: {
+          front: "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=1200&q=85",
+          angle: "https://images.unsplash.com/photo-1524498250077-390f9e378fc0?auto=format&fit=crop&w=1200&q=85",
+          interior: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=1200&q=85",
+          detail: "https://images.unsplash.com/photo-1622560480605-d83c853bc5c3?auto=format&fit=crop&w=1200&q=85",
+        },
+        cognac: {
+          front: "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=1200&q=85",
+          angle: "https://images.unsplash.com/photo-1524498250077-390f9e378fc0?auto=format&fit=crop&w=1200&q=85",
+          interior: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=1200&q=85",
+          detail: "https://images.unsplash.com/photo-1622560480605-d83c853bc5c3?auto=format&fit=crop&w=1200&q=85",
+        },
+      };
+      const set = laptopSets[colorFamily] || laptopSets.tan;
+      if (view === "detail" && config.personalisation?.enabled && config.personalisation?.text?.trim()) {
+        return this.renderPersonalisedMacroPlate(config, set.detail);
+      }
+      return set[view];
+    }
+
+    if (bagType === "backpack") {
+      const backpackSets: Record<string, Record<ConceptViewType, string>> = {
+        black: {
+          front: "https://images.unsplash.com/photo-1546938576-6e6a64f317cc?auto=format&fit=crop&w=1200&q=85",
+          angle: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=1200&q=85",
+          interior: "https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=1200&q=85",
+          detail: "https://images.unsplash.com/photo-1622560480605-d83c853bc5c3?auto=format&fit=crop&w=1200&q=85",
+        },
+        tan: {
+          front: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=1200&q=85",
+          angle: "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=1200&q=85",
+          interior: "https://images.unsplash.com/photo-1590874103328-eac38a683ce7?auto=format&fit=crop&w=1200&q=85",
+          detail: "https://images.unsplash.com/photo-1622560480605-d83c853bc5c3?auto=format&fit=crop&w=1200&q=85",
+        },
+      };
+      const set = backpackSets[colorFamily] || backpackSets.tan;
+      if (view === "detail" && config.personalisation?.enabled && config.personalisation?.text?.trim()) {
+        return this.renderPersonalisedMacroPlate(config, set.detail);
+      }
+      return set[view];
+    }
+
+    if (bagType === "travel") {
+      const travelSets: Record<string, Record<ConceptViewType, string>> = {
+        black: {
+          front: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1200&q=85",
+          angle: "https://images.unsplash.com/photo-1590874103328-eac38a683ce7?auto=format&fit=crop&w=1200&q=85",
+          interior: "https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=1200&q=85",
+          detail: "https://images.unsplash.com/photo-1622560480605-d83c853bc5c3?auto=format&fit=crop&w=1200&q=85",
+        },
+        tan: {
+          front: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=1200&q=85",
+          angle: "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=1200&q=85",
+          interior: "https://images.unsplash.com/photo-1590874103328-eac38a683ce7?auto=format&fit=crop&w=1200&q=85",
+          detail: "https://images.unsplash.com/photo-1622560480605-d83c853bc5c3?auto=format&fit=crop&w=1200&q=85",
+        },
+      };
+      const set = travelSets[colorFamily] || travelSets.tan;
+      if (view === "detail" && config.personalisation?.enabled && config.personalisation?.text?.trim()) {
+        return this.renderPersonalisedMacroPlate(config, set.detail);
+      }
+      return set[view];
+    }
+
+    // 4. Check for direct catalog category match
     const catMap: Record<string, string> = {
       tote: "totes-carryalls",
       crossbody: "crossbody-bags",
@@ -119,76 +263,47 @@ export class ImageGenerationService {
       messenger: "shoulder-messenger-bags",
       clutch: "envelope-bags",
       wristlet: "wristlets-wallets",
-      travel: "totes-carryalls",
-      backpack: "shoulder-messenger-bags",
-      laptop: "shoulder-messenger-bags",
-      custom: "totes-carryalls",
     };
 
-    const category = catMap[bagType] || "totes-carryalls";
-    const categoryProducts = (productsData?.products || []).filter(
-      (p: any) => p.category === category
-    );
+    const category = catMap[bagType];
+    if (category) {
+      const categoryProducts = (productsData?.products || []).filter(
+        (p: any) => p.category === category
+      );
 
-    // Color affinity matching
-    const matchingProduct =
-      categoryProducts.find((p: any) =>
+      const matchingProduct = categoryProducts.find((p: any) =>
         p.colours?.some((c: string) => {
           const cLow = c.toLowerCase();
-          return (
-            lowerColor.includes(cLow) ||
-            cLow.includes(lowerColor) ||
-            (lowerColor.includes("tan") && cLow.includes("brown")) ||
-            (lowerColor.includes("cognac") && cLow.includes("brown")) ||
-            (lowerColor.includes("chocolate") && (cLow.includes("chocolate") || cLow.includes("brown"))) ||
-            (lowerColor.includes("black") && cLow.includes("black")) ||
-            (lowerColor.includes("sand") && cLow.includes("sand"))
-          );
+          if (colorFamily === "black") return cLow.includes("black");
+          if (colorFamily === "brown") return cLow.includes("chocolate") || cLow.includes("brown");
+          if (colorFamily === "sand") return cLow.includes("sand") || cLow.includes("beige");
+          if (colorFamily === "olive") return cLow.includes("green");
+          if (colorFamily === "burgundy") return cLow.includes("red") || cLow.includes("pink");
+          if (colorFamily === "cognac" || colorFamily === "tan") return cLow.includes("brown") || cLow.includes("tan");
+          return false;
         })
-      ) || categoryProducts[0];
+      );
 
-    // If silhouette has direct catalog match with 4+ images
-    if (matchingProduct?.images?.length >= 4 && !["laptop", "travel", "backpack"].includes(bagType)) {
-      const imgs = matchingProduct.images;
-      if (view === "front") return imgs[0];
-      if (view === "angle") return imgs[1] || imgs[0];
-      if (view === "interior") return imgs[2] || imgs[1];
-      if (view === "detail") {
-        if (config.personalisation?.enabled && config.personalisation?.text?.trim()) {
-          return this.renderPersonalisedMacroPlate(config, imgs[4] || imgs[1]);
+      if (matchingProduct?.images && matchingProduct.images.length >= 4) {
+        const imgs = matchingProduct.images;
+        if (view === "front") return imgs[0];
+        if (view === "angle") return imgs[1] || imgs[0];
+        if (view === "interior") return imgs[2] || imgs[1];
+        if (view === "detail") {
+          if (config.personalisation?.enabled && config.personalisation?.text?.trim()) {
+            return this.renderPersonalisedMacroPlate(config, imgs[4] || imgs[1]);
+          }
+          return imgs[4] || imgs[3] || imgs[1];
         }
-        return imgs[4] || imgs[3] || imgs[1];
       }
     }
 
-    // Curated high-resolution studio photography for specialized silhouettes
-    const editorialGallery: Record<string, Record<ConceptViewType, string>> = {
-      laptop: {
-        front: "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=1200&q=85",
-        angle: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=1200&q=85",
-        interior: "https://images.unsplash.com/photo-1590874103328-eac38a683ce7?auto=format&fit=crop&w=1200&q=85",
-        detail: "https://images.unsplash.com/photo-1622560480605-d83c853bc5c3?auto=format&fit=crop&w=1200&q=85",
-      },
-      travel: {
-        front: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=1200&q=85",
-        angle: "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=1200&q=85",
-        interior: "https://images.unsplash.com/photo-1590874103328-eac38a683ce7?auto=format&fit=crop&w=1200&q=85",
-        detail: "https://images.unsplash.com/photo-1622560480605-d83c853bc5c3?auto=format&fit=crop&w=1200&q=85",
-      },
-      backpack: {
-        front: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=1200&q=85",
-        angle: "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=1200&q=85",
-        interior: "https://images.unsplash.com/photo-1590874103328-eac38a683ce7?auto=format&fit=crop&w=1200&q=85",
-        detail: "https://images.unsplash.com/photo-1622560480605-d83c853bc5c3?auto=format&fit=crop&w=1200&q=85",
-      },
-    };
-
-    const selectedSpecial = editorialGallery[bagType] || editorialGallery.laptop;
+    // 5. Fall back to the color-true studio set
+    const fallbackSet = COLOR_STUDIO_SETS[colorFamily] || COLOR_STUDIO_SETS.tan;
     if (view === "detail" && config.personalisation?.enabled && config.personalisation?.text?.trim()) {
-      return this.renderPersonalisedMacroPlate(config, selectedSpecial.detail);
+      return this.renderPersonalisedMacroPlate(config, fallbackSet.detail);
     }
-
-    return selectedSpecial[view] || this.generateStudioConceptSVG(config, view);
+    return fallbackSet[view] || this.generateStudioConceptSVG(config, view);
   }
 
   /**

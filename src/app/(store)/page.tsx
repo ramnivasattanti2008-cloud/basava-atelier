@@ -40,6 +40,7 @@ export default function HomePage() {
       {heroProduct && (
         <HeroEditorialExperience
           product={heroProduct}
+          products={products}
           onQuickView={setQuickViewProduct}
         />
       )}

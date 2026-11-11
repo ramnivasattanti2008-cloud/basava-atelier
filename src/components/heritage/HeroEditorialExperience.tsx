@@ -16,12 +16,13 @@ import { HeroInteractiveCard } from "./HeroInteractiveCard";
 
 interface HeroEditorialExperienceProps {
   product: Product;
+  products?: Product[];
   onQuickView?: (product: Product) => void;
 }
 
-export function HeroEditorialExperience({ product, onQuickView }: HeroEditorialExperienceProps) {
+export function HeroEditorialExperience({ product, products, onQuickView }: HeroEditorialExperienceProps) {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-[#18100A] via-[#120B07] to-[#0D0704] text-[#FAF7F2] pt-8 pb-16 sm:pt-12 sm:pb-24 border-b border-[#C5A059]/30">
+    <section className="relative overflow-hidden bg-gradient-to-b from-[#18100A] via-[#120B07] to-[#0D0704] text-[#FAF7F2] pt-6 pb-12 sm:pt-8 sm:pb-16 border-b border-[#C5A059]/30">
       {/* 1. Indian Architectural Jali Screen Shadow Background */}
       <JaliShadowPattern tone="dark-heritage" animated={true} />
 
@@ -88,14 +89,14 @@ export function HeroEditorialExperience({ product, onQuickView }: HeroEditorialE
             </div>
 
             {/* Cultural Opening Centerpiece: Architectural Torana Arch & Heritage Seal */}
-            <RoyalCulturalOpening className="my-3 sm:my-5" />
+            <RoyalCulturalOpening className="my-2 sm:my-3" />
 
             {/* Supporting Copy */}
             <motion.p
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
-              className="mt-3 max-w-xl text-[#D8CEBD]/90 leading-relaxed text-sm sm:text-base font-sans"
+              className="mt-2.5 max-w-xl text-[#D8CEBD]/90 leading-relaxed text-xs sm:text-sm font-sans"
             >
               Explore distinctive leather essentials or create a design that is uniquely yours.
               Every piece is shaped by hand in our Bengaluru workshop from 100% botanical tree-bark tanned hides, solid sand-cast brass, and hand-waxed saddle stitching built to last generations.
@@ -106,18 +107,18 @@ export function HeroEditorialExperience({ product, onQuickView }: HeroEditorialE
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.45, ease: [0.16, 1, 0.3, 1] }}
-              className="mt-7 flex flex-wrap items-center gap-4"
+              className="mt-5 flex flex-wrap items-center gap-4"
             >
               <Link
                 href="/shop"
-                className="btn btn-light btn-tactile shadow-xl hover:shadow-2xl transition-all flex items-center gap-2.5 px-7 py-3.5 text-xs font-bold tracking-widest uppercase text-espresso bg-[#FAF7F2] hover:bg-[#EADFCB]"
+                className="btn btn-light btn-tactile shadow-xl hover:shadow-2xl transition-all flex items-center gap-2.5 px-7 py-3 text-xs font-bold tracking-widest uppercase text-espresso bg-[#FAF7F2] hover:bg-[#EADFCB]"
               >
                 <span>EXPLORE COLLECTION</span>
                 <ArrowRight size={15} strokeWidth={2} />
               </Link>
               <Link
                 href="/custom"
-                className="btn btn-outline-light btn-tactile border-[#C5A059]/60 hover:border-[#F5D77F] hover:bg-[#C5A059]/15 transition-all flex items-center gap-2 px-6 py-3.5 text-xs font-bold tracking-widest uppercase text-[#F5D77F]"
+                className="btn btn-outline-light btn-tactile border-[#C5A059]/60 hover:border-[#F5D77F] hover:bg-[#C5A059]/15 transition-all flex items-center gap-2 px-6 py-3 text-xs font-bold tracking-widest uppercase text-[#F5D77F]"
               >
                 <Compass size={15} className="text-[#C5A059]" />
                 <span>DESIGN YOUR OWN</span>
@@ -129,7 +130,7 @@ export function HeroEditorialExperience({ product, onQuickView }: HeroEditorialE
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.55 }}
-              className="mt-8 pt-5 border-t border-[#C5A059]/20 flex flex-wrap items-center gap-6 sm:gap-8 text-xs text-[#D8CEBD]/80"
+              className="mt-5 pt-3.5 border-t border-[#C5A059]/20 flex flex-wrap items-center gap-6 sm:gap-8 text-xs text-[#D8CEBD]/80"
             >
               <div className="flex items-center gap-2">
                 <Check size={14} className="text-[#F5D77F] shrink-0 font-bold" />
@@ -147,8 +148,12 @@ export function HeroEditorialExperience({ product, onQuickView }: HeroEditorialE
           </div>
 
           {/* Right Column: 3D Interactive Tilting Showcase */}
-          <div className="lg:col-span-5 relative mt-6 lg:mt-0">
-            <HeroInteractiveCard product={product} onQuickView={onQuickView} />
+          <div className="lg:col-span-5 relative mt-4 lg:mt-0">
+            <HeroInteractiveCard
+              product={product}
+              products={products}
+              onQuickView={onQuickView}
+            />
           </div>
         </div>
 

@@ -235,10 +235,11 @@ Respond ONLY with a strict JSON object matching this schema:
     }));
 
     const candidateModels = [
-      "gemini-3.8-flash",
-      "gemini-3.5-flash",
-      "gemini-flash-latest",
       "gemini-3.1-flash-lite",
+      "gemini-flash-lite-latest",
+      "gemini-3.5-flash-lite",
+      "gemini-flash-latest",
+      "gemini-3.8-flash",
     ];
 
     const payload = {
@@ -262,7 +263,7 @@ Respond ONLY with a strict JSON object matching this schema:
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(payload),
-          signal: AbortSignal.timeout(7000),
+          signal: AbortSignal.timeout(4500),
         });
 
         if (res.ok) {

@@ -104,7 +104,13 @@ Respond ONLY with a valid JSON object matching this schema:
   "artisanAssessment": "Professional 2-sentence description of the silhouette and craftsmanship details."
 }`;
 
-    const candidateModels = ["gemini-3.8-flash", "gemini-3.5-flash", "gemini-flash-latest"];
+    const candidateModels = [
+      "gemini-3.1-flash-lite",
+      "gemini-flash-lite-latest",
+      "gemini-3.5-flash-lite",
+      "gemini-flash-latest",
+      "gemini-3.8-flash",
+    ];
     let rawJson = "";
 
     for (const model of candidateModels) {
@@ -135,7 +141,7 @@ Respond ONLY with a valid JSON object matching this schema:
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(payload),
-          signal: AbortSignal.timeout(9000),
+          signal: AbortSignal.timeout(5000),
         });
 
         if (res.ok) {

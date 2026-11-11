@@ -12,7 +12,10 @@ import { useToast } from "@/lib/toast";
 import { whatsappLink, whatsappMessages } from "@/lib/whatsapp";
 import { ProductImage } from "@/components/ui/ProductImage";
 import { QuantityStepper, Swatch } from "@/components/ui/bits";
+import { StaggerItem } from "@/components/motion/MaskText";
 import { ProductCard } from "@/components/product/ProductCard";
+import { ProductGallery } from "@/components/product/ProductGallery";
+import { Reveal } from "@/components/ui/Reveal";
 
 export default function ProductDetailView({ initialSlug }: { initialSlug: string }) {
   const products = useStorefrontProducts();
@@ -26,7 +29,8 @@ export default function ProductDetailView({ initialSlug }: { initialSlug: string
   // Retrieve current product (from live store in case admin updated it)
   const product = products.find((p) => p.slug === initialSlug);
   const inWishlist = product ? wishlist.includes(product.id) : false;
-  const [selectedImage, setSelectedImage] = useState(0);
+  const [justAdded, setJustAdded] = useState(false);
+  const setCartOpen = useDemoStore((s) => s.setCartOpen);
   const [quantity, setQuantity] = useState(1);
 
   const handleToggleWishlist = () => {
@@ -59,7 +63,12 @@ export default function ProductDetailView({ initialSlug }: { initialSlug: string
     if (!purchasable) return;
     const result = addToCart(product.id, product.colours[0] ?? null, quantity);
     if (result.ok) {
-      showToast(`${product.name} added to your bag.`);
+      // Confirm on the button itself, then open the bag so the next step is obvious.
+      setJustAdded(true);
+      window.setTimeout(() => {
+        setJustAdded(false);
+        setCartOpen(true);
+      }, 900);
     } else {
       showToast(result.message, "warn");
     }
@@ -90,47 +99,17 @@ export default function ProductDetailView({ initialSlug }: { initialSlug: string
       {/* Main Product Layout */}
       <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
         {/* Left: Product Gallery */}
-        <div className="lg:col-span-7 flex flex-col-reverse gap-4 sm:flex-row">
-          {/* Vertical Thumbnail Rail (Desktop) */}
-          {product.images.length > 1 && (
-            <div className="flex sm:flex-col gap-3 overflow-x-auto sm:overflow-y-auto sm:max-h-[620px] pb-2 sm:pb-0 sm:w-20 shrink-0 no-scrollbar">
-              {product.images.map((img, idx) => (
-                <button
-                  key={img}
-                  type="button"
-                  onClick={() => setSelectedImage(idx)}
-                  className={`photo-tile relative aspect-square h-18 w-18 sm:h-20 sm:w-20 shrink-0 border transition-all ${
-                    selectedImage === idx
-                      ? "border-espresso ring-1 ring-espresso"
-                      : "border-transparent opacity-65 hover:opacity-100"
-                  }`}
-                  aria-label={`View photo ${idx + 1}`}
-                >
-                  <ProductImage src={img} alt="" sizes="80px" className="p-1" />
-                </button>
-              ))}
-            </div>
-          )}
-
-          {/* Main Hero Photograph */}
-          <div className="photo-tile relative aspect-square w-full flex-1 overflow-hidden bg-linen rounded-xs shadow-xs">
-            <ProductImage
-              src={product.images[selectedImage] || product.images[0]}
-              alt={product.name}
-              sizes="(min-width: 1024px) 50vw, 100vw"
-              eager
-              className="p-8 sm:p-12 drop-shadow-md transition-all duration-300"
-            />
-            {product.stock.status === "out_of_stock" && (
-              <div className="absolute left-4 top-4 bg-[#8e2f2a] px-3 py-1 text-xs font-semibold uppercase tracking-wider text-white">
-                Out of Stock
-              </div>
-            )}
-          </div>
+        <div className="lg:col-span-7">
+          <ProductGallery
+            key={product.id}
+            images={product.images}
+            name={product.name}
+            soldOut={product.stock.status === "out_of_stock"}
+          />
         </div>
 
         {/* Right: Sticky Details & Purchase Panel */}
-        <div className="lg:col-span-5 flex flex-col">
+        <Reveal className="lg:col-span-5 flex flex-col" rise={16}>
           <div className="flex items-center justify-between gap-3">
             <span className="eyebrow">{product.listedType || category?.singular || "Genuine Leather"}</span>
             {product.sku && (
@@ -183,10 +162,21 @@ export default function ProductDetailView({ initialSlug }: { initialSlug: string
                   <button
                     type="button"
                     onClick={handleAddToCart}
-                    className="btn btn-solid flex-1 h-12 text-xs"
+                    disabled={justAdded}
+                    aria-live="polite"
+                    className={cx("btn btn-solid flex-1 h-12 text-xs disabled:opacity-100", justAdded && "bg-walnut border-walnut")}
                   >
-                    <ShoppingBag size={16} strokeWidth={1.5} />
-                    Add to Bag
+                    {justAdded ? (
+                      <>
+                        <Check size={16} strokeWidth={2} />
+                        Added to Bag
+                      </>
+                    ) : (
+                      <>
+                        <ShoppingBag size={16} strokeWidth={1.5} />
+                        Add to Bag
+                      </>
+                    )}
                   </button>
                   <button
                     type="button"
@@ -352,7 +342,7 @@ export default function ProductDetailView({ initialSlug }: { initialSlug: string
               )}
             </div>
           </div>
-        </div>
+        </Reveal>
       </div>
 
       {/* Related Products */}
@@ -371,8 +361,10 @@ export default function ProductDetailView({ initialSlug }: { initialSlug: string
           </div>
 
           <div className="grid grid-cols-2 gap-x-4 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 sm:gap-x-6">
-            {relatedProducts.map((p) => (
-              <ProductCard key={p.id} product={p} />
+            {relatedProducts.map((p, i) => (
+              <StaggerItem key={p.id} index={i} columns={4}>
+                <ProductCard product={p} />
+              </StaggerItem>
             ))}
           </div>
         </section>

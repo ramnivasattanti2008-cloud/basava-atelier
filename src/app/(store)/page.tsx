@@ -15,6 +15,7 @@ import { QuickViewModal } from "@/components/product/QuickViewModal";
 import { EngravingPreview } from "@/components/custom/EngravingPreview";
 import { HeritageSeal } from "@/components/heritage/HeritageSeal";
 import { HeritageFlourish } from "@/components/heritage/HeritageFlourish";
+import { MaskText, StaggerItem } from "@/components/motion/MaskText";
 import { Reveal } from "@/components/ui/Reveal";
 
 const KANNADA_NUMERALS = ["೦೧", "೦೨", "೦೩", "೦೪", "೦೫", "೦೬", "೦೭"];
@@ -44,9 +45,11 @@ export default function HomePage() {
               <span className="h-1 w-1 rounded-full bg-brass/60" />
               <span className="eyebrow text-saddle-deep">BASAVA Atelier · Bengaluru</span>
             </div>
-            <h1 className="display-xl mt-3 rise [--i:1]">
-              Rooted in craft.<br />
-              <span className="italic font-normal">Made for living.</span>
+            <h1 className="display-xl mt-3">
+              <MaskText
+                delay={0.15}
+                lines={["Rooted in craft.", <span key="l2" className="italic font-normal">Made for living.</span>]}
+              />
             </h1>
             <p className="lede mt-5 max-w-xl text-charcoal/85 rise [--i:2]">
               Discover thoughtfully designed leather essentials and create something uniquely yours.
@@ -247,12 +250,13 @@ export default function HomePage() {
           </SectionHeading>
 
           <div className="grid grid-cols-2 gap-x-4 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 sm:gap-x-6 sm:gap-y-12">
-            {featuredProducts.map((p) => (
-              <ProductCard
-                key={p.id}
-                product={p}
-                onQuickView={setQuickViewProduct}
-              />
+            {featuredProducts.map((p, i) => (
+              <StaggerItem key={p.id} index={i} columns={4}>
+                <ProductCard
+                  product={p}
+                  onQuickView={setQuickViewProduct}
+                />
+              </StaggerItem>
             ))}
           </div>
 

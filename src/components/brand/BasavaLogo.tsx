@@ -56,7 +56,7 @@ export function BasavaLogo({
           priority
           className={cx(
             "object-contain filter transition-all",
-            invert ? "brightness-0 invert sepia-[0.3]" : "brightness-95 contrast-125"
+            invert ? "invert mix-blend-screen" : "mix-blend-multiply"
           )}
           style={{
             imageRendering: "-webkit-optimize-contrast",
@@ -115,7 +115,7 @@ export function BasavaMark({
         height={size}
         className={cx(
           "object-contain filter",
-          invert ? "brightness-0 invert sepia-[0.3]" : "brightness-95 contrast-125"
+          invert ? "invert mix-blend-screen" : "mix-blend-multiply"
         )}
         style={{ imageRendering: "-webkit-optimize-contrast" }}
       />

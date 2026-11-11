@@ -6,6 +6,7 @@ import { ArrowLeft } from "lucide-react";
 import type { Product } from "@/lib/types";
 import { useStorefrontCategories, useStorefrontProducts } from "@/lib/hooks";
 import { ProductCard } from "@/components/product/ProductCard";
+import { StaggerItem } from "@/components/motion/MaskText";
 import { QuickViewModal } from "@/components/product/QuickViewModal";
 
 export default function CollectionView({ categorySlug }: { categorySlug: string }) {
@@ -51,12 +52,13 @@ export default function CollectionView({ categorySlug }: { categorySlug: string 
           </div>
         ) : (
           <div className="grid grid-cols-2 gap-x-4 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 sm:gap-x-6 sm:gap-y-12">
-            {matchingProducts.map((p) => (
-              <ProductCard
-                key={p.id}
-                product={p}
-                onQuickView={setQuickViewProduct}
-              />
+            {matchingProducts.map((p, i) => (
+              <StaggerItem key={p.id} index={i} columns={4}>
+                <ProductCard
+                  product={p}
+                  onQuickView={setQuickViewProduct}
+                />
+              </StaggerItem>
             ))}
           </div>
         )}

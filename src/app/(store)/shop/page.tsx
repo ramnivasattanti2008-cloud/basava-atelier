@@ -10,6 +10,7 @@ import { useStorefrontCategories, useStorefrontProducts } from "@/lib/hooks";
 import { ProductCard } from "@/components/product/ProductCard";
 import { QuickViewModal } from "@/components/product/QuickViewModal";
 import { SilhouetteAdvisorModal } from "@/components/shop/SilhouetteAdvisorModal";
+import { StaggerItem } from "@/components/motion/MaskText";
 import { Overlay } from "@/components/ui/Overlay";
 
 type SortOption = "featured" | "price-asc" | "price-desc" | "name-asc";
@@ -349,12 +350,13 @@ function ShopContent() {
             </div>
           ) : (
             <div className="grid grid-cols-2 gap-x-4 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 sm:gap-x-6 sm:gap-y-12">
-              {filteredProducts.map((product) => (
-                <ProductCard
-                  key={product.id}
-                  product={product}
-                  onQuickView={setQuickViewProduct}
-                />
+              {filteredProducts.map((product, i) => (
+                <StaggerItem key={product.id} index={i} columns={3}>
+                  <ProductCard
+                    product={product}
+                    onQuickView={setQuickViewProduct}
+                  />
+                </StaggerItem>
               ))}
             </div>
           )}

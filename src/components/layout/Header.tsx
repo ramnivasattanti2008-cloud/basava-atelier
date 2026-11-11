@@ -108,15 +108,15 @@ export function Header() {
         <div className="flex items-center">
           <button
             type="button"
-            className="-ml-2 flex h-11 w-11 items-center justify-center text-espresso lg:hidden"
+            className="-ml-2 flex h-11 w-11 items-center justify-center text-espresso xl:hidden"
             onClick={() => open("menu")}
             aria-label="Open menu"
             aria-expanded={active === "menu"}
           >
             <Menu size={22} strokeWidth={1.4} aria-hidden />
           </button>
-          <nav aria-label="Primary" className="hidden lg:block">
-            <ul className="flex items-center gap-7 xl:gap-9">
+          <nav aria-label="Primary" className="hidden xl:block">
+            <ul className="flex items-center gap-5 2xl:gap-8">
               {navigation.primary.map((item) => {
                 const isShop = item.href === "/shop";
                 return (
@@ -127,7 +127,7 @@ export function Header() {
                   >
                     <Link
                       href={item.href}
-                      className="link-grow whitespace-nowrap text-[0.78rem] font-medium uppercase tracking-[0.16em] text-espresso"
+                      className="link-grow whitespace-nowrap text-[0.74rem] font-medium uppercase tracking-[0.1em] text-espresso 2xl:text-[0.78rem] 2xl:tracking-[0.16em]"
                       aria-current={isCurrent(item.href) ? "page" : undefined}
                       aria-expanded={isShop ? active === "shop" : undefined}
                       aria-haspopup={isShop ? "true" : undefined}
@@ -157,7 +157,7 @@ export function Header() {
             aria-expanded={active === "search"}
           >
             <Search size={19} strokeWidth={1.4} aria-hidden />
-            <span className="hidden text-[0.78rem] font-medium uppercase tracking-[0.16em] xl:inline">Search</span>
+            <span className="hidden text-[0.78rem] font-medium uppercase tracking-[0.16em] 2xl:inline">Search</span>
           </button>
           <Link
             href="/wishlist"
@@ -165,7 +165,7 @@ export function Header() {
             aria-label={`View your saved pieces, ${wishlistCount} item${wishlistCount === 1 ? "" : "s"}`}
           >
             <Heart size={18} strokeWidth={1.5} className={cx(wishlistCount > 0 && "text-[#96722d] fill-[#96722d]/20")} aria-hidden />
-            <span className="hidden text-[0.78rem] font-medium uppercase tracking-[0.16em] xl:inline">Wishlist</span>
+            <span className="hidden text-[0.78rem] font-medium uppercase tracking-[0.16em] 2xl:inline">Wishlist</span>
             {wishlistCount > 0 && (
               <span className="tabular flex h-4 min-w-4 items-center justify-center rounded-full bg-[#96722d] px-1 text-[0.6rem] font-bold text-ivory">
                 {wishlistCount}
@@ -179,7 +179,7 @@ export function Header() {
             aria-label={`Open your bag, ${count} item${count === 1 ? "" : "s"}`}
           >
             <ShoppingBag size={19} strokeWidth={1.4} aria-hidden />
-            <span className="hidden text-[0.78rem] font-medium uppercase tracking-[0.16em] xl:inline">Bag</span>
+            <span className="hidden text-[0.78rem] font-medium uppercase tracking-[0.16em] 2xl:inline">Bag</span>
             <span className="tabular flex h-5 min-w-5 items-center justify-center bg-espresso px-1 text-[0.66rem] font-semibold text-ivory">
               {count}
             </span>

@@ -221,9 +221,12 @@ export class ImageGenerationService {
       ? "#2B2B2B"
       : "#C5A059";
 
-    const initials = config.personalisation.enabled && config.personalisation.text.trim()
-      ? config.personalisation.text.trim().toUpperCase()
-      : "BV";
+    const rawInitials = (config.personalisation?.enabled && config.personalisation?.text?.trim()) || "BV";
+    const initials = rawInitials
+      .toUpperCase()
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;");
 
     // Tailor noise frequency and specularity to chosen leather grade
     const mat = config.material;
@@ -338,7 +341,7 @@ export class ImageGenerationService {
   <g transform="translate(32, 612)">
     <rect x="0" y="-18" width="460" height="24" rx="2" fill="rgba(30,22,17,0.85)" stroke="rgba(202,163,89,0.3)" stroke-width="0.8" />
     <text x="12" y="-2" fill="#F4E2B8" font-family="'Manrope', sans-serif" font-size="9.5" font-weight="700" letter-spacing="0.14em">
-      ${CONCEPT_DISCLAIMER} · ${config.colourName.toUpperCase()}
+      ${CONCEPT_DISCLAIMER} · ${config.colourName.toUpperCase().replace(/&/g, "&amp;")}
     </text>
   </g>
 
@@ -355,6 +358,7 @@ export class ImageGenerationService {
     // Plain SVG needs hyphenated attribute names; the React-style spellings
     // (stopColor, stopOpacity) are ignored by browsers and render as black.
     const validSvg = fullSvg
+      .replace(/&(?!(amp|lt|gt|quot|apos|#\d+|#x[0-9a-fA-F]+);)/g, "&amp;")
       .replace(/([^\s>])stop-color=/g, "$1 stop-color=")
       .replace(/([^\s>])stop-opacity=/g, "$1 stop-opacity=")
       .replace(/\s*stopColor=/g, " stop-color=")
@@ -926,7 +930,7 @@ export class ImageGenerationService {
           <rect x="275" y="16" width="162" height="28" rx="3" fill="#D8CCA8" stroke="#8A6E4B" stroke-width="0.8" />
           <rect x="275" y="50" width="162" height="28" rx="3" fill="#D8CCA8" stroke="#8A6E4B" stroke-width="0.8" />
           <text x="356" y="102" font-family="'Manrope', sans-serif" font-size="9.5" font-weight="700" fill="#472E19" text-anchor="middle">
-            PHONE & CARD SLOTS
+            PHONE &amp; CARD SLOTS
           </text>
         </g>
 

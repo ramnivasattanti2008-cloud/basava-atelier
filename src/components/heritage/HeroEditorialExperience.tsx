@@ -1,16 +1,15 @@
 "use client";
 
-import { useState } from "react";
-import Link from "next/link";
 import { motion } from "motion/react";
-import { ArrowRight, Compass, ShieldCheck, Check, Sparkles } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight, Compass, Check, Sparkles } from "lucide-react";
 import type { Product } from "@/lib/types";
-import { formatINR } from "@/lib/format";
 import { BasavaLogo } from "@/components/brand/BasavaLogo";
 import { JaliShadowPattern } from "@/components/motion/JaliShadowPattern";
 import { BrassBorderHighlight } from "@/components/motion/BrassBorderHighlight";
 import { SmoothScrollIndicator } from "@/components/motion/SmoothScrollIndicator";
 import { KolamLinework } from "@/components/motion/KolamLinework";
+import { IndianHeritageCanvas } from "@/components/heritage/IndianHeritageCanvas";
 import { RoyalCulturalOpening } from "./RoyalCulturalOpening";
 import { HeroInteractiveCard } from "./HeroInteractiveCard";
 
@@ -26,16 +25,34 @@ export function HeroEditorialExperience({ product, products, onQuickView }: Hero
       {/* 1. Indian Architectural Jali Screen Shadow Background */}
       <JaliShadowPattern tone="dark-heritage" animated={true} />
 
-      {/* 2. Ambient Warm Glow from Sand-Cast Brass and Mysore Gold */}
-      <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-[#C5A059]/10 rounded-full blur-[140px] pointer-events-none" />
-      <div className="absolute bottom-1/3 right-1/4 w-[450px] h-[450px] bg-[#8A2E1E]/12 rounded-full blur-[120px] pointer-events-none" />
-
-      {/* 3. Kolam Floor Art Watermark Linework in Hero Background */}
-      <div className="absolute top-8 left-8 opacity-20 pointer-events-none hidden lg:block">
-        <KolamLinework size={120} variant="corner" tone="gold" animated={true} />
+      {/* 2. Interactive Gold Embers & Shimmer Stardust Living Canvas */}
+      <div className="absolute inset-0 pointer-events-none opacity-45">
+        <IndianHeritageCanvas intensity="subtle" interactive={true} />
       </div>
 
-      {/* 4. Top Antique Brass Hairline Highlight */}
+      {/* 3. Ambient Warm Glow from Sand-Cast Brass and Mysore Gold */}
+      <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-[#C5A059]/12 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute bottom-1/3 right-1/4 w-[450px] h-[450px] bg-[#8A2E1E]/14 rounded-full blur-[120px] pointer-events-none" />
+
+      {/* 4. Top-Left & Bottom-Right Rotating Sacred Kolam Mandalas */}
+      <div className="absolute -top-12 -left-12 opacity-20 pointer-events-none hidden md:block">
+        <motion.div
+          animate={{ rotate: 360 }}
+          transition={{ duration: 90, repeat: Infinity, ease: "linear" }}
+        >
+          <KolamLinework size={240} variant="medallion" tone="gold" animated={false} />
+        </motion.div>
+      </div>
+      <div className="absolute -bottom-16 -right-16 opacity-20 pointer-events-none hidden md:block">
+        <motion.div
+          animate={{ rotate: -360 }}
+          transition={{ duration: 110, repeat: Infinity, ease: "linear" }}
+        >
+          <KolamLinework size={280} variant="medallion" tone="brass" animated={false} />
+        </motion.div>
+      </div>
+
+      {/* 5. Top Antique Brass Hairline Highlight */}
       <BrassBorderHighlight position="top" glow={true} />
 
       <div className="shell relative z-10">

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useMemo, useRef } from "react";
+import { useState, useEffect, useMemo } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "motion/react";
 import {
@@ -10,7 +10,6 @@ import {
   Sparkles,
   ChevronLeft,
   ChevronRight,
-  Layers,
   Pause,
   Play,
 } from "lucide-react";
@@ -83,7 +82,7 @@ export function HeroInteractiveCard({
   const [progress, setProgress] = useState(0);
   const ROTATE_INTERVAL = 4500; // 4.5 seconds per bag
 
-  // Reset angle index when bag changes
+  // Reset angle index and progress when bag changes
   useEffect(() => {
     setActiveImageIdx(0);
     setProgress(0);
@@ -109,7 +108,7 @@ export function HeroInteractiveCard({
     return () => clearInterval(timer);
   }, [isPaused, collectionPieces.length]);
 
-  const viewLabels = ["Front Elevation", "3/4 Profile", "Craft Detail", "Interior"];
+  const viewLabels = ["Elevation", "3/4 Profile", "Craft Detail", "Interior"];
 
   const handlePrev = () => {
     setProgress(0);
@@ -128,10 +127,10 @@ export function HeroInteractiveCard({
       onMouseLeave={() => setIsPaused(false)}
     >
       {/* 1. Ambient Royal Gold & Amber Halos */}
-      <div className="absolute -inset-6 rounded-3xl bg-gradient-to-tr from-[#C5A059]/20 via-[#8A2E1E]/15 to-transparent blur-3xl pointer-events-none" />
+      <div className="absolute -inset-6 rounded-3xl bg-gradient-to-tr from-[#C5A059]/25 via-[#8A2E1E]/18 to-transparent blur-3xl pointer-events-none" />
 
       {/* 2. Top-Right Corner Kolam Linework */}
-      <div className="absolute -top-4 -right-4 z-20 pointer-events-none opacity-70">
+      <div className="absolute -top-4 -right-4 z-20 pointer-events-none opacity-80">
         <KolamLinework size={64} variant="corner" tone="gold" animated={true} />
       </div>
 
@@ -140,12 +139,18 @@ export function HeroInteractiveCard({
         initial={{ opacity: 0, scale: 0.96, y: 15 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        className="relative rounded-xs border border-[#C5A059]/35 bg-gradient-to-b from-[#21150E]/95 via-[#180E08]/95 to-[#120B06]/95 p-5 sm:p-7 shadow-2xl backdrop-blur-md overflow-hidden flex flex-col justify-between"
+        className="relative rounded-xs border border-[#C5A059]/40 bg-gradient-to-b from-[#22160F]/95 via-[#19100A]/95 to-[#120B06]/95 p-5 sm:p-7 shadow-2xl backdrop-blur-md overflow-hidden flex flex-col justify-between"
       >
         {/* Subtle Watermark Kolam Floor Art in Card Background */}
-        <div className="absolute -bottom-10 -right-10 opacity-10 pointer-events-none">
+        <div className="absolute -bottom-10 -right-10 opacity-12 pointer-events-none">
           <KolamLinework size={180} tone="gold" animated={false} />
         </div>
+
+        {/* Diagonal Light Shimmer Sweep across card */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 -translate-x-full hover:translate-x-full transition-transform duration-1000 ease-in-out bg-gradient-to-r from-transparent via-[#F5D77F]/10 to-transparent pointer-events-none z-10"
+        />
 
         {/* Top Header Row with Collection Name & Price */}
         <div className="flex items-center justify-between text-xs pb-3 border-b border-[#C5A059]/20 relative z-10">
@@ -163,7 +168,7 @@ export function HeroInteractiveCard({
             <span className="text-[0.625rem] text-[#D8CEBD]/60 font-mono">
               {activeCollectionIdx + 1}/{collectionPieces.length}
             </span>
-            <span className="font-mono font-semibold text-[#FAF7F2] text-sm bg-[#C5A059]/15 px-2.5 py-0.5 rounded-2xs border border-[#C5A059]/30">
+            <span className="font-mono font-semibold text-[#FAF7F2] text-sm bg-[#C5A059]/20 px-2.5 py-0.5 rounded-2xs border border-[#C5A059]/40 shadow-xs">
               {formatINR(activeProduct?.priceINR)}
             </span>
           </div>
@@ -184,7 +189,7 @@ export function HeroInteractiveCard({
                 className={`px-2 py-1 rounded-2xs uppercase tracking-wider transition-all whitespace-nowrap cursor-pointer ${
                   isSel
                     ? "bg-[#C5A059] text-[#18100A] font-bold shadow-xs"
-                    : "text-[#D8CEBD]/60 hover:text-[#FAF7F2] hover:bg-[#C5A059]/10"
+                    : "text-[#D8CEBD]/60 hover:text-[#FAF7F2] hover:bg-[#C5A059]/15"
                 }`}
               >
                 {item.categoryMeta.label}
@@ -198,10 +203,10 @@ export function HeroInteractiveCard({
           <AnimatePresence mode="wait">
             <motion.div
               key={`${activeProduct?.id}-${activeImage}`}
-              initial={{ opacity: 0, scale: 0.95, y: 8 }}
+              initial={{ opacity: 0, scale: 0.94, y: 10 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 1.02 }}
-              transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+              exit={{ opacity: 0, scale: 1.04 }}
+              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
               className="w-full h-full flex items-center justify-center relative"
             >
               <ProductImage
@@ -209,13 +214,13 @@ export function HeroInteractiveCard({
                 alt={`${activeProduct?.name} — view ${activeImageIdx + 1}`}
                 sizes="(min-width: 1024px) 36vw, 90vw"
                 eager
-                className="max-h-full max-w-full object-contain filter drop-shadow-[0_20px_30px_rgba(0,0,0,0.7)] transition-transform duration-700 hover:scale-105"
+                className="max-h-full max-w-full object-contain filter drop-shadow-[0_24px_35px_rgba(0,0,0,0.75)] transition-transform duration-700 hover:scale-105"
               />
             </motion.div>
           </AnimatePresence>
 
           {/* Floating Botanical Badge */}
-          <div className="absolute top-2 left-2 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#18100A]/85 border border-[#C5A059]/30 text-[0.625rem] font-serif text-[#E8CB85] backdrop-blur-xs">
+          <div className="absolute top-2 left-2 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#18100A]/90 border border-[#C5A059]/40 text-[0.625rem] font-serif text-[#E8CB85] backdrop-blur-xs shadow-sm">
             <Sparkles size={10} className="text-[#F5D77F]" />
             <span>Botanical Tanned Hide</span>
           </div>
@@ -224,7 +229,7 @@ export function HeroInteractiveCard({
           <button
             type="button"
             onClick={handlePrev}
-            className="absolute left-1 top-1/2 -translate-y-1/2 p-2 rounded-full border border-[#C5A059]/30 bg-[#18100A]/80 text-[#F5D77F] hover:bg-[#C5A059] hover:text-[#18100A] transition-all cursor-pointer shadow-md backdrop-blur-xs opacity-75 hover:opacity-100"
+            className="absolute left-1 top-1/2 -translate-y-1/2 p-2 rounded-full border border-[#C5A059]/40 bg-[#18100A]/85 text-[#F5D77F] hover:bg-[#C5A059] hover:text-[#18100A] transition-all cursor-pointer shadow-lg backdrop-blur-xs opacity-80 hover:opacity-100"
             aria-label="Previous Collection Piece"
           >
             <ChevronLeft size={16} />
@@ -234,7 +239,7 @@ export function HeroInteractiveCard({
           <button
             type="button"
             onClick={handleNext}
-            className="absolute right-1 top-1/2 -translate-y-1/2 p-2 rounded-full border border-[#C5A059]/30 bg-[#18100A]/80 text-[#F5D77F] hover:bg-[#C5A059] hover:text-[#18100A] transition-all cursor-pointer shadow-md backdrop-blur-xs opacity-75 hover:opacity-100"
+            className="absolute right-1 top-1/2 -translate-y-1/2 p-2 rounded-full border border-[#C5A059]/40 bg-[#18100A]/85 text-[#F5D77F] hover:bg-[#C5A059] hover:text-[#18100A] transition-all cursor-pointer shadow-lg backdrop-blur-xs opacity-80 hover:opacity-100"
             aria-label="Next Collection Piece"
           >
             <ChevronRight size={16} />
@@ -254,7 +259,7 @@ export function HeroInteractiveCard({
                   className={`relative flex items-center gap-1.5 px-2.5 py-1 text-[0.625rem] font-mono uppercase tracking-wider rounded-2xs border transition-all cursor-pointer ${
                     isSelected
                       ? "bg-[#C5A059] text-[#18100A] font-bold border-[#F5D77F] shadow-sm"
-                      : "bg-[#1C120B]/60 border-[#C5A059]/20 text-[#D8CEBD]/75 hover:border-[#C5A059]/50 hover:text-[#FAF7F2]"
+                      : "bg-[#1C120B]/70 border-[#C5A059]/20 text-[#D8CEBD]/80 hover:border-[#C5A059]/50 hover:text-[#FAF7F2]"
                   }`}
                 >
                   <span>{idx + 1}.</span>
@@ -265,13 +270,24 @@ export function HeroInteractiveCard({
           </div>
         )}
 
-        {/* Dynamic Rotation Progress Bar */}
-        <div className="w-full h-1 bg-[#C5A059]/15 rounded-full overflow-hidden my-2 relative z-10">
-          <motion.div
-            className="h-full bg-gradient-to-r from-[#C5A059] to-[#F5D77F]"
-            style={{ width: `${progress}%` }}
-            transition={{ ease: "linear" }}
-          />
+        {/* Dynamic Rotation Progress Bar with Play/Pause Control */}
+        <div className="w-full flex items-center gap-2 my-2 relative z-10">
+          <button
+            type="button"
+            onClick={() => setIsPaused(!isPaused)}
+            className="text-[#F5D77F]/75 hover:text-[#F5D77F] transition-colors p-1"
+            title={isPaused ? "Resume auto-rotation" : "Pause auto-rotation"}
+            aria-label={isPaused ? "Play" : "Pause"}
+          >
+            {isPaused ? <Play size={10} /> : <Pause size={10} />}
+          </button>
+          <div className="flex-1 h-1 bg-[#C5A059]/15 rounded-full overflow-hidden">
+            <motion.div
+              className="h-full bg-gradient-to-r from-[#C5A059] via-[#F5D77F] to-[#C5A059]"
+              style={{ width: `${progress}%` }}
+              transition={{ ease: "linear" }}
+            />
+          </div>
         </div>
 
         {/* Bottom Details & Direct Link */}
@@ -300,7 +316,7 @@ export function HeroInteractiveCard({
               <button
                 type="button"
                 onClick={() => onQuickView(activeProduct)}
-                className="p-2 rounded-2xs border border-[#C5A059]/30 bg-[#251810] text-[#E8CB85] hover:text-[#FAF7F2] hover:border-[#F5D77F] transition-all cursor-pointer"
+                className="p-2 rounded-2xs border border-[#C5A059]/35 bg-[#251810] text-[#E8CB85] hover:text-[#FAF7F2] hover:border-[#F5D77F] transition-all cursor-pointer shadow-xs"
                 title="Quick View Details"
                 aria-label={`Quick view ${activeProduct?.name}`}
               >

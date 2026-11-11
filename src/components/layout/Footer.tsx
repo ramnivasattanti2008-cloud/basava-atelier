@@ -8,6 +8,8 @@ import { useDemoStore } from "@/lib/store";
 import { whatsappLink, whatsappMessages } from "@/lib/whatsapp";
 
 import { BasavaLogo } from "@/components/brand/BasavaLogo";
+import { BrassBorderHighlight } from "@/components/motion/BrassBorderHighlight";
+import { KolamLinework } from "@/components/motion/KolamLinework";
 
 const linkClass = "link-grow text-[0.92rem] text-ivory/80 transition-colors hover:text-ivory";
 
@@ -16,8 +18,16 @@ export function Footer() {
   const settings = useDemoStore((s) => s.settings);
 
   return (
-    <footer className="on-dark bg-espresso text-ivory border-t border-saddle/20">
-      <div className="shell pb-10 pt-20 md:pt-28">
+    <footer className="on-dark bg-espresso text-ivory border-t border-[#C5A059]/30 relative overflow-hidden">
+      {/* 1. Fine Specular Sand-Cast Brass Hairline Highlight */}
+      <BrassBorderHighlight position="top" glow={true} />
+
+      {/* 2. Symmetrical Ornamental Kolam Ribbon Border Reveal */}
+      <div className="pt-6 pb-2 opacity-75">
+        <KolamLinework variant="ribbon" tone="brass" animated={true} />
+      </div>
+
+      <div className="shell pb-10 pt-12 md:pt-16">
         <div className="grid gap-x-10 gap-y-14 lg:grid-cols-12">
           <div className="lg:col-span-5">
             <Link href="/" aria-label="BASAVA Home">

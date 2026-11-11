@@ -36,7 +36,7 @@ export function IntroReveal() {
     const root = document.documentElement;
     const previous = root.style.overflow;
     root.style.overflow = "hidden";
-    const timer = window.setTimeout(() => finish(false), 2400);
+    const timer = window.setTimeout(() => finish(false), 1100);
     return () => {
       window.clearTimeout(timer);
       root.style.overflow = previous;
@@ -50,6 +50,8 @@ export function IntroReveal() {
     } catch {
       /* storage unavailable: the intro simply plays again next visit */
     }
+    const root = document.documentElement;
+    root.style.overflow = "";
     setDone(true);
   }
 
@@ -58,17 +60,18 @@ export function IntroReveal() {
       {open && (
         <motion.div
           key="intro"
-          className="on-dark fixed inset-0 z-[90] flex flex-col items-center justify-center bg-espresso text-ivory"
+          onClick={() => finish(true)}
+          className="on-dark fixed inset-0 z-[90] flex flex-col items-center justify-center bg-espresso text-ivory cursor-pointer"
           initial={{ y: 0 }}
-          exit={{ y: "-100%" }}
-          transition={{ duration: 0.8, ease: EASE }}
+          exit={{ y: "-100%", opacity: 0.8 }}
+          transition={{ duration: 0.45, ease: EASE }}
           role="dialog"
           aria-label="BASAVA"
         >
           <motion.div
-            initial={{ opacity: 0, y: 14, scale: 0.94 }}
+            initial={{ opacity: 0, y: 10, scale: 0.96 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ duration: 0.9, ease: EASE }}
+            transition={{ duration: 0.45, ease: EASE }}
           >
             <Image
               src="/images/basava-logo-ivory-4x.png"
@@ -80,14 +83,14 @@ export function IntroReveal() {
             />
           </motion.div>
 
-          <p className="mt-6 flex overflow-hidden font-display text-4xl font-medium uppercase tracking-[0.32em] sm:text-5xl" aria-hidden>
+          <p className="mt-5 flex overflow-hidden font-display text-4xl font-medium uppercase tracking-[0.32em] sm:text-5xl" aria-hidden>
             {LETTERS.map((letter, i) => (
               <motion.span
                 key={i}
                 className="inline-block"
                 initial={{ y: "110%" }}
                 animate={{ y: 0 }}
-                transition={{ duration: 0.7, delay: 0.35 + i * 0.06, ease: EASE }}
+                transition={{ duration: 0.35, delay: 0.15 + i * 0.03, ease: EASE }}
               >
                 {letter}
               </motion.span>
@@ -96,24 +99,27 @@ export function IntroReveal() {
 
           <motion.span
             aria-hidden
-            className="mt-6 block h-px w-40 origin-left bg-brass"
+            className="mt-5 block h-px w-36 origin-left bg-brass"
             initial={{ scaleX: 0 }}
             animate={{ scaleX: 1 }}
-            transition={{ duration: 0.9, delay: 0.9, ease: EASE }}
+            transition={{ duration: 0.45, delay: 0.45, ease: EASE }}
           />
 
           <motion.p
-            className="mt-5 text-[0.6875rem] font-semibold uppercase tracking-[0.3em] text-sand"
+            className="mt-4 text-[0.6875rem] font-semibold uppercase tracking-[0.3em] text-sand"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 1.2 }}
+            transition={{ duration: 0.35, delay: 0.6 }}
           >
             Leather · Bengaluru
           </motion.p>
 
           <button
             type="button"
-            onClick={() => finish(true)}
+            onClick={(e) => {
+              e.stopPropagation();
+              finish(true);
+            }}
             className="absolute bottom-8 right-6 text-[0.6875rem] font-semibold uppercase tracking-[0.2em] text-sand underline-offset-4 hover:underline sm:right-10"
           >
             Skip intro

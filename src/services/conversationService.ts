@@ -22,6 +22,7 @@ import {
   CLIMATE_AND_CARE_MANUAL,
   FAQ_DATA,
 } from "@/data/atelierKnowledgeBase";
+import productsData from "@/data/products.json";
 
 export interface ConversationTurnResult {
   reply: string;
@@ -147,6 +148,9 @@ ${Object.entries(HARDWARE_METALLURGY)
 
 13. FREQUENT CRAFTSMANSHIP INQUIRIES:
 ${FAQ_DATA.map((f) => `Q: ${f.q}\nA: ${f.a}`).join("\n\n")}
+
+14. ATELIER READY-TO-WEAR COLLECTION BENCHMARKS:
+${productsData.products.slice(0, 15).map((p) => `• ${p.name} (SKU: ${p.sku}) | Category: ${p.category} | Price: ₹${p.priceINR} | Colours: ${p.colours.join(", ")} | Dimensions: ${p.dimensions.asListed}`).join("\n")}
 `;
 
     const systemPrompt = `You are "The Bespoke Designer", the master leather product architect and senior consultant at BASAVA, the bespoke leathercraft atelier in Bengaluru, Bharat.
@@ -182,7 +186,13 @@ Respond ONLY with a strict JSON object matching this schema:
       parts: [{ text: m.text }],
     }));
 
-    const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
+    const candidateModels = [
+      "gemini-3.8-flash",
+      "gemini-3.5-flash",
+      "gemini-flash-latest",
+      "gemini-3.1-flash-lite",
+    ];
+
     const payload = {
       system_instruction: { parts: [{ text: systemPrompt }] },
       contents: [
@@ -195,17 +205,38 @@ Respond ONLY with a strict JSON object matching this schema:
       },
     };
 
-    const res = await fetch(endpoint, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
-    });
+    let raw = "";
+    for (const model of candidateModels) {
+      const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
+      try {
+        const res = await fetch(endpoint, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
 
-    if (!res.ok) throw new Error(`Gemini call error: ${res.statusText}`);
+        if (res.ok) {
+          const data = await res.json();
+          raw = data.candidates?.[0]?.content?.parts?.[0]?.text || "";
+          if (raw) break;
+        } else {
+          console.warn(`Gemini assistant model ${model} failed with status: ${res.status}`);
+        }
+      } catch (err: any) {
+        console.warn(`Gemini assistant model ${model} error:`, err?.message);
+      }
+    }
 
-    const data = await res.json();
-    const raw = data.candidates?.[0]?.content?.parts?.[0]?.text;
-    const parsed = JSON.parse(raw);
+    if (!raw) {
+      throw new Error("Unable to obtain response from Gemini models.");
+    }
+
+    const cleanJson = raw
+      .replace(/^```json\s*/i, "")
+      .replace(/^```\s*/i, "")
+      .replace(/\s*```$/i, "")
+      .trim();
+    const parsed = JSON.parse(cleanJson);
 
     return {
       reply: parsed.reply,

@@ -104,40 +104,60 @@ Respond ONLY with a valid JSON object matching this schema:
   "artisanAssessment": "Professional 2-sentence description of the silhouette and craftsmanship details."
 }`;
 
-    const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
-    const payload = {
-      contents: [
-        {
-          parts: [
-            { text: `${systemPrompt}\nUser note: ${customerPrompt || "Please analyze this leather bag design reference."}` },
-            {
-              inline_data: {
-                mime_type: mimeType,
-                data: base64Data,
+    const candidateModels = ["gemini-3.8-flash", "gemini-3.5-flash", "gemini-flash-latest"];
+    let rawJson = "";
+
+    for (const model of candidateModels) {
+      const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
+      const payload = {
+        contents: [
+          {
+            parts: [
+              { text: `${systemPrompt}\nUser note: ${customerPrompt || "Please analyze this leather bag design reference."}` },
+              {
+                inline_data: {
+                  mime_type: mimeType,
+                  data: base64Data,
+                },
               },
-            },
-          ],
+            ],
+          },
+        ],
+        generationConfig: {
+          response_mime_type: "application/json",
+          temperature: 0.2,
         },
-      ],
-      generationConfig: {
-        response_mime_type: "application/json",
-        temperature: 0.2,
-      },
-    };
+      };
 
-    const res = await fetch(endpoint, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
-    });
+      try {
+        const res = await fetch(endpoint, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
 
-    if (!res.ok) {
-      throw new Error(`Gemini API error: ${res.statusText}`);
+        if (res.ok) {
+          const data = await res.json();
+          rawJson = data.candidates?.[0]?.content?.parts?.[0]?.text || "";
+          if (rawJson) break;
+        } else {
+          console.warn(`Vision model ${model} failed with status: ${res.status}`);
+        }
+      } catch (err: any) {
+        console.warn(`Vision model ${model} error:`, err?.message);
+      }
     }
 
-    const data = await res.json();
-    const rawJson = data.candidates?.[0]?.content?.parts?.[0]?.text;
-    const parsed = JSON.parse(rawJson);
+    if (!rawJson) {
+      throw new Error("Unable to analyze reference image with AI vision models.");
+    }
+
+    const cleanJson = rawJson
+      .replace(/^```json\s*/i, "")
+      .replace(/^```\s*/i, "")
+      .replace(/\s*```$/i, "")
+      .trim();
+    const parsed = JSON.parse(cleanJson);
 
     return {
       detectedSilhouette: parsed.detectedSilhouette || "tote",

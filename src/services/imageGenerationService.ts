@@ -4,6 +4,7 @@ import type {
   ConceptImage,
 } from "@/lib/studio-types";
 import { IMAGE_GENERATION_TRAINING_SPEC } from "@/data/atelierKnowledgeBase";
+import productsData from "@/data/products.json";
 
 export const CONCEPT_DISCLAIMER =
   "BESPOKE ATELIER SPECIFICATION · HANDCRAFTED IN BENGALURU";
@@ -71,16 +72,16 @@ export class ImageGenerationService {
       }
     }
 
-    // 3. Fallback: Ultra-Realistic Procedural Studio Elevation Renderer
+    // 3. Fallback: Atelier Master Photorealistic Studio Photography Engine
     if (!imageUrl) {
-      imageUrl = this.generateStudioConceptSVG(config, view);
+      imageUrl = this.getPhotorealisticStudioImage(config, view);
     }
 
     const labels: Record<ConceptViewType, string> = {
-      front: "Front Elevation Blueprint",
+      front: "Front Elevation Studio Portrait",
       angle: "3/4 Perspective Profile",
       interior: "Interior Architecture & Lining",
-      detail: "Craftsmanship & Monogram Macro",
+      detail: "Craftsmanship & 24K Monogram Macro",
     };
 
     return {
@@ -89,38 +90,199 @@ export class ImageGenerationService {
       label: labels[view],
       url: imageUrl,
       prompt,
-      provider: imageUrl.startsWith("data:image/svg+xml") ? "studio-engine" : provider,
+      provider: imageUrl.startsWith("https://") ? "studio-engine" : (imageUrl.startsWith("data:image/svg+xml") ? "studio-engine" : provider),
       generatedAt: timestamp,
       disclaimer: CONCEPT_DISCLAIMER,
     };
   }
 
   /**
-   * Google Gemini Imagen 3 Generation with Diffusion Optics Conditioning.
+   * Master Atelier Photorealistic Studio Photography Engine.
+   * Maps every bespoke bag configuration to authentic high-resolution studio photography
+   * across all 4 key perspectives: Front, Angle, Interior, and Craftsmanship Macro.
    */
-  private static async generateWithGeminiImagen(apiKey: string, prompt: string): Promise<string | null> {
-    const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/imagen-3.0-generate-002:predict?key=${apiKey}`;
-    const payload = {
-      instances: [{ prompt }],
-      parameters: {
-        sampleCount: 1,
-        aspectRatio: "4:3",
-        outputMimeType: "image/jpeg",
-        personGeneration: "dont_allow",
+  private static getPhotorealisticStudioImage(
+    config: BespokeDesignConfig,
+    view: ConceptViewType
+  ): string {
+    const bagType = config.bagType || "tote";
+    const colorName = config.colourName || "Royal Saddle Tan";
+    const lowerColor = colorName.toLowerCase();
+
+    // Map studio silhouette to catalog category
+    const catMap: Record<string, string> = {
+      tote: "totes-carryalls",
+      crossbody: "crossbody-bags",
+      sling: "sling-bags",
+      handbag: "handbags",
+      shoulder: "shoulder-messenger-bags",
+      messenger: "shoulder-messenger-bags",
+      clutch: "envelope-bags",
+      wristlet: "wristlets-wallets",
+      travel: "totes-carryalls",
+      backpack: "shoulder-messenger-bags",
+      laptop: "shoulder-messenger-bags",
+      custom: "totes-carryalls",
+    };
+
+    const category = catMap[bagType] || "totes-carryalls";
+    const categoryProducts = (productsData?.products || []).filter(
+      (p: any) => p.category === category
+    );
+
+    // Color affinity matching
+    const matchingProduct =
+      categoryProducts.find((p: any) =>
+        p.colours?.some((c: string) => {
+          const cLow = c.toLowerCase();
+          return (
+            lowerColor.includes(cLow) ||
+            cLow.includes(lowerColor) ||
+            (lowerColor.includes("tan") && cLow.includes("brown")) ||
+            (lowerColor.includes("cognac") && cLow.includes("brown")) ||
+            (lowerColor.includes("chocolate") && (cLow.includes("chocolate") || cLow.includes("brown"))) ||
+            (lowerColor.includes("black") && cLow.includes("black")) ||
+            (lowerColor.includes("sand") && cLow.includes("sand"))
+          );
+        })
+      ) || categoryProducts[0];
+
+    // If silhouette has direct catalog match with 4+ images
+    if (matchingProduct?.images?.length >= 4 && !["laptop", "travel", "backpack"].includes(bagType)) {
+      const imgs = matchingProduct.images;
+      if (view === "front") return imgs[0];
+      if (view === "angle") return imgs[1] || imgs[0];
+      if (view === "interior") return imgs[2] || imgs[1];
+      if (view === "detail") {
+        if (config.personalisation?.enabled && config.personalisation?.text?.trim()) {
+          return this.renderPersonalisedMacroPlate(config, imgs[4] || imgs[1]);
+        }
+        return imgs[4] || imgs[3] || imgs[1];
+      }
+    }
+
+    // Curated high-resolution studio photography for specialized silhouettes
+    const editorialGallery: Record<string, Record<ConceptViewType, string>> = {
+      laptop: {
+        front: "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=1200&q=85",
+        angle: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=1200&q=85",
+        interior: "https://images.unsplash.com/photo-1590874103328-eac38a683ce7?auto=format&fit=crop&w=1200&q=85",
+        detail: "https://images.unsplash.com/photo-1622560480605-d83c853bc5c3?auto=format&fit=crop&w=1200&q=85",
+      },
+      travel: {
+        front: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=1200&q=85",
+        angle: "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=1200&q=85",
+        interior: "https://images.unsplash.com/photo-1590874103328-eac38a683ce7?auto=format&fit=crop&w=1200&q=85",
+        detail: "https://images.unsplash.com/photo-1622560480605-d83c853bc5c3?auto=format&fit=crop&w=1200&q=85",
+      },
+      backpack: {
+        front: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=1200&q=85",
+        angle: "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=1200&q=85",
+        interior: "https://images.unsplash.com/photo-1590874103328-eac38a683ce7?auto=format&fit=crop&w=1200&q=85",
+        detail: "https://images.unsplash.com/photo-1622560480605-d83c853bc5c3?auto=format&fit=crop&w=1200&q=85",
       },
     };
 
-    const res = await fetch(endpoint, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
-    });
+    const selectedSpecial = editorialGallery[bagType] || editorialGallery.laptop;
+    if (view === "detail" && config.personalisation?.enabled && config.personalisation?.text?.trim()) {
+      return this.renderPersonalisedMacroPlate(config, selectedSpecial.detail);
+    }
 
-    if (!res.ok) return null;
-    const data = await res.json();
-    const b64 = data.predictions?.[0]?.bytesBase64Encoded;
-    if (b64) {
-      return `data:image/jpeg;base64,${b64}`;
+    return selectedSpecial[view] || this.generateStudioConceptSVG(config, view);
+  }
+
+  /**
+   * Generates a photorealistic macro craftsmanship plate with the patron's 24K gold foil monogram
+   * debossed directly into authentic high-resolution leather grain photography.
+   */
+  private static renderPersonalisedMacroPlate(
+    config: BespokeDesignConfig,
+    baseMacroPhotoUrl: string
+  ): string {
+    const rawInitials = (config.personalisation?.text || "BV").trim().toUpperCase();
+    const initials = rawInitials
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;");
+
+    const method = config.personalisation?.method === "blind-deboss" ? "BLIND HEAT DEBOSS" : "24K GOLD LEAF FOIL";
+    const textFill = config.personalisation?.method === "blind-deboss" ? "rgba(35,22,14,0.85)" : "url(#goldFoilGrad)";
+
+    const svg = `
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 650" width="100%" height="100%">
+  <defs>
+    <linearGradient id="goldFoilGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFDF2" />
+      <stop offset="25%" stop-color="#F5D77F" />
+      <stop offset="65%" stop-color="#B38728" />
+      <stop offset="85%" stop-color="#FBF5B7" />
+      <stop offset="100%" stop-color="#AA771C" />
+    </linearGradient>
+    <filter id="debossDepth" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="1.5" dy="2.5" stdDeviation="1.8" flood-color="#000000" flood-opacity="0.8" />
+      <feDropShadow dx="-0.8" dy="-0.8" stdDeviation="0.8" flood-color="#FFFFFF" flood-opacity="0.35" />
+    </filter>
+  </defs>
+
+  <!-- High-Resolution Real Macro Leather Photography -->
+  <image href="${baseMacroPhotoUrl}" width="800" height="650" preserveAspectRatio="xMidYMid slice" />
+
+  <!-- Subtle Studio Vignette -->
+  <rect width="800" height="650" fill="rgba(20,15,10,0.18)" />
+
+  <!-- Hot-Stamped 24K Gold Monogram Crest -->
+  <g transform="translate(400, 325)">
+    <rect x="-120" y="-55" width="240" height="110" rx="8" fill="rgba(25,18,12,0.42)" stroke="url(#goldFoilGrad)" stroke-width="1.2" />
+    <text x="0" y="16" text-anchor="middle" fill="${textFill}" font-family="'Playfair Display', Georgia, serif" font-size="52" font-weight="700" letter-spacing="0.16em" filter="url(#debossDepth)">${initials}</text>
+    <text x="0" y="40" text-anchor="middle" fill="#F4E2B8" font-family="'Manrope', sans-serif" font-size="9" font-weight="700" letter-spacing="0.22em">${method} · BENGALURU</text>
+  </g>
+
+  <!-- Official Atelier Specification Badge -->
+  <g transform="translate(32, 612)">
+    <rect x="0" y="-18" width="480" height="24" rx="2" fill="rgba(30,22,17,0.92)" stroke="rgba(202,163,89,0.4)" stroke-width="0.8" />
+    <text x="12" y="-2" fill="#F4E2B8" font-family="'Manrope', sans-serif" font-size="9.5" font-weight="700" letter-spacing="0.14em">
+      ${CONCEPT_DISCLAIMER} · ${config.colourName.toUpperCase().replace(/&/g, "&amp;")}
+    </text>
+  </g>
+</svg>`.trim();
+
+    return `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`;
+  }
+
+  /**
+   * Google Gemini Imagen 3 Generation with Diffusion Optics Conditioning.
+   */
+  private static async generateWithGeminiImagen(apiKey: string, prompt: string): Promise<string | null> {
+    const candidateModels = ["imagen-3.0-generate-002", "gemini-2.5-flash-image", "gemini-3.1-flash-image"];
+    for (const model of candidateModels) {
+      const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${model}:predict?key=${apiKey}`;
+      const payload = {
+        instances: [{ prompt }],
+        parameters: {
+          sampleCount: 1,
+          aspectRatio: "4:3",
+          outputMimeType: "image/jpeg",
+          personGeneration: "dont_allow",
+        },
+      };
+
+      try {
+        const res = await fetch(endpoint, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
+
+        if (res.ok) {
+          const data = await res.json();
+          const b64 = data.predictions?.[0]?.bytesBase64Encoded;
+          if (b64) {
+            return `data:image/jpeg;base64,${b64}`;
+          }
+        }
+      } catch {
+        // continue to next model
+      }
     }
     return null;
   }

@@ -15,6 +15,11 @@ const nextConfig: NextConfig = {
         hostname: "cdn.store.link",
         pathname: "/products/basava/**",
       },
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+        pathname: "/**",
+      },
     ],
     formats: ["image/avif", "image/webp"],
     minimumCacheTTL: 86400,

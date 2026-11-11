@@ -53,8 +53,8 @@ export class DesignVersionService {
     if (oldConfig.closure !== newConfig.closure) {
       diffs.push(`Closure changed to ${newConfig.closure}`);
     }
-    if (oldConfig.personalisation.text !== newConfig.personalisation.text) {
-      if (newConfig.personalisation.enabled && newConfig.personalisation.text) {
+    if (oldConfig.personalisation?.text !== newConfig.personalisation?.text) {
+      if (newConfig.personalisation?.enabled && newConfig.personalisation?.text) {
         diffs.push(`Monogram set to '${newConfig.personalisation.text}'`);
       } else {
         diffs.push("Monogram removed");

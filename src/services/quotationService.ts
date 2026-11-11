@@ -53,11 +53,11 @@ export class QuotationService {
     else if (config.material === "suede") base += 600;
 
     // Interior compartments
-    if (config.interior.laptopSleeve) base += 500;
-    if (config.interior.zipperPocket) base += 250;
+    if (config.interior?.laptopSleeve) base += 500;
+    if (config.interior?.zipperPocket) base += 250;
 
     // Monogramming
-    if (config.personalisation.enabled && config.personalisation.method === "gold-foil") {
+    if (config.personalisation?.enabled && config.personalisation?.method === "gold-foil") {
       base += 350;
     }
 
@@ -83,10 +83,10 @@ export class QuotationService {
       `Hello ${makerName},`,
       `I have customized a bespoke leather bag in your Bespoke Atelier Studio.`,
       `Reference ID: ${request.referenceCode}`,
-      `Piece: ${request.currentConfig.designName}`,
-      `Leather: ${request.currentConfig.colourName} (${request.currentConfig.material})`,
-      `Hardware: ${request.currentConfig.hardware}`,
-      request.currentConfig.personalisation.enabled
+      `Piece: ${request.currentConfig?.designName || "Custom Bag"}`,
+      `Leather: ${request.currentConfig?.colourName || "Saddle Tan"} (${request.currentConfig?.material || "Full-Grain"})`,
+      `Hardware: ${request.currentConfig?.hardware || "Solid Brass"}`,
+      request.currentConfig?.personalisation?.enabled
         ? `Monogram: '${request.currentConfig.personalisation.text}' (${request.currentConfig.personalisation.method})`
         : `Personalisation: None`,
       `I would like to discuss feasibility and the confirmed price quote.`,

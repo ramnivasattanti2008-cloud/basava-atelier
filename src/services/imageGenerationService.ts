@@ -3,6 +3,7 @@ import type {
   ConceptViewType,
   ConceptImage,
 } from "@/lib/studio-types";
+import { defaultBespokeDesign } from "@/data/studio-defaults";
 import { IMAGE_GENERATION_TRAINING_SPEC } from "@/data/atelierKnowledgeBase";
 import productsData from "@/data/products.json";
 
@@ -11,11 +12,35 @@ export const CONCEPT_DISCLAIMER =
 
 export class ImageGenerationService {
   /**
+   * Safely normalizes partial or undefined config parameters with defaults.
+   */
+  public static normalizeConfig(incoming?: Partial<BespokeDesignConfig>): BespokeDesignConfig {
+    const base = { ...defaultBespokeDesign, ...(incoming || {}) };
+    return {
+      ...base,
+      dimensions: {
+        ...defaultBespokeDesign.dimensions,
+        ...(incoming?.dimensions || {}),
+      },
+      interior: {
+        ...defaultBespokeDesign.interior,
+        ...(incoming?.interior || {}),
+      },
+      personalisation: {
+        ...defaultBespokeDesign.personalisation,
+        ...(incoming?.personalisation || {}),
+      },
+      straps: incoming?.straps || defaultBespokeDesign.straps,
+    };
+  }
+
+  /**
    * Generates all 4 studio views (front, angle, interior, detail) for a bespoke bag configuration.
    */
   static async generateConceptViews(
     config: BespokeDesignConfig
   ): Promise<Record<ConceptViewType, ConceptImage>> {
+    const safeConfig = this.normalizeConfig(config);
     const geminiKey = process.env.GEMINI_API_KEY;
     const openaiKey = process.env.OPENAI_API_KEY;
 
@@ -29,10 +54,10 @@ export class ImageGenerationService {
     const timestamp = new Date().toISOString();
 
     const [front, angle, interior, detail] = await Promise.all([
-      this.renderView(config, "front", provider, geminiKey, openaiKey, timestamp),
-      this.renderView(config, "angle", provider, geminiKey, openaiKey, timestamp),
-      this.renderView(config, "interior", provider, geminiKey, openaiKey, timestamp),
-      this.renderView(config, "detail", provider, geminiKey, openaiKey, timestamp),
+      this.renderView(safeConfig, "front", provider, geminiKey, openaiKey, timestamp),
+      this.renderView(safeConfig, "angle", provider, geminiKey, openaiKey, timestamp),
+      this.renderView(safeConfig, "interior", provider, geminiKey, openaiKey, timestamp),
+      this.renderView(safeConfig, "detail", provider, geminiKey, openaiKey, timestamp),
     ]);
 
     return { front, angle, interior, detail };
@@ -370,7 +395,7 @@ export class ImageGenerationService {
    * Google Gemini Imagen 3 Generation with Diffusion Optics Conditioning.
    */
   private static async generateWithGeminiImagen(apiKey: string, prompt: string): Promise<string | null> {
-    const candidateModels = ["imagen-3.0-generate-002", "gemini-2.5-flash-image", "gemini-3.1-flash-image"];
+    const candidateModels = ["imagen-3.0-generate-002"];
     for (const model of candidateModels) {
       const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${model}:predict?key=${apiKey}`;
       const payload = {
@@ -388,6 +413,7 @@ export class ImageGenerationService {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(payload),
+          signal: AbortSignal.timeout(3500),
         });
 
         if (res.ok) {
@@ -398,7 +424,7 @@ export class ImageGenerationService {
           }
         }
       } catch {
-        // continue to next model
+        // continue to studio renderer fallback
       }
     }
     return null;
@@ -408,30 +434,32 @@ export class ImageGenerationService {
    * OpenAI DALL-E 3 Generation with Natural Commercial Styling.
    */
   private static async generateWithOpenAI(apiKey: string, prompt: string): Promise<string | null> {
-    const res = await fetch("https://api.openai.com/v1/images/generations", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${apiKey}`,
-      },
-      body: JSON.stringify({
-        model: "dall-e-3",
-        prompt,
-        n: 1,
-        size: "1024x1024",
-        quality: "hd",
-        style: "natural",
-        response_format: "b64_json",
-      }),
-    });
+    try {
+      const res = await fetch("https://api.openai.com/v1/images/generations", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${apiKey}`,
+        },
+        body: JSON.stringify({
+          model: "dall-e-3",
+          prompt,
+          n: 1,
+          size: "1024x1024",
+          quality: "hd",
+          style: "natural",
+          response_format: "b64_json",
+        }),
+        signal: AbortSignal.timeout(4000),
+      });
 
-    if (!res.ok) return null;
-    const data = await res.json();
-    const b64 = data.data?.[0]?.b64_json;
-    if (b64) {
-      return `data:image/jpeg;base64,${b64}`;
+      if (!res.ok) return null;
+      const data = await res.json();
+      const b64 = data.data?.[0]?.b64_json;
+      return b64 ? `data:image/jpeg;base64,${b64}` : null;
+    } catch {
+      return null;
     }
-    return null;
   }
 
   /**
@@ -467,8 +495,8 @@ export class ImageGenerationService {
     const typeStr = bagTypeDesc[config.bagType] || "bespoke luxury leather bag";
     const matStr = materialDesc[config.material] || `${config.material} genuine vegetable-tanned leather`;
     const colStr = `${config.colourName} (${config.colourHex})`;
-    const hwStr = `${config.hardware.replace("-", " ")} solid sand-cast brass fittings, rivets, and buckles from Moradabad`;
-    const monoStr = config.personalisation.enabled && config.personalisation.text
+    const hwStr = `${(config.hardware || "antique-brass").replace("-", " ")} solid sand-cast brass fittings, rivets, and buckles from Moradabad`;
+    const monoStr = config.personalisation?.enabled && config.personalisation?.text
       ? `personalized with hot-stamped 24K gold foil debossed monogram initials '${config.personalisation.text}' pressed 1.2mm deep into the hide grain with crisp Caslon serif typography`
       : "clean unembellished exterior";
 
@@ -673,7 +701,7 @@ export class ImageGenerationService {
           <rect x="194" y="126" width="12" height="18" rx="2" fill="#20150B" />
 
           <!-- 24K Hot-Stamped Gold Monogram -->
-          ${config.personalisation.enabled ? `
+          ${config.personalisation?.enabled ? `
             <g transform="translate(200, 212)">
               <text x="0" y="0" font-family="'Cormorant Garamond', serif" font-size="28" font-weight="700" fill="url(#goldFoilGrad)" text-anchor="middle" letter-spacing="0.25em" filter="drop-shadow(0 1.5px 2px rgba(0,0,0,0.75))">
                 ${initials}
@@ -705,7 +733,7 @@ export class ImageGenerationService {
           <circle cx="28" cy="12" r="5" fill="url(#brassMetalGrad)" />
 
           <!-- Monogram -->
-          ${config.personalisation.enabled ? `
+          ${config.personalisation?.enabled ? `
             <g transform="translate(170, 135)">
               <text x="0" y="0" font-family="'Cormorant Garamond', serif" font-size="28" font-weight="700" fill="url(#goldFoilGrad)" text-anchor="middle" letter-spacing="0.25em" filter="drop-shadow(0 1.5px 2px rgba(0,0,0,0.75))">
                 ${initials}
@@ -742,7 +770,7 @@ export class ImageGenerationService {
           <rect x="253" y="116" width="4" height="28" rx="2" fill="${hex}" stroke="#1E1610" stroke-width="0.8" />
 
           <!-- 24K Gold Debossed Initials -->
-          ${config.personalisation.enabled ? `
+          ${config.personalisation?.enabled ? `
             <g transform="translate(150, 320)">
               <text x="0" y="0" font-family="'Cormorant Garamond', serif" font-size="32" font-weight="700" fill="url(#goldFoilGrad)" text-anchor="middle" letter-spacing="0.25em" filter="drop-shadow(0 1.5px 2px rgba(0,0,0,0.75))">
                 ${initials}
@@ -784,7 +812,7 @@ export class ImageGenerationService {
           <rect x="165" y="293" width="10" height="6" rx="1.5" fill="url(#brassMetalGrad)" />
 
           <!-- Monogram -->
-          ${config.personalisation.enabled ? `
+          ${config.personalisation?.enabled ? `
             <g transform="translate(170, 395)">
               <text x="0" y="0" font-family="'Cormorant Garamond', serif" font-size="28" font-weight="700" fill="url(#goldFoilGrad)" text-anchor="middle" letter-spacing="0.25em" filter="drop-shadow(0 1.5px 2px rgba(0,0,0,0.75))">
                 ${initials}
@@ -832,7 +860,7 @@ export class ImageGenerationService {
           </g>
 
           <!-- 24K Hot-Stamped Gold Monogram -->
-          ${config.personalisation.enabled ? `
+          ${config.personalisation?.enabled ? `
             <g transform="translate(210, 350)">
               <text x="0" y="0" font-family="'Cormorant Garamond', serif" font-size="34" font-weight="700" fill="url(#goldFoilGrad)" text-anchor="middle" letter-spacing="0.25em" filter="drop-shadow(0 1.5px 2px rgba(0,0,0,0.8))">
                 ${initials}
@@ -875,7 +903,7 @@ export class ImageGenerationService {
           <circle cx="180" cy="239" r="6" fill="#20150B" />
 
           <!-- Monogram -->
-          ${config.personalisation.enabled ? `
+          ${config.personalisation?.enabled ? `
             <g transform="translate(180, 360)">
               <text x="0" y="0" font-family="'Cormorant Garamond', serif" font-size="30" font-weight="700" fill="url(#goldFoilGrad)" text-anchor="middle" letter-spacing="0.25em" filter="drop-shadow(0 1.5px 2px rgba(0,0,0,0.75))">
                 ${initials}
@@ -908,7 +936,7 @@ export class ImageGenerationService {
           <circle cx="335" cy="140" r="14" fill="none" stroke="url(#brassMetalGrad)" stroke-width="5" />
 
           <!-- Monogram -->
-          ${config.personalisation.enabled ? `
+          ${config.personalisation?.enabled ? `
             <g transform="translate(190, 340)">
               <text x="0" y="0" font-family="'Cormorant Garamond', serif" font-size="32" font-weight="700" fill="url(#goldFoilGrad)" text-anchor="middle" letter-spacing="0.25em" filter="drop-shadow(0 1.5px 2px rgba(0,0,0,0.75))">
                 ${initials}
@@ -952,7 +980,7 @@ export class ImageGenerationService {
           </g>
 
           <!-- Monogram -->
-          ${config.personalisation.enabled ? `
+          ${config.personalisation?.enabled ? `
             <g transform="translate(200, 245)">
               <text x="0" y="0" font-family="'Cormorant Garamond', serif" font-size="30" font-weight="700" fill="url(#goldFoilGrad)" text-anchor="middle" letter-spacing="0.25em" filter="drop-shadow(0 1.5px 2px rgba(0,0,0,0.75))">
                 ${initials}
@@ -995,7 +1023,7 @@ export class ImageGenerationService {
           </g>
 
           <!-- Monogram -->
-          ${config.personalisation.enabled ? `
+          ${config.personalisation?.enabled ? `
             <g transform="translate(250, 320)">
               <text x="0" y="0" font-family="'Cormorant Garamond', serif" font-size="34" font-weight="700" fill="url(#goldFoilGrad)" text-anchor="middle" letter-spacing="0.25em" filter="drop-shadow(0 1.5px 2px rgba(0,0,0,0.8))">
                 ${initials}
@@ -1040,7 +1068,7 @@ export class ImageGenerationService {
           <line x1="65" y1="285" x2="275" y2="285" stroke="url(#brassMetalGrad)" stroke-width="3.5" />
 
           <!-- Monogram -->
-          ${config.personalisation.enabled ? `
+          ${config.personalisation?.enabled ? `
             <g transform="translate(170, 365)">
               <text x="0" y="0" font-family="'Cormorant Garamond', serif" font-size="30" font-weight="700" fill="url(#goldFoilGrad)" text-anchor="middle" letter-spacing="0.25em" filter="drop-shadow(0 1.5px 2px rgba(0,0,0,0.8))">
                 ${initials}
@@ -1094,7 +1122,7 @@ export class ImageGenerationService {
         </g>
 
         <!-- 24K Hot-Stamped Gold Monogram -->
-        ${config.personalisation.enabled ? `
+        ${config.personalisation?.enabled ? `
           <g transform="translate(200, 365)">
             <text x="0" y="0" font-family="'Cormorant Garamond', serif" font-size="34" font-weight="700" fill="url(#goldFoilGrad)" text-anchor="middle" letter-spacing="0.25em" filter="drop-shadow(0 1.5px 2px rgba(0,0,0,0.8))">
               ${initials}
@@ -1156,7 +1184,7 @@ export class ImageGenerationService {
         <path d="M 190 92 C 200 -25, 345 -15, 365 98" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="1.3" stroke-dasharray="5 3" />
 
         <!-- Perspective 24K Gold Monogram -->
-        ${config.personalisation.enabled ? `
+        ${config.personalisation?.enabled ? `
           <g transform="translate(265, 345) skewY(3.5)">
             <text x="0" y="0" font-family="'Cormorant Garamond', serif" font-size="32" font-weight="700" fill="url(#goldFoilGrad)" text-anchor="middle" letter-spacing="0.25em" filter="drop-shadow(0 1.5px 2px rgba(0,0,0,0.8))">
               ${initials}

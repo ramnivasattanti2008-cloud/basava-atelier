@@ -80,8 +80,8 @@ export class DesignConfigurationService {
     }
 
     // 2. Material & Personalisation Compatibility
-    if (config.material === "canvas-leather" && config.personalisation.enabled) {
-      if (config.personalisation.method === "blind-deboss" && config.personalisation.placement === "bottom-center") {
+    if (config.material === "canvas-leather" && config.personalisation?.enabled) {
+      if (config.personalisation?.method === "blind-deboss" && config.personalisation?.placement === "bottom-center") {
         issues.push({
           field: "personalisation",
           level: "warning",
@@ -91,7 +91,7 @@ export class DesignConfigurationService {
       }
     }
 
-    if (config.material === "suede" && config.personalisation.enabled && config.personalisation.method === "gold-foil") {
+    if (config.material === "suede" && config.personalisation?.enabled && config.personalisation?.method === "gold-foil") {
       issues.push({
         field: "personalisation",
         level: "info",
@@ -101,7 +101,7 @@ export class DesignConfigurationService {
     }
 
     // 3. Proportional Sanity Checks
-    if (config.bagType === "clutch" && config.dimensions.width > 35) {
+    if (config.bagType === "clutch" && config.dimensions?.width && config.dimensions.width > 35) {
       issues.push({
         field: "dimensions",
         level: "warning",
@@ -109,7 +109,7 @@ export class DesignConfigurationService {
       });
     }
 
-    if (config.bagType === "laptop" && config.dimensions.width < 34) {
+    if (config.bagType === "laptop" && config.dimensions?.width && config.dimensions.width < 34) {
       issues.push({
         field: "dimensions",
         level: "warning",
@@ -118,7 +118,7 @@ export class DesignConfigurationService {
     }
 
     // 4. Personalisation length
-    if (config.personalisation.enabled && config.personalisation.text.length > 8) {
+    if (config.personalisation?.enabled && config.personalisation?.text && config.personalisation.text.length > 8) {
       issues.push({
         field: "personalisation",
         level: "warning",

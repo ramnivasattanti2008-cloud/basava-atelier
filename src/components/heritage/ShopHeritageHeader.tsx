@@ -9,8 +9,8 @@ import { IndianHeritageCanvas } from "@/components/heritage/IndianHeritageCanvas
 import { BasavaLogo } from "@/components/brand/BasavaLogo";
 
 interface ShopHeritageHeaderProps {
-  onOpenAdvisor: () => void;
-  totalPieces: number;
+  onOpenAdvisor?: () => void;
+  totalPieces?: number;
 }
 
 /**
@@ -19,7 +19,7 @@ interface ShopHeritageHeaderProps {
  * Implements traditional architectural jali patterns, animated rangoli/kolam
  * linework, floating golden ember particles, and Mysore court typography.
  */
-export function ShopHeritageHeader({ onOpenAdvisor, totalPieces }: ShopHeritageHeaderProps) {
+export function ShopHeritageHeader({ onOpenAdvisor, totalPieces = 40 }: ShopHeritageHeaderProps) {
   return (
     <section className="relative overflow-hidden bg-gradient-to-b from-[#18100A] via-[#120B07] to-[#0D0704] text-[#FAF7F2] pt-8 pb-12 sm:pt-12 sm:pb-16 border-b border-[#C5A059]/30 mb-8 select-none">
       {/* 1. Indian Architectural Jali Screen Shadow Background */}
@@ -90,7 +90,12 @@ export function ShopHeritageHeader({ onOpenAdvisor, totalPieces }: ShopHeritageH
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.3 }}
             type="button"
-            onClick={onOpenAdvisor}
+            onClick={() => {
+              if (onOpenAdvisor) onOpenAdvisor();
+              else if (typeof window !== "undefined") {
+                window.dispatchEvent(new CustomEvent("open-silhouette-advisor"));
+              }
+            }}
             className="btn-tactile inline-flex items-center gap-2 px-5 py-3 border border-[#C5A059] bg-[#C5A059]/20 hover:bg-[#C5A059]/30 text-[#FAF7F2] text-xs font-bold uppercase tracking-wider rounded-xs transition-all cursor-pointer shadow-lg shrink-0 self-start md:self-auto"
           >
             <Compass size={15} className="text-[#F5D77F]" />

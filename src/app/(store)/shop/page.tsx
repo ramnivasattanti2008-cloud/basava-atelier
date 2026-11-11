@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense, useMemo, useState } from "react";
+import { Suspense, useEffect, useMemo, useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { Compass, Filter, SlidersHorizontal, X } from "lucide-react";
 import type { Product } from "@/lib/types";
@@ -36,6 +36,12 @@ function ShopContent() {
   const [quickViewProduct, setQuickViewProduct] = useState<Product | null>(null);
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   const [advisorOpen, setAdvisorOpen] = useState(false);
+
+  useEffect(() => {
+    const handler = () => setAdvisorOpen(true);
+    window.addEventListener("open-silhouette-advisor", handler);
+    return () => window.removeEventListener("open-silhouette-advisor", handler);
+  }, []);
 
   // URL State
   const selectedCategory = searchParams.get("category") || "all";
@@ -227,27 +233,19 @@ function ShopContent() {
   );
 
   return (
-    <div className="relative min-h-screen">
-      {/* 1. ROYAL HERITAGE SHOPPING HEADER BANNER WITH RANGOLI & PARTICLES */}
-      <ShopHeritageHeader
-        totalPieces={products.length}
-        onOpenAdvisor={() => setAdvisorOpen(true)}
-      />
+    <div className="relative overflow-hidden py-4 sm:py-8">
+      {/* Subtle Handloom Textile Background Pattern */}
+      <TextileWeavePattern tone="parchment" animated={true} />
 
-      {/* 2. MAIN CATALOGUE STAGE WITH HANDWOVEN TEXTILE & RANGOLI WATERMARKS */}
-      <div className="relative overflow-hidden py-4 sm:py-8">
-        {/* Subtle Handloom Textile Background Pattern */}
-        <TextileWeavePattern tone="parchment" animated={true} />
+      {/* Ambient Animated Rangoli Watermark Medallions */}
+      <div className="absolute top-10 right-4 opacity-15 pointer-events-none hidden xl:block">
+        <KolamLinework size={180} variant="medallion" tone="brass" animated={true} />
+      </div>
+      <div className="absolute bottom-20 left-4 opacity-15 pointer-events-none hidden xl:block">
+        <KolamLinework size={180} variant="medallion" tone="brass" animated={true} />
+      </div>
 
-        {/* Ambient Animated Rangoli Watermark Medallions */}
-        <div className="absolute top-10 right-4 opacity-15 pointer-events-none hidden xl:block">
-          <KolamLinework size={180} variant="medallion" tone="brass" animated={true} />
-        </div>
-        <div className="absolute bottom-20 left-4 opacity-15 pointer-events-none hidden xl:block">
-          <KolamLinework size={180} variant="medallion" tone="brass" animated={true} />
-        </div>
-
-        <div className="shell relative z-10">
+      <div className="shell relative z-10">
           {/* Control Bar: Filter Toggle, Active Chips, Sorting */}
       <div className="mt-8 flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-espresso/12 pb-5">
         <div className="flex flex-wrap items-center gap-3">
@@ -368,10 +366,6 @@ function ShopContent() {
         </div>
       </div>
     </div>
-  </div>
-
-  {/* 3. ROYAL INDIAN PAINTING SHOWCASE BANNER */}
-  <RoyalPaintingBanner />
 
       {/* Mobile Filter Sheet */}
       <Overlay
@@ -413,9 +407,27 @@ function ShopContent() {
 
 export default function ShopPage() {
   return (
-    <Suspense fallback={<div className="shell py-20 text-center"><p className="font-display text-2xl">Loading catalogue…</p></div>}>
-      <ShopContent />
-    </Suspense>
+    <div className="relative min-h-screen">
+      {/* 1. ROYAL HERITAGE SHOPPING HEADER BANNER WITH RANGOLI & PARTICLES */}
+      <ShopHeritageHeader totalPieces={40} />
+
+      {/* 2. DYNAMIC CATALOGUE WITH FILTERS */}
+      <Suspense
+        fallback={
+          <div className="shell py-24 text-center">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#C5A059]/40 bg-[#C5A059]/10 text-[#96722D] text-xs font-serif tracking-widest uppercase mb-4">
+              <span>ಬೆಂಗಳೂರು ಅಟೆಲಿಯರ್ · BENGALURU ATELIER</span>
+            </div>
+            <p className="font-display text-2xl text-espresso">Opening the catalogue…</p>
+          </div>
+        }
+      >
+        <ShopContent />
+      </Suspense>
+
+      {/* 3. ROYAL INDIAN PAINTING SHOWCASE BANNER */}
+      <RoyalPaintingBanner />
+    </div>
   );
 }
 

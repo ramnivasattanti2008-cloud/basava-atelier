@@ -15,11 +15,7 @@ import { QuickViewModal } from "@/components/product/QuickViewModal";
 import { EngravingPreview } from "@/components/custom/EngravingPreview";
 import { HeritageSeal } from "@/components/heritage/HeritageSeal";
 import { HeritageFlourish } from "@/components/heritage/HeritageFlourish";
-import { IndianHeritageCanvas } from "@/components/heritage/IndianHeritageCanvas";
 import { HeroInteractiveCard } from "@/components/heritage/HeroInteractiveCard";
-import { RoyalPaintingBanner } from "@/components/heritage/RoyalPaintingBanner";
-import { RoyalIndianPaintingGallery } from "@/components/heritage/RoyalIndianPaintingGallery";
-import { IndianArtisanalMap } from "@/components/heritage/IndianArtisanalMap";
 import { PatinaInteractiveSimulator } from "@/components/heritage/PatinaInteractiveSimulator";
 import { PackagingExperience } from "@/components/heritage/PackagingExperience";
 import { Reveal } from "@/components/ui/Reveal";
@@ -39,38 +35,35 @@ export default function HomePage() {
 
   return (
     <div className="flex flex-col">
-      {/* 1. HERO SECTION WITH ROYAL INDIAN ANIMATED CANVAS */}
-      <section className="relative overflow-hidden border-b border-espresso/15 pt-10 pb-16 sm:pt-16 sm:pb-28">
-        {/* Real-time 24K Gold Embers & Sacred Hoysala Mandala Background */}
-        <IndianHeritageCanvas intensity="rich" interactive={true} />
-
+      {/* 1. HERO SECTION */}
+      <section className="relative overflow-hidden border-b border-espresso/15 pt-8 pb-16 sm:pt-14 sm:pb-24 bg-gradient-to-b from-[#faf6f0] via-[#f7f2ea] to-[#f2ece2]">
         <div className="shell relative z-10 grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-16">
           {/* Left: Headline & CTAs */}
           <div className="lg:col-span-7 flex flex-col justify-center">
-            <div className="flex items-center gap-2.5 mb-3 rise [--i:0]">
-              <span className="font-serif text-[0.82rem] text-[#8a2e1e] font-bold tracking-wider select-none bg-[#caa359]/20 border border-[#caa359]/40 px-3 py-0.5 rounded-full shadow-2xs">
-                ಕೈಯಿಂದ ಮಾಡಿದ · ರಾಜ ಸನ್ನಿಧಾನ · हस्तनिर्मित
+            <div className="flex items-center gap-3 mb-3.5 rise [--i:0]">
+              <span className="font-serif text-[0.82rem] text-brass tracking-wider select-none font-medium">
+                ಕೈಯಿಂದ ಮಾಡಿದ · हस्तनिर्मित
               </span>
               <span className="h-1 w-1 rounded-full bg-brass/60" />
-              <span className="eyebrow text-saddle-deep">BASAVA Atelier · Bengaluru</span>
+              <span className="eyebrow text-saddle-deep tracking-[0.2em]">BASAVA Atelier · Bengaluru</span>
             </div>
-            <h1 className="display-xl mt-2 rise [--i:1]">
-              Rooted in royal craft.<br />
-              <span className="italic font-normal bg-gradient-to-r from-[#8a2e1e] via-[#c5a059] to-[#5c412d] bg-clip-text text-transparent">
-                Made for living eternity.
+            <h1 className="display-xl mt-2 rise [--i:1] text-espresso tracking-tight">
+              Rooted in craft.<br />
+              <span className="italic font-normal text-[#5C3A21]">
+                Made for living.
               </span>
             </h1>
-            <p className="lede mt-5 max-w-xl text-charcoal/85 rise [--i:2]">
-              Discover 40 bespoke leather pieces curated from our Bengaluru workshop.
-              Crafted from 100% botanical tree-bark tanned hides, hand-waxed with pure Nilgiri forest beeswax, and fitted with solid sand-cast Moradabad brass.
+            <p className="lede mt-5 max-w-xl text-charcoal/85 rise [--i:2] leading-relaxed">
+              Discover 40 bespoke leather essentials from our Bengaluru workshop.
+              Handcrafted from botanical tree-bark tanned hides, solid sand-cast brass, and hand-waxed saddle stitching built to last a lifetime.
             </p>
 
             <div className="mt-8 flex flex-wrap items-center gap-4 rise [--i:3]">
-              <Link href="/shop" className="btn btn-solid btn-tactile shadow-md hover:shadow-2xl transition-all flex items-center gap-2">
+              <Link href="/shop" className="btn btn-solid btn-tactile shadow-md hover:shadow-xl transition-all flex items-center gap-2">
                 <span>EXPLORE COLLECTION</span>
                 <ArrowRight size={15} strokeWidth={1.5} />
               </Link>
-              <Link href="/custom" className="btn btn-outline btn-tactile hover:border-espresso transition-all shimmer-badge flex items-center gap-2">
+              <Link href="/custom" className="btn btn-outline btn-tactile hover:border-espresso transition-all flex items-center gap-2">
                 <Compass size={15} className="text-brass" />
                 <span>BESPOKE ATELIER STUDIO</span>
               </Link>
@@ -79,11 +72,11 @@ export default function HomePage() {
             <div className="mt-10 flex flex-wrap items-center gap-6 sm:gap-8 border-t border-espresso/12 pt-5 text-xs text-charcoal/80 rise [--i:4]">
               <div className="flex items-center gap-2">
                 <Check size={14} className="text-saddle-deep font-bold" />
-                <span>40 Masterpieces (₹1,000–₹6,000)</span>
+                <span>40 Ready Pieces (₹1,000–₹6,000)</span>
               </div>
               <div className="flex items-center gap-2">
                 <Check size={14} className="text-saddle-deep font-bold" />
-                <span>24K Gold Monogram on Request</span>
+                <span>24K Gold Initials on Request</span>
               </div>
               <div className="flex items-center gap-2">
                 <Check size={14} className="text-saddle-deep font-bold" />
@@ -92,7 +85,7 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Right: 3D Interactive Tilting Product Card */}
+          {/* Right: Real High-Res Atelier Piece Showcase */}
           {heroProduct && (
             <div className="lg:col-span-5 relative unveil [--i:2]">
               <HeroInteractiveCard product={heroProduct} />
@@ -101,7 +94,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* MARQUEE TICKER WITH INDIAN ROYAL GOLD ACCENTS */}
+      {/* MARQUEE TICKER */}
       <div className="relative overflow-hidden border-b border-espresso/15 bg-gradient-to-r from-[#170e08] via-[#24170f] to-[#120b06] text-[#e8cb85] py-3.5 select-none shadow-inner">
         <div className="marquee-track flex gap-8 text-[0.72rem] font-semibold tracking-[0.2em] uppercase">
           {[
@@ -111,7 +104,7 @@ export default function HomePage() {
             "✦ Solid Sand-Cast Moradabad Brass",
             "✦ 24K Hot-Stamped Gold Monograms",
             "✦ Pure Nilgiri Forest Beeswax Edges",
-            "✦ ಕಾಯಕವೇ ಕೈಲಾಸ · Hand-Saddle Stitched",
+            "✦ Hand-Saddle Stitched",
             "✦ Exactly 40 Curated Pieces",
             "✦ 100% Genuine Full-Grain Leather",
             "✦ Handcrafted in Bengaluru Atelier",
@@ -119,7 +112,7 @@ export default function HomePage() {
             "✦ Solid Sand-Cast Moradabad Brass",
             "✦ 24K Hot-Stamped Gold Monograms",
             "✦ Pure Nilgiri Forest Beeswax Edges",
-            "✦ ಕಾಯಕವೇ ಕೈಲಾಸ · Hand-Saddle Stitched",
+            "✦ Hand-Saddle Stitched",
             "✦ Exactly 40 Curated Pieces",
           ].map((item, idx) => (
             <span key={idx} className="flex items-center gap-2 whitespace-nowrap text-[#f4e2b8]">
@@ -206,12 +199,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Royal Indian Painting & Heritage Architecture Banner */}
-      <RoyalPaintingBanner />
-
-      {/* Royal Indian Miniature Painting Gallery & Tapestry */}
-      <RoyalIndianPaintingGallery />
-
       {/* 3. FEATURED PRODUCTS GRID */}
       <section className="py-20 sm:py-28 border-b border-espresso/15">
         <div className="shell">
@@ -242,9 +229,6 @@ export default function HomePage() {
           </Reveal>
         </div>
       </section>
-
-      {/* Interactive Indian Artisanal Provenance & Tannery Map */}
-      <IndianArtisanalMap />
 
       {/* 4. CUSTOM STUDIO & ENGRAVING INTERACTIVE BAND */}
       <section className="on-dark bg-espresso text-ivory py-20 sm:py-28 border-b border-sand/20">
